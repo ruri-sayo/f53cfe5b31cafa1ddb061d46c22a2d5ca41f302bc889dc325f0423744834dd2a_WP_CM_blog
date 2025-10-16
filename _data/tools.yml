@@ -1,12 +1,4 @@
 # _data/tools.yml
-- title: 3Dグラム・シュミット可視化
-  url: /tools/gram-schmidt.html
-  description: 基底の直交化を 3D で可視化する単一HTMLツール。
-  icon: >
-   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
-   </svg> 
-
 - title: R用パス変換ツールv2
   url: /tools/R_path_changer_v2.html
   description: windows標準のパスのコピーで得られるパスからRで使える形にらくらく変換ツール。
