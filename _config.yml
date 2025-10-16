@@ -22,7 +22,7 @@ title: 城上コードメモ(v2.0)
 email: sayohinadakedo@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   
-baseurl: /f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/"" # the subpath of your site, e.g. /blog
+baseurl: "/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog" # the subpath of your site, e.g. /blog
 url: "https://ruri-sayo.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: Ruriii_miuuu
 github_username:  ruri-sayo
