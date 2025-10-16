@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>インタラクティブ資産シミュレーション（グラフ機能付き）</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom styles for better table appearance */
+        th, td {
+            padding: 0.75rem; /* Tailwind p-3 */
+            text-align: right;
+            border: 1px solid #e5e7eb; /* Tailwind border-gray-200 */
+        }
+        th {
+            background-color: #f9fafb; /* Tailwind bg-gray-50 */
+            font-weight: 600; /* Tailwind font-semibold */
+        }
+        /* Ensure responsiveness */
+        .table-container, .chart-outer-container { /* Renamed chart container class */
+            overflow-x: auto; /* Add horizontal scroll on small screens */
+            margin-top: 1.5rem; /* Add some space above table/chart */
+        }
+        /* Style for negative values */
+        .negative {
+            color: #ef4444; /* Tailwind text-red-500 */
+        }
+        /* Input number arrows visibility */
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield; /* Firefox */
+        }
+        /* Hide elements initially */
+        .hidden {
+            display: none;
+        }
+        /* Set max height for the chart's wrapper div */
+        .chart-wrapper {
+            position: relative; /* Needed for Chart.js responsiveness */
+            /* max-h-[500px] sets a maximum height of 500px */
+            /* h-96 sets a fixed height of 24rem (384px) - choose one */
+            /* Using max-height allows it to be shorter if content is less */
+             max-height: 500px; /* Or use Tailwind: max-h-[500px] */
+             /* Alternatively, use a fixed height: */
+             /* height: 500px; */ /* Or use Tailwind: h-[500px] */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4 md:p-8">
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-lg shadow-md">
+        <h1 class="text-2xl md:text-3xl font-bold mb-6 text-gray-800 text-center">インタラクティブ資産シミュレーション</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+            <div>
+                <label for="initialAssets" class="block text-sm font-medium text-gray-700 mb-1">初期資産 (万円)</label>
+                <input type="number" id="initialAssets" value="3000" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div>
+                <label for="annualYield" class="block text-sm font-medium text-gray-700 mb-1">年間利回り (%)</label>
+                <input type="number" id="annualYield" value="5" step="0.1" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div>
+                <label for="annualConsumption" class="block text-sm font-medium text-gray-700 mb-1">初年度の年間消費額 (万円)</label>
+                <input type="number" id="annualConsumption" value="150" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div>
+                <label for="inflationRate" class="block text-sm font-medium text-gray-700 mb-1">インフレ率 (%)</label>
+                <input type="number" id="inflationRate" value="2" step="0.1" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div>
+                <label for="simulationYears" class="block text-sm font-medium text-gray-700 mb-1">シミュレーション期間 (年)</label>
+                <input type="number" id="simulationYears" value="30" min="1" max="100" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+            <button id="runSimulationBtn" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-6 rounded-md shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out">
+                シミュレーション実行
+            </button>
+            <button id="calculateRequiredBtn" class="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-md shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition duration-150 ease-in-out">
+                必要初期資産計算
+            </button>
+            <button id="showGraphBtn" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-md shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out hidden">
+                グラフ表示
+            </button>
+        </div>
+
+        <div id="results" class="mt-8">
+            <h2 class="text-xl md:text-2xl font-semibold mb-4 text-gray-800">シミュレーション結果</h2>
+            <div id="errorMessage" class="text-red-600 mb-4 hidden"></div>
+             <div id="summary" class="mb-4 p-4 bg-gray-50 rounded-md border border-gray-200">
+                </div>
+            <div class="table-container">
+                <table class="min-w-full border-collapse border border-gray-300 bg-white">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="text-left px-3 py-2 border border-gray-300">年</th>
+                            <th class="text-right px-3 py-2 border border-gray-300">期首資産 (万円)</th>
+                            <th class="text-right px-3 py-2 border border-gray-300">年間収入 (万円)</th>
+                            <th class="text-right px-3 py-2 border border-gray-300">年間消費額 (万円)</th>
+                            <th class="text-right px-3 py-2 border border-gray-300">期末資産 (万円)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsTableBody">
+                        <tr>
+                            <td colspan="5" class="text-center py-4 text-gray-500">シミュレーションを実行してください。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="chartOuterContainer" class="chart-outer-container hidden mt-8">
+                 <h3 class="text-xl font-semibold mb-4 text-gray-800">資産推移グラフ</h3>
+                 <div class="chart-wrapper">
+                    <canvas id="assetChart"></canvas>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- DOM Elements ---
+        const initialAssetsInput = document.getElementById('initialAssets');
+        const annualYieldInput = document.getElementById('annualYield');
+        const annualConsumptionInput = document.getElementById('annualConsumption');
+        const inflationRateInput = document.getElementById('inflationRate');
+        const simulationYearsInput = document.getElementById('simulationYears');
+        const runSimulationBtn = document.getElementById('runSimulationBtn');
+        const calculateRequiredBtn = document.getElementById('calculateRequiredBtn');
+        const showGraphBtn = document.getElementById('showGraphBtn');
+        const resultsTableBody = document.getElementById('resultsTableBody');
+        const errorMessageDiv = document.getElementById('errorMessage');
+        const summaryDiv = document.getElementById('summary');
+        const chartOuterContainer = document.getElementById('chartOuterContainer'); // Outer container
+        const chartCanvas = document.getElementById('assetChart');
+
+        // --- Global Variables ---
+        let simulationData = null;
+        let assetChartInstance = null;
+
+        // --- Helper Functions ---
+
+        // Format number to Japanese currency style (万円) with 2 decimal places
+        function formatCurrency(value) {
+            if (typeof value !== 'number' || isNaN(value)) return '-';
+            const roundedValue = Math.round(value * 100) / 100;
+            const formatted = roundedValue.toLocaleString('ja-JP', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            return formatted;
+        }
+
+         // Round number to 2 decimal places
+        function roundToTwo(num) {
+            return Math.round(num * 100) / 100;
+        }
+
+        // Display error messages
+        function displayError(message) {
+            errorMessageDiv.textContent = message;
+            errorMessageDiv.classList.remove('hidden');
+            resultsTableBody.innerHTML = `<tr><td colspan="5" class="text-center py-4 text-red-500">${message}</td></tr>`;
+            summaryDiv.innerHTML = '';
+            hideGraph();
+        }
+
+        // Clear error messages
+        function clearError() {
+            errorMessageDiv.textContent = '';
+            errorMessageDiv.classList.add('hidden');
+        }
+
+        // Hide graph and related elements
+        function hideGraph() {
+            showGraphBtn.classList.add('hidden');
+            chartOuterContainer.classList.add('hidden'); // Hide outer container
+            if (assetChartInstance) {
+                assetChartInstance.destroy();
+                assetChartInstance = null;
+            }
+            simulationData = null;
+        }
+
+        // --- Event Listeners ---
+        runSimulationBtn.addEventListener('click', runSimulation);
+        calculateRequiredBtn.addEventListener('click', calculateRequiredAssets);
+        showGraphBtn.addEventListener('click', displayGraph);
+
+        // --- Core Logic ---
+
+        function calculateRequiredAssets() {
+            clearError();
+            hideGraph();
+            const yieldPercent = parseFloat(annualYieldInput.value);
+            const consumption = parseFloat(annualConsumptionInput.value);
+
+            if (isNaN(yieldPercent) || isNaN(consumption)) {
+                displayError("利回りと初年度消費額に有効な数値を入力してください。");
+                return;
+            }
+             if (consumption < 0) {
+                 displayError("初年度消費額は0以上である必要があります。");
+                return;
+            }
+            if (yieldPercent <= 0) {
+                displayError("利回りが0%以下の場合、収入で消費を賄うための初期資産は計算できません（無限大または定義不能）。");
+                initialAssetsInput.value = '';
+                return;
+            }
+
+            const yieldDecimal = yieldPercent / 100;
+            const requiredAssets = consumption / yieldDecimal;
+
+            initialAssetsInput.value = requiredAssets.toFixed(2);
+            summaryDiv.innerHTML = `<p class="text-green-700">年間利回り ${yieldPercent}% で初年度消費額 ${formatCurrency(consumption)} 万円を賄うために必要な初期資産は <strong>${formatCurrency(requiredAssets)} 万円</strong>です。初期資産フィールドに設定しました。</p>`;
+            resultsTableBody.innerHTML = `<tr><td colspan="5" class="text-center py-4 text-gray-500">必要初期資産を計算しました。シミュレーションを実行して詳細を確認してください。</td></tr>`;
+        }
+
+        function runSimulation() {
+            clearError();
+            hideGraph();
+
+            const initialAssets = parseFloat(initialAssetsInput.value);
+            const annualYieldPercent = parseFloat(annualYieldInput.value);
+            const initialAnnualConsumption = parseFloat(annualConsumptionInput.value);
+            const inflationRatePercent = parseFloat(inflationRateInput.value);
+            const simulationYears = parseInt(simulationYearsInput.value, 10);
+
+            if (isNaN(initialAssets) || isNaN(annualYieldPercent) || isNaN(initialAnnualConsumption) || isNaN(inflationRatePercent) || isNaN(simulationYears)) {
+                displayError("すべての入力フィールドに有効な数値を入力してください。");
+                return;
+            }
+             if (initialAssets < 0 || initialAnnualConsumption < 0 || simulationYears <= 0) {
+                displayError("初期資産、初年度消費額は0以上、シミュレーション期間は1年以上である必要があります。");
+                return;
+            }
+
+            const annualYield = annualYieldPercent / 100;
+            const inflationRate = inflationRatePercent / 100;
+
+            let currentAssets = initialAssets;
+            let resultsHTML = '';
+            let brokeYear = -1;
+            const yearlyData = [];
+
+            for (let year = 1; year <= simulationYears; year++) {
+                const assetsStartOfYear = currentAssets;
+                const income = assetsStartOfYear * annualYield;
+                const currentConsumption = initialAnnualConsumption * Math.pow(1 + inflationRate, year - 1);
+                const assetsEndOfYear = assetsStartOfYear + income - currentConsumption;
+
+                yearlyData.push({
+                    year: year,
+                    assetsStart: roundToTwo(assetsStartOfYear),
+                    income: roundToTwo(income),
+                    consumption: roundToTwo(currentConsumption),
+                    assetsEnd: roundToTwo(assetsEndOfYear)
+                });
+
+                const assetsStartFormatted = formatCurrency(assetsStartOfYear);
+                const incomeFormatted = formatCurrency(income);
+                const consumptionFormatted = formatCurrency(currentConsumption);
+                let assetsEndFormatted = formatCurrency(assetsEndOfYear);
+                let endAssetClass = assetsEndOfYear < 0 ? 'negative font-semibold' : '';
+
+                if (assetsEndOfYear < 0 && brokeYear === -1) {
+                    brokeYear = year;
+                }
+
+                if (assetsEndOfYear < -10000000) { // Stop if assets are extremely negative (-100 million 万 JPY)
+                     resultsHTML += `
+                        <tr class="bg-red-50 border-red-200">
+                            <td class="text-left px-3 py-2 border border-gray-300">${year}</td>
+                            <td class="px-3 py-2 border border-gray-300">${assetsStartFormatted}</td>
+                            <td class="px-3 py-2 border border-gray-300">${incomeFormatted}</td>
+                            <td class="px-3 py-2 border border-gray-300">${consumptionFormatted}</td>
+                            <td class="px-3 py-2 border border-gray-300 ${endAssetClass}">${assetsEndFormatted}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" class="text-center py-4 text-red-700 font-semibold">資産が大きくマイナスになったため、${year}年でシミュレーションを停止しました。</td>
+                        </tr>
+                    `;
+                    currentAssets = assetsEndOfYear;
+                    break;
+                }
+
+                resultsHTML += `
+                    <tr>
+                        <td class="text-left px-3 py-2 border border-gray-300">${year}</td>
+                        <td class="px-3 py-2 border border-gray-300">${assetsStartFormatted}</td>
+                        <td class="px-3 py-2 border border-gray-300">${incomeFormatted}</td>
+                        <td class="px-3 py-2 border border-gray-300">${consumptionFormatted}</td>
+                        <td class="px-3 py-2 border border-gray-300 ${endAssetClass}">${assetsEndFormatted}</td>
+                    </tr>
+                `;
+                currentAssets = assetsEndOfYear;
+            }
+
+            resultsTableBody.innerHTML = resultsHTML;
+            simulationData = yearlyData;
+
+            let summaryText = `<h3 class="text-lg font-semibold mb-2 text-gray-700">シミュレーション概要</h3>`;
+            summaryText += `<p>期間: ${simulationYears}年</p>`;
+            summaryText += `<p>初期資産: ${formatCurrency(initialAssets)} 万円</p>`;
+            summaryText += `<p>最終資産: <span class="${currentAssets < 0 ? 'negative font-semibold' : ''}">${formatCurrency(currentAssets)} 万円</span></p>`;
+             if (brokeYear !== -1) {
+                summaryText += `<p class="text-red-600 font-semibold">${brokeYear}年目に資産がマイナスになりました。</p>`;
+            } else if (currentAssets >= 0) {
+                summaryText += `<p class="text-green-700">シミュレーション期間終了時、資産はプラスを維持しました。</p>`;
+            }
+            summaryDiv.innerHTML = summaryText;
+
+            if (simulationData && simulationData.length > 0) {
+                showGraphBtn.classList.remove('hidden');
+            }
+        }
+
+        function displayGraph() {
+            if (!simulationData || simulationData.length === 0) {
+                displayError("グラフを表示するためのシミュレーションデータがありません。");
+                return;
+            }
+
+            const labels = simulationData.map(data => data.year);
+            const assetsEndData = simulationData.map(data => data.assetsEnd);
+            const consumptionData = simulationData.map(data => data.consumption);
+            const incomeData = simulationData.map(data => data.income);
+
+            if (assetChartInstance) {
+                assetChartInstance.destroy();
+            }
+
+            const ctx = chartCanvas.getContext('2d');
+            assetChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: '期末総資産 (万円)',
+                            data: assetsEndData,
+                            borderColor: 'rgb(75, 192, 192)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            tension: 0.1,
+                            yAxisID: 'yAssets',
+                            pointRadius: 2,
+                            borderWidth: 2
+                        },
+                        {
+                            label: '年間消費額 (万円)',
+                            data: consumptionData,
+                            borderColor: 'rgb(255, 99, 132)',
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            tension: 0.1,
+                            yAxisID: 'yConsumptionIncome',
+                             pointRadius: 2,
+                            borderWidth: 2
+                        },
+                        {
+                            label: '年間収入(利息) (万円)',
+                            data: incomeData,
+                            borderColor: 'rgb(54, 162, 235)',
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            tension: 0.1,
+                            yAxisID: 'yConsumptionIncome',
+                             pointRadius: 2,
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false, // Crucial with fixed height container
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: '年' }
+                        },
+                        yAssets: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: { display: true, text: '総資産 (万円)' },
+                            suggestedMin: 0,
+                             ticks: {
+                                callback: function(value) { return value.toLocaleString('ja-JP'); }
+                            }
+                        },
+                        yConsumptionIncome: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: { display: true, text: '年間消費額 / 収入 (万円)' },
+                            suggestedMin: 0,
+                            grid: { drawOnChartArea: false },
+                             ticks: {
+                                callback: function(value) { return value.toLocaleString('ja-JP'); }
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) { label += ': '; }
+                                    if (context.parsed.y !== null) {
+                                        label += formatCurrency(context.parsed.y) + ' 万円';
+                                    }
+                                    return label;
+                                }
+                            }
+                        },
+                        legend: { position: 'top' }
+                    }
+                }
+            });
+
+            // Show the chart's outer container
+            chartOuterContainer.classList.remove('hidden');
+            // Scroll to the chart smoothly
+            chartOuterContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+    </script>
+</body>
+</html>

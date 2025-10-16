@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本のスキー場 標高比較グラフ</title>
+    <!-- Tailwind CSSを読み込み -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- D3.jsを読み込み -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* フォント設定 */
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+        }
+        /* ツールチップのスタイル */
+        .tooltip {
+            position: absolute;
+            text-align: left;
+            padding: 8px;
+            font-size: 12px;
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            border-radius: 8px;
+            pointer-events: none; /* ツールチップがマウスイベントを妨げないようにする */
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 10;
+        }
+        /* 軸の線のスタイル */
+        .domain {
+            stroke: #d1d5db; /* gray-300 */
+        }
+        /* 軸の目盛線のスタイル */
+        .tick line {
+            stroke: #e5e7eb; /* gray-200 */
+            stroke-dasharray: 2,2;
+        }
+        /* 軸のテキストのスタイル */
+        .tick text {
+            fill: #4b5563; /* gray-600 */
+            font-size: 10px;
+        }
+        /* 標高範囲を示すバーのスタイル */
+        .elevation-bar {
+            transition: fill 0.2s ease-in-out, opacity 0.2s ease-in-out;
+        }
+        .elevation-bar:hover {
+            opacity: 1.0;
+        }
+        /* 凡例のテキストスタイル */
+        .legend-text {
+            font-size: 12px;
+            fill: #374151; /* gray-700 */
+            cursor: pointer;
+        }
+        /* ソートボタンのスタイル */
+        .sort-button {
+            padding: 8px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            background-color: white;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+            font-size: 14px;
+        }
+        .sort-button:hover {
+            background-color: #f3f4f6;
+        }
+        .sort-button.active {
+            background-color: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-full lg:max-w-7xl bg-white p-4 sm:p-8 rounded-2xl shadow-lg">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+            <div>
+                <h1 class="text-xl sm:text-3xl font-bold text-gray-900 mb-2">日本のスキー場 標高比較</h1>
+                <p class="text-gray-600 mb-4 sm:mb-0">各スキー場の標高範囲（Y軸）を比較できます。並び順を変更してご覧ください。</p>
+            </div>
+            <div id="controls" class="flex space-x-2">
+                <button id="sort-region" class="sort-button active">地方別</button>
+                <button id="sort-elevation" class="sort-button">標高順</button>
+            </div>
+        </div>
+        
+        <!-- グラフを描画するコンテナ -->
+        <div id="chart-container" class="w-full h-full overflow-x-auto"></div>
+
+        <!-- ツールチップ表示用のdiv -->
+        <div id="tooltip" class="tooltip"></div>
+    </div>
+
+    <script>
+        // レポートから抽出した全スキー場のデータ
+        let skiData = [
+            // 兵庫
+            { name: "ハチ高原＆ハチ北", high: 1221, low: 560, courses: 25, region: "兵庫" },
+            { name: "アップかんなべ", high: 470, low: 280, courses: 4, region: "兵庫" },
+            { name: "神鍋高原 万場", high: 940, low: 380, courses: 7, region: "兵庫" },
+            { name: "スカイバレイスキー場", high: 1007, low: 507, courses: 8, region: "兵庫" },
+            { name: "六甲山スノーパーク", high: 800, low: 750, courses: 2, region: "兵庫" },
+            // 滋賀
+            { name: "グランスノー奥伊吹", high: 1250, low: 700, courses: 14, region: "滋賀" },
+            { name: "びわ湖バレイ", high: 1174, low: 950, courses: 9, region: "滋賀" },
+            { name: "箱館山スキー場", high: 690, low: 540, courses: 8, region: "滋賀" },
+            { name: "ヨゴコーゲンリゾート・ヤップ", high: 740, low: 540, courses: 6, region: "滋賀" },
+            // 北陸 (富山・石川)
+            { name: "立山山麓スキー場", high: 1188, low: 450, courses: 11, region: "北陸" },
+            { name: "IOX-AROSA", high: 850, low: 350, courses: 7, region: "北陸" },
+            { name: "牛岳温泉スキー場", high: 650, low: 330, courses: 3, region: "北陸" },
+            { name: "宇奈月スノーパーク", high: 434, low: 350, courses: 2, region: "北陸" },
+            { name: "白山一里野温泉スキー場", high: 1050, low: 550, courses: 9, region: "北陸" },
+            { name: "白山セイモアスキー場", high: 1030, low: 300, courses: 9, region: "北陸" },
+            { name: "金沢市営医王山スキー場", high: 540, low: 390, courses: 4, region: "北陸" },
+            // 福井
+            { name: "スキージャム勝山", high: 1320, low: 610, courses: 15, region: "福井" },
+            { name: "今庄365スキー場", high: 760, low: 430, courses: 8, region: "福井" },
+            { name: "福井和泉スキー場", high: 901, low: 600, courses: 6, region: "福井" },
+            { name: "九頭竜スキー場", high: 900, low: 700, courses: 8, region: "福井" },
+            // 岐阜
+            { name: "鷲ヶ岳スキー場", high: 1350, low: 910, courses: 13, region: "岐阜" },
+            { name: "ホワイトピアたかす", high: 1405, low: 1050, courses: 13, region: "岐阜" },
+            { name: "高鷲スノーパーク", high: 1550, low: 950, courses: 12, region: "岐阜" },
+            { name: "ダイナランド", high: 1430, low: 983, courses: 20, region: "岐阜" },
+            { name: "ひるがの高原スキー場", high: 1040, low: 890, courses: 7, region: "岐阜" },
+            { name: "郡上ヴァカンス村スキー場", high: 1050, low: 950, courses: 2, region: "岐阜" },
+            { name: "めいほうスキー場", high: 1600, low: 900, courses: 14, region: "岐阜" },
+            // 長野
+            { name: "白馬八方尾根スキー場", high: 1831, low: 760, courses: 16, region: "長野" },
+            { name: "白馬五竜スキー場", high: 1676, low: 750, courses: 16, region: "長野" },
+            { name: "Hakuba47", high: 1614, low: 820, courses: 8, region: "長野" },
+            { name: "栂池高原スキー場", high: 1704, low: 800, courses: 14, region: "長野" },
+            { name: "白馬岩岳スノーフィールド", high: 1289, low: 750, courses: 26, region: "長野" },
+            { name: "白馬コルチナスキー場", high: 1402, low: 872, courses: 16, region: "長野" },
+            { name: "志賀高原焼額山スキー場", high: 2000, low: 1550, courses: 20, region: "長野" },
+            { name: "志賀高原中央エリア", high: 2100, low: 1340, courses: 33, region: "長野" },
+            { name: "志賀高原横手山・渋峠", high: 2307, low: 1705, courses: 16, region: "長野" },
+            { name: "竜王スキーパーク", high: 1930, low: 850, courses: 20, region: "長野" },
+            { name: "野沢温泉スキー場", high: 1650, low: 565, courses: 44, region: "長野" },
+            { name: "斑尾高原スキー場", high: 1350, low: 910, courses: 31, region: "長野" },
+            { name: "戸狩温泉スキー場", high: 1050, low: 350, courses: 18, region: "長野" },
+            { name: "菅平高原スノーリゾート", high: 1650, low: 1250, courses: 60, region: "長野" },
+            { name: "軽井沢プリンスホテルスキー場", high: 1155, low: 940, courses: 14, region: "長野" },
+            { name: "富士見パノラマリゾート", high: 1780, low: 1050, courses: 8, region: "長野" },
+            { name: "中央アルプス千畳敷", high: 2612, low: 2500, courses: 1, region: "長野" },
+            // 新潟
+            { name: "GALA湯沢スキー場", high: 1181, low: 358, courses: 16, region: "新潟" },
+            { name: "苗場スキー場", high: 1789, low: 900, courses: 24, region: "新潟" },
+            { name: "かぐらスキー場", high: 1845, low: 620, courses: 32, region: "新潟" },
+            { name: "舞子スノーリゾート", high: 920, low: 260, courses: 26, region: "新潟" },
+            { name: "赤倉温泉スキー場", high: 1200, low: 750, courses: 17, region: "新潟" },
+            { name: "妙高杉ノ原スキー場", high: 1855, low: 731, courses: 16, region: "新潟" },
+            { name: "ロッテアライリゾート", high: 1429, low: 339, courses: 15, region: "新潟" },
+            { name: "上越国際スキー場", high: 1017, low: 200, courses: 22, region: "新潟" },
+        ].filter(d => d.high && d.low && d.courses);
+
+        const regionOrder = ["兵庫", "滋賀", "北陸", "福井", "岐阜", "長野", "新潟"];
+        const regionColors = {
+            "兵庫": "#16a34a", "滋賀": "#2563eb", "北陸": "#ca8a04", "福井": "#0891b2",
+            "岐阜": "#db2777", "長野": "#dc2626", "新潟": "#9333ea",
+        };
+
+        const tooltip = d3.select("#tooltip");
+        let currentSort = 'region';
+
+        function updateChart(sortType) {
+            currentSort = sortType;
+            
+            // ソート処理
+            if (sortType === 'region') {
+                skiData.sort((a, b) => {
+                    const regionA = regionOrder.indexOf(a.region);
+                    const regionB = regionOrder.indexOf(b.region);
+                    if (regionA !== regionB) return regionA - regionB;
+                    return b.high - a.high; // 同じ地域内では標高順
+                });
+            } else if (sortType === 'elevation') {
+                skiData.sort((a, b) => b.high - a.high);
+            }
+
+            // ボタンのアクティブ状態を更新
+            d3.select('#sort-region').classed('active', sortType === 'region');
+            d3.select('#sort-elevation').classed('active', sortType === 'elevation');
+
+            const container = document.getElementById('chart-container');
+            container.innerHTML = '';
+            
+            const numBars = skiData.length;
+            const barWidth = 16;
+            const barPadding = 8;
+            const width = numBars * (barWidth + barPadding);
+            const height = 500;
+
+            const margin = { top: 20, right: 20, bottom: 150, left: 70 };
+            const innerWidth = width - margin.left - margin.right;
+            const innerHeight = height - margin.top - margin.bottom;
+
+            const svg = d3.select("#chart-container")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append("g")
+                .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+            const x = d3.scaleBand()
+                .domain(skiData.map(d => d.name))
+                .range([0, innerWidth])
+                .padding(0.2);
+
+            const y = d3.scaleLinear()
+                .domain([0, d3.max(skiData, d => d.high) * 1.05])
+                .range([innerHeight, 0]);
+
+            const xAxis = svg.append("g")
+                .attr("transform", `translate(0, ${innerHeight})`)
+                .call(d3.axisBottom(x));
+            
+            xAxis.selectAll("text")
+                .attr("transform", "translate(-10,0)rotate(-65)")
+                .style("text-anchor", "end");
+            
+            xAxis.selectAll(".domain, .tick line").remove();
+
+            svg.append("g")
+                .call(d3.axisLeft(y).tickFormat(d => `${d}m`).tickSize(-innerWidth).tickPadding(10))
+                .call(g => g.select(".domain").remove());
+
+            svg.append('g')
+                .selectAll("rect")
+                .data(skiData, d => d.name)
+                .enter()
+                .append("rect")
+                .attr("class", "elevation-bar")
+                .attr("x", d => x(d.name))
+                .attr("y", d => y(d.high))
+                .attr("width", x.bandwidth())
+                .attr("height", d => Math.max(0, y(d.low) - y(d.high)))
+                .style("fill", d => regionColors[d.region] || "#888")
+                .attr("opacity", 0.85)
+                .attr("rx", 2).attr("ry", 2)
+                .on("mouseover", function(event, d) {
+                    d3.select(this).style("opacity", 1.0);
+                    tooltip.transition().duration(200).style("opacity", .9);
+                    tooltip.html(`<strong>${d.name}</strong><br/>地域: ${d.region}<br/>標高: ${d.low.toLocaleString()}m - ${d.high.toLocaleString()}m<br/>コース数: ${d.courses}本`)
+                           .style("left", (event.pageX + 15) + "px")
+                           .style("top", (event.pageY - 28) + "px");
+                })
+                .on("mouseout", function(d) {
+                    d3.select(this).style("opacity", 0.85);
+                    tooltip.transition().duration(500).style("opacity", 0);
+                });
+        }
+
+        d3.select('#sort-region').on('click', () => updateChart('region'));
+        d3.select('#sort-elevation').on('click', () => updateChart('elevation'));
+
+        // 初期描画
+        updateChart('region');
+        window.addEventListener('resize', () => updateChart(currentSort));
+    </script>
+
+</body>
+</html>

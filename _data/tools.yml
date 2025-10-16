@@ -1,0 +1,78 @@
+# _data/tools.yml
+- title: 3Dグラム・シュミット可視化
+  url: /tools/gram-schmidt.html
+  description: 基底の直交化を 3D で可視化する単一HTMLツール。
+  icon: >
+   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
+   </svg> 
+
+- title: R用パス変換ツールv2
+  url: /tools/R_path_changer_v2.html
+  description: windows標準のパスのコピーで得られるパスからRで使える形にらくらく変換ツール。
+  icon: >
+   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
+   </svg>
+
+- title: TeXレンダラー
+  url: /tools/math_changer.html
+  icon: /assets/img/tex_render.png 
+  description: TeXをリアルタイムで確認できます。
+
+
+- title: スキー場標高比較
+  url: /tools/sky_high_ver2.html
+  description: 日本の代表的なスキー場の標高を比較できます。
+  icon: >
+   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
+   </svg>  
+
+- title: 資産シミュレーター
+  url: /tools/kane_simyu.html
+  description: 株式等、福利資産の増額をシミュレーション。
+  icon: >
+   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
+   </svg>   
+
+- title: 迷路ゲーム（簡単）
+  url: /tools/MEIRO.html
+  description: 迷路ゲーム（簡単）。
+  icon: >
+   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
+   </svg>   
+
+- title: 迷路ゲーム（難しい）
+  url: /tools/MEIRO_kai.html
+  description: 迷路ゲーム（難しい）。
+  icon: >
+   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
+   </svg>   
+
+- title: スクリーンセイバー
+  url: /tools/screen_saiverrrrr.html
+  description: どこかでみたことがある（かもしれない）なつかしのスクリーンセイバー。
+  icon: >
+   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
+   </svg>   
+
+- title: ミリオンライブ!アイドルデータ相関分析グラフ
+  url: /tools/million_graph_1.html
+  description: アイドルの身体的特徴に関する相関関係を可視化。
+  icon: >
+   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
+   </svg>   
+
+- title: ミリオンライブ!身長年齢体重3D分布
+  url: /tools/million_graph_3D.html
+  description: アイドルの身体的特徴に関する相関関係を3Dで可視化。
+  icon: >
+   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
+   </svg>   

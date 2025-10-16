@@ -1,0 +1,35 @@
+---
+layout: default
+---
+<section class="mb-16">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- 左：新着記事 -->
+<div class="space-y-4">
+<h2 class="text-2xl font-semibold border-b pb-2 mb-4">
+<a href="{{ '/posts/' | relative_url }}" class="hover:text-blue-600">新着記事 &rarr;</a>
+</h2>
+{% for post in site.posts limit: 5 %}
+<div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+<p class="text-sm text-gray-500">{{ post.date | date: '%Y-%m-%d' }}</p>
+<h3 class="text-lg font-bold"><a class="hover:underline" href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+{% if post.excerpt %}
+<p class="text-gray-600 mt-1">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+{% endif %}
+</div>
+{% endfor %}
+</div>
+
+
+<!-- 右：ツール導線 -->
+<div class="space-y-4">
+<h2 class="text-2xl font-semibold border-b pb-2 mb-4">
+<a href="{{ '/tools/' | relative_url }}" class="hover:text-blue-600">便利なツール &rarr;</a>
+</h2>
+<div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+<h3 class="text-lg font-bold"><a href="{{ '/tools/R_path_changer_v2.html' | relative_url }}" class="hover:underline">R用パス変換ツールv2</a></h3>
+<p class="text-gray-600 mt-1">windows標準のパスのコピーで得られるパスからRで使える形にらくらく変換ツール。。</p>
+</div>
+<!-- 追加ツールがあれば同様のカードを増やす -->
+</div>
+</div>
+</section>
