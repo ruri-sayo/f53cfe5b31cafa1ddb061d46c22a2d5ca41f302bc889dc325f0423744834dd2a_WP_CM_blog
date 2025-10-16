@@ -21,10 +21,9 @@
 title: 城上コードメモ(v2.0)
 email: sayohinadakedo@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  このサイトは、作用によって作成・管理されています。
-  ご連絡（記事の要望、誤植の指摘）は左記メールアドレスもしくは、LINEに直接お願いします。
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+  
+baseurl: /f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/"" # the subpath of your site, e.g. /blog
+url: "https://ruri-sayo.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: Ruriii_miuuu
 github_username:  ruri-sayo
 
