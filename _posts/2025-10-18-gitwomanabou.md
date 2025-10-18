@@ -1,9 +1,10 @@
 ---
 layout: post
 title: 小説風git解説
-categories: [技術][小説]
+date:   2025-10-18 22:05:21 +0900
+categories: [技術, 小説]
 ---
-
+小説風のgit解説。暇なときの読み物にどうぞ。
 
 # 第1章：Gitの基本概念とローカル操作
 

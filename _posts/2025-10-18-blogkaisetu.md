@@ -1,7 +1,8 @@
 ---
 layout: post
 title: ブログ構造
-categories: [備忘録][技術]
+date:   2025-10-18 21:05:21 +0900
+categories: [備忘録, 技術]
 ---
 
 # なぜ今更ブログ構造を解説？
