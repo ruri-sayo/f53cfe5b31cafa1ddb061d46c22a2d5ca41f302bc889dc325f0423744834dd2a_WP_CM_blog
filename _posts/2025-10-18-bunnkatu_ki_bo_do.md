@@ -4,10 +4,13 @@ title: 分割キーボードの考察
 categories: [技術]
 ---
 
+！この記事は画像表示のテスト記事です。内容は未完成です。
+
 # 分割キーボードとは？
 
 分割するキーボード。
 
+<img src="{{ '/assets/img/bunnkatu_ki_bo_do_nonTB.jpg' | relative_url }}" alt="分割キーボードのイメージ" width="400">
 
 
 こんなの
@@ -26,6 +29,7 @@ categories: [技術]
 
 ## トラックボールの接続
 
+<img src="{{ '/assets/img/bunnkatu_ki_bo_do_withTB.jpg' | relative_url }}" alt="トラックボール付きのイメージ" width="400">
 
 こんな感じで内側にトラックボールが連結されている形を考える。
 

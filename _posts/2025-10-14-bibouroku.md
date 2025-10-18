@@ -7,6 +7,7 @@ categories: [備忘録]
 # 備忘録（運営に関して）
 ## 記事の執筆について
 記事は、基本的にmdで書いて、_post内に以下の要領で入れること。
+<br>おすすめは、notionで書いてそのままコピペ。（表やコードブロックも概ね崩れずに入れれる）
 
 > yyyy-mm-dd-title.md
 
@@ -123,3 +124,27 @@ $$
 
 ```
 
+
+# ツール類増やし方
+## 前提条件
+
+- ツールのhtmlファイルがある
+- ツールの画像がある
+
+## ymlファイルへの追加
+
+_data/tooks.ymlに以下の要領で追加する
+
+```jsx
+- title: <ツールのタイトル>
+  url: /tools/<toolsファイル内のパス>.html
+  description: <説明>
+  icon: >
+   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
+   </svg> 
+```
+
+## ファイルの追加
+
+toolsディレクトリにツールのファイルを入れておく
