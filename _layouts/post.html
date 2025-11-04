@@ -9,6 +9,9 @@ layout: default
 · <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold">{{ page.categories | join: ', ' }}</span>
 {% endif %}
 </p>
+{% if page.description %}
+<p class="text-gray-600 mt-2">{{ page.description }}</p>
+{% endif %}
 </header>
 {{ content }}
 </article>

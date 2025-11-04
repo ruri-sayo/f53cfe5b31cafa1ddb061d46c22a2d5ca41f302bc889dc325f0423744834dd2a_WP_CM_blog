@@ -24,8 +24,10 @@ permalink: /posts/
       <h3 class="text-xl font-bold mb-2">
         <a href="{{ post.url | relative_url }}" class="hover:text-blue-600">{{ post.title }}</a>
       </h3>
-      {% if post.excerpt %}
-      <p class="text-gray-600 mb-4">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+      {% assign summary_source = post.description | default: post.excerpt %}
+      {% assign summary = summary_source | strip_html %}
+      {% if summary and summary != '' %}
+      <p class="text-gray-600 mb-4">{{ summary | truncate: 120 }}</p>
       {% endif %}
       <div class="flex justify-between items-center text-sm text-gray-500">
         {% if post.categories and post.categories.size > 0 %}
@@ -51,7 +53,7 @@ permalink: /posts/
     "url": {{ post.url | relative_url | jsonify }},
     "date_iso": {{ post.date | date_to_xmlschema | jsonify }},
     "date_disp": {{ post.date | date: "%Y年%m月%d日" | jsonify }},
-    "excerpt": {{ post.excerpt | strip_html | normalize_whitespace | jsonify }},
+    "description": {{ post.description | default: post.excerpt | strip_html | normalize_whitespace | jsonify }},
     "categories": {{ post.categories | jsonify }},
     "tags": {{ post.tags | jsonify }}
   }{% unless forloop.last %},{% endunless %}

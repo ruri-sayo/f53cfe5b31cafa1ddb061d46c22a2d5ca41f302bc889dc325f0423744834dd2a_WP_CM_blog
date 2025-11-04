@@ -35,6 +35,11 @@ permalink: /tools/
         {%- if tool.description -%}
           <p class="text-gray-600 mt-1 text-sm">{{ tool.description }}</p>
         {%- endif -%}
+        {%- if tool.tag -%}
+          <div class="mt-4 flex justify-end">
+            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">{{ tool.tag }}</span>
+          </div>
+        {%- endif -%}
       </div>
     </a>
   {%- endfor -%}

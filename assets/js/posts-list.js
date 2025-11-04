@@ -2,7 +2,7 @@
   // 1) JSONデータの読込
   const dataEl = document.getElementById('posts-data');
   if (!dataEl) return;
-  /** @type {{title:string,url:string,date_iso:string,date_disp:string,excerpt:string,categories:string[],tags:string[]}[]} */
+  /** @type {{title:string,url:string,date_iso:string,date_disp:string,description:string,categories:string[],tags:string[]}[]} */
   const POSTS = JSON.parse(dataEl.textContent || '[]');
 
   // 2) DOM要素
@@ -41,7 +41,7 @@
         ? `<span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">uncategorized</span>`
         : `<span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold">${escapeHtml(catOrTag)}</span>`;
 
-      const excerpt = p.excerpt ? escapeHtml(p.excerpt) : '';
+      const description = p.description ? escapeHtml(p.description) : '';
 
       return `
       <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
@@ -49,7 +49,7 @@
           <h3 class="text-xl font-bold mb-2">
             <a href="${p.url}" class="hover:text-blue-600">${escapeHtml(p.title)}</a>
           </h3>
-          ${excerpt ? `<p class="text-gray-600 mb-4">${excerpt.length > 120 ? excerpt.slice(0,118) + '…' : excerpt}</p>` : ''}
+          ${description ? `<p class="text-gray-600 mb-4">${description.length > 120 ? description.slice(0,118) + '…' : description}</p>` : ''}
           <div class="flex justify-between items-center text-sm text-gray-500">
             ${pill}
             <time datetime="${p.date_iso}">${escapeHtml(p.date_disp)}</time>
@@ -67,8 +67,8 @@
     const t = ($tag.value || '').trim();
 
     const filtered = POSTS.filter(p => {
-      // キーワードは title + excerpt に含まれるか
-      const hay = (p.title + ' ' + (p.excerpt || '')).toLowerCase();
+      // キーワードは title + description に含まれるか
+      const hay = (p.title + ' ' + (p.description || '')).toLowerCase();
       const okQ = q === '' ? true : hay.includes(q);
 
       // タグは tags ∪ categories のどれか一致か
