@@ -1,88 +1,65 @@
 # _data/tools.yml
-- title: R用パス変換ツールv2
+- id: R_path_change
+  title: R用パス変換ツールv2
   url: /tools/R_path_changer_v2.html
   description: windows標準のパスのコピーで得られるパスからRで使える形にらくらく変換ツール。
   tag: 開発支援
-  icon: >
-   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
-   </svg>
+  icon: /assets/icon/R_path.avif
 
-- title: TeXレンダラー
+- 
+  title: TeXレンダラー
   url: /tools/math_changer.html
-  icon: /assets/icon/tex_render.png
+  icon: /assets/icon/tex_render.avif
   description: TeXをリアルタイムで確認できます。
   tag: 学習支援
 
 
-- title: スキー場標高比較
+- id: sky_high
+  title: スキー場標高比較
   url: /tools/sky_high_ver2.html
   description: 日本の代表的なスキー場の標高を比較できます。
   tag: データ可視化
-  icon: |
-   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
-   </svg>  
+  icon: /assets/icon/ski_high.avif
 
 - title: 資産シミュレーター
   url: /tools/kane_simyu.html
   description: 株式等、福利資産の増額をシミュレーション。
   tag: シミュレーション
-  icon: |
-   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
-   </svg>
+  icon: /assets/icon/kane.avif
 
 - title: 迷路ゲーム（簡単）
   url: /tools/MEIRO.html
   description: 迷路ゲーム（簡単）。
   tag: ゲーム
-  icon: |
-   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
-   </svg>   
+  icon: /assets/icon/auto_meiro_v1.avif 
 
 - title: 迷路ゲーム（難しい）
   url: /tools/MEIRO_kai.html
   description: 迷路ゲーム（難しい）。
   tag: ゲーム
-  icon: >
-   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
-   </svg>   
+  icon: /assets/icon/automeiro_v2.avif
 
 - title: スクリーンセイバー
   url: /tools/screen_saiverrrrr.html
   description: どこかでみたことがある（かもしれない）なつかしのスクリーンセイバー。
-  tag: エンタメ
-  icon: >
-   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
-   </svg>   
+  tag: ツール
+  icon: /assets/icon/screen_saver.avif
 
 - title: ミリオンライブ!アイドルデータ相関分析グラフ
   url: /tools/million_graph_1.html
   description: アイドルの身体的特徴に関する相関関係を可視化。
   tag: データ可視化
-  icon: >
-   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
-   </svg>   
+  icon: /assets/icon/million_graph1.avif
 
 - title: ミリオンライブ!身長年齢体重3D分布
   url: /tools/million_graph_3D.html
   description: アイドルの身体的特徴に関する相関関係を3Dで可視化。
   tag: データ可視化
-  icon: >
-   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
-   </svg>   
+  icon: /assets/icon/million_graph_3D.avif
 
-- title: diff比較ツール
+- id: diff
+  title: diff比較ツール
   url: /tools/diff_hikaku_v1.html
   description: 2つの文章を比較します。
   tag: 開発支援
-  icon: >
-   <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16"/>
-   </svg>   
+  icon: /assets/icon/diff_took.avif 

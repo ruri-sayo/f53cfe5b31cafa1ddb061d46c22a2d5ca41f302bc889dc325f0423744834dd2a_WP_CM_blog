@@ -8,7 +8,7 @@ description: 分割キーボードの利点や理想的な形状を妄想する�
 
 分割するキーボード。
 
-<img src="{{ '/assets/img/bunnkatu_ki_bo_do_nonTB.jpg' | relative_url }}" alt="分割キーボードのイメージ" width="400">
+<img src="{{ '/assets/img/bunnkatu_ki_bo_do_nonTB.webp' | relative_url }}" alt="分割キーボードのイメージ" width="400">
 
 
 こんなの
@@ -27,7 +27,7 @@ description: 分割キーボードの利点や理想的な形状を妄想する�
 
 ## トラックボールの接続
 
-<img src="{{ '/assets/img/bunnkatu_ki_bo_do_withTB.jpg' | relative_url }}" alt="トラックボール付きのイメージ" width="400">
+<img src="{{ '/assets/img/bunnkatu_ki_bo_do_withTB.webp' | relative_url }}" alt="トラックボール付きのイメージ" width="400">
 
 こんな感じで内側にトラックボールが連結されている形を考える。
 

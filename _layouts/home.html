@@ -6,8 +6,9 @@ layout: default
 <!-- 左：新着記事 -->
 <div class="space-y-4">
 <h2 class="text-2xl font-semibold border-b pb-2 mb-4">
-<a href="{{ '/posts/' | relative_url }}" class="hover:text-blue-600">新着記事 &rarr;</a>
+<a href="{{ '/posts/' | relative_url }}" class="hover:text-blue-600">記事一覧 &rarr;</a>
 </h2>
+<h3>最新記事はこちら↓</h3>
 {% for post in site.posts limit: 5 %}
   {% assign summary_source = post.description | default: post.excerpt %}
   {% assign summary = summary_source | strip_html %}
@@ -37,23 +38,35 @@ layout: default
 
 <!-- 右：ツール導線 -->
 <div class="space-y-4">
-<h2 class="text-2xl font-semibold border-b pb-2 mb-4">
-<a href="{{ '/tools/' | relative_url }}" class="hover:text-blue-600">便利なツール &rarr;</a>
-</h2>
-{% assign tools = site.data.tools | default: [] %}
-{% for tool in tools limit: 4 %}
-<div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-<h3 class="text-lg font-bold"><a href="{{ tool.url | relative_url }}" class="hover:underline">{{ tool.title }}</a></h3>
-{% if tool.description %}
-<p class="text-gray-600 mt-1">{{ tool.description }}</p>
-{% endif %}
-{% if tool.tag %}
-<div class="mt-3 flex justify-end">
-  <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">{{ tool.tag }}</span>
-</div>
-{% endif %}
-</div>
-{% endfor %}
+  <h2 class="text-2xl font-semibold border-b pb-2 mb-4">
+    <a href="{{ '/tools/' | relative_url }}" class="hover:text-blue-600">便利なツール &rarr;</a>
+  </h2>
+
+  {% comment %} 1. 表示したいツールのIDをカンマ区切りで指定 {% endcomment %}
+  {% assign featured_ids = "R_path_change,sky_high,diff" | split: "," %}
+
+  {% for id in featured_ids %}
+    {% assign tool = site.data.tools | where: "id", id | first %}
+    {% if tool %}
+      <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+        <h3 class="text-lg font-bold">
+          <a href="{{ tool.url | relative_url }}" class="hover:underline">
+            {{ tool.title }}
+          </a>
+        </h3>
+        {% if tool.description %}
+          <p class="text-gray-600 mt-1">{{ tool.description }}</p>
+        {% endif %}
+        {% if tool.tag %}
+          <div class="mt-3 flex justify-end">
+            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">
+              {{ tool.tag }}
+            </span>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endfor %}
 </div>
 </div>
 </section>
