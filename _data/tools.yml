@@ -63,3 +63,10 @@
   description: 2つの文章を比較します。
   tag: 開発支援
   icon: /assets/icon/diff_took.avif 
+
+- id: count
+  title: 文字数カウントツール
+  url: /tools/coount_moji.html
+  description: 入力した文章の文字数をカウントします。
+  tag: 開発支援
+  icon: /assets/icon/count.avif 

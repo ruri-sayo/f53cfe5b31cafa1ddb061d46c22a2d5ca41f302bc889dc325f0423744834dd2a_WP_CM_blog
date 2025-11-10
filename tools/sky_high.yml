@@ -2,16 +2,19 @@
   pref: "兵庫"
   alt_top: 1221
   alt_bottom: 732
+  corse: 11
 
 - name: "ハチ北高原"
   pref: "兵庫"
   alt_top: 1221
   alt_bottom: 560
+  corse: 14
 
 - name: "神鍋高原 万場スキー場"
   pref: "兵庫"
   alt_top: 820
   alt_bottom: 365
+  corse: 6
 
 - name: "ちくさ高原スキー場"
   pref: "兵庫"

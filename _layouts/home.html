@@ -43,7 +43,7 @@ layout: default
   </h2>
 
   {% comment %} 1. 表示したいツールのIDをカンマ区切りで指定 {% endcomment %}
-  {% assign featured_ids = "R_path_change,sky_high,diff" | split: "," %}
+  {% assign featured_ids = "R_path_change,sky_high,diff,count" | split: "," %}
 
   {% for id in featured_ids %}
     {% assign tool = site.data.tools | where: "id", id | first %}
