@@ -30,6 +30,9 @@ github_username:  ruri-sayo
 markdown: kramdown
 kramdown:
   math_engine: mathjax
+  syntax_highlighter: rouge
+
+highlighter: rouge
 
 # 記事URL：/posts/2025/10/14/title/
 permalink: /posts/:year/:month/:day/:title/
