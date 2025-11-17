@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Xを読むな。城上を読め。
-date:   2025-11-17 20:00:21 +0900
+date:   2025-11-17 21:00:21 +0900
 categories: [主張]
 description: ー現代人よ。Xを読むな。城上を読め。
 ---

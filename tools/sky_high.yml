@@ -20,66 +20,79 @@
   pref: "兵庫"
   alt_top: 1125
   alt_bottom: 900
+  corse: 3
 
 - name: "若杉高原おおやスキー場"
   pref: "兵庫"
   alt_top: 830
   alt_bottom: 680
+  corse: 5
 
 - name: "氷ノ山国際スキー場"
   pref: "兵庫"
   alt_top: 1050
   alt_bottom: 600
+  corse: 7
 
 - name: "アップかんなべ"
   pref: "兵庫"
   alt_top: 470
   alt_bottom: 280
+  corse: 5
 
 - name: "峰山高原リゾート WHITE PEAK"
   pref: "兵庫"
   alt_top: 1070
   alt_bottom: 930
+  corse: 3
 
 - name: "おじろスキー場"
   pref: "兵庫"
   alt_top: 900
   alt_bottom: 620
+  corse: 6
 
 - name: "六甲山スノーパーク"
   pref: "兵庫"
   alt_top: 855
   alt_bottom: 813
+  corse: 2
 
 - name: "奥神鍋スキー場"
   pref: "兵庫"
   alt_top: 940
   alt_bottom: 380
+  corse: 7
 
 - name: "ハイパーボウル東鉢"
   pref: "兵庫"
   alt_top: 1100
   alt_bottom: 550
+  corse: 6
 
 - name: "ばんしゅう戸倉スキー場"
   pref: "兵庫"
   alt_top: 900
   alt_bottom: 600
+  corse: 5
 
 - name: "但馬牧場公園スキー場"
   pref: "兵庫"
   alt_top: 560
   alt_bottom: 360
+  corse: 4
 
 - name: "スカイバレイスキー場"
   pref: "兵庫"
   alt_top: 1007
   alt_bottom: 507
+  corse: 8
 
 - name: "グランスノー奥伊吹"
   pref: "滋賀"
   alt_top: 1250
   alt_bottom: 700
+  corse: 14
 
 - name: "びわ湖バレイ"
   pref: "滋賀"
