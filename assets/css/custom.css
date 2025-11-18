@@ -7,8 +7,8 @@
 /* インラインコードの読みやすさを改善 */
 .prose code,
 .prose :where(code):not(:where([class~="not-prose"] *)) {
-  background: #f5f5f5;
-  color: #1f2937;
+  background: #ebe1ff;
+  color: #274079;
   padding: 0.15rem 0.35rem;
   border-radius: 0.35rem;
   font-size: 0.95em;
@@ -16,9 +16,26 @@
   box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
 }
 
+/* prose 内のコードブロック用スタイル */
+.prose pre {
+  background: #ebe1ff;      /* 薄い紫色（紬） */
+  color: #274079;           /* 桜守歌織カラー（空自F2の海上迷彩と一緒） */
+  border-radius: 0.75rem;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+/* 中の code は余計な背景を持たせない */
+.prose pre code {
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+}
+
+
 /* Rouge ハイライト共通 */
 .highlight {
-  background: #f6f8fa;
+  background: #ebe1ff;
   border-radius: 0.75rem;
   padding: 1rem;
   overflow-x: auto;
@@ -100,7 +117,7 @@
 
 /* ブログ本文のベース幅と余白（安全策） */
 main > .prose {
-  max-width: 70ch;
+  max-width: 100ch;
 }
 
 main {
