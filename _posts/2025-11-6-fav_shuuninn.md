@@ -2,7 +2,7 @@
 layout: post
 title: ファビー就任のお知らせ
 date:   2025-11-6 15:00:00 +0900
-categories: [備忘録, 技術]
+categories: [notice]
 description: 新マスコット、ファビー就任のお知らせです。
 ---
 # hey!everyone!

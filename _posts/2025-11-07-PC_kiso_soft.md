@@ -2,7 +2,7 @@
 layout: post
 title: コンピュータの構造（ソフトウェア編）
 date:   2025-11-7 19:20:00 +0900
-categories: [備忘録, 技術]
+categories: [Knowledge]
 description: PCの基礎（ソフトウェア編）です。
 ---
 

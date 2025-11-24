@@ -2,7 +2,7 @@
 layout: post
 title: コンピュータの構造（ハードウェア編）
 date:   2025-11-7 19:12:00 +0900
-categories: [備忘録, 技術]
+categories: [Knowledge]
 description: PCの基礎（ハードウェア編）です。
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: C#テキスト
 date:   2025-11-18 1:00:02 +0900
-categories: [技術]
+categories: [Knowledge]
 description: C#でGUIを学ぶテキスト。初心者向け。
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: 今後の修正の方向性について
 date:   2025-10-18 23:05:21 +0900
-categories: [備忘録, 技術]
+categories: [Dev Log, notice]
 description: 城上コードメモver2.0の改善希望を列挙したメモ。ホームや記事一覧、ツール一覧で今後直したいポイントを整理しています。
 ---
 # 今後の修正の方向性について

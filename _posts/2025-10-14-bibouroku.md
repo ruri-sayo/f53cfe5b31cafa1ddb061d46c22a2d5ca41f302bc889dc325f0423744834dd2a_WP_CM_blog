@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 運営に関する備忘録
-categories: [備忘録]
+categories: [notice]
 description: ブログ運営や投稿手順の備忘録。執筆フローやMarkdown記法の注意点、公開方法をまとめています。
 ---
 

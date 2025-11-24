@@ -2,7 +2,7 @@
 layout: post
 title: ブログ構造
 date:   2025-10-18 21:05:21 +0900
-categories: [備忘録, 技術]
+categories: [Knowledge, notice]
 description: 城上コードメモの技術スタックと構造を整理したメモ。GitHub PagesとJekyllの使い方を中心に、今後の改善アイデアも記録しています。
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 麻倉もも論(1)
-categories: [雑記・その他]
+categories: [Essay]
 description: 声優・麻倉ももの魅力を独自理論で考察するコラム。ビジュアルや声の分析を通じて『動的愛嬌』の正体に迫ります。
 ---
 

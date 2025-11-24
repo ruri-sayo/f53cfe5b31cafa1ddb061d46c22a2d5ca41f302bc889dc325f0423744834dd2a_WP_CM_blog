@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 分割キーボードの考察
-categories: [技術]
+categories: [Dev Log]
 description: 分割キーボードの利点や理想的な形状を妄想する考察記事。トラックボールとの連結や操作性へのアイデアをまとめています。
 ---
 # 分割キーボードとは？
