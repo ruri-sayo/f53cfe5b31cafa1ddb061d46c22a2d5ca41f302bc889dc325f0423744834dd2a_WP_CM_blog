@@ -70,3 +70,10 @@
   description: 入力した文章の文字数をカウントします。
   tag: 開発支援
   icon: /assets/icon/count.avif 
+
+- id: henkan
+  title: 語尾変換ツール
+  url: /tools/GOBI_changer.html
+  description: 入力した文章の語尾を指定した語尾に変換します。
+  tag: 遊び
+  icon:  
