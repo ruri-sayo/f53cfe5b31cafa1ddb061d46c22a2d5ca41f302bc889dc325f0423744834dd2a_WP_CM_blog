@@ -74,9 +74,11 @@ layout: default
 <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
   <!-- Novel セクション -->
   <div class="space-y-4">
+
     <h2 class="text-2xl font-semibold border-b pb-2 mb-4">
       <a href="{{ '/novel/' | relative_url }}" class="hover:text-blue-600">Novel &rarr;</a>
     </h2>
+
     {% assign featured_series = site.data.home_novel.featured_series %}
     {% if featured_series and featured_series.size > 0 %}
       {% for series_id in featured_series %}
@@ -103,9 +105,11 @@ layout: default
 
   <!-- Game セクション -->
   <div class="space-y-4">
+
     <h2 class="text-2xl font-semibold border-b pb-2 mb-4">
       <a href="{{ '/game/' | relative_url }}" class="hover:text-blue-600">Game / App &rarr;</a>
     </h2>
+
     {% for game in site.data.games %}
       <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
         <h3 class="text-xl font-bold">
