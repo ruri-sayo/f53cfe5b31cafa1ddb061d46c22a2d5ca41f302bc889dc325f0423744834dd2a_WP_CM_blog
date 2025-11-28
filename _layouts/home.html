@@ -2,71 +2,124 @@
 layout: default
 ---
 <section class="mb-16">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<!-- 左：新着記事 -->
-<div class="space-y-4">
-<h2 class="text-2xl font-semibold border-b pb-2 mb-4">
-<a href="{{ '/posts/' | relative_url }}" class="hover:text-blue-600">記事一覧 &rarr;</a>
-</h2>
-<h3>最新記事はこちら↓</h3>
-{% for post in site.posts limit: 5 %}
-  {% assign summary_source = post.description | default: post.excerpt %}
-  {% assign summary = summary_source | strip_html %}
-  {% assign tag_text = nil %}
-  {% if post.tags and post.tags.size > 0 %}
-    {% assign tag_text = post.tags | join: ', ' %}
-  {% elsif post.categories and post.categories.size > 0 %}
-    {% assign tag_text = post.categories | join: ', ' %}
-  {% endif %}
-<div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-<h3 class="text-lg font-bold"><a class="hover:underline" href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-{% if summary and summary != '' %}
-<p class="text-gray-600 mt-1">{{ summary | truncate: 120 }}</p>
-{% endif %}
-<div class="mt-3 flex items-center justify-between text-sm text-gray-500">
-  <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y-%m-%d' }}</time>
-  {% if tag_text %}
-    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold">{{ tag_text }}</span>
-  {% else %}
-    <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs">untagged</span>
-  {% endif %}
-</div>
-</div>
-{% endfor %}
-</div>
-
-
-<!-- 右：ツール導線 -->
-<div class="space-y-4">
-  <h2 class="text-2xl font-semibold border-b pb-2 mb-4">
-    <a href="{{ '/tools/' | relative_url }}" class="hover:text-blue-600">便利なツール &rarr;</a>
-  </h2>
-
-  {% comment %} 1. 表示したいツールのIDをカンマ区切りで指定 {% endcomment %}
-  {% assign featured_ids = "R_path_change,sky_high,diff,count" | split: "," %}
-
-  {% for id in featured_ids %}
-    {% assign tool = site.data.tools | where: "id", id | first %}
-    {% if tool %}
-      <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-        <h3 class="text-lg font-bold">
-          <a href="{{ tool.url | relative_url }}" class="hover:underline">
-            {{ tool.title }}
-          </a>
-        </h3>
-        {% if tool.description %}
-          <p class="text-gray-600 mt-1">{{ tool.description }}</p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- 左：新着記事 -->
+    <div class="space-y-4">
+      <h2 class="text-2xl font-semibold border-b pb-2 mb-4">
+        <a href="{{ '/posts/' | relative_url }}" class="hover:text-blue-600">記事一覧 &rarr;</a>
+      </h2>
+      <h3>最新記事はこちら↓</h3>
+      {% for post in site.posts limit: 5 %}
+        {% assign summary_source = post.description | default: post.excerpt %}
+        {% assign summary = summary_source | strip_html %}
+        {% assign tag_text = nil %}
+        {% if post.tags and post.tags.size > 0 %}
+          {% assign tag_text = post.tags | join: ', ' %}
+        {% elsif post.categories and post.categories.size > 0 %}
+          {% assign tag_text = post.categories | join: ', ' %}
         {% endif %}
-        {% if tool.tag %}
+        <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+          <h3 class="text-lg font-bold"><a class="hover:underline" href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+          {% if summary and summary != '' %}
+            <p class="text-gray-600 mt-1">{{ summary | truncate: 120 }}</p>
+          {% endif %}
+          <div class="mt-3 flex items-center justify-between text-sm text-gray-500">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y-%m-%d' }}</time>
+            {% if tag_text %}
+              <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold">{{ tag_text }}</span>
+            {% else %}
+              <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs">untagged</span>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+
+    <!-- 右：ツール導線 -->
+    <div class="space-y-4">
+      <h2 class="text-2xl font-semibold border-b pb-2 mb-4">
+        <a href="{{ '/tools/' | relative_url }}" class="hover:text-blue-600">便利なツール &rarr;</a>
+      </h2>
+
+      {% comment %} 1. 表示したいツールのIDをカンマ区切りで指定 {% endcomment %}
+      {% assign featured_ids = "R_path_change,sky_high,diff,count" | split: "," %}
+
+      {% for id in featured_ids %}
+        {% assign tool = site.data.tools | where: "id", id | first %}
+        {% if tool %}
+          <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="text-lg font-bold">
+              <a href="{{ tool.url | relative_url }}" class="hover:underline">
+                {{ tool.title }}
+              </a>
+            </h3>
+            {% if tool.description %}
+              <p class="text-gray-600 mt-1">{{ tool.description }}</p>
+            {% endif %}
+            {% if tool.tag %}
+              <div class="mt-3 flex justify-end">
+                <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">
+                  {{ tool.tag }}
+                </span>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  <!-- Novel セクション -->
+  <div class="space-y-4">
+    <h2 class="text-2xl font-semibold border-b pb-2 mb-4">
+      <a href="{{ '/novel/' | relative_url }}" class="hover:text-blue-600">Novel &rarr;</a>
+    </h2>
+    {% assign featured_series = site.data.home_novel.featured_series %}
+    {% if featured_series and featured_series.size > 0 %}
+      {% for series_id in featured_series %}
+        {% assign series_doc = site.novel | where: "series_id", series_id | where_exp: "doc", "doc.name == 'index.md'" | first %}
+        {% if series_doc %}
+          <a href="{{ series_doc.url | relative_url }}" class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-gray-500 uppercase tracking-wide">{{ series_doc.status | default: 'series' }}</p>
+                <h3 class="text-xl font-bold">{{ series_doc.title }}</h3>
+                {% if series_doc.short_description %}
+                  <p class="text-gray-600 mt-1">{{ series_doc.short_description }}</p>
+                {% endif %}
+              </div>
+              <span class="text-blue-600 text-lg">&rarr;</span>
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      <p class="text-gray-600">home_novel.yml にシリーズが設定されていません。</p>
+    {% endif %}
+  </div>
+
+  <!-- Game セクション -->
+  <div class="space-y-4">
+    <h2 class="text-2xl font-semibold border-b pb-2 mb-4">
+      <a href="{{ '/game/' | relative_url }}" class="hover:text-blue-600">Game / App &rarr;</a>
+    </h2>
+    {% for game in site.data.games %}
+      <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+        <h3 class="text-xl font-bold">
+          <a href="{{ game.url | relative_url }}" class="hover:underline">{{ game.title }}</a>
+        </h3>
+        {% if game.description %}
+          <p class="text-gray-600 mt-1">{{ game.description }}</p>
+        {% endif %}
+        {% if game.tag %}
           <div class="mt-3 flex justify-end">
-            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">
-              {{ tool.tag }}
-            </span>
+            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs font-semibold">{{ game.tag }}</span>
           </div>
         {% endif %}
       </div>
-    {% endif %}
-  {% endfor %}
-</div>
-</div>
+    {% endfor %}
+  </div>
 </section>
