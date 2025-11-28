@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<article class="prose prose-neutral max-w-none">
+  <header class="mb-6">
+    <p class="text-sm text-gray-500 uppercase tracking-wide">Novel</p>
+    <h1 class="text-3xl font-bold">{{ page.title }}</h1>
+    <p class="text-gray-600 text-sm">Episode {{ page.episode }} · {{ page.series_id }}</p>
+  </header>
+
+  {{ content }}
+
+  <div class="mt-12">
+    <a href="{{ '/novel/' | append: page.series_id | append: '/' | relative_url }}" class="text-blue-600 hover:underline">&larr; シリーズトップへ戻る</a>
+  </div>
+</article>

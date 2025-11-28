@@ -1,0 +1,10 @@
+- id: puzzle_app
+  title: "Puzzle App"
+  url: /game/puzzle_app/
+  description: "ラインを揃えてスコアを伸ばすブラウザパズル。"
+  tag: "puzzle"
+- id: quiz_app
+  title: "Quiz App"
+  url: /game/quiz_app/
+  description: "ランダム出題の4択クイズ。解説付きです。"
+  tag: "quiz"
