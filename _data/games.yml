@@ -8,8 +8,8 @@
   url: /game/quiz_app/
   description: "ランダム出題の4択クイズ。解説付きです。"
   tag: "quiz"
-- id: Meiro_3
+- id: meiro_3
   title: "Meiro 3"
-  url: /game/Meiro3/
+  url: /game/meiro3/
   description: "ブラウザで遊べる3D迷路です。赤色のタイルのゴール目指して突き進もう！"
   tag: "Maze"
