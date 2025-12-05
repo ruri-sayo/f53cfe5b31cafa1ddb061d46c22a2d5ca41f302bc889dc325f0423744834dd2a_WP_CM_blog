@@ -1,0 +1,43 @@
+---
+layout: default
+---
+<article class="prose prose-neutral max-w-none">
+  <header class="mb-8">
+    <p class="text-sm text-gray-500 uppercase tracking-wide">Novel Series</p>
+    <h1 class="text-3xl font-bold">{{ page.title }}</h1>
+    <div class="mt-2 flex flex-wrap items-center gap-3 text-sm text-gray-600">
+      {% if page.status %}
+        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full font-semibold">{{ page.status }}</span>
+      {% endif %}
+      {% if page.short_description %}
+        <span>{{ page.short_description }}</span>
+      {% endif %}
+    </div>
+  </header>
+
+  {% if content and content != '' %}
+    <div class="mb-10">
+      {{ content }}
+    </div>
+  {% endif %}
+
+  <section class="space-y-4">
+    <h2 class="text-2xl font-semibold">Episodes</h2>
+    <div class="grid gap-4">
+      {% assign episodes = site.novel | where: "series_id", page.series_id | sort: "episode" %}
+      {% for episode in episodes %}
+        {% unless episode.name == 'index.md' %}
+          <a href="{{ episode.url | relative_url }}" class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-gray-500">Episode {{ episode.episode }}</p>
+                <h3 class="text-lg font-bold text-blue-800">{{ episode.title }}</h3>
+              </div>
+              <span class="text-blue-600">&rarr;</span>
+            </div>
+          </a>
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </section>
+</article>

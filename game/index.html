@@ -1,0 +1,27 @@
+---
+layout: default
+title: "Game"
+---
+<section class="space-y-6">
+  <h1 class="text-3xl font-bold mb-4">Game / App 一覧</h1>
+  {% if site.data.games and site.data.games.size > 0 %}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {% for game in site.data.games %}
+        <a href="{{ game.url | relative_url }}" class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm text-gray-500 uppercase tracking-wide">{{ game.tag | default: 'game/app' }}</p>
+              <h2 class="text-xl font-bold">{{ game.title }}</h2>
+              {% if game.description %}
+                <p class="text-gray-600 mt-1">{{ game.description }}</p>
+              {% endif %}
+            </div>
+            <span class="text-blue-600 text-lg">&rarr;</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="text-gray-600">game データがまだ登録されていません。</p>
+  {% endif %}
+</section>
