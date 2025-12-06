@@ -1,7 +1,7 @@
-- id: puzzle_app
-  title: "Puzzle App"
-  url: /game/puzzle_app/
-  description: "ラインを揃えてスコアを伸ばすブラウザパズル。"
+- id: flow_puzzle_app
+  title: "Flow Puzzle App"
+  url: /game/flow_puzzle/
+  description: "ノードを組み合わせて指定の数量にしよう！"
   tag: "puzzle"
 - id: quiz_app
   title: "Quiz App"
