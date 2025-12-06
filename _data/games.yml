@@ -3,10 +3,10 @@
   url: /game/flow_puzzle/
   description: "ノードを組み合わせて指定の数量にしよう！"
   tag: "puzzle"
-- id: quiz_app
-  title: "Quiz App"
-  url: /game/quiz_app/
-  description: "ランダム出題の4択クイズ。解説付きです。"
+- id: word_quiz
+  title: "Word Quiz"
+  url: /game/word_quiz/
+  description: "スウェーデン語とアイヌ語のランダム出題の4択クイズ。解説付きです。"
   tag: "quiz"
 - id: meiro_3
   title: "Meiro 3"

@@ -16,6 +16,10 @@
    ```bash
    bundle exec jekyll build
    ```
+ビルドを確認しなくて、サーバとして確認する場合は、以下のコマンドを利用する。
+   ```bash
+   bundle exec jekyll serve
+   ```
 
 ## ディレクトリと役割
 - `_config.yml`：サイトタイトル・permalink 形式・baseurl など全体設定。
