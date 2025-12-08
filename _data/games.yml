@@ -1,3 +1,8 @@
+- id: Character_Reversi
+  title: "キャラクターリバーシ"
+  url: https://ruri-sayo.github.io/Character_Reversi/
+  description: "キャラクタによって取り方が変わるオセロです。"
+  tag: "puzzle"
 - id: flow_puzzle_app
   title: "Flow Puzzle App"
   url: /game/flow_puzzle/
