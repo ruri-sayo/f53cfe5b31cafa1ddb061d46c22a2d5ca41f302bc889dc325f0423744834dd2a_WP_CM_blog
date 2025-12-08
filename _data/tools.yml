@@ -77,3 +77,10 @@
   description: 入力した文章の語尾を指定した語尾に変換します。
   tag: 遊び
   icon:  
+
+- id: kazukazoe
+  title: 文字数時間換算ツール
+  url: /tools/aaaaa.html
+  description: 入力した文章を読み上げるのに必要な時間を算出します。
+  tag: 開発支援
+  icon:  
