@@ -2,7 +2,12 @@
   title: "キャラクターリバーシ"
   url: https://ruri-sayo.github.io/Character_Reversi/
   description: "キャラクタによって取り方が変わるオセロです。"
-  tag: "puzzle"
+  tag: "game"
+- id: Character_daifugou
+  title: "キャラクター大富豪"
+  url: https://ruri-sayo.github.io/Character_Daifugou/
+  description: "キャラクターによって、出し方が変わる大富豪です。"
+  tag: "game"
 - id: flow_puzzle_app
   title: "Flow Puzzle App"
   url: /game/flow_puzzle/
