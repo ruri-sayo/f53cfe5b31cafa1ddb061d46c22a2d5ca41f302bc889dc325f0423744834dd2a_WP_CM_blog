@@ -3,6 +3,11 @@
   url: https://ruri-sayo.github.io/Character_Reversi/
   description: "キャラクタによって取り方が変わるオセロです。"
   tag: "game"
+- id: Typing_stories
+  title: "Typing stories"
+  url: https://ruri-sayo.github.io/typing_stories/
+  description: "タイピングゲーム"
+  tag: "game"
 - id: Character_daifugou
   title: "キャラクター大富豪"
   url: https://ruri-sayo.github.io/Character_Daifugou/
