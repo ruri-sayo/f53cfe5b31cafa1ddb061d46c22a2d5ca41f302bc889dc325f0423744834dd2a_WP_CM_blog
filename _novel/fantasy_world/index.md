@@ -1,6 +1,7 @@
 ---
 layout: novel_series
 series_id: fantasy_world
+is_series_index: true
 title: "ファンタジー・ワールドの扉"
 short_description: "異世界の街を旅するエンジニアたちの記録"
 status: "ongoing"

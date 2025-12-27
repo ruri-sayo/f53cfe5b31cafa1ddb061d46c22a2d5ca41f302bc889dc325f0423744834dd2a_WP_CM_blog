@@ -72,7 +72,7 @@
 
 - id: count
   title: 文字数カウントツール
-  url: /tools/coount_moji.html
+  url: /tools/character_counter.html
   description: 入力した文章の文字数をカウントします。
   tag: 開発支援
   icon: /assets/icon/count.avif 
@@ -86,7 +86,7 @@
 
 - id: kazukazoe
   title: 文字数時間換算ツール
-  url: /tools/aaaaa.html
+  url: /tools/speech_timer.html
   description: 入力した文章を読み上げるのに必要な時間を算出します。
   tag: 開発支援
   icon:  

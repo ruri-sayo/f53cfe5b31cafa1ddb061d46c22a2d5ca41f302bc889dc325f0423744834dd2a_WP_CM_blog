@@ -4,25 +4,26 @@ title: "Novel"
 ---
 <section class="space-y-6">
   <h1 class="text-3xl font-bold mb-4">Novel シリーズ一覧</h1>
-  {% assign series_docs = site.novel | where: "name", "index.md" | sort_natural: "title" %}
+  {% assign series_docs = site.novel | where: "is_series_index", true | sort_natural: "title" %}
   {% if series_docs and series_docs.size > 0 %}
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {% for series in series_docs %}
-        <a href="{{ series.url | relative_url }}" class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-sm text-gray-500 uppercase tracking-wide">{{ series.status | default: 'series' }}</p>
-              <h2 class="text-xl font-bold">{{ series.title }}</h2>
-              {% if series.short_description %}
-                <p class="text-gray-600 mt-1">{{ series.short_description }}</p>
-              {% endif %}
-            </div>
-            <span class="text-blue-600 text-lg">&rarr;</span>
-          </div>
-        </a>
-      {% endfor %}
-    </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {% for series in series_docs %}
+    <a href="{{ series.url | relative_url }}"
+      class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-sm text-gray-500 uppercase tracking-wide">{{ series.status | default: 'series' }}</p>
+          <h2 class="text-xl font-bold">{{ series.title }}</h2>
+          {% if series.short_description %}
+          <p class="text-gray-600 mt-1">{{ series.short_description }}</p>
+          {% endif %}
+        </div>
+        <span class="text-blue-600 text-lg">&rarr;</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
   {% else %}
-    <p class="text-gray-600">シリーズがまだ登録されていません。</p>
+  <p class="text-gray-600">シリーズがまだ登録されていません。</p>
   {% endif %}
 </section>

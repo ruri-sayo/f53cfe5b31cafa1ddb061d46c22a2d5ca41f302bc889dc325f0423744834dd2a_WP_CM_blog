@@ -98,783 +98,940 @@
   pref: "滋賀"
   alt_top: 1174
   alt_bottom: 950
+  corse: 9
 
 - name: "箱館山スキー場"
   pref: "滋賀"
   alt_top: 690
   alt_bottom: 540
+  corse: 8
 
 - name: "マキノ高原ファミリースキー場"
   pref: "滋賀"
   alt_top: 350
   alt_bottom: 150
+  corse: 1
 
 - name: "ヨゴコーゲンリゾート☆ヤップ"
   pref: "滋賀"
   alt_top: 740
   alt_bottom: 540
+  corse: 5
 
 - name: "朽木スキー場"
   pref: "滋賀"
   alt_top: 550
   alt_bottom: 300
+  corse: 3
 
 - name: "Ohana Resort（旧 国境高原スノーパーク）"
   pref: "滋賀"
   alt_top: 690
   alt_bottom: 360
+  corse: 4
 
 - name: "赤子山スキー場スノーパル"
   pref: "滋賀"
   alt_top: 700
   alt_bottom: 380
+  corse: 1
 
 - name: "京都広河原スキー場"
   pref: "京都"
   alt_top: 635
   alt_bottom: 500
+  corse: 2
 
 - name: "太鼓山スノーどんどんパーク（旧：京丹後森林公園スイス村スキー場）"
   pref: "京都"
   alt_top: 683
   alt_bottom: 531
+  corse: 1
 
 - name: "スノーパーク洞川"
   pref: "奈良"
   alt_top: 1040
   alt_bottom: 960
+  corse: 2
 
 - name: "高野山スキー場"
   pref: "和歌山"
   alt_top: 850
   alt_bottom: 810
+  corse: 1
 
 - name: "茶臼山高原スキー場"
   pref: "愛知"
   alt_top: 1360
   alt_bottom: 1215
+  corse: 3
 
 - name: "御在所スキー場"
   pref: "三重"
   alt_top: 1200
   alt_bottom: 1000
+  corse: 2
 
 - name: "スノーパークYeti"
   pref: "静岡"
   alt_top: 1450
   alt_bottom: 1300
+  corse: 5
 
 - name: "高鷲スノーパーク"
   pref: "岐阜"
   alt_top: 1550
   alt_bottom: 950
+  corse: 12
 
 - name: "めいほうスキー場"
   pref: "岐阜"
   alt_top: 1600
   alt_bottom: 900
+  corse: 14
 
 - name: "ダイナランド"
   pref: "岐阜"
   alt_top: 1430
   alt_bottom: 983
+  corse: 20
 
 - name: "ウイングヒルズ白鳥リゾート"
   pref: "岐阜"
   alt_top: 1350
   alt_bottom: 750
+  corse: 9
 
 - name: "鷲ヶ岳スキー場"
   pref: "岐阜"
   alt_top: 1350
   alt_bottom: 910
+  corse: 13
 
 - name: "ホワイトピアたかす"
   pref: "岐阜"
   alt_top: 1405
   alt_bottom: 1050
+  corse: 13
 
 - name: "ひるがの高原スキー場"
   pref: "岐阜"
   alt_top: 1040
   alt_bottom: 890
+  corse: 7
 
 - name: "スノーウェーブパーク白鳥高原"
   pref: "岐阜"
   alt_top: 1180
   alt_bottom: 900
+  corse: 11
 
 - name: "ほおのき平スキー場"
   pref: "岐阜"
   alt_top: 1660
   alt_bottom: 1300
+  corse: 15
 
 - name: "モンデウス飛騨位山（モンデウスパーク）"
   pref: "岐阜"
   alt_top: 1365
   alt_bottom: 860
+  corse: 4
 
 - name: "ひだ舟山スノーリゾート アルコピア"
   pref: "岐阜"
   alt_top: 1220
   alt_bottom: 900
+  corse: 8
 
 - name: "平湯温泉スキー場"
   pref: "岐阜"
   alt_top: 1800
   alt_bottom: 1300
+  corse: 3
 
 - name: "飛騨かわいスキー場"
   pref: "岐阜"
   alt_top: 1080
   alt_bottom: 900
+  corse: 5
 
 - name: "モーターパークモタイ（モタイ高原スキー場）"
   pref: "岐阜"
   alt_top: 950
   alt_bottom: 725
+  corse: 1
 
 - name: "YOU・遊ランド坂内"
   pref: "岐阜"
   alt_top: 940
   alt_bottom: 720
+  corse: 2
 
 - name: "イトシロシャーロットタウン（石徹白）"
   pref: "岐阜"
   alt_top: 1175
   alt_bottom: 830
+  corse: 9
 
 - name: "郡上高原スキー場"
   pref: "岐阜"
   alt_top: 1125
   alt_bottom: 870
+  corse: 3
 
 - name: "鷲ヶ滝高原"
   pref: "岐阜"
   alt_top: 1070
   alt_bottom: 780
+  corse: 13
 
 - name: "東海自然歩道スキー場"
   pref: "岐阜"
   alt_top: 690
   alt_bottom: 610
+  corse: 1
 
 - name: "白山一里野温泉スキー場"
   pref: "石川"
   alt_top: 1050
   alt_bottom: 550
+  corse: 9
 
 - name: "白山セイモアスキー場"
   pref: "石川"
   alt_top: 1030
   alt_bottom: 300
+  corse: 9
 
 - name: "金沢市営医王山スキー場"
   pref: "石川"
   alt_top: 540
   alt_bottom: 390
+  corse: 4
 
 - name: "大倉岳高原スキー場"
   pref: "石川"
   alt_top: 503
   alt_bottom: 275
+  corse: 3
 
 - name: "七尾コロサスキー場"
   pref: "石川"
   alt_top: 391
   alt_bottom: 326
+  corse: 4
 
 - name: "スキージャム勝山"
   pref: "福井"
   alt_top: 1320
   alt_bottom: 610
+  corse: 15
 
 - name: "九頭竜スキー場"
   pref: "福井"
   alt_top: 728
   alt_bottom: 408
+  corse: 8
 
 - name: "福井和泉スキー場"
   pref: "福井"
   alt_top: 900
   alt_bottom: 600
+  corse: 6
 
 - name: "今庄365スキー場"
   pref: "福井"
   alt_top: 760
   alt_bottom: 430
+  corse: 8
 
 - name: "六呂師高原スキーパーク"
   pref: "福井"
   alt_top: 755
   alt_bottom: 435
+  corse: 3
 
 - name: "新保ファミリースキー場"
   pref: "福井"
   alt_top: 305
   alt_bottom: 260
+  corse: 1
 
 - name: LOTTE ARAI RESORT
   pref: 新潟
   alt_top: 1280
   alt_bottom: 329
+  corse: 14
 
 - name: 妙高杉ノ原スキー場
   pref: 新潟
   alt_top: 1855
   alt_bottom: 731
+  corse: 17
 
 - name: 赤倉温泉スキー場
   pref: 新潟
   alt_top: 1250
   alt_bottom: 750
+  corse: 17
 
 - name: 赤倉観光リゾートスキー場
   pref: 新潟
   alt_top: 1500
   alt_bottom: 740
+  corse: 10
 
 - name: 池の平温泉スキー場
   pref: 新潟
   alt_top: 1500
   alt_bottom: 760
+  corse: 10
 
 - name: 関温泉スキー場
   pref: 新潟
   alt_top: 1181
   alt_bottom: 917
+  corse: 2
 
 - name: シャルマン火打スキー場
   pref: 新潟
   alt_top: 1009
   alt_bottom: 501
+  corse: 16
 
 - name: GALA湯沢スキー場
   pref: 新潟
   alt_top: 1181
   alt_bottom: 358
+  corse: 16
 
 - name: 湯沢高原スキー場
   pref: 新潟
   alt_top: 1170
   alt_bottom: 370
+  corse: 8
 
 - name: いっぽん杉スキー場（いっぽん杉スノーパーク）
   pref: 新潟
   alt_top: 430
   alt_bottom: 370
+  corse: 1
 
 - name: NASPAスキーガーデン
   pref: 新潟
   alt_top: 690
   alt_bottom: 430
+  corse: 8
 
 - name: かぐらスキー場（みつまた・田代・かぐら）
   pref: 新潟
   alt_top: 1845
   alt_bottom: 620
+  corse: 32
 
 - name: 神立スノーリゾート（旧：神立高原スキー場）
   pref: 新潟
   alt_top: 1000
   alt_bottom: 460
+  corse: 16
 
 - name: 苗場スキー場
   pref: 新潟
   alt_top: 1789
   alt_bottom: 900
+  corse: 24
 
 - name: 湯沢パークスキー場
   pref: 新潟
   alt_top: 650
   alt_bottom: 440
+  corse: 11
 
 - name: 岩原スキー場
   pref: 新潟
   alt_top: 985
   alt_bottom: 430
+  corse: 20
 
 - name: 湯沢中里スノーリゾート
   pref: 新潟
   alt_top: 702
   alt_bottom: 458
+  corse: 16
 
 - name: 中里スノーウッドスキー場
   pref: 新潟
   alt_top: 670
   alt_bottom: 487
+  corse: 2
 
 - name: ムイカスノーリゾート
   pref: 新潟
   alt_top: 748
   alt_bottom: 348
+  corse: 12
 
 - name: 八海山麓スキー場
   pref: 新潟
   alt_top: 420
   alt_bottom: 210
+  corse: 5
 
 - name: 六日町八海山スキー場
   pref: 新潟
   alt_top: 1170
   alt_bottom: 355
+  corse: 15
 
 - name: 舞子スノーリゾート
   pref: 新潟
   alt_top: 920
   alt_bottom: 260
+  corse: 26
 
 - name: シャトー塩沢スキー場
   pref: 新潟
   alt_top: 579
   alt_bottom: 210
+  corse: 3
 
 - name: 上越国際スキー場
   pref: 新潟
   alt_top: 1017
   alt_bottom: 200
+  corse: 22
 
 - name: 石打丸山スキー場
   pref: 新潟
   alt_top: 920
   alt_bottom: 256
+  corse: 23
 
 - name: 志賀高原マウンテンリゾート
   pref: 長野
   alt_top: 2307
   alt_bottom: 1340
+  corse: 84
 
 - name: 野沢温泉スキー場
   pref: 長野
   alt_top: 1650
   alt_bottom: 565
+  corse: 44
 
 - name: 竜王スキーパーク
   pref: 長野
   alt_top: 1930
   alt_bottom: 850
+  corse: 17
 
 - name: 斑尾高原スキー場（Madarao Mountain Resort）
   pref: 長野
   alt_top: 1350
   alt_bottom: 910
+  corse: 31
 
 - name: タングラムスキーサーカス
   pref: 長野
   alt_top: 1320
   alt_bottom: 800
+  corse: 15
 
 - name: 戸狩温泉スキー場
   pref: 長野
   alt_top: 1050
   alt_bottom: 400
+  corse: 18
 
 - name: 菅平高原スノーリゾート
   pref: 長野
   alt_top: 1650
   alt_bottom: 1250
+  corse: 60
 
 - name: 白馬八方尾根スキー場
   pref: 長野
   alt_top: 1831
   alt_bottom: 760
+  corse: 16
 
 - name: 栂池高原スキー場
   pref: 長野
   alt_top: 1704
   alt_bottom: 800
+  corse: 14
 
 - name: Hakuba Goryu Snow Resort（白馬五竜スキー場）
   pref: 長野
   alt_top: 1676
   alt_bottom: 750
+  corse: 15
 
 - name: Hakuba Iwatake Snow Field（白馬岩岳スノーフィールド）
   pref: 長野
   alt_top: 1289
   alt_bottom: 750
+  corse: 26
 
 - name: 白馬コルチナスキー場
   pref: 長野
   alt_top: 1402
   alt_bottom: 872
+  corse: 16
 
 - name: 郡上ヴァカンス村スキー場
   pref: 長野
   alt_top: 1150
   alt_bottom: 1050
+  corse: 2
 
 - name: Hakuba47 
   pref: 長野
   alt_top: 1614
   alt_bottom: 820
+  corse: 8
 
 - name: 軽井沢プリンスホテルスキー場 
   pref: 長野
   alt_top: 992
   alt_bottom: 946
+  corse: 10
 
 - name: 富士見パノラマリゾート 
   pref: 長野
   alt_top: 1780
   alt_bottom: 1050
+  corse: 7
 
 - name: 中央アルプス千畳敷 
   pref: 長野
   alt_top: 2830
   alt_bottom: 2600
+  corse: 2
 
 - name: 立山山麓スキー場（極楽坂・らいちょうバレー）
   pref: 富山
   alt_top: 1188
   alt_bottom: 450
+  corse: 14
 
 - name: イオックス・アローザ
   pref: 富山
   alt_top: 850
   alt_bottom: 350
+  corse: 7
 
 - name: 牛岳温泉スキー場
   pref: 富山
   alt_top: 650
   alt_bottom: 330
+  corse: 5
 
 - name: たいらスキー場
   pref: 富山
   alt_top: 933
   alt_bottom: 630
+  corse: 7
 
 - name: タカンボースキー場
   pref: 富山
   alt_top: 720
   alt_bottom: 420
+  corse: 4
 
 - name: あわすのスキー場
   pref: 富山
   alt_top: 825
   alt_bottom: 600
+  corse: 3
 
 - name: 宇奈月温泉スキー場
   pref: 富山
   alt_top: 638
   alt_bottom: 360
+  corse: 2
 
 - name: となみ夢の平スキー場
   pref: 富山
-  alt_top: null
-  alt_bottom: null
+  alt_top: 543
+  alt_bottom: 203
+  corse: 1
 
 - name: 呉羽カンツリークラブ・環状寺スキー場（環状寺スキー場）
   pref: 富山
-  alt_top: null
-  alt_bottom: null
+  alt_top: 130
+  alt_bottom: 40
+  corse: 1
 
 - name: ニセコユナイテッド
   pref: 北海道
   alt_top: 1188
   alt_bottom: 255
+  corse: 70
 
 - name: ルスツリゾート
   pref: 北海道
   alt_top: 994
   alt_bottom: 400
+  corse: 37
 
 - name: キロロスノーワールド
   pref: 北海道
   alt_top: 1180
   alt_bottom: 480
+  corse: 23
 
 - name: 富良野スキー場
   pref: 北海道
   alt_top: 1209
   alt_bottom: 245
+  corse: 28
 
 - name: 星野リゾート トマム
   pref: 北海道
   alt_top: 1171
   alt_bottom: 586
+  corse: 29
 
 - name: サッポロテイネ
   pref: 北海道
   alt_top: 1023
   alt_bottom: 340
+  corse: 15
 
 - name: 札幌国際スキー場
   pref: 北海道
   alt_top: 1100
   alt_bottom: 630
+  corse: 7
 
 - name: カムイスキーリンクス
   pref: 北海道
   alt_top: 751
   alt_bottom: 150
+  corse: 25
 
 - name: サホロリゾート
   pref: 北海道
   alt_top: 1030
   alt_bottom: 420
+  corse: 21
 
 - name: 旭岳スキーコース（旭岳ロープウェイ）
   pref: 北海道
   alt_top: 1600
   alt_bottom: 1100
+  corse: 4
 
 - name: 大雪山黒岳スキー場
   pref: 北海道
   alt_top: 1520
   alt_bottom: 1300
+  corse: 1
 
 - name: マウントレースイスキー場
   pref: 北海道
   alt_top: 702
   alt_bottom: 298
+  corse: 14
 
 - name: 八甲田スキー場
   pref: 青森
   alt_top: 1324
   alt_bottom: 658
+  corse: 5
 
 - name: 青森スプリング・スキーリゾート
   pref: 青森
   alt_top: 921
   alt_bottom: 396
+  corse: 14
 
 - name: 安比高原スキー場
   pref: 岩手
   alt_top: 1328
   alt_bottom: 500
+  corse: 21
 
 - name: 八幡平リゾート（パノラマ＆下倉）
   pref: 岩手
   alt_top: 1130
   alt_bottom: 540
+  corse: 13
 
 - name: 雫石スキー場
   pref: 岩手
   alt_top: 1145
   alt_bottom: 428
+  corse: 11
 
 - name: 網張温泉スキー場（網張温泉スキー場）
   pref: 岩手
   alt_top: 1350
   alt_bottom: 640
+  corse: 7
 
 - name: 岩手高原スノーパーク
   pref: 岩手
   alt_top: 1213
   alt_bottom: 630
+  corse: 10
 
 - name: 夏油高原スキー場
   pref: 岩手
   alt_top: 1070
   alt_bottom: 640
+  corse: 14
 
 - name: たざわ湖スキー場
   pref: 秋田
   alt_top: 1186
   alt_bottom: 578
+  corse: 13
 
 - name: 森吉山阿仁スキー場
   pref: 秋田
   alt_top: 1210
   alt_bottom: 543
+  corse: 6
 
 - name: 蔵王温泉スキー場
   pref: 山形
   alt_top: 1661
   alt_bottom: 780
+  corse: 12
 
 - name: 蔵王ライザワールド
   pref: 山形
   alt_top: 1446
   alt_bottom: 1060
+  corse: 5
 
 - name: 月山スキー場
   pref: 山形
   alt_top: 1670
   alt_bottom: 1235
+  corse: 4
 
 - name: 宮城蔵王えぼしリゾート
   pref: 宮城
   alt_top: 1350
   alt_bottom: 650
+  corse: 10
 
 - name: みやぎ蔵王スミカワスノーパーク
   pref: 宮城
   alt_top: 1400
   alt_bottom: 1100
+  corse: 9
 
 - name: スプリングバレー仙台泉スキー場
   pref: 宮城
   alt_top: 959
   alt_bottom: 687
+  corse: 11
 
 - name: 星野リゾート ネコママウンテン
   pref: 福島
   alt_top: 1338
   alt_bottom: 700
+  corse: 33
 
 - name: EN RESORT グランデコスノーリゾート
   pref: 福島
   alt_top: 1590
   alt_bottom: 1010
+  corse: 13
 
 - name: 猪苗代スキー場
   pref: 福島
   alt_top: 1255
   alt_bottom: 690
+  corse: 18
 
 - name: 箕輪スキー場
   pref: 福島
   alt_top: 1500
   alt_bottom: 1050
+  corse: 11
 
 - name: 会津高原たかつえスキー場
   pref: 福島
   alt_top: 1650
   alt_bottom: 943
+  corse: 15
 
 - name: 会津高原だいくらスキー場
   pref: 福島
   alt_top: 1200
   alt_bottom: 838
+  corse: 11
 
 - name: だいせんホワイトリゾート
   pref: 鳥取
   alt_top: 1121
   alt_bottom: 655
+  corse: 9
 
 - name: 大山ますみず高原スノーパーク
   pref: 鳥取
   alt_top: 950
   alt_bottom: 740
+  corse: 1
 
 - name: わかさ氷ノ山スキー場
   pref: 鳥取
   alt_top: 1200
   alt_bottom: 770
+  corse: 5
 
 - name: 瑞穂ハイランド
   pref: 島根
   alt_top: 1212
   alt_bottom: 491
+  corse: 13
 
 - name: 琴引フォレストパーク
   pref: 島根
   alt_top: 706
   alt_bottom: 549
+  corse: 7
 
 - name: 三瓶温泉スキー場
   pref: 島根
   alt_top: 876
   alt_bottom: 575
+  corse: 3
 
 - name: いぶきの里スキー場
   pref: 岡山
   alt_top: 850
   alt_bottom: 650
+  corse: 5
 
 - name: 津黒高原スキー場
   pref: 岡山
   alt_top: 691
   alt_bottom: 611
+  corse: 1
 
 - name: ひるぜんベアバレー
   pref: 岡山
   alt_top: 724
   alt_bottom: 592
+  corse: 2
 
 - name: 新庄第一スキー場
   pref: 岡山
   alt_top: 775
   alt_bottom: 600
+  corse: 1
 
 - name: 恩原高原スキー場
   pref: 岡山
   alt_top: 946
   alt_bottom: 767
+  corse: 4
 
 - name: 上蒜山スキー場
   pref: 岡山
   alt_top: 655
   alt_bottom: 577
+  corse: 2
 
 - name: ユートピアサイオト
   pref: 広島
   alt_top: 1150
   alt_bottom: 735
+  corse: 7
 
 - name: めがひらスキー場（めがひら温泉クヴェーレ吉和）
   pref: 広島
   alt_top: 1066
   alt_bottom: 592
+  corse: 7
 
 - name: 芸北オサスキー場
   pref: 広島
   alt_top: 950
   alt_bottom: 700
+  corse: 5
 
 - name: 芸北国際スキー場
   pref: 広島
   alt_top: 1126
   alt_bottom: 700
+  corse: 20
 
 - name: 道後山高原スキー場
   pref: 広島
   alt_top: 1050
   alt_bottom: 700
+  corse: 4
 
 - name: やわたハイランド191リゾート
   pref: 広島
   alt_top: 960
   alt_bottom: 770
+  corse: 7
 
 - name: スノーリゾート猫山
   pref: 広島
   alt_top: 1020
   alt_bottom: 700
+  corse: 5
 
 - name: 恐羅漢スノーパーク
   pref: 広島
   alt_top: 1281
   alt_bottom: 885
+  corse: 17
 
 - name: 十種ヶ峰スキー場
   pref: 山口
   alt_top: 900
   alt_bottom: 600
+  corse: 1
 
 - name: ソルファオダスキーゲレンデ
   pref: 愛媛
   alt_top: 1210
   alt_bottom: 997
+  corse: 3
 
 - name: 久万スキーランド
   pref: 愛媛
   alt_top: 1003
   alt_bottom: 900
+  corse: 4
 
 - name: 石鎚スキー場
   pref: 愛媛
   alt_top: 1383
   alt_bottom: 1263
+  corse: 3
 
 - name: 井川スキー場 腕山（Ikawa Kainayama）
   pref: 徳島
   alt_top: 1175
   alt_bottom: 1085
+  corse: 4
 
 - name: 天狗高原スキー場
   pref: 高知
   alt_top: 1380
   alt_bottom: 1340
+  corse: 1
 
 - name: 九重森林公園スキー場
   pref: 大分
   alt_top: 1330
   alt_bottom: 1150
+  corse: 5
 
 - name: 五ヶ瀬ハイランドスキー場
   pref: 宮崎
   alt_top: 1610
   alt_bottom: 1423
+  corse: 4
