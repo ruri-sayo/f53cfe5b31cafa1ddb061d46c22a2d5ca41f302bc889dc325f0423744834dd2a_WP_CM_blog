@@ -21,7 +21,9 @@
 title: 城上コードメモ(v2.1:beta)
 email: sayohinadakedo@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  
+  城上コードメモは、個人の感想や、主張の記事、Webツール、ブラウザゲーム、小説などを公開する個人ブログサイトです。
+  スキー場標高比較、文字数カウント、diff比較など様々なツールや楽しいゲームを無料で提供しています。
+
 baseurl: "/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog" # the subpath of your site, e.g. /blog
 url: "https://ruri-sayo.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: Ruriii_miuuu

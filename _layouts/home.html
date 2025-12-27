@@ -1,6 +1,21 @@
 ---
 layout: default
 ---
+<!-- ヒーローエリア（有効時のみ表示） -->
+{% if site.data.hero and site.data.hero.enabled %}
+<section
+  class="{{ site.data.hero.bg_class | default: 'bg-gradient-to-r from-blue-500 to-purple-600' }} text-white p-8 rounded-lg mb-8 shadow-lg">
+  <h2 class="text-2xl md:text-3xl font-bold mb-4">{{ site.data.hero.title }}</h2>
+  <p class="text-white/90 mb-4">{{ site.data.hero.message }}</p>
+  {% if site.data.hero.button and site.data.hero.button.enabled %}
+  <a href="{{ site.data.hero.button.url | relative_url }}"
+    class="inline-block px-6 py-2 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+    {{ site.data.hero.button.text }}
+  </a>
+  {% endif %}
+</section>
+{% endif %}
+
 <section class="mb-16">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     <!-- 左：新着記事 -->
@@ -10,28 +25,29 @@ layout: default
       </h2>
       <h3>最新記事はこちら↓</h3>
       {% for post in site.posts limit: 5 %}
-        {% assign summary_source = post.description | default: post.excerpt %}
-        {% assign summary = summary_source | strip_html %}
-        {% assign tag_text = nil %}
-        {% if post.tags and post.tags.size > 0 %}
-          {% assign tag_text = post.tags | join: ', ' %}
-        {% elsif post.categories and post.categories.size > 0 %}
-          {% assign tag_text = post.categories | join: ', ' %}
+      {% assign summary_source = post.description | default: post.excerpt %}
+      {% assign summary = summary_source | strip_html %}
+      {% assign tag_text = nil %}
+      {% if post.tags and post.tags.size > 0 %}
+      {% assign tag_text = post.tags | join: ', ' %}
+      {% elsif post.categories and post.categories.size > 0 %}
+      {% assign tag_text = post.categories | join: ', ' %}
+      {% endif %}
+      <a href="{{ post.url | relative_url }}"
+        class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+        <h3 class="text-lg font-bold hover:text-blue-600">{{ post.title }}</h3>
+        {% if summary and summary != '' %}
+        <p class="text-gray-600 mt-1">{{ summary | truncate: 120 }}</p>
         {% endif %}
-        <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-          <h3 class="text-lg font-bold"><a class="hover:underline" href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-          {% if summary and summary != '' %}
-            <p class="text-gray-600 mt-1">{{ summary | truncate: 120 }}</p>
+        <div class="mt-3 flex items-center justify-between text-sm text-gray-500">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y-%m-%d' }}</time>
+          {% if tag_text %}
+          <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold">{{ tag_text }}</span>
+          {% else %}
+          <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs">untagged</span>
           {% endif %}
-          <div class="mt-3 flex items-center justify-between text-sm text-gray-500">
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y-%m-%d' }}</time>
-            {% if tag_text %}
-              <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold">{{ tag_text }}</span>
-            {% else %}
-              <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs">untagged</span>
-            {% endif %}
-          </div>
         </div>
+      </a>
       {% endfor %}
     </div>
 
@@ -46,26 +62,25 @@ layout: default
       {% assign featured_ids = "kazukazoe,sky_high,diff,count" | split: "," %}
 
       {% for id in featured_ids %}
-        {% assign tool = site.data.tools | where: "id", id | first %}
-        {% if tool %}
-          <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <h3 class="text-lg font-bold">
-              <a href="{{ tool.url | relative_url }}" class="hover:underline">
-                {{ tool.title }}
-              </a>
-            </h3>
-            {% if tool.description %}
-              <p class="text-gray-600 mt-1">{{ tool.description }}</p>
-            {% endif %}
-            {% if tool.tag %}
-              <div class="mt-3 flex justify-end">
-                <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">
-                  {{ tool.tag }}
-                </span>
-              </div>
-            {% endif %}
-          </div>
+      {% assign tool = site.data.tools | where: "id", id | first %}
+      {% if tool %}
+      <a href="{{ tool.url | relative_url }}"
+        class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+        <h3 class="text-lg font-bold hover:text-blue-600">
+          {{ tool.title }}
+        </h3>
+        {% if tool.description %}
+        <p class="text-gray-600 mt-1">{{ tool.description }}</p>
         {% endif %}
+        {% if tool.tag %}
+        <div class="mt-3 flex justify-end">
+          <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">
+            {{ tool.tag }}
+          </span>
+        </div>
+        {% endif %}
+      </a>
+      {% endif %}
       {% endfor %}
     </div>
   </div>
@@ -81,25 +96,27 @@ layout: default
 
     {% assign featured_series = site.data.home_novel.featured_series %}
     {% if featured_series and featured_series.size > 0 %}
-      {% for series_id in featured_series %}
-        {% assign series_doc = site.novel | where: "series_id", series_id | where_exp: "doc", "doc.name == 'index.md'" | first %}
-        {% if series_doc %}
-          <a href="{{ series_doc.url | relative_url }}" class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-sm text-gray-500 uppercase tracking-wide">{{ series_doc.status | default: 'series' }}</p>
-                <h3 class="text-xl font-bold">{{ series_doc.title }}</h3>
-                {% if series_doc.short_description %}
-                  <p class="text-gray-600 mt-1">{{ series_doc.short_description }}</p>
-                {% endif %}
-              </div>
-              <span class="text-blue-600 text-lg">&rarr;</span>
-            </div>
-          </a>
-        {% endif %}
-      {% endfor %}
+    {% for series_id in featured_series %}
+    {% assign series_doc = site.novel | where: "series_id", series_id | where_exp: "doc", "doc.name == 'index.md'" |
+    first %}
+    {% if series_doc %}
+    <a href="{{ series_doc.url | relative_url }}"
+      class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-sm text-gray-500 uppercase tracking-wide">{{ series_doc.status | default: 'series' }}</p>
+          <h3 class="text-xl font-bold">{{ series_doc.title }}</h3>
+          {% if series_doc.short_description %}
+          <p class="text-gray-600 mt-1">{{ series_doc.short_description }}</p>
+          {% endif %}
+        </div>
+        <span class="text-blue-600 text-lg">&rarr;</span>
+      </div>
+    </a>
+    {% endif %}
+    {% endfor %}
     {% else %}
-      <p class="text-gray-600">home_novel.yml にシリーズが設定されていません。</p>
+    <p class="text-gray-600">home_novel.yml にシリーズが設定されていません。</p>
     {% endif %}
   </div>
 
@@ -111,19 +128,35 @@ layout: default
     </h2>
 
     {% for game in site.data.games %}
-      <div class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-        <h3 class="text-xl font-bold">
-          <a href="{{ game.url | relative_url }}" class="hover:underline">{{ game.title }}</a>
-        </h3>
-        {% if game.description %}
-          <p class="text-gray-600 mt-1">{{ game.description }}</p>
-        {% endif %}
-        {% if game.tag %}
-          <div class="mt-3 flex justify-end">
-            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs font-semibold">{{ game.tag }}</span>
+    <a href="{{ game.url | relative_url }}"
+      class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+      <div class="flex items-center justify-between">
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <!-- プラットフォームアイコン -->
+            {% if game.platform == "pc" %}
+            <svg class="w-4 h-4 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              title="PC推奨">
+              <rect x="2" y="3" width="20" height="14" rx="2" stroke-width="1.5" />
+              <path d="M8 21h8M12 17v4" stroke-width="1.5" />
+            </svg>
+            {% else %}
+            <svg class="w-4 h-4 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              title="スマホ対応">
+              <rect x="5" y="2" width="14" height="20" rx="2" stroke-width="1.5" />
+              <circle cx="12" cy="18" r="1" fill="currentColor" />
+            </svg>
+            {% endif %}
+            <p class="text-sm text-gray-500 uppercase tracking-wide">{{ game.tag | default: 'game/app' }}</p>
           </div>
-        {% endif %}
+          <h3 class="text-xl font-bold hover:text-blue-600">{{ game.title }}</h3>
+          {% if game.description %}
+          <p class="text-gray-600 mt-1">{{ game.description }}</p>
+          {% endif %}
+        </div>
+        <span class="text-blue-600 text-lg">&rarr;</span>
       </div>
+    </a>
     {% endfor %}
   </div>
 </section>

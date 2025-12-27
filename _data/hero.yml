@@ -1,0 +1,17 @@
+# ヒーローエリア設定
+# enabled: true にすると、ホームページにヒーローエリアが表示されます
+
+enabled: true  
+
+# メインメッセージ
+title: "城上2.2への更新!"
+message: "城上が2.2に更新されました！"
+
+# 背景色（Tailwindクラス or HEX）
+bg_class: "bg-gradient-to-r from-blue-500 to-purple-600"
+
+# ボタン（オプション）
+button:
+  enabled: true
+  text: "詳しく見る"
+  url: "/posts/2025/12/27/2_2/"

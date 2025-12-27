@@ -6,7 +6,7 @@
   tag: 開発支援
   icon: /assets/icon/R_path.avif
 
-- 
+- id: tex_renderer
   title: TeXレンダラー
   url: /tools/math_changer.html
   icon: /assets/icon/tex_render.avif
@@ -21,37 +21,43 @@
   tag: データ可視化
   icon: /assets/icon/ski_high.avif
 
-- title: 資産シミュレーター
+- id: asset_simulator
+  title: 資産シミュレーター
   url: /tools/kane_simyu.html
   description: 株式等、福利資産の増額をシミュレーション。
   tag: シミュレーション
   icon: /assets/icon/kane.avif
 
-- title: 迷路ゲーム（簡単）
+- id: maze_easy
+  title: 迷路ゲーム（簡単）
   url: /tools/MEIRO.html
   description: 迷路ゲーム（簡単）。
   tag: ゲーム
   icon: /assets/icon/auto_meiro_v1.avif 
 
-- title: 迷路ゲーム（難しい）
+- id: maze_hard
+  title: 迷路ゲーム（難しい）
   url: /tools/MEIRO_kai.html
   description: 迷路ゲーム（難しい）。
   tag: ゲーム
   icon: /assets/icon/automeiro_v2.avif
 
-- title: スクリーンセイバー
+- id: screen_saver
+  title: スクリーンセイバー
   url: /tools/screen_saiverrrrr.html
   description: どこかでみたことがある（かもしれない）なつかしのスクリーンセイバー。
   tag: ツール
   icon: /assets/icon/screen_saver.avif
 
-- title: ミリオンライブ!アイドルデータ相関分析グラフ
+- id: million_graph_corr
+  title: ミリオンライブ!アイドルデータ相関分析グラフ
   url: /tools/million_graph_1.html
   description: アイドルの身体的特徴に関する相関関係を可視化。
   tag: データ可視化
   icon: /assets/icon/million_graph1.avif
 
-- title: ミリオンライブ!身長年齢体重3D分布
+- id: million_graph_3d
+  title: ミリオンライブ!身長年齢体重3D分布
   url: /tools/million_graph_3D.html
   description: アイドルの身体的特徴に関する相関関係を3Dで可視化。
   tag: データ可視化

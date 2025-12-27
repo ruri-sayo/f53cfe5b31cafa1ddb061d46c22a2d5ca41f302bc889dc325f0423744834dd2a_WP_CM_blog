@@ -44,18 +44,16 @@
       const description = p.description ? escapeHtml(p.description) : '';
 
       return `
-      <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-        <div class="p-6">
-          <h3 class="text-xl font-bold mb-2">
-            <a href="${p.url}" class="hover:text-blue-600">${escapeHtml(p.title)}</a>
-          </h3>
+      <a href="${p.url}" class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <article class="p-6">
+          <h3 class="text-xl font-bold mb-2 hover:text-indigo-700">${escapeHtml(p.title)}</h3>
           ${description ? `<p class="text-gray-600 mb-4">${description.length > 120 ? description.slice(0,118) + '…' : description}</p>` : ''}
           <div class="flex justify-between items-center text-sm text-gray-500">
             ${pill}
             <time datetime="${p.date_iso}">${escapeHtml(p.date_disp)}</time>
           </div>
-        </div>
-      </article>`;
+        </article>
+      </a>`;
     }).join('');
 
     $grid.innerHTML = html || `<p class="text-gray-500">該当する記事がありません。</p>`;

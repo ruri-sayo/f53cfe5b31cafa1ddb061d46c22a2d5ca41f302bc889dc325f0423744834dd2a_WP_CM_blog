@@ -8,7 +8,8 @@ permalink: /posts/
   <h1 class="text-3xl font-bold mb-4 md:mb-0">記事一覧</h1>
   <div class="flex items-center space-x-2">
     <!-- ★IDを付与 -->
-    <input id="post-search" type="search" placeholder="キーワード検索..." class="border rounded-md px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+    <input id="post-search" type="search" placeholder="キーワード検索..."
+      class="border rounded-md px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-500">
     <select id="post-tag" class="border rounded-md px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500">
       <option value="">すべての区分</option>
       <!-- JSが自動でタグを追加します -->
@@ -19,11 +20,10 @@ permalink: /posts/
 <!-- ★ここはJSが中身を描画し直すのでIDを付与 -->
 <div id="posts-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
   {% for post in site.posts %}
-  <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-    <div class="p-6">
-      <h3 class="text-xl font-bold mb-2">
-        <a href="{{ post.url | relative_url }}" class="hover:text-indigo-700">{{ post.title }}</a>
-      </h3>
+  <a href="{{ post.url | relative_url }}"
+    class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+    <article class="p-6">
+      <h3 class="text-xl font-bold mb-2 hover:text-indigo-700">{{ post.title }}</h3>
       {% assign summary_source = post.description | default: post.excerpt %}
       {% assign summary = summary_source | strip_html %}
       {% if summary and summary != '' %}
@@ -31,16 +31,16 @@ permalink: /posts/
       {% endif %}
       <div class="flex justify-between items-center text-sm text-gray-500">
         {% if post.categories and post.categories.size > 0 %}
-          <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs font-semibold">
-            {{ post.categories | join: ', ' }}
-          </span>
+        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs font-semibold">
+          {{ post.categories | join: ', ' }}
+        </span>
         {% else %}
-          <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">uncategorized</span>
+        <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs">uncategorized</span>
         {% endif %}
         <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y年%m月%d日" }}</time>
       </div>
-    </div>
-  </article>
+    </article>
+  </a>
   {% endfor %}
 </div>
 
