@@ -90,6 +90,17 @@ events:
     decoration: "tsukimi"
     emoji: "🌕"
     
+  - id: blog_birthday
+    name: "ブログ誕生日"
+    start_month: 10
+    start_day: 16
+    end_month: 10
+    end_day: 16
+    bg_color: "#FFF0F5"
+    header_color: "#FF1493"
+    decoration: "blog_birthday"
+    emoji: "🎂"
+    
   - id: halloween
     name: "ハロウィン"
     start_month: 10

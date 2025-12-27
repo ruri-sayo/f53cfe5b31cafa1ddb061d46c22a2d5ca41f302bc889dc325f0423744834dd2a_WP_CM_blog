@@ -1,4 +1,4 @@
-<meta charset="utf-8">
+﻿<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -31,19 +31,19 @@
 <script>
   window.SHIROGAMI_EVENTS = [
     {% for event in site.data.events.events %}
-  {
-    id: "{{ event.id }}",
+    {
+      id: "{{ event.id }}",
       name: "{{ event.name }}",
-        start_month: { { event.start_month } },
-    start_day: { { event.start_day } },
-    end_month: { { event.end_month } },
-    end_day: { { event.end_day } },
-    bg_color: "{{ event.bg_color }}",
+      start_month: {{ event.start_month }},
+      start_day: {{ event.start_day }},
+      end_month: {{ event.end_month }},
+      end_day: {{ event.end_day }},
+      bg_color: "{{ event.bg_color }}",
       header_color: "{{ event.header_color }}",
-        decoration: "{{ event.decoration }}",
-          emoji: "{{ event.emoji }}"
-  } {% unless forloop.last %}, {% endunless %}
-  {% endfor %}
+      decoration: "{{ event.decoration }}",
+      emoji: "{{ event.emoji }}"
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
   ];
 </script>
 
