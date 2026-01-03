@@ -3,7 +3,7 @@
     "id": "R_path_change",
     "title": "R用パス変換ツール",
     "url": "/tools/r-path-converter/",
-    "description": "windows標準のパスをRで使える形にらくらく変換。（React版）",
+    "description": "windows標準のパスをRで使える形にらくらく変換。",
     "tag": "開発支援",
     "icon": "/assets/icon/R_path.avif"
   },
@@ -75,7 +75,7 @@
     "id": "diff",
     "title": "diff比較ツール",
     "url": "/tools/diff-compare/",
-    "description": "2つの文章を比較します。（React版）",
+    "description": "2つの文章を比較します。",
     "tag": "開発支援",
     "icon": "/assets/icon/diff_took.avif"
   },
@@ -83,7 +83,7 @@
     "id": "count",
     "title": "文字数カウントツール",
     "url": "/tools/character-counter/",
-    "description": "入力した文章の文字数をカウントします。（React版）",
+    "description": "入力した文章の文字数をカウントします。",
     "tag": "開発支援",
     "icon": "/assets/icon/count.avif"
   },
@@ -99,7 +99,7 @@
     "id": "kazukazoe",
     "title": "スピーチ時間計算機",
     "url": "/tools/speech-timer/",
-    "description": "入力した文章を読み上げるのに必要な時間を算出。（React版）",
+    "description": "入力した文章を読み上げるのに必要な時間を算出。",
     "tag": "開発支援",
     "icon": null
   }

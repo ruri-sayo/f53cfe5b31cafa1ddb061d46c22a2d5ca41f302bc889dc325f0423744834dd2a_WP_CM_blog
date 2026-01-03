@@ -1,43 +1,116 @@
-# Astro Starter Kit: Minimal
+# 城上コードメモ
 
-```sh
-npm create astro@latest -- --template minimal
+**城上コードメモ**は、個人の感想や主張の記事、Webツール、ブラウザゲーム、創作小説などを公開する個人ブログサイトです。
+
+## 🌐 サイトURL
+
+→ **[城上コードメモ](https://ruri-sayo.github.io/サイトパス/)** ※要更新
+
+---
+
+## 📌 コンテンツ
+
+### 📝 ブログ記事
+技術備忘録、LLM/生成AI、PC基礎知識、雑記など。
+
+### 🛠️ Webツール
+- 文字数カウンター
+- Diff比較ツール
+- スピーチ時間計算機
+- Rパス変換ツール
+- スキー場標高比較
+- その他多数
+
+### 🎮 ブラウザゲーム
+- 大富豪（AIプレイ可能）
+- 3D迷路ゲーム
+- フローパズル
+- 単語クイズ
+
+### 📚 小説
+オリジナル創作小説シリーズ
+
+---
+
+## 🚀 技術スタック
+
+| 技術 | 用途 |
+|------|------|
+| **Astro** | 静的サイト生成（SSG） |
+| **React** | インタラクティブツール |
+| **Tailwind CSS** | スタイリング |
+| **TypeScript** | 型安全 |
+| **GitHub Pages** | ホスティング |
+| **GitHub Actions** | CI/CD |
+
+---
+
+## 📁 ディレクトリ構成
+
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
-├── public/
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/     # Astro/Reactコンポーネント
+│   ├── layouts/        # ページレイアウト
+│   ├── pages/          # ルーティング対象ページ
+│   ├── content/        # Markdownコンテンツ（記事・小説）
+│   └── data/           # JSONデータファイル
+├── public/             # 静的ファイル
+├── dev/                # 開発・保守ドキュメント
+└── dist/               # ビルド出力（git管理外）
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+---
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## 🧞 コマンド
 
-Any static assets, like images, can be placed in the `public/` directory.
+```bash
+# 依存関係インストール
+npm install
 
-## 🧞 Commands
+# 開発サーバー起動
+npm run dev
 
-All commands are run from the root of the project, from a terminal:
+# 本番ビルド
+npm run build
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+# ビルドプレビュー
+npm run preview
+```
 
-## 👀 Want to learn more?
+---
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 📖 ドキュメント
+
+| ドキュメント | 内容 |
+|--------------|------|
+| [執筆者マニュアル](dev/maintenance/writer_manual.md) | コンテンツ追加方法 |
+| [システム研修資料](dev/maintenance/training_guide.md) | システム全体の解説 |
+| [ツール作成ガイド](dev/replace/how_tool_make.md) | Reactツール開発手順 |
+| [テストガイド](dev/replace/how_test.md) | ローカルテスト方法 |
+
+---
+
+## 🔧 開発環境
+
+- **Node.js**: v18以上
+- **npm**: v9以上
+- **推奨エディタ**: VS Code + Astro拡張機能
+
+---
+
+## 📝 ライセンス
+
+コンテンツ（記事・小説・画像）: © 城上 All rights reserved.  
+ソースコード: MIT License
+
+---
+
+## 📬 お問い合わせ
+
+- **GitHub**: [ruri-sayo](https://github.com/ruri-sayo)
+- **X (Twitter)**: [@Ruriii_miuuu](https://twitter.com/Ruriii_miuuu)
+
+---
+
+**最終更新**: 2026-01-03
