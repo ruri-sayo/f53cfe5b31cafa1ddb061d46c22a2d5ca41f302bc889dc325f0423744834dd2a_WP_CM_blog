@@ -1,0 +1,27 @@
+---
+/**
+ * Diff比較ツール（React版）
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DiffCompare from '../../components/tools/DiffCompare';
+---
+
+<BaseLayout title="Diff比較ツール" description="2つのテキストを比較して差分を表示します。">
+  <div class="py-8">
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-gray-800 mb-2">テキスト差分比較ツール</h1>
+      <p class="text-gray-600">2つのテキストを入力して、行ごとの違いを確認します。</p>
+    </div>
+    
+    <DiffCompare client:load />
+    
+    <div class="max-w-2xl mx-auto mt-8 text-sm text-gray-500">
+      <h3 class="font-semibold mb-2">凡例</h3>
+      <ul class="list-disc list-inside space-y-1">
+        <li><span class="bg-red-200 px-2">赤いハイライト</span>: 内容が異なる行</li>
+        <li><span class="bg-green-200 px-2">緑のハイライト</span>: 片方にのみ存在する行</li>
+        <li>行番号付きで表示され、左右同時スクロールに対応</li>
+      </ul>
+    </div>
+  </div>
+</BaseLayout>

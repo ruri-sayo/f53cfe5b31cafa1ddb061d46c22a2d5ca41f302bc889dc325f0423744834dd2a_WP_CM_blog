@@ -74,16 +74,16 @@
   {
     "id": "diff",
     "title": "diff比較ツール",
-    "url": "/tools/diff_hikaku_v1.html",
-    "description": "2つの文章を比較します。",
+    "url": "/tools/diff-compare/",
+    "description": "2つの文章を比較します。（React版）",
     "tag": "開発支援",
     "icon": "/assets/icon/diff_took.avif"
   },
   {
     "id": "count",
     "title": "文字数カウントツール",
-    "url": "/tools/character_counter.html",
-    "description": "入力した文章の文字数をカウントします。",
+    "url": "/tools/character-counter/",
+    "description": "入力した文章の文字数をカウントします。（React版）",
     "tag": "開発支援",
     "icon": "/assets/icon/count.avif"
   },
