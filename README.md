@@ -4,7 +4,7 @@
 
 ## 🌐 サイトURL
 
-→ **[城上コードメモ](https://ruri-sayo.github.io/サイトパス/)** ※要更新
+→ **[城上コードメモ](https://ruri-sayo.github.io/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/)** 
 
 ---
 
@@ -109,7 +109,6 @@ npm run preview
 ## 📬 お問い合わせ
 
 - **GitHub**: [ruri-sayo](https://github.com/ruri-sayo)
-- **X (Twitter)**: [@Ruriii_miuuu](https://twitter.com/Ruriii_miuuu)
 
 ---
 

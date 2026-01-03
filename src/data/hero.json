@@ -1,11 +1,11 @@
 {
   "enabled": true,
-  "title": "城上2.2への更新!",
-  "message": "城上が2.2に更新されました！",
+  "title": "城上2.5への更新!",
+  "message": "城上が2.5に更新されました！",
   "bg_class": "bg-gradient-to-r from-blue-500 to-purple-600",
   "button": {
     "enabled": true,
     "text": "詳しく見る",
-    "url": "/posts/2025/12/27/2_2/"
+    "url": "/posts/2026/01/03/2_5/"
   }
 }

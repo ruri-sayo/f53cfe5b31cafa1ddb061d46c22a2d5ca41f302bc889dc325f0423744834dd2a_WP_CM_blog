@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { GobiChanger } from '../../components/tools/GobiChanger';
+
+const title = "語尾変換器";
+const description = "入力した文章の語尾をキャラクター風に変換するツールです。";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- js-yaml CDN Load -->
+  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+
+  <div class="py-8">
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-indigo-600 mb-2">{title}</h1>
+      <p class="text-gray-600">ルールベース変換エンジン</p>
+    </div>
+    
+    <GobiChanger client:only="react" />
+  </div>
+</BaseLayout>

@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { WordQuiz } from '../../components/game/WordQuiz';
+
+const title = "Word Quiz";
+const description = "スウェーデン語とアイヌ語のランダム出題の4択クイズ。ハイスコア機能付き。";
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="py-8">
+    <WordQuiz client:only="react" />
+  </div>
+</BaseLayout>
