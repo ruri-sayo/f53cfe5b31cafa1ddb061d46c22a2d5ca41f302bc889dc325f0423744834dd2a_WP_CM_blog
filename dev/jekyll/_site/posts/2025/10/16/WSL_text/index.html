@@ -1,0 +1,1239 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- 限定公開運用のため既定で noindex -->
+<meta name="robots" content="noindex,nofollow">
+
+
+<title>WSL学習用テキスト | 城上コードメモ(v2.1:beta)</title>
+
+<!-- Meta Description -->
+<meta name="description"
+  content="研究者向けにWSLの導入から活用までを体系的に解説する教材。Linux環境をWindowsで使いこなすためのワークフローを段階的に学べます。">
+
+<!-- ファビコン（最適化済みPNG） -->
+<link rel="icon" type="image/png" sizes="32x32" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/apple-touch-icon.png">
+
+<!-- Tailwind CSS CDN -->
+<!--<script src="https://cdn.tailwindcss.com"></script> -->
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+<!-- お好みでカスタム CSS を足す場合（SCSS を使うなら /assets/css/style.css をビルド）-->
+<link rel="stylesheet" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/css/custom.css">
+
+<!-- イベントモード用CSS -->
+<link rel="stylesheet" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/css/events.css">
+
+<!-- イベントデータ埋め込み -->
+<script>
+  window.SHIROGAMI_EVENTS = [
+    
+    {
+      id: "newyear",
+      name: "正月",
+      start_month: 1,
+      start_day: 1,
+      end_month: 1,
+      end_day: 4,
+      bg_color: "#FFE4E8",
+      header_color: "#C41E3A",
+      decoration: "newyear",
+      emoji: "🎍"
+    },
+    
+    {
+      id: "setsubun",
+      name: "節分",
+      start_month: 2,
+      start_day: 3,
+      end_month: 2,
+      end_day: 3,
+      bg_color: "#FFF5E6",
+      header_color: "#8B4513",
+      decoration: "setsubun",
+      emoji: "👹"
+    },
+    
+    {
+      id: "valentine",
+      name: "バレンタイン",
+      start_month: 2,
+      start_day: 14,
+      end_month: 2,
+      end_day: 14,
+      bg_color: "#FFE4EC",
+      header_color: "#FF69B4",
+      decoration: "valentine",
+      emoji: "💝"
+    },
+    
+    {
+      id: "aprilfool",
+      name: "エイプリルフール",
+      start_month: 4,
+      start_day: 1,
+      end_month: 4,
+      end_day: 1,
+      bg_color: "#E6FFE6",
+      header_color: "#32CD32",
+      decoration: "aprilfool",
+      emoji: "🤡"
+    },
+    
+    {
+      id: "tango",
+      name: "端午の節句",
+      start_month: 5,
+      start_day: 5,
+      end_month: 5,
+      end_day: 5,
+      bg_color: "#E6F0FF",
+      header_color: "#4169E1",
+      decoration: "tango",
+      emoji: "🎏"
+    },
+    
+    {
+      id: "tanabata",
+      name: "七夕",
+      start_month: 7,
+      start_day: 7,
+      end_month: 7,
+      end_day: 7,
+      bg_color: "#E6E6FF",
+      header_color: "#6A5ACD",
+      decoration: "tanabata",
+      emoji: "🎋"
+    },
+    
+    {
+      id: "obon",
+      name: "お盆",
+      start_month: 8,
+      start_day: 13,
+      end_month: 8,
+      end_day: 16,
+      bg_color: "#F0FFF0",
+      header_color: "#228B22",
+      decoration: "obon",
+      emoji: "🏮"
+    },
+    
+    {
+      id: "tsukimi",
+      name: "十五夜",
+      start_month: 9,
+      start_day: 10,
+      end_month: 9,
+      end_day: 10,
+      bg_color: "#FFFACD",
+      header_color: "#DAA520",
+      decoration: "tsukimi",
+      emoji: "🌕"
+    },
+    
+    {
+      id: "blog_birthday",
+      name: "ブログ誕生日",
+      start_month: 10,
+      start_day: 16,
+      end_month: 10,
+      end_day: 16,
+      bg_color: "#FFF0F5",
+      header_color: "#FF1493",
+      decoration: "blog_birthday",
+      emoji: "🎂"
+    },
+    
+    {
+      id: "halloween",
+      name: "ハロウィン",
+      start_month: 10,
+      start_day: 31,
+      end_month: 10,
+      end_day: 31,
+      bg_color: "#FFF0E6",
+      header_color: "#FF8C00",
+      decoration: "halloween",
+      emoji: "🎃"
+    },
+    
+    {
+      id: "christmas",
+      name: "クリスマス",
+      start_month: 12,
+      start_day: 24,
+      end_month: 12,
+      end_day: 25,
+      bg_color: "#FFE4E4",
+      header_color: "#C41E3A",
+      decoration: "christmas",
+      emoji: "🎄"
+    }
+    
+  ];
+</script>
+
+<!-- イベントモード用JavaScript -->
+<script src="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/js/event-mode.js" defer></script>
+
+
+<!-- この設定を先に置く（MathJax script の前） -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+    // 必要ならここに他オプション（例: packages 追加 など）
+  };
+</script>
+
+<!-- MathJax（数式） -->
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+    <!-- ヘッダー（色付き） -->
+    <header class="bg-[#7278a8] text-white shadow-md">
+        <div class="container mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl md:text-3xl font-bold">
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/" class="hover:opacity-90 transition-opacity">城上コードメモver2.2</a>
+            </h1>
+            <!-- デスクトップナビゲーション -->
+            <nav class="hidden md:flex space-x-6">
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/" class="text-white/90 hover:text-white transition-colors">ホーム</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/posts/"
+                    class="text-white/90 hover:text-white transition-colors">記事一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/tools/"
+                    class="text-white/90 hover:text-white transition-colors">ツール一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/novel/"
+                    class="text-white/90 hover:text-white transition-colors">Novel</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/game/"
+                    class="text-white/90 hover:text-white transition-colors">Game</a>
+            </nav>
+            <!-- モバイルメニューボタン -->
+            <button id="mobile-menu-btn"
+                class="md:hidden p-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+                aria-label="メニューを開く" aria-expanded="false">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- モバイルナビゲーションオーバーレイ -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden" aria-hidden="true">
+    </div>
+
+    <!-- モバイルナビゲーションメニュー -->
+    <nav id="mobile-menu"
+        class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
+        aria-label="モバイルナビゲーション">
+        <div class="p-4 border-b bg-[#7278a8] text-white flex justify-between items-center">
+            <span class="text-lg font-bold">メニュー</span>
+            <button id="mobile-menu-close"
+                class="p-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+                aria-label="メニューを閉じる">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div class="p-4 space-y-4">
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">ホーム</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/posts/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">記事一覧</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/tools/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">ツール一覧</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/novel/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">Novel</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/game/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">Game</a>
+        </div>
+    </nav>
+
+    <!-- メインコンテンツ（中央配置・左揃え） -->
+    <div class="container mx-auto px-4 md:px-8 py-8">
+        <main class="max-w-4xl mx-auto text-left">
+            <article class="prose prose-neutral max-w-none">
+<header class="mb-6">
+<h1 class="text-3xl font-bold">WSL学習用テキスト</h1>
+<p class="text-gray-500 text-sm">2025-10-16
+
+· <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold">Knowledge, 小説</span>
+
+</p>
+
+<p class="text-gray-600 mt-2">研究者向けにWSLの導入から活用までを体系的に解説する教材。Linux環境をWindowsで使いこなすためのワークフローを段階的に学べます。</p>
+
+</header>
+<h1 id="wslマスターへの道研究者のための実践ガイドブック">WSLマスターへの道：研究者のための実践ガイドブック</h1>
+
+<h2 id="はじめになぜ今研究者がwslを学ぶべきなのか">はじめに：なぜ今、研究者がWSLを学ぶべきなのか</h2>
+
+<p>本書を手に取っていただき、ありがとうございます。この教材は、WindowsをメインのOSとして利用しながら、データ解析やプログラミングでLinux環境のパワーを活用したいと考えている学生や研究者のために執筆されました。特に、瑠璃さんのように機械工学や生命科学といった分野で、シミュレーションやバイオインフォマティクス解析を行う方にとって、強力な武器となる知識を提供することを目指します。</p>
+
+<p>Windows Subsystem for Linux (WSL)は、まさに革命的な技術です。かつては、Windows上でLinux環境を整えるには、デュアルブートや仮想マシンといった手間のかかる方法しかありませんでした。しかしWSLの登場により、使い慣れたWindowsのデスクトップ環境から、シームレスにLinuxの強力なコマンドラインツールや開発環境へアクセスできるようになったのです。</p>
+
+<p>本教材の最終的なゴールは、あなたの研究や開発における一連のワークフロー（データの取得、前処理、解析、可視化）を、WSL上でスムーズに完結できるスキルを習得することです。さあ、一緒にLinuxの世界へ踏み出しましょう。</p>
+
+<h1 id="第1部基礎の確立-初級レベル">第1部：基礎の確立（🟢 初級レベル）</h1>
+
+<blockquote>
+  <p>目標：Linuxの世界に臆することなく、Windowsと同じ感覚で基本的なファイル操作やソフトウェア管理ができるようになる。</p>
+</blockquote>
+
+<p>この部では、WSLの導入から始め、Windowsとの連携方法、そしてLinuxを操作する上で最も基本的なコマンドについて学びます。ここを乗り越えれば、Linux環境への心理的なハードルはぐっと下がるはずです。</p>
+
+<h2 id="第1章最初の接点---wslの世界へようこそ">第1章：最初の接点 - WSLの世界へようこそ</h2>
+
+<h3 id="-目標">🎯 目標</h3>
+
+<blockquote>
+  <p>WSLがどのような技術であるかを理解する。<br />自身のPCにWSLとUbuntuをインストールし、起動できるようになる。</p>
+</blockquote>
+
+<h3 id="-解説">📖 解説</h3>
+
+<p>WSLとは何か？
+WSL (Windows Subsystem for Linux) は、Windows上でネイティブにLinuxの実行ファイルを動かすための互換レイヤーです。特にWSL2は、内部で最適化された軽量な仮想マシン技術を使い、本物のLinuxカーネルを動作させています。これにより、従来の仮想マシン（VMwareやVirtualBoxなど）よりも高速に起動し、Windowsとの親和性も格段に高い、という利点があります。<br />
+なぜ研究でUbuntuがよく使われるのか？
+Linuxには様々な種類（ディストリビューション）がありますが、中でもUbuntuは世界中のデスクトップPCからサーバーまで、幅広く利用されています。その理由は以下の通りです。</p>
+
+<ul>
+  <li>豊富な情報： 利用者が多いため、Web上にチュートリアルやトラブルシューティングの情報が豊富にあります。</li>
+  <li>安定したパッケージ管理： aptという非常に優れたパッケージ管理システムにより、研究で用いる専門的なソフトウェアの導入やアップデートが容易です。</li>
+  <li>コミュニティの活発さ： 世界中の開発者によって支えられており、継続的なアップデートとサポートが提供されています。<br /></li>
+</ul>
+
+<p>生命科学の分野で開発される解析ツールの多くは、このLinux環境を前提として作られているため、WSLでUbuntuを動かすことは非常に合理的な選択です。</p>
+
+<h3 id="-コードを交えた解説">💻 コードを交えた解説</h3>
+
+<p>WSLのインストールは非常に簡単です。Windowsのターミナル（PowerShellまたはコマンドプロンプトを管理者として開いて）で、以下のコマンドを一行実行するだけです。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wsl --install
+</code></pre></div></div>
+
+<p>このコマンドは、WSLの有効化、最新のLinuxカーネルのダウンロード、そしてデフォルトのディストリビューションであるUbuntuのインストールまでを自動で行います。インストールが完了し、PCを再起動すると、Ubuntuの初期設定が始まります。ここで、Linux環境で使用するユーザー名とパスワードを設定します。このパスワードは後々何度も使いますので、忘れないようにしてください。</p>
+
+<p>設定が完了すると、username@hostname:~$ のような表示（プロンプト）が現れます。これで、あなたはLinuxの世界に入りました。
+正常に動作しているか確認するために、以下のコマンドを打ってみましょう。</p>
+
+<p>` uname -a ` : 現在動作しているLinuxカーネルのバージョン情報を表示します。</p>
+
+<p><code class="language-plaintext highlighter-rouge">lsb_release -a</code>: 現在インストールされているディストリビューション（Ubuntu）のバージョン情報を表示します。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 現在のカーネル情報を表示
+uname -a
+# -&gt; Linux DESKTOP-XXXX 5.10.16.3-microsoft-standard-WSL2 ...
+
+# ディストリビューション情報を表示
+lsb_release -a
+# -&gt; No LSB modules are available.
+# -&gt; Distributor ID: Ubuntu
+# -&gt; Description:    Ubuntu 22.04.1 LTS
+</code></pre></div></div>
+
+<h3 id="️-練習問題">✏️ 練習問題</h3>
+
+<ol>
+  <li>Windowsターミナルを管理者権限で開き、wsl –install を実行してUbuntuをインストールしましょう。</li>
+  <li>Ubuntuの初回起動時に、任意のユーザー名とパスワードを設定しましょう。</li>
+  <li><code class="language-plaintext highlighter-rouge">uname -a</code> と <code class="language-plaintext highlighter-rouge">lsb_release -a</code> コマンドをそれぞれ実行し、表示される内容がどのような情報かを確認してみましょう。</li>
+</ol>
+
+<h2 id="第2章2つの世界の架け橋---windowsとlinuxの連携">第2章：2つの世界の架け橋 - WindowsとLinuxの連携</h2>
+
+<h3 id="-目標-1">🎯 目標</h3>
+
+<blockquote>
+  <p>WindowsとWSLのファイルシステムの違いを理解する。<br />両方のシステム間でファイルを自由にやり取りできるようになる。</p>
+</blockquote>
+
+<h3 id="-解説-1">📖 解説</h3>
+
+<p>WSLの最大の強みは、Windowsとのシームレスな連携です。しかし、両者のファイルシステムの構造は根本的に異なります。この違いを理解することが、連携を使いこなす鍵となります。</p>
+
+<ul>
+  <li>
+    <p>Windowsのファイルシステム: C: や D: といったドライブレターから始まり、各フォルダが \ (バックスラッシュ) で区切られます。（例: C:\Users\Ruri\Documents）</p>
+  </li>
+  <li>
+    <p>Linuxのファイルシステム: すべてのファイルとディレクトリは、単一のルートディレクトリ / から始まります。Windowsのようなドライブレターは存在しません。（例: /home/ruri/documents）</p>
+  </li>
+</ul>
+
+<p>WSLは、この違いを吸収するための仕組みを提供しています。<br />
+WSLからWindowsへ: WindowsのCドライブは、WSL内の /mnt/c という特別な場所に自動的に「マウント」されます。これにより、WSLから cd /mnt/c/Users/… のようにしてWindows側のファイルにアクセスできます。<br />
+WindowsからWSLへ: Windowsのエクスプローラーのアドレスバーに \wsl$ と入力すると、ネットワークドライブのようにWSL内のファイルシステムにアクセスできます。<br />
+また、パスの形式を相互に変換してくれる wslpath という便利なコマンドもあります。</p>
+
+<h3 id="-コードを交えた解説-1">💻 コードを交えた解説</h3>
+
+<p>実際にWindowsのデスクトップにあるファイルに、WSLからアクセスしてみましょう。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># WindowsのCドライブに移動
+cd /mnt/c/
+
+# Usersディレクトリに移動
+cd Users/
+
+# あなたのWindowsユーザー名のディレクトリに移動 (Tabキーで補完すると楽です)
+cd YourWindowsUserName/
+
+# Desktopに移動
+cd Desktop/
+
+# デスクトップにあるファイルやフォルダの一覧を表示
+ls
+
+
+逆も試してみましょう。WSLのホームディレクトリ（起動時の場所、通常は /home/&lt;username&gt;）にファイルを作成し、Windowsのエクスプローラーから見てみます。
+
+# WSLのホームディレクトリに移動（どこにいてもこのコマンドで戻れます）
+cd ~
+
+# test_from_wsl.txt という名前の空のファイルを作成
+touch test_from_wsl.txt
+</code></pre></div></div>
+
+<p>次に、Windowsのエクスプローラーを開き、アドレスバーに \wsl$\Ubuntu\home&lt;あなたのUbuntuユーザー名&gt; と入力してエンターキーを押してください。先ほど作成した test_from_wsl.txt が見えるはずです。</p>
+
+<h3 id="️-練習問題-1">✏️ 練習問題</h3>
+<p>1.Windowsのデスクトップに、メモ帳などで hello_from_windows.txt というファイルを作成し、中に何か文字を書いて保存しましょう。<br />
+2.WSLのターミナルから cat /mnt/c/Users/<あなたのWindowsユーザー名>/Desktop/hello_from_windows.txt を実行し、ファイルの内容が表示されることを確認しましょう。
+3.WSLのホームディレクトリに touch hello_from_wsl.txt コマンドでファイルを作成し、Windowsのエクスプローラーで \\wsl$\Ubuntu を開いて、そのファイルが見えることを確認しましょう。</あなたのWindowsユーザー名></p>
+
+<h2 id="第3章コマンドラインの作法---基本コマンド習得">第3章：コマンドラインの作法 - 基本コマンド習得</h2>
+
+<h3 id="-目標-2">🎯 目標</h3>
+
+<p>ターミナル操作の基本となる8つのコマンドをマスターし、CUI環境で自在にファイルやディレクトリを操作できるようになる。</p>
+
+<h3 id="-解説-2">📖 解説</h3>
+
+<p>GUI（グラフィカル・ユーザー・インターフェース）ではマウスを使ってファイル操作を行いますが、CUI（キャラクター・ユーザー・インターフェース）では、キーボードからコマンドを打ち込んでコンピュータに指示を出します。最初は戸惑うかもしれませんが、慣れるとGUIより遥かに高速で効率的な作業が可能です。ここでは、絶対に覚えておくべき必須コマンドを学びます。</p>
+
+<h3 id="-コードを交えた解説-2">💻 コードを交えた解説</h3>
+
+<p>pwd (Print Working Directory): 「今、自分はどこにいるのか？」を表示します。迷子になったらまずこれを打ちましょう。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pwd
+# -&gt; /home/ruri
+</code></pre></div></div>
+
+<p>ls (List): 「周りには何があるのか？」カレントディレクトリ（今いる場所）のファイルやディレクトリを一覧表示します。</p>
+<ul>
+  <li>ls -l: 詳細表示（パーミッション、所有者、サイズ、更新日時など）</li>
+  <li>ls -a: 隠しファイル（.で始まるファイル）もすべて表示
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls -la
+# -&gt; total 28
+# -&gt; drwxr-xr-x 1 ruri ruri 4096 Sep 12 01:23 .
+# -&gt; drwxr-xr-x 1 root root 4096 Sep 12 01:20 ..
+# -&gt; -rw------- 1 ruri ruri 1234 Sep 12 01:22 .bash_history
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>cd (Change Directory): ディレクトリを移動します。パスの指定方法には、ルートから記述する絶対パスと、現在地からの位置関係で記述する相対パスがあります。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># /usr/bin へ絶対パスで移動
+cd /usr/bin
+
+# ホームディレクトリへ戻る
+cd ~
+
+# my_research ディレクトリを作成
+mkdir my_research
+
+# my_research へ相対パスで移動
+cd my_research
+</code></pre></div></div>
+
+<p>mkdir (Make Directory): 新しいディレクトリを作成します。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir data scripts results
+</code></pre></div></div>
+
+<p>touch: 空のファイルを作成します。ファイルの最終更新日時を現在時刻に更新する目的でも使われます。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>touch scripts/analysis.py
+</code></pre></div></div>
+
+<p>cp (Copy): ファイルやディレクトリをコピーします。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># ファイルを同じディレクトリに別名でコピー
+cp scripts/analysis.py scripts/analysis_backup.py
+</code></pre></div></div>
+
+<p>mv (Move): ファイルやディレクトリを移動、または名前を変更します。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># ファイルを別のディレクトリに移動
+mv analysis_backup.py results/
+
+# ファイル名を変更
+mv analysis.py main_analysis.py
+</code></pre></div></div>
+
+<p>rm (Remove): ファイルを削除します。rmコマンドで削除したファイルはゴミ箱には入らず、即座に消去されるので、細心の注意を払って使ってください。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rm -r: ディレクトリを中身ごと再帰的に削除します。
+
+# ファイルを削除
+rm results/analysis_backup.py
+
+# ディレクトリを削除（中身が空である必要がある）
+rmdir data
+</code></pre></div></div>
+
+<p>cat, less, head, tail: ファイルの中身を表示します。</p>
+
+<p>cat: ファイル全体を一度に表示します。短いファイル向け。</p>
+
+<p>less: ファイルをインタラクティブに閲覧します。巨大なログファイルなどを見るのに適しています。（qキーで終了）</p>
+
+<p>head: ファイルの先頭部分（デフォルトは10行）を表示します。</p>
+
+<p>tail: ファイルの末尾部分（デフォルトは10行）を表示します。</p>
+
+<h3 id="️-練習問題-2">✏️ 練習問題</h3>
+<ol>
+  <li>cd ~ でホームディレクトリに移動し、mkdir my_research でディレクトリを作成しましょう。
+2.cd my_research で移動し、mkdir data scripts results で3つのサブディレクトリを作成しましょう。</li>
+  <li>touch scripts/analyze.sh で空のスクリプトファイルを作成しましょう。</li>
+  <li>cp scripts/analyze.sh scripts/backup_analyze.sh でファイルをコピーしましょう。</li>
+  <li>ls scripts を実行し、2つのファイルが存在することを確認しましょう。</li>
+  <li>rm scripts/backup_analyze.sh でバックアップファイルを削除し、ls scripts で消えたことを確認しましょう。</li>
+</ol>
+
+<h2 id="第4章環境の拡張---パッケージ管理と権限">第4章：環境の拡張 - パッケージ管理と権限</h2>
+
+<h3 id="-目標-3">🎯 目標</h3>
+
+<blockquote>
+  <p>パッケージマネージャー apt を使って、必要なソフトウェアを自分でインストールできるようになる。<br />
+sudo の意味と、Linuxの基本的なファイル権限（パーミッション）について理解する。</p>
+</blockquote>
+
+<h3 id="-解説-3">📖 解説</h3>
+
+<p>Linux環境の大きな利点の一つが、aptに代表されるパッケージ管理システムの存在です。これは、ソフトウェアのインストール、アップデート、アンインストールを一元管理してくれるツールです。App StoreやGoogle Playストアのコマンドライン版を想像すると分かりやすいでしょう。</p>
+
+<p>sudo とは？
+sudo (Super User Do) は、コマンドをシステムの管理者権限（root権限）で実行するためのコマンドです。システムの根幹に関わる操作、例えばソフトウェアのインストールやシステム設定の変更などには、この sudo をコマンドの前に付ける必要があります。実行する際には、Ubuntuの初期設定で決めたパスワードの入力が求められます。</p>
+
+<p>パーミッションとは？
+Linuxは複数のユーザーが同時に利用することを前提に設計されたOSであり、ファイルやディレクトリごとに「誰が何をして良いか」という権限（パーミッション）が厳密に定められています。ls -lで表示される -rwxr-xr-x のような文字列がそれです。</p>
+
+<p>最初の1文字: dならディレクトリ、-ならファイル。
+-続く9文字: 3文字ずつのブロックで、左から「所有者」「グループ」「その他のユーザー」に対する権限を示します。</p>
+
+<ul>
+  <li>r: 読み取り (read)</li>
+  <li>w: 書き込み (write)</li>
+  <li>x: 実行 (execute)</li>
+</ul>
+
+<h3 id="-コードを交えた解説-3">💻 コードを交えた解説</h3>
+
+<p>ソフトウェアをインストールする前には、まずパッケージリストを最新の状態にするのが作法です。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># パッケージリストを更新 (利用可能なパッケージのカタログを最新にする)
+sudo apt update
+
+# インストール済みのパッケージをアップグレード (実際に更新を適用する)
+sudo apt upgrade
+</code></pre></div></div>
+
+<p>&amp;&amp; は、左のコマンドが成功したら、続けて右のコマンドを実行するという意味です。そのため、sudo apt update &amp;&amp; sudo apt upgrade と一行で実行するのが一般的です。</p>
+
+<p>では、実際に neofetch という、システムの情報をカッコよく表示してくれるツールをインストールしてみましょう。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt install neofetch
+</code></pre></div></div>
+
+<p>インストールが終わったら、neofetch と打って実行してみてください。</p>
+
+<p>次に、パーミッションを変更してみましょう。chmod (Change Mode) コマンドを使います。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># test.sh という空のファイルを作成
+touch test.sh
+
+# 詳細表示でパーミッションを確認
+ls -l test.sh
+# -&gt; -rw-r--r-- 1 ruri ruri 0 Sep 12 01:50 test.sh
+# 所有者は読み書き(rw)可能だが、実行(x)はできない
+
+# 所有者に実行権限(x)を付与する
+chmod u+x test.sh
+
+# 再度確認
+ls -l test.sh
+# -&gt; -rwxr--r-- 1 ruri ruri 0 Sep 12 01:50 test.sh  (色も変わることが多い)
+# 所有者の権限が rwx になった
+</code></pre></div></div>
+
+<p>数字を使って chmod 755 test.sh のように指定することもできます。これは r=4, w=2, x=1 の合計値で、所有者に7(rwx)、グループに5(r-x)、その他に5(r-x)の権限を与える、という意味です。自作のシェルスクリプトを実行可能にする際によく使います。</p>
+
+<h3 id="️-練習問題-3">✏️ 練習問題</h3>
+
+<ol>
+  <li>sudo apt update &amp;&amp; sudo apt upgrade を実行し、システムを最新の状態に保ちましょう。</li>
+  <li>sudo apt install neofetch を実行し、システム情報を表示するツールをインストールしましょう。</li>
+  <li>インストール後、neofetch コマンドを実行して結果を確認しましょう。</li>
+  <li>touch test.sh でファイルを作成し、ls -l test.sh で初期の権限を確認しましょう。</li>
+  <li>chmod 755 test.sh を実行して実行権限を付与し、再度 ls -l test.sh を実行して権限表記が変わったことを確認しましょう。</li>
+</ol>
+
+<h2 id="第5章開発効率の向上---vscodeとの連携">第5章：開発効率の向上 - VSCodeとの連携</h2>
+
+<h3 id="-目標-4">🎯 目標</h3>
+
+<blockquote>
+  <p>VSCodeとWSLを連携させ、Windowsの快適なGUIエディタでLinux上のファイルを直接編集・実行できる環境を構築する。</p>
+</blockquote>
+
+<h3 id="-解説-4">📖 解説</h3>
+
+<p>コマンドライン操作は強力ですが、本格的なコーディングには高機能なエディタが欠かせません。そこで登場するのが、Microsoftが開発したVisual Studio Code (VSCode) と、その拡張機能「Remote - WSL」です。</p>
+
+<p>この拡張機能は、VSCodeのGUI部分をWindowsで動かしつつ、ファイル処理やプログラムの実行、デバッグといった機能（いわばエディタの頭脳）をWSL側で動かすという仕組みになっています。これにより、あたかもLinux上でVSCodeを直接動かしているかのような、完全に統合された開発体験が得られます。</p>
+
+<p>💻 コードを交えた解説</p>
+
+<p>まず、Windows側にVSCodeをインストールし、拡張機能マーケットプレースから「Remote - WSL」をインストールしてください。</p>
+
+<p>準備ができたら、WSLのターミナルから操作します。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 開発用のディレクトリを作成して移動
+mkdir ~/vscode_project
+cd ~/vscode_project
+
+# カレントディレクトリをVSCodeで開く
+code .
+</code></pre></div></div>
+
+<p>code . というコマンドを実行すると、Windows側でVSCodeが起動し、自動的にWSL環境に接続します。初回はWSL側へのコンポーネントのインストールが走るため少し時間がかかります。</p>
+
+<p>VSCodeが起動したら、左下の緑色の部分に「WSL: Ubuntu」のように表示されていることを確認してください。これが接続中の証です。</p>
+
+<p>あとは、VSCodeのファイルエクスプローラーで新しいファイルを作成し、コードを書いてみましょう。例えば hello.py を作成し、以下のように記述します。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># hello.py
+import platform
+
+print("Hello from VSCode on WSL!")
+print(f"This script is running on: {platform.system()}")
+</code></pre></div></div>
+
+<p>ファイルを保存したら、VSCodeの統合ターミナル（Ctrl + @キーで開閉）を開きます。このターミナルは、WSLのbashに直接接続されています。ここでプログラムを実行します。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 hello.py
+# -&gt; Hello from VSCode on WSL!
+# -&gt; This script is running on: Linux
+</code></pre></div></div>
+
+<p>見事に、Windows上のVSCodeから、WSL内のPythonインタプリタを使ってスクリプトを実行できました。</p>
+
+<h3 id="️-練習問題-4">✏️ 練習問題</h3>
+<ol>
+  <li>WindowsにVSCodeをインストールし、拡張機能マーケットプレースから「Remote - WSL」をインストールしましょう。</li>
+  <li>WSLのターミナルで mkdir ~/vscode_test &amp;&amp; cd ~/vscode_test を実行し、テスト用のディレクトリを作成して移動しましょう。</li>
+  <li>code . コマンドを実行し、VSCodeが起動してWSLに接続されることを確認しましょう。</li>
+  <li>VSCode内で新しいファイル app.js を作成し、console.log(“Hello from Node.js on WSL!”); と記述して保存しましょう。</li>
+  <li>VSCodeの統合ターミナルで node app.js を実行し、結果が表示されることを確認しましょう。（node が未インストールの場合は sudo apt install nodejs でインストールしてください）</li>
+</ol>
+
+<h1 id="第2部実践力の養成-中級レベル">第2部：実践力の養成（🟡 中級レベル）</h1>
+<h2 id="作用注正直ここから先は必要性が薄いと思ってる">作用注：正直、ここから先は必要性が薄いと思ってる。</h2>
+<blockquote>
+  <p>目標：自身の研究・開発分野で必要な環境をWSL上に構築し、日常的なタスクを自動化・効率化できるようになる。</p>
+</blockquote>
+
+<p>この部では、より実践的な内容に踏み込みます。PythonやRといった解析言語の環境構築、Gitによるバージョン管理、そして定型作業を自動化するシェルスクリプトの作成方法を学び、研究活動におけるWSLの価値を本格的に引き出していきます。</p>
+
+<h2 id="第6章再現可能な解析環境---python-r-git">第6章：再現可能な解析環境 - Python, R, Git</h2>
+
+<h3 id="-目標-5">🎯 目標</h3>
+<blockquote>
+  <p>conda を用いて、プロジェクトごとに独立したPythonの仮想環境を構築・管理できるようになる。<br />
+WSL上にRの解析環境を構築できるようになる。<br />
+git を用いた基本的なバージョン管理（クローン、コミット、プッシュ）ができるようになる。</p>
+</blockquote>
+
+<h3 id="-解説-5">📖 解説</h3>
+
+<p>研究や開発を進める上で、「環境の再現性」は極めて重要です。半年前の自分の解析が、今実行するとエラーで動かない、共同研究者にコードを渡したら、ライブラリのバージョン違いで動かない、といった事態は頻繁に発生します。これを防ぐのが、仮想環境とバージョン管理の考え方です。</p>
+
+<p><strong>なぜ仮想環境が必要か？</strong>
+プロジェクトAではライブラリXのバージョン1.0が、プロジェクトBではバージョン2.0が必要になる、という状況はよくあります。PC全体で一つの環境を共有していると、このような競合に対応できません。仮想環境は、プロジェクトごとに独立した部屋（環境）を用意するようなものです。各部屋では、他の部屋に影響を与えることなく、好きなバージョンのライブラリを自由にインストールできます。生命科学や機械学習の分野では、conda というツールがこの目的で広く使われています。</p>
+
+<p><strong>バージョン管理システムGitとは？</strong>
+Gitは、ファイルの変更履歴を記録・追跡するためのシステムです。レポートを「report_v1.docx」「report_v2.docx」「report_final.docx」「report_final_revised.docx」のように手動で保存していく作業を、より高度かつ体系的に行ってくれるツールだと考えてください。Gitを使うことで、以下のメリットが得られます。</p>
+<ul>
+  <li>変更履歴の記録： 「いつ、誰が、どこを、なぜ変更したのか」を記録できます。</li>
+  <li>過去のバージョンへの復元： コードを大胆に変更して失敗しても、ボタン一つで正常に動いていた過去の状態に戻せます。</li>
+  <li>共同作業の効率化： 複数人での開発において、誰がどの部分を変更したかを容易に把握し、変更点を統合（マージ）できます。</li>
+</ul>
+
+<h3 id="-コードを交えた解説-4">💻 コードを交えた解説</h3>
+
+<ol>
+  <li>conda によるPython環境構築
+まず、condaのインストーラーであるMinicondaをWSLに導入します。</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># インストーラーをダウンロード
+wget [https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh](https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh)
+
+# インストーラーを実行
+bash Miniconda3-latest-Linux-x86_64.sh
+
+# ターミナルを再起動して設定を反映
+# (または source ~/.bashrc を実行)
+</code></pre></div></div>
+
+<p>インストール中に何度か質問されますが、基本的にはEnterキーを押して進み、ライセンス同意(yes)とconda initの実行(yes)を選択してください。</p>
+
+<p>インストール後、bio-envという名前で、Python 3.9と基本的なデータサイエンスライブラリを含む新しい仮想環境を作成してみましょう。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 'bio-env'という名前で仮想環境を作成
+conda create --name bio-env python=3.9 pandas jupyterlab
+
+# 作成した環境を有効化（アクティベート）する
+conda activate bio-env
+
+# プロンプトの先頭に (bio-env) と表示され、環境が変わったことがわかる
+# (bio-env) ruri@hostname:~$
+
+# この環境から抜ける（非アクティブ化）
+conda deactivate
+</code></pre></div></div>
+
+<ol>
+  <li>Rの環境構築
+次に、統計解析言語Rをインストールします。これはaptを使ってシステムに直接インストールするのが一般的です。</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Rの基本パッケージをインストール
+sudo apt install r-base
+
+# Rを起動
+R
+</code></pre></div></div>
+
+<p>Rコマンドで対話環境が起動します。ここでinstall.packages(“tidyverse”)のように入力すれば、データサイエンスで人気のtidyverseパッケージ群をインストールできます。</p>
+
+<ol>
+  <li>GitとGitHubの基本サイクル
+まず、GitHub上で新しいリポジトリ（例: wsl-research-project）を作成してください。</li>
+</ol>
+
+<p>次に、WSLのターミナルで以下の操作を行います。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Gitの初期設定（初回のみ）
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+
+# GitHubからリポジトリをローカルにコピー（クローン）
+# URLはご自身のものに置き換えてください
+git clone [https://github.com/YourName/wsl-research-project.git](https://github.com/YourName/wsl-research-project.git)
+
+# 作成されたディレクトリに移動
+cd wsl-research-project/
+
+# 新しいファイルを作成
+echo "# My Research Project" &gt; README.md
+
+# 変更をステージングエリアに追加
+git add README.md
+
+# 変更内容を記録（コミット）
+git commit -m "Add initial README file"
+
+# GitHubにリモートリポジトリに変更を反映（プッシュ）
+git push
+</code></pre></div></div>
+
+<p>この add -&gt; commit -&gt; push の流れが、Gitを使った開発の最も基本的なサイクルです。</p>
+
+<h3 id="️-練習問題-5">✏️ 練習問題</h3>
+<ol>
+  <li>MinicondaをWSLにインストールし、ターミナルを再起動して conda コマンドが使えることを確認しましょう。</li>
+  <li>conda create –name ml-env python=3.10 scikit-learn matplotlib というコマンドで、機械学習用の新しい仮想環境を作成し、アクティベートしてみましょう。</li>
+  <li>sudo apt install r-base でRをインストールした後、Rの対話環境を起動し、install.packages(“ggplot2”) を実行して作図パッケージをインストールしてみましょう。（q()でRを終了できます）</li>
+  <li>ご自身のGitHubアカウントに my-first-repo という名前で新しいリポジトリを作成し、WSLに git clone しましょう。</li>
+  <li>cloneしたディレクトリ内で touch first_file.txt というファイルを作成し、git add, git commit -m “Add first file”, git push の一連の流れを実行して、GitHub上でファイルが作成されていることを確認しましょう。</li>
+</ol>
+
+<h2 id="第7章定型作業の自動化---シェルスクリプト入門">第7章：定型作業の自動化 - シェルスクリプト入門</h2>
+
+<h3 id="-目標-6">🎯 目標</h3>
+
+<blockquote>
+  <p>複数のコマンドをまとめた「シェルスクリプト」を作成し、実行できるようになる。<br />
+シェルスクリプト内で変数、forループ、if文を使い、より高度な自動化処理を記述できるようになる。</p>
+</blockquote>
+
+<h3 id="-解説-6">📖 解説</h3>
+
+<p>研究活動では、「大量のデータファイルに対して、同じ一連の処理を繰り返し行う」という場面が頻繁に発生します。例えば、100個のFASTQファイルに対して、品質チェック、トリミング、マッピングという3つのコマンドを順番に実行する場合、手作業で300回コマンドを打つのは現実的ではありません。</p>
+
+<p>このような定型作業を自動化するのがシェルスクリプトです。シェルスクリプトとは、ターミナルで実行する一連のコマンドを、一つのテキストファイルにまとめたものです。このファイルに実行権限を与えて実行するだけで、記述されたコマンドが上から順番に自動で実行されます。</p>
+
+<p>さらに、変数やループ、条件分岐といったプログラミングの要素を組み合わせることで、単なるコマンドの羅列に留まらない、柔軟で強力な自動化ツールを作成することができます。</p>
+
+<h3 id="-コードを交えた解説-5">💻 コードを交えた解説</h3>
+
+<ol>
+  <li>はじめてのシェルスクリプト
+まず、非常に簡単なスクリプトを作成してみましょう。hello.sh という名前のファイルを作成し、VSCodeなどのエディタで以下の内容を記述します。</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/bash
+
+# このスクリプトは "Hello, World!" と表示します
+echo "Hello, Shell Script!"
+echo "Today is $(date)"
+</code></pre></div></div>
+
+<ul>
+  <li>#!/bin/bash: “おまじない”のようなもので、このスクリプトをbashというシェルで実行することを宣言しています。</li>
+  <li>#: #で始まる行はコメントとして扱われ、実行時には無視されます。</li>
+  <li>echo: 後に続く文字列や変数の内容を画面に表示するコマンドです。</li>
+  <li>$(date): dateコマンドを実行し、その実行結果（現在日時）をこの場所に展開します。</li>
+</ul>
+
+<p>スクリプトを実行するには、まず実行権限を与える必要があります。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 実行権限を付与
+chmod 755 hello.sh
+
+# スクリプトを実行
+./hello.sh
+
+# -&gt; Hello, Shell Script!
+# -&gt; Today is Fri Sep 12 01:49:17 JST 2025
+
+</code></pre></div></div>
+
+<p>./ は「カレントディレクトリにある」という意味です。これがないと、システムは別の場所（$PATH環境変数で指定されたディレクトリ）にhello.shコマンドを探しに行ってしまい、見つけられません。</p>
+
+<ol>
+  <li>forループを使った繰り返し処理
+forループを使うと、複数のファイルに対して同じ処理を簡単に行えます。</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/bash
+
+# dataディレクトリにある、.fastqで終わる全てのファイルに対してループ処理
+for file in data/*.fastq
+do
+  echo "------------------------------"
+  echo "Processing file: $file"
+  # ここに実際の解析コマンドを書く
+  # 例: fastqc $file
+  echo "Done."
+done
+
+echo "All jobs finished!"
+</code></pre></div></div>
+
+<p>$file の部分が、ループの各回で data/sample1.fastq, data/sample2.fastq, … のように置き換わっていきます。<code class="language-plaintext highlighter-rouge">$fileのように、$</code>を先頭につけることで変数の値を参照できます。</p>
+
+<ol>
+  <li>if文を使った条件分岐
+if文を使うと、「もし〜〜ならば、この処理を実行する」という条件に応じた処理の分岐ができます。例えば、「処理結果を保存するディレクトリがなければ作成する」といった処理に役立ちます。</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/bash
+
+OUTPUT_DIR="results"
+
+# resultsディレクトリが存在しないかチェック
+if [ ! -d "$OUTPUT_DIR" ]; then
+  echo "Output directory '$OUTPUT_DIR' not found. Creating it..."
+  mkdir "$OUTPUT_DIR"
+else
+  echo "Output directory '$OUTPUT_DIR' already exists."
+fi
+</code></pre></div></div>
+
+<ul>
+  <li>OUTPUT_DIR=”results”: OUTPUT_DIRという名前の変数にresultsという文字列を代入しています。</li>
+  <li>` if [ ! -d “＄OUTPUT_DIR” ] ` : -dはディレクトリかどうかをチェックする演算子、!は否定を意味します。つまり「もし$OUTPUT_DIRがディレクトリでなければ」という条件です。変数を”で囲むのは、ファイル名にスペースが含まれる場合などに備えた良い習慣です。</li>
+</ul>
+
+<h3 id="️-練習問題-6">✏️ 練習問題</h3>
+<ol>
+  <li>data というディレクトリを作成し、その中に touch sample1.fastq sample2.fastq sample3.fastq コマンドで3つの空のファイルを作成しましょう。</li>
+  <li>for file in data/*.fastq; do echo “File found: $file”; done というforループを、スクリプトファイルにはせず、ターミナルに直接打ち込んで実行してみましょう。</li>
+  <li>上記のプロットに記載した process.sh のようなスクリプトを作成し、実行権限を与えて ./process.sh で実行してみましょう。</li>
+  <li>（応用）process.sh を改良し、「results ディレクトリが存在しなければ作成する」というif文を追加してみましょう。そして、ループ処理の中で、各ファイルの処理結果（の代わり）として touch results/$(basename $file).processed というコマンドを実行し、results ディレクトリに処理済みファイルが作成されるようにしてみましょう。（basenameはパスからファイル名だけを取り出すコマンドです）</li>
+</ol>
+
+<h2 id="第8章解析パイプラインの実行---バイオインフォマティクスツール">第8章：解析パイプラインの実行 - バイオインフォマティクスツール</h2>
+
+<h3 id="-目標-7">🎯 目標</h3>
+
+<blockquote>
+  <p>conda を利用して、専門的なバイオインフォマティクスツールをインストールできるようになる。<br />
+パイプ(｜)とリダイレクト(＞)を使いこなし、コマンドを繋げて効率的な処理を行えるようになる。<br />
+WSL上でJupyterLabやRStudio Serverを起動し、Windowsのブラウザからアクセスできるようになる。</p>
+</blockquote>
+
+<h3 id="-解説-7">📖 解説</h3>
+
+<p>ここまでの章で学んだ知識を組み合わせることで、いよいよ実際の研究に近い、データ解析のパイプライン（一連の処理の流れ）をWSL上で実行できます。生命科学の分野では、膨大な数のオープンソースツールが開発されており、その多くはLinux環境での利用が前提となっています。WSLは、これらのツールをWindows上で利用するための、まさに最適なプラットフォームです。</p>
+
+<p><strong>パイプとリダイレクト</strong></p>
+<ul>
+  <li>Linuxコマンドラインの哲学の一つに、「一つのことをうまくやる、小さなプログラムを組み合わせる」というものがあります。この「組み合わせ」を実現するのが、<strong>パイプ(｜)とリダイレクト(＞)</strong>です。</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>パイプ (</td>
+          <td>): あるコマンドの標準出力（画面に表示される結果）を、別のコマンドの標準入力（キーボードからの入力）に直接繋ぎます。これにより、中間ファイルを作成することなく、複数の処理を連続して実行できます。</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>リダイレクト (&gt;): コマンドの標準出力を、画面に表示する代わりにファイルに書き出します。処理結果を保存する際に頻繁に利用します。&gt;はファイルを上書きし、»はファイルに追記します。</li>
+</ul>
+
+<p><strong>Webベースの解析環境</strong>
+JupyterLabやRStudioは、データ分析において非常に人気のある対話的な開発環境です。WSL上でこれらのサーバーを起動し、Windows側のWebブラウザから localhost (自分自身のPCを指す特別なアドレス) を通じてアクセスすることで、Windowsの快適なGUIとWSLの強力な計算環境を両立させることができます。この時、WSL内で動いているサーバーの特定の「ポート番号」と、Windows側が通信できるように、WSLが自動的にポートフォワーディングを行ってくれています。</p>
+
+<h3 id="-コードを交えた解説-6">💻 コードを交えた解説</h3>
+
+<ol>
+  <li>バイオインフォマティクスツールのインストール
+第6章で作成したcondaのbio-env環境に必要なツールを追加します。biocondaという、生命科学分野のツールに特化したチャンネルを指定するのが一般的です。</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># conda環境を有効化
+conda activate bio-env
+
+# biocondaチャンネルを追加して、fastqcとsamtoolsをインストール
+conda install -c bioconda fastqc samtools
+</code></pre></div></div>
+
+<ol>
+  <li>パイプとリダイレクトの実践
+これらの機能を、すでにお馴染みのコマンドで試してみましょう。</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># ls -l の出力（詳細なファイルリスト）を...
+# head -n 5 の入力に繋ぎ、先頭5行だけを表示する
+ls -l /etc/ | head -n 5
+
+# ls -l の出力を、画面ではなく file_list.txt というファイルに書き出す
+ls -l &gt; file_list.txt
+
+# catでファイルの中身を確認
+cat file_list.txt
+
+# dateコマンドの出力を、file_list.txt に追記する
+date &gt;&gt; file_list.txt
+
+# 再度、中身を確認
+cat file_list.txt
+</code></pre></div></div>
+
+<p>このように、小さなコマンドを繋ぎ合わせることで、複雑な処理を実現できるのがLinuxの強力な点です。</p>
+
+<ol>
+  <li>JupyterLabの起動とブラウザからのアクセス
+bio-env環境が有効化されていることを確認して、JupyterLabを起動します。</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># (bio-env) ruri@hostname:~$
+
+# JupyterLabを起動
+jupyter lab
+</code></pre></div></div>
+
+<p>起動すると、ターミナル上に以下のようなメッセージが表示されます。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>To access the server, open this file in a browser:
+    file:///home/ruri/.local/share/jupyter/runtime/jpserver-12345-open.html
+Or copy and paste one of these URLs:
+    http://localhost:8888/lab?token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ or [http://127.0.0.1:8888/lab?token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx](http://127.0.0.1:8888/lab?token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx)
+
+</code></pre></div></div>
+
+<p>この http://localhost:8888/lab?token=… から始まるURLを Ctrlキーを押しながらクリックするか、コピーしてWindowsのWebブラウザ（ChromeやEdgeなど）のアドレスバーに貼り付けてください。すると、ブラウザ上でJupyterLabのインターフェースが開きます。</p>
+
+<p>これで、WSLの計算リソースを使いながら、Windowsの使い慣れたブラウザでPythonのコーディングとデータ分析ができます。</p>
+
+<h3 id="️-練習問題-7">✏️ 練習問題</h3>
+<ol>
+  <li>conda activate bio-env で環境を有効化した後、conda install -c bioconda bwa コマンドで、代表的なマッピングツールであるBWAをインストールしてみましょう。</li>
+  <li>ls /bin ｜ sort ｜ head -n 10 というコマンドを実行してみましょう。/bin ディレクトリのファイルリストを、アルファベット順にソート(sort)し、その結果の先頭10行を表示する、というパイプを使った処理です。<br />
+※作用注：｜が全角になっているので注意</li>
+  <li>env &gt; environment_variables.txt というコマンドを実行してみましょう。現在の環境変数の一覧をファイルに保存するリダイレクト処理です。catで中身を確認してみてください。</li>
+  <li>（WSL上で）conda activate bio-env を実行した後、jupyter lab を起動し、表示されたURLをWindowsのブラウザに貼り付けて、JupyterLabにアクセスできることを確認してみましょう。</li>
+</ol>
+
+<h2 id="第9章究極の再現性---dockerコンテナ入門">第9章：究極の再現性 - Dockerコンテナ入門</h2>
+
+<h3 id="-目標-8">🎯 目標</h3>
+
+<blockquote>
+  <p>Dockerコンテナがどのような技術であり、なぜ研究の再現性確保に重要なのかを理解する。<br />
+WSL2と連携したDocker Desktopを導入し、基本的なDockerコマンドを実行できるようになる。</p>
+</blockquote>
+
+<h3 id="-解説-8">📖 解説</h3>
+
+<p><strong>Dockerとは何か？</strong><br />
+ Dockerは、「コンテナ」と呼ばれる、OSレベルの軽量な仮想環境を作成・配布・実行するためのプラットフォームです。従来の仮想マシンがOS全体をエミュレートするのに対し、コンテナはホストOSのカーネルを共有し、アプリケーションとその依存ライブラリ群だけを隔離した環境で動かします。これにより、仮想マシンよりも遥かに高速・軽量に動作します。</p>
+
+<p>スキーに例えるなら、仮想マシンが「自分専用のスキー場を丸ごと一つ建設する」ようなものだとすれば、コンテナは「必要なコースとリフトだけがパッケージ化された、移動式のミニゲレンデ」のようなものです。どこにでも簡単に持ち運べ、すぐに同じ環境で滑り出すことができます。</p>
+
+<p><strong>なぜ解析環境のコンテナ化が重要なのか？</strong>
+<br />学術研究において、「論文に書かれた通りの手順を追えば、誰もが同じ結果を再現できる」という再現性は、その研究の信頼性を担保する上で生命線です。しかし、解析に使用したツールのバージョン、ライブラリの依存関係、OSの違いなど、環境の僅かな差異が結果を大きく変えてしまうことがあります。</p>
+
+<p>Dockerは、解析に用いた環境（OS、ツール、ライブラリ、設定ファイルなど）を「Dockerイメージ」という一つの固まりとしてパッケージ化し、共有することを可能にします。これにより、共同研究者や論文の読者は、あなたの解析環境を数分で、かつ寸分違わぬ形で自身のPC上に再現できるのです。</p>
+
+<h3 id="-コードを交えた解説-7">💻 コードを交えた解説</h3>
+
+<ol>
+  <li>Docker DesktopのインストールとWSL2連携 まず、WindowsにDocker Desktopをインストールします。公式サイトからインストーラーをダウンロードしてください。</li>
+</ol>
+
+<p>Docker Desktop 公式サイト</p>
+
+<p>インストール中に「Use WSL 2 instead of Hyper-V」のオプションが表示されたら、必ずチェックを入れてください。インストール後、Docker Desktopを起動し、設定画面（歯車アイコン）を開きます。 Settings &gt; Resources &gt; WSL Integration の項目で、Enable integration with my default WSL distro がオンになっていること、そしてUbuntuが有効になっていることを確認してください。</p>
+
+<ol>
+  <li>基本的なDockerコマンド 設定が完了したら、WSLのターミナルを開きます。Docker Desktopが起動していれば、WSL内からdockerコマンドが利用できます。</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Dockerが正常に動作しているか確認
+docker --version
+# -&gt; Docker version 24.0.5, build ...
+
+# "hello-world"イメージを実行する（最も基本的な動作確認）
+# イメージがローカルになければ、自動的にダウンロード(pull)してから実行(run)する
+docker run hello-world
+</code></pre></div></div>
+
+<p>Hello from Docker! というメッセージが表示されれば成功です。</p>
+
+<p>次に、バイオインフォマティクスでよく使われるsamtoolsの公式イメージを使ってみましょう。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Docker Hubからsamtoolsのイメージをダウンロード(pull)する
+docker pull bioconda/samtools
+
+# ダウンロード済みのローカルイメージ一覧を表示
+docker images
+# -&gt; REPOSITORY          TAG       IMAGE ID       CREATED        SIZE
+# -&gt; bioconda/samtools   latest    xxxxxxxxxxxx   2 weeks ago    500MB
+# -&gt; hello-world         latest    xxxxxxxxxxxx   3 months ago   9.14kB
+
+# samtoolsのコンテナを起動し、中に入る(-it)
+# コンテナが終了したら自動で削除する(--rm)
+# コンテナ内でbashを起動する
+docker run --rm -it bioconda/samtools bash
+
+# コンテナ内のプロンプトに変わる
+# root@xxxxxxxxxxxx:/data#
+
+# コンテナ内でsamtoolsコマンドを実行してみる
+samtools --version
+# -&gt; samtools 1.15.1
+# -&gt; Using htslib 1.15.1
+
+# exitと打つとコンテナから抜け、コンテナは削除される
+exit
+</code></pre></div></div>
+
+<p>このように、conda installなどでホスト環境を汚すことなく、必要なツールが完璧にセットアップされた環境を、コマンド一つで呼び出して利用できるのがDockerの強力な点です。</p>
+
+<h3 id="️-練習問題-8">✏️ 練習問題</h3>
+<ol>
+  <li>Docker Desktop for Windowsをインストールし、設定画面でWSL2との連携が有効になっていることを確認しましょう。</li>
+  <li>WSLのターミナルで docker run hello-world を実行し、Dockerが正常に動作することを確かめましょう。</li>
+  <li>docker pull ubuntu:22.04 コマンドで、最新のUbuntuの公式イメージを取得してみましょう。</li>
+  <li>docker run –rm -it ubuntu:22.04 bash を実行して、”まっさらな”Ubuntuのコンテナの中に入ってみましょう。lsやcat /etc/os-releaseなどのコマンドを実行し、ホストのWSL環境とは隔離されていることを体感してください。（exitでコンテナを終了できます）</li>
+</ol>
+
+<h2 id="第10章長時間計算との付き合い方---ジョブ管理の初歩">第10章：長時間計算との付き合い方 - ジョブ管理の初歩</h2>
+
+<h3 id="-目標-9">🎯 目標</h3>
+<blockquote>
+  <p>時間のかかる処理をバックグラウンドで実行できるようになる。<br />
+ターミナルの接続が切れても処理を継続させるツールtmuxの基本操作を習得する。<br />
+htopコマンドを使い、システムのCPUやメモリの使用状況を監視できるようになる。</p>
+</blockquote>
+
+<h3 id="-解説-9">📖 解説</h3>
+
+<p>シーケンスデータのマッピングや機械学習モデルのトレーニングなど、研究における計算処理には数時間、時には数日かかるものも珍しくありません。このような長時間ジョブを実行している間、ターミナルを開きっぱなしにしておくのは非効率ですし、ネットワークの切断やPCのスリープなどで処理が中断してしまうリスクもあります。</p>
+
+<p>ここでは、大規模な計算機サーバー（スパコン）などで使われるジョブ管理の初歩的なテクニックを学び、WSL上で長時間計算を賢く実行する方法を身につけます。</p>
+
+<h4 id="バックグラウンド実行--nohup">バックグラウンド実行 (&amp;, nohup)</h4>
+
+<p>&amp;: コマンドの末尾に&amp;を付けると、そのコマンドはバックグラウンドで実行され、すぐにターミナルの操作が返ってきます。ただし、この状態ではターミナルを閉じると処理も一緒に終了してしまいます。</p>
+
+<p>nohup: nohup (No Hang Up) コマンドと一緒に実行すると、ターミナルを閉じても処理が終了しなくなります。バックグラウンドジョブの実行に非常に便利です。</p>
+
+<p>セッション管理 (tmux)
+tmuxは、一つのターミナルウィンドウ内で複数の仮想的なターミナル（セッション）を作成し、それらを自由に切り替えたり、切り離したり（デタッチ）、再接続したり（アタッチ）できるツールです。
+tmuxのセッション内で長時間かかるコマンドを実行しておけば、ターミナルを閉じてもセッションはバックグラウンドで生き続けます。後で再びターミナルを開き、そのセッションにアタッチすれば、何事もなかったかのように処理の続きから操作を再開できます。</p>
+
+<p>リソース監視 (htop)
+htopは、CPUやメモリの使用率、実行中のプロセスなどを対話的に表示してくれるツールです。topコマンドの進化版で、よりカラフルで直感的にシステムの負荷状況を把握できます。自分の実行したジョブがどれくらいの計算資源を消費しているかを確認するのに役立ちます。</p>
+
+<h3 id="-コードを交えた解説-8">💻 コードを交えた解説</h3>
+
+<p>まず、tmuxとhtopをインストールします。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt update
+sudo apt install tmux htop
+</code></pre></div></div>
+
+<ol>
+  <li>バックグラウンド実行
+sleepコマンド（指定した秒数だけ待機する）を使って、長時間ジョブを疑似的に再現します。</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 300秒(5分)待つ処理をバックグラウンドで実行
+sleep 300 &amp;
+
+# [1] 12345 のようにジョブIDとプロセスIDが表示され、すぐにプロンプトが返ってくる
+# -&gt; [1] 12345
+
+# 現在実行中のバックグラウンドジョブ一覧を表示
+jobs
+# -&gt; [1]+  Running                 sleep 300 &amp;
+</code></pre></div></div>
+
+<ol>
+  <li>tmuxの基本操作
+tmuxの操作は、Ctrl+b（これをプレフィックスキーと呼びます）を押した後に、別のキーを入力することで行います。</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 新しいtmuxセッションを開始
+tmux
+
+# (tmuxセッションの中に入る。画面下部に緑色のステータスバーが表示される)
+
+# ここで長時間かかるコマンドを実行する
+# 例: sleep 1000
+
+# セッションから離れる（デタッチする）
+# Ctrl+b を押してから、d キーを押す
+</code></pre></div></div>
+
+<p>デタッチすると元のターミナルに戻りますが、sleep 1000の処理はtmuxセッションの中で生き続けています。ターミナルを一度閉じ、再度開いてから以下のコマンドを実行します。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 現在存在するtmuxセッションの一覧を表示
+tmux ls
+# -&gt; 0: 1 windows (created Fri Sep 12 02:20:00 2025)
+
+# 最後のセッションに再接続（アタッチ）する
+tmux attach
+
+# (先ほどのセッションに戻り、sleep 1000がまだ実行中であることが確認できる)
+</code></pre></div></div>
+
+<ol>
+  <li>htopによるリソース監視
+単純にコマンドを実行するだけです。</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>htop
+</code></pre></div></div>
+
+<p>CPUのコアごとの使用率、メモリ使用量、実行中プロセスのリストなどが表示されます。矢印キーでリストをスクロールしたり、F9キーでプロセスを終了させたりできます。自分の実行した解析ジョブがどの程度CPUを使っているかなどを確認するのに便利です。（qキーで終了します）</p>
+
+<h3 id="️-練習問題-9">✏️ 練習問題</h3>
+<ol>
+  <li>sleep 300 &amp; を実行し、プロセスをバックグラウンドで実行しましょう。その後、jobs コマンドでジョブが”Running”状態であることを確認しましょう。</li>
+  <li>tmux を起動し、htop を実行してみましょう。その後、Ctrl+b -&gt; d でデタッチし、一度ターミナルを閉じてから再度開き、tmux attach でhtopが動き続けているセッションに戻れることを体験しましょう。（qでhtopを終了し、exitでtmuxセッションを終了できます）</li>
+  <li>（応用）nohup sleep 600 &gt; sleep.log &amp; というコマンドを実行してみましょう。これは、ターミナルを閉じても処理が継続し(nohup)、かつ画面出力をsleep.logというファイルに書き出す(&gt;)コマンドです。実行後にターミナルを閉じ、数分待ってから再度開き、cat sleep.logで中身を確認してみてください。</li>
+</ol>
+
+
+</article>
+
+
+        </main>
+    </div>
+
+    <!-- フッター（色付き） -->
+    <footer class="bg-[#7278a8] text-white mt-8">
+        <div class="container mx-auto px-4 md:px-8 py-8 text-center">
+            <div class="flex flex-wrap justify-center gap-4 md:gap-6 mb-6">
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/" class="text-white/90 hover:text-white transition-colors">ホーム</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/posts/"
+                    class="text-white/90 hover:text-white transition-colors">記事一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/tools/"
+                    class="text-white/90 hover:text-white transition-colors">ツール一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/novel/"
+                    class="text-white/90 hover:text-white transition-colors">Novel</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/game/"
+                    class="text-white/90 hover:text-white transition-colors">Game</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/contact/"
+                    class="text-white/90 hover:text-white transition-colors">お問い合わせ</a>
+            </div>
+            <div class="mb-4 text-white/80 text-sm space-y-1">
+                <p>GitHub: <a
+                        href="https://github.com/ruri-sayo/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog"
+                        class="text-white hover:underline">ruri-sayo</a></p>
+                <p>About us: <a href="https://ruri-sayo.github.io/SSC_site/" class="text-white hover:underline">Sayo
+                        Social Connect</a></p>
+            </div>
+            <p class="text-sm text-white/70">&copy; 2025 <a
+                    href="https://ruri-sayo.github.io/SSC_site/" class="hover:underline">Sayo Social Connect</a>. All
+                Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- モバイルナビゲーション用JavaScript -->
+    <script>
+        (function () {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const menuClose = document.getElementById('mobile-menu-close');
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-menu-overlay');
+
+            function openMenu() {
+                menu.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+                menuBtn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                menu.classList.add('translate-x-full');
+                overlay.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+
+            menuBtn.addEventListener('click', openMenu);
+            menuClose.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+
+            // Escキーでメニューを閉じる
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && !menu.classList.contains('translate-x-full')) {
+                    closeMenu();
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>

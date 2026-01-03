@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- 限定公開運用のため既定で noindex -->
+<meta name="robots" content="noindex,nofollow">
+
+
+<title>麻倉もも論(1) | 城上コードメモ(v2.1:beta)</title>
+
+<!-- Meta Description -->
+<meta name="description"
+  content="声優・麻倉ももの魅力を独自理論で考察するコラム。ビジュアルや声の分析を通じて『動的愛嬌』の正体に迫ります。">
+
+<!-- ファビコン（最適化済みPNG） -->
+<link rel="icon" type="image/png" sizes="32x32" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/apple-touch-icon.png">
+
+<!-- Tailwind CSS CDN -->
+<!--<script src="https://cdn.tailwindcss.com"></script> -->
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+<!-- お好みでカスタム CSS を足す場合（SCSS を使うなら /assets/css/style.css をビルド）-->
+<link rel="stylesheet" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/css/custom.css">
+
+<!-- イベントモード用CSS -->
+<link rel="stylesheet" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/css/events.css">
+
+<!-- イベントデータ埋め込み -->
+<script>
+  window.SHIROGAMI_EVENTS = [
+    
+    {
+      id: "newyear",
+      name: "正月",
+      start_month: 1,
+      start_day: 1,
+      end_month: 1,
+      end_day: 4,
+      bg_color: "#FFE4E8",
+      header_color: "#C41E3A",
+      decoration: "newyear",
+      emoji: "🎍"
+    },
+    
+    {
+      id: "setsubun",
+      name: "節分",
+      start_month: 2,
+      start_day: 3,
+      end_month: 2,
+      end_day: 3,
+      bg_color: "#FFF5E6",
+      header_color: "#8B4513",
+      decoration: "setsubun",
+      emoji: "👹"
+    },
+    
+    {
+      id: "valentine",
+      name: "バレンタイン",
+      start_month: 2,
+      start_day: 14,
+      end_month: 2,
+      end_day: 14,
+      bg_color: "#FFE4EC",
+      header_color: "#FF69B4",
+      decoration: "valentine",
+      emoji: "💝"
+    },
+    
+    {
+      id: "aprilfool",
+      name: "エイプリルフール",
+      start_month: 4,
+      start_day: 1,
+      end_month: 4,
+      end_day: 1,
+      bg_color: "#E6FFE6",
+      header_color: "#32CD32",
+      decoration: "aprilfool",
+      emoji: "🤡"
+    },
+    
+    {
+      id: "tango",
+      name: "端午の節句",
+      start_month: 5,
+      start_day: 5,
+      end_month: 5,
+      end_day: 5,
+      bg_color: "#E6F0FF",
+      header_color: "#4169E1",
+      decoration: "tango",
+      emoji: "🎏"
+    },
+    
+    {
+      id: "tanabata",
+      name: "七夕",
+      start_month: 7,
+      start_day: 7,
+      end_month: 7,
+      end_day: 7,
+      bg_color: "#E6E6FF",
+      header_color: "#6A5ACD",
+      decoration: "tanabata",
+      emoji: "🎋"
+    },
+    
+    {
+      id: "obon",
+      name: "お盆",
+      start_month: 8,
+      start_day: 13,
+      end_month: 8,
+      end_day: 16,
+      bg_color: "#F0FFF0",
+      header_color: "#228B22",
+      decoration: "obon",
+      emoji: "🏮"
+    },
+    
+    {
+      id: "tsukimi",
+      name: "十五夜",
+      start_month: 9,
+      start_day: 10,
+      end_month: 9,
+      end_day: 10,
+      bg_color: "#FFFACD",
+      header_color: "#DAA520",
+      decoration: "tsukimi",
+      emoji: "🌕"
+    },
+    
+    {
+      id: "blog_birthday",
+      name: "ブログ誕生日",
+      start_month: 10,
+      start_day: 16,
+      end_month: 10,
+      end_day: 16,
+      bg_color: "#FFF0F5",
+      header_color: "#FF1493",
+      decoration: "blog_birthday",
+      emoji: "🎂"
+    },
+    
+    {
+      id: "halloween",
+      name: "ハロウィン",
+      start_month: 10,
+      start_day: 31,
+      end_month: 10,
+      end_day: 31,
+      bg_color: "#FFF0E6",
+      header_color: "#FF8C00",
+      decoration: "halloween",
+      emoji: "🎃"
+    },
+    
+    {
+      id: "christmas",
+      name: "クリスマス",
+      start_month: 12,
+      start_day: 24,
+      end_month: 12,
+      end_day: 25,
+      bg_color: "#FFE4E4",
+      header_color: "#C41E3A",
+      decoration: "christmas",
+      emoji: "🎄"
+    }
+    
+  ];
+</script>
+
+<!-- イベントモード用JavaScript -->
+<script src="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/js/event-mode.js" defer></script>
+
+
+<!-- この設定を先に置く（MathJax script の前） -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+    // 必要ならここに他オプション（例: packages 追加 など）
+  };
+</script>
+
+<!-- MathJax（数式） -->
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+    <!-- ヘッダー（色付き） -->
+    <header class="bg-[#7278a8] text-white shadow-md">
+        <div class="container mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl md:text-3xl font-bold">
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/" class="hover:opacity-90 transition-opacity">城上コードメモver2.2</a>
+            </h1>
+            <!-- デスクトップナビゲーション -->
+            <nav class="hidden md:flex space-x-6">
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/" class="text-white/90 hover:text-white transition-colors">ホーム</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/posts/"
+                    class="text-white/90 hover:text-white transition-colors">記事一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/tools/"
+                    class="text-white/90 hover:text-white transition-colors">ツール一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/novel/"
+                    class="text-white/90 hover:text-white transition-colors">Novel</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/game/"
+                    class="text-white/90 hover:text-white transition-colors">Game</a>
+            </nav>
+            <!-- モバイルメニューボタン -->
+            <button id="mobile-menu-btn"
+                class="md:hidden p-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+                aria-label="メニューを開く" aria-expanded="false">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- モバイルナビゲーションオーバーレイ -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden" aria-hidden="true">
+    </div>
+
+    <!-- モバイルナビゲーションメニュー -->
+    <nav id="mobile-menu"
+        class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
+        aria-label="モバイルナビゲーション">
+        <div class="p-4 border-b bg-[#7278a8] text-white flex justify-between items-center">
+            <span class="text-lg font-bold">メニュー</span>
+            <button id="mobile-menu-close"
+                class="p-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+                aria-label="メニューを閉じる">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div class="p-4 space-y-4">
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">ホーム</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/posts/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">記事一覧</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/tools/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">ツール一覧</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/novel/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">Novel</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/game/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">Game</a>
+        </div>
+    </nav>
+
+    <!-- メインコンテンツ（中央配置・左揃え） -->
+    <div class="container mx-auto px-4 md:px-8 py-8">
+        <main class="max-w-4xl mx-auto text-left">
+            <article class="prose prose-neutral max-w-none">
+<header class="mb-6">
+<h1 class="text-3xl font-bold">麻倉もも論(1)</h1>
+<p class="text-gray-500 text-sm">2025-10-18
+
+· <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold">Essay</span>
+
+</p>
+
+<p class="text-gray-600 mt-2">声優・麻倉ももの魅力を独自理論で考察するコラム。ビジュアルや声の分析を通じて『動的愛嬌』の正体に迫ります。</p>
+
+</header>
+<h1 id="麻倉ももはなぜ可愛いのかこれは抗えない魅力の沼への招待状である">麻倉ももは、なぜ「可愛い」のか？――これは、抗えない魅力の沼への招待状である</h1>
+
+<p>「麻倉ももさんって、可愛いよね」</p>
+
+<p>ファンであればもちろん、少しでも彼女に触れたことがある人なら、誰もが一度は口にする言葉ではないでしょうか。しかし、警告です。もしあなたがその「可愛さ」を、単なる形容詞の一つだと思っているなら、今すぐこの記事を閉じてください。私たちがこれから足を踏み入れるのは、生半可な気持ちで覗き込んではいけない、深く、甘美で、抗いがたい魅力の沼なのですから。</p>
+
+<p>その柔らかなルックス？ とろけるように甘い声？ もちろん、それらも彼女の魅力の重要な要素です。しかし、それだけでは説明がつかない、もっと深く、もっと抗いがたい引力が彼女にはある。</p>
+
+<p>この記事は、麻倉ももさんの「可愛さ」を、単なる感想ではなく一つの「現象」として捉え、その構造を（勝手に）学術的に考察する試みです。本稿で提唱する<strong>『動的愛嬌（ダイナミック・チャーム）理論』</strong>を通じて、皆さんと共に、その魅力の深淵へと足を踏み入れていきたいと思います。</p>
+
+<p>この理論の結論を先に言ってしまうと、彼女の可愛さの本質とは<strong>「ポジティブな予測不可能性」</strong>――つまり、私たちの<strong>期待と想像を、常に心地よく裏切り続ける”振れ幅”</strong>にこそあるのです。</p>
+
+<h2 id="第1章静的表象--私たちが期待する庇護対象としての麻倉もも">第1章：静的表象 ― 私たちが期待する「庇護対象」としての麻倉もも</h2>
+
+<p>まずは、基本となる「静」のイメージから見ていきましょう。これは、いわば我々が安心して心を預ける、穏やかな入り江です。この章で語られるのは、これから始まる嵐の前の、あまりにも美しく、そして完璧な静けさです。</p>
+
+<h3 id="視覚情報がもたらす絶対的な幸福感">視覚情報がもたらす絶対的な幸福感</h3>
+
+<p>写真集やジャケット写真で見る彼女は、多くの場合、柔らかな光の中に佇んでいます。それは計算された芸術です。彼女という存在が持つ「優しさ」を、光が増幅させているのです。少しだけ首を傾げ、こちらを見つめる大きな瞳。ただ大きいのではありません。その黒い瞳は、まるで磨き上げられた黒曜石のように、あらゆる光を吸収し、純粋な好奇心と信頼だけを映し返してきます。そこには一片の疑いもなく、見る者の心のささくれを、ただただ優しく撫でて溶かしていく力があります。</p>
+
+<p>そして、誰もが「もちょ」と呼びたくなる、あの幸福感に満ちたもちもちの頬。これは単なる身体的特徴ではありません。それは「幸福」と「健康」と「優しさ」の象徴です。視覚から直接、触覚的な多幸感を脳に伝達する、特殊な効果を持っています。私たちはその頬を見るだけで、なぜか満たされた気持ちになり、「この笑顔が曇ることがあってはならない」という、根源的な庇護欲を掻き立てられるのです。これらは、私たちが無意識に「守ってあげたい」と感じる、いわゆるベビーシェマ的な特徴を完璧に、そして芸術の域まで高めて備えていると言えるでしょう。</p>
+
+<h3 id="鼓膜から直接魂を溶かす声">鼓膜から直接、魂を溶かす声</h3>
+
+<p>そして、彼女の声を聴けば、そのイメージはさらに強固なものになります。ヘッドホンから流れてくるその声は、もはや単なる音波ではありません。それは温度と質量を持った、感覚への直接的な愛撫です。</p>
+
+<p>『もちょ』という愛称がこれ以上なくしっくりくる、あの独特の甘く、少し舌足らずな響きを含む声質。分析など無粋ですが、あえて言うならば、その声は基音となる甘い響きの上に、吐息という名の繊細なヴェールが幾重にも重ねられています。それにより、ただ甘いだけではない、儚さや切なさが同居する、奇跡的な音色が生み出されているのです。</p>
+
+<p>それはまるで、温かい蜂蜜が鼓膜の上をゆっくりと流れていくような、抗いがたい心地よさ。音声心理学的に分析すれば、きっと聴く者に絶大な安心感を与え、脳内のあらゆる闘争本能を鎮静化させる周波数が出ているに違いありません（※個人の感想です）。</p>
+
+<h3 id="完成された静のパブリックイメージ">完成された「静」のパブリックイメージ</h3>
+
+<p>このように、ビジュアルとボイスによって寸分の隙もなく構築されるのは、「穏やかで、優しくて、予測可能な範囲の愛らしさを持つ女の子」という、一枚岩のパブリックイメージ。彼女が演じるキャラクターの多くが、このイメージの延長線上にいることも、その印象をさらに強固なものにしています。</p>
+
+<p>これが、私たちの心に刻まれた彼女の<strong>「期待値」</strong>となるのです。
+完璧に作り上げられた、美しき理想像。</p>
+
+<p>ここまでは、まだ安全です。私たちはまだ、この穏やかな入り江の中で、心地よい揺らぎに身を任せていられるのですから。</p>
+
+<h2 id="第2章動的逸脱--脳を焼き切る振れ幅という名の衝撃">第2章：動的逸脱 ― 脳を焼き切る「振れ幅」という名の衝撃</h2>
+
+<p>さて、ここからが本題です。穏やかな入り江から、荒々しくも美しい外海へ。
+第1章で形成された強固な「期待値」という名の船は、彼女が「動」の状態になった瞬間、鮮やかに、そして脳が揺さぶられるほどの衝撃で転覆させられます。</p>
+
+<h3 id="ステージという名の戦場に咲く華">ステージという名の戦場に咲く華</h3>
+
+<p>ライブでの彼女を思い出してください。あるいは、今すぐ映像を見てください。
+照明を浴び、ステージの中央に立つ彼女は、もはや「守られるべき」存在ではありません。数千、数万の視線を一身に受け止め、そのパフォーマンスで空間そのものを支配する「表現者」という名の戦士です。「Peachy!」や「ピンキーフック」といった楽曲で見せる、イメージとは裏腹のキレのあるダンスパフォーマンス。しなやかな手足が宙を切り、ターンするたびに髪が美しく舞う。その一挙手一投足は、愛らしさの中に確かな「格好良さ」を宿しています。</p>
+
+<p>ときに挑戦的ですらある、観客を射抜くような力強い視線。あの慈愛に満ちた瞳が、一瞬、鋭い光を放つのです。そして、あの蜂蜜のような甘い声から放たれる、会場の隅々まで突き抜けるように真っ直ぐで、力強い歌声。それはもはや癒しではなく、魂を直接揺さぶるエモーショナルな叫びです。</p>
+
+<p>そして極め付けは、激しいパフォーマンスで流れる汗の輝き。その直後のMCで見せる、全てを忘れさせるような、はにかんだ笑顔。「ふふっ」という、あの息遣いまで聞こえてきそうな笑い声。その落差！ 私たちの脳は、そのあまりの振れ幅に混乱し、処理能力の限界を超え、ショートします。そして残るのはただ一つの感情。「好きだ」。この認知的な衝撃こそ、後戻りのできない沼の入り口なのです。</p>
+
+<h3 id="もちょイズムという名のブラックホール">「もちょイズム」という名のブラックホール</h3>
+
+<p>また、彼女のパーソナルラジオに耳を傾ければ、その「逸脱」はさらに加速します。あなたの論理はここで一度、心地よく破壊され、再構築を余儀なくされます。</p>
+
+<p>独特の言語感覚から紡ぎ出される、唯一無二の感性の発露。それは「天然」などという陳腐な言葉では到底表現できません。それは「もちょイズム」としか呼びようのない、一つの完成された思想体系です。論理を超越し、感覚で世界を捉えるそのトークは、ときに私たちを心地よい混乱へと誘います。穏やかで、少し人見知りな「静」のイメージはそこにはなく、自由で、天真爛漫で、全く予測のつかない「動」の存在がそこにいるのです。彼女の言葉を理解しようとすればするほど、私たちは理性の支配から解放され、その思考の渦に飲み込まれ、ただただその存在が愛おしくなっていくのです。</p>
+
+<p>この<strong>「期待（静）」と「現実（動）」の間に生じる巨大なギャップ</strong>。その振れ幅の大きさこそが、私たちを惹きつけてやまない『動的愛嬌』の正体なのです。私たちは、そのギャップを体験するたびに、彼女の「可愛さ」を再発見し、より深く、もう抜け出せないほどに魅了されていきます。</p>
+
+<h2 id="第3章核心への示唆--あなたが探すべき特異点の在り処">第3章：核心への示唆 ― あなたが探すべき「特異点」の在り処</h2>
+
+<p>しかし、この『動的愛嬌』が最大化され、その魅力が臨界点を突破する、ある種の<strong>「特異点（シンギュラリティ）」</strong>が存在することを示唆しなければなりません。警告しますが、ここから先は自己責任です。一度知れば、もう後戻りはできません。</p>
+
+<p>それは、彼女が自身の<strong>「特定の嗜好」</strong>について語る、まさにその瞬間です。</p>
+
+<p>この特異点の具体的な内容について、ここで詳細に語ることはしません。なぜなら、その魅力の神髄は、他人の言葉でなく、あなた自身の目と耳で確かめてこそ、真に理解できるものだからです。それは、もはや「可愛い」という言葉では表現できない、畏敬の念すら抱かせる神聖な領域なのです。</p>
+
+<p>もし、あなたが麻倉ももという人物の魅力の、さらに奥深くへと進みたいと願うなら、いくつかヒントを差し上げましょう。</p>
+
+<p>彼女が、常人には少し理解しがたいほどの情熱を注ぎ続ける、<strong>「ある食べ物」</strong>に関するエピソード群を調べてみてください。それは単なる好みではありません。それは哲学であり、美学であり、生き様そのものです。彼女はその探求のために旅をし、研究し、そして至福に至るのです。</p>
+
+<p>なぜ彼女は、あの食べ物に対して、そこまで真摯に向き合うのか？
+そして、その愛を語る時にだけ見せる、あの独特の<strong>恍惚とした表情</strong>や、<strong>情熱的な早口</strong>は何を意味するのか？ なぜ、その話をしている時の彼女は、世界で一番幸せそうに見えるのか？</p>
+
+<p>検索窓に、例えば<strong>「麻倉もも ラジオ ○○事件」</strong>あるいは<strong>「もちょ ○○ 衝撃 告白」</strong>といったキーワードを打ち込んでみてください。（○○に入る言葉は、きっとすぐに見つかるはずです）</p>
+
+<p>そこに転がっている一次資料に触れ、彼女の感性の深淵を自ら覗き込んだ者だけが、本稿で提示した「特異点」の本当の意味を理解し、その底なしの沼へと沈んでいく資格を得るのです。</p>
+
+<h2 id="結論麻倉ももの可愛さは発見され続ける物語である">結論：麻倉ももの「可愛さ」は、発見され続ける物語である</h2>
+
+<p>麻倉ももの「可愛さ」とは、顔や声といった固定されたパーツの魅力ではありません。
+それは、私たちが抱く「期待」と、彼女が見せる「現実」との間に絶えず生まれ続ける、<strong>予測不能な関係性のダイナミズムそのもの</strong>です。</p>
+
+<p>私たちは、彼女を知れば知るほど、その振れ幅に驚かされ、新たな「可愛い」を発見し、自分の中の「麻倉もも像」を更新し続けることになります。</p>
+
+<p>彼女の「可愛さ」の探求は、決して終わることのない、スリリングで幸福な旅路です。
+さあ、あなたも一緒に、この果てなき物語の探求者になりませんか？</p>
+
+<p>まずは第3章で示したヒントから、その第一歩を踏み出してみてください。
+その先には、きっと想像以上の、楽しくて愛おしい世界が広がっているはずですから。</p>
+
+</article>
+
+
+        </main>
+    </div>
+
+    <!-- フッター（色付き） -->
+    <footer class="bg-[#7278a8] text-white mt-8">
+        <div class="container mx-auto px-4 md:px-8 py-8 text-center">
+            <div class="flex flex-wrap justify-center gap-4 md:gap-6 mb-6">
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/" class="text-white/90 hover:text-white transition-colors">ホーム</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/posts/"
+                    class="text-white/90 hover:text-white transition-colors">記事一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/tools/"
+                    class="text-white/90 hover:text-white transition-colors">ツール一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/novel/"
+                    class="text-white/90 hover:text-white transition-colors">Novel</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/game/"
+                    class="text-white/90 hover:text-white transition-colors">Game</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/contact/"
+                    class="text-white/90 hover:text-white transition-colors">お問い合わせ</a>
+            </div>
+            <div class="mb-4 text-white/80 text-sm space-y-1">
+                <p>GitHub: <a
+                        href="https://github.com/ruri-sayo/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog"
+                        class="text-white hover:underline">ruri-sayo</a></p>
+                <p>About us: <a href="https://ruri-sayo.github.io/SSC_site/" class="text-white hover:underline">Sayo
+                        Social Connect</a></p>
+            </div>
+            <p class="text-sm text-white/70">&copy; 2025 <a
+                    href="https://ruri-sayo.github.io/SSC_site/" class="hover:underline">Sayo Social Connect</a>. All
+                Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- モバイルナビゲーション用JavaScript -->
+    <script>
+        (function () {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const menuClose = document.getElementById('mobile-menu-close');
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-menu-overlay');
+
+            function openMenu() {
+                menu.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+                menuBtn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                menu.classList.add('translate-x-full');
+                overlay.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+
+            menuBtn.addEventListener('click', openMenu);
+            menuClose.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+
+            // Escキーでメニューを閉じる
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && !menu.classList.contains('translate-x-full')) {
+                    closeMenu();
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>

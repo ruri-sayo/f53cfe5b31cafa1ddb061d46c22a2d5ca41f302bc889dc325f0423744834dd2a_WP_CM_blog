@@ -1,0 +1,1672 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- 限定公開運用のため既定で noindex -->
+<meta name="robots" content="noindex,nofollow">
+
+
+<title>小説風git解説 | 城上コードメモ(v2.1:beta)</title>
+
+<!-- Meta Description -->
+<meta name="description"
+  content="Gitの基本を物語調で学べる読み物。キャラクターの会話を通じてバージョン管理の概念や操作を親しみやすく紹介します。">
+
+<!-- ファビコン（最適化済みPNG） -->
+<link rel="icon" type="image/png" sizes="32x32" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/apple-touch-icon.png">
+
+<!-- Tailwind CSS CDN -->
+<!--<script src="https://cdn.tailwindcss.com"></script> -->
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+<!-- お好みでカスタム CSS を足す場合（SCSS を使うなら /assets/css/style.css をビルド）-->
+<link rel="stylesheet" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/css/custom.css">
+
+<!-- イベントモード用CSS -->
+<link rel="stylesheet" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/css/events.css">
+
+<!-- イベントデータ埋め込み -->
+<script>
+  window.SHIROGAMI_EVENTS = [
+    
+    {
+      id: "newyear",
+      name: "正月",
+      start_month: 1,
+      start_day: 1,
+      end_month: 1,
+      end_day: 4,
+      bg_color: "#FFE4E8",
+      header_color: "#C41E3A",
+      decoration: "newyear",
+      emoji: "🎍"
+    },
+    
+    {
+      id: "setsubun",
+      name: "節分",
+      start_month: 2,
+      start_day: 3,
+      end_month: 2,
+      end_day: 3,
+      bg_color: "#FFF5E6",
+      header_color: "#8B4513",
+      decoration: "setsubun",
+      emoji: "👹"
+    },
+    
+    {
+      id: "valentine",
+      name: "バレンタイン",
+      start_month: 2,
+      start_day: 14,
+      end_month: 2,
+      end_day: 14,
+      bg_color: "#FFE4EC",
+      header_color: "#FF69B4",
+      decoration: "valentine",
+      emoji: "💝"
+    },
+    
+    {
+      id: "aprilfool",
+      name: "エイプリルフール",
+      start_month: 4,
+      start_day: 1,
+      end_month: 4,
+      end_day: 1,
+      bg_color: "#E6FFE6",
+      header_color: "#32CD32",
+      decoration: "aprilfool",
+      emoji: "🤡"
+    },
+    
+    {
+      id: "tango",
+      name: "端午の節句",
+      start_month: 5,
+      start_day: 5,
+      end_month: 5,
+      end_day: 5,
+      bg_color: "#E6F0FF",
+      header_color: "#4169E1",
+      decoration: "tango",
+      emoji: "🎏"
+    },
+    
+    {
+      id: "tanabata",
+      name: "七夕",
+      start_month: 7,
+      start_day: 7,
+      end_month: 7,
+      end_day: 7,
+      bg_color: "#E6E6FF",
+      header_color: "#6A5ACD",
+      decoration: "tanabata",
+      emoji: "🎋"
+    },
+    
+    {
+      id: "obon",
+      name: "お盆",
+      start_month: 8,
+      start_day: 13,
+      end_month: 8,
+      end_day: 16,
+      bg_color: "#F0FFF0",
+      header_color: "#228B22",
+      decoration: "obon",
+      emoji: "🏮"
+    },
+    
+    {
+      id: "tsukimi",
+      name: "十五夜",
+      start_month: 9,
+      start_day: 10,
+      end_month: 9,
+      end_day: 10,
+      bg_color: "#FFFACD",
+      header_color: "#DAA520",
+      decoration: "tsukimi",
+      emoji: "🌕"
+    },
+    
+    {
+      id: "blog_birthday",
+      name: "ブログ誕生日",
+      start_month: 10,
+      start_day: 16,
+      end_month: 10,
+      end_day: 16,
+      bg_color: "#FFF0F5",
+      header_color: "#FF1493",
+      decoration: "blog_birthday",
+      emoji: "🎂"
+    },
+    
+    {
+      id: "halloween",
+      name: "ハロウィン",
+      start_month: 10,
+      start_day: 31,
+      end_month: 10,
+      end_day: 31,
+      bg_color: "#FFF0E6",
+      header_color: "#FF8C00",
+      decoration: "halloween",
+      emoji: "🎃"
+    },
+    
+    {
+      id: "christmas",
+      name: "クリスマス",
+      start_month: 12,
+      start_day: 24,
+      end_month: 12,
+      end_day: 25,
+      bg_color: "#FFE4E4",
+      header_color: "#C41E3A",
+      decoration: "christmas",
+      emoji: "🎄"
+    }
+    
+  ];
+</script>
+
+<!-- イベントモード用JavaScript -->
+<script src="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/js/event-mode.js" defer></script>
+
+
+<!-- この設定を先に置く（MathJax script の前） -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+    // 必要ならここに他オプション（例: packages 追加 など）
+  };
+</script>
+
+<!-- MathJax（数式） -->
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+    <!-- ヘッダー（色付き） -->
+    <header class="bg-[#7278a8] text-white shadow-md">
+        <div class="container mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl md:text-3xl font-bold">
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/" class="hover:opacity-90 transition-opacity">城上コードメモver2.2</a>
+            </h1>
+            <!-- デスクトップナビゲーション -->
+            <nav class="hidden md:flex space-x-6">
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/" class="text-white/90 hover:text-white transition-colors">ホーム</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/posts/"
+                    class="text-white/90 hover:text-white transition-colors">記事一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/tools/"
+                    class="text-white/90 hover:text-white transition-colors">ツール一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/novel/"
+                    class="text-white/90 hover:text-white transition-colors">Novel</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/game/"
+                    class="text-white/90 hover:text-white transition-colors">Game</a>
+            </nav>
+            <!-- モバイルメニューボタン -->
+            <button id="mobile-menu-btn"
+                class="md:hidden p-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+                aria-label="メニューを開く" aria-expanded="false">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- モバイルナビゲーションオーバーレイ -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden" aria-hidden="true">
+    </div>
+
+    <!-- モバイルナビゲーションメニュー -->
+    <nav id="mobile-menu"
+        class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
+        aria-label="モバイルナビゲーション">
+        <div class="p-4 border-b bg-[#7278a8] text-white flex justify-between items-center">
+            <span class="text-lg font-bold">メニュー</span>
+            <button id="mobile-menu-close"
+                class="p-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+                aria-label="メニューを閉じる">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div class="p-4 space-y-4">
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">ホーム</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/posts/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">記事一覧</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/tools/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">ツール一覧</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/novel/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">Novel</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/game/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">Game</a>
+        </div>
+    </nav>
+
+    <!-- メインコンテンツ（中央配置・左揃え） -->
+    <div class="container mx-auto px-4 md:px-8 py-8">
+        <main class="max-w-4xl mx-auto text-left">
+            <article class="prose prose-neutral max-w-none">
+<header class="mb-6">
+<h1 class="text-3xl font-bold">小説風git解説</h1>
+<p class="text-gray-500 text-sm">2025-10-18
+
+· <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold">Knowledge, 小説</span>
+
+</p>
+
+<p class="text-gray-600 mt-2">Gitの基本を物語調で学べる読み物。キャラクターの会話を通じてバージョン管理の概念や操作を親しみやすく紹介します。</p>
+
+</header>
+<p>小説風のgit解説。暇なときの読み物にどうぞ。</p>
+
+<h1 id="第1章gitの基本概念とローカル操作">第1章：Gitの基本概念とローカル操作</h1>
+
+<h2 id="第1部バージョン管理とgitの導入">第1部：バージョン管理とGitの導入</h2>
+
+<p>「うわーっ！もう、わけわかんないよー！」</p>
+
+<p>ある日の昼下がり、私の部屋に遊びに来ていた千紘が、ノートPCの前で頭を抱えていた。画面には、似たような名前のフォルダがずらりと並んでいる。</p>
+
+<p><code class="language-plaintext highlighter-rouge">プロジェクト最終版プロジェクト最終版(1)</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">プロジェクト本当の最終版</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">プロジェクトfinalプロジェクト_提出用</code></p>
+
+<p>「千紘、また何か面白そうなこと始めたみたいだけど、ずいぶん盛大に散らかっているわね」</p>
+
+<p>呆れたように声をかけると、千紘が顔を上げた。</p>
+
+<p>「澪ー！聞いてよ聞いてよ！この前見つけたサイトが超面白くて、写経して勉強してるんだけど、どこをどう直したか分からなくなっちゃって！前の状態に戻したいときのためにコピーを作ってたら、どれが最新版で、どれが必要なファイルなのか、もうカオスだよ！」</p>
+
+<p>「ふふ、なるほどね。レポートの編集中とか、誰でも一度は通る道じゃないかしら。でも、そんな千紘にぴったりの、すごく面白いツールがあるのよ」</p>
+
+<p>私がそう言って微笑むと、千紘の目がキランと輝いた。</p>
+
+<p>「え、何それ！？超面白そうじゃん！」</p>
+
+<p>「<strong>Git（ギット）</strong> っていうんだけどね。一言で言うなら、『ファイルのバージョンを管理するための、ものすごく賢い道具』かな」</p>
+
+<h3 id="ファイルのセーブポイントを作るバージョン管理">ファイルのセーブポイントを作る「バージョン管理」</h3>
+
+<p>「バージョン管理？RPGのセーブポイントみたいなもん？」</p>
+
+<p>千紘の突拍子もないようで的を射た質問に、私は思わず頷いた。</p>
+
+<p>「いい例えね。まさにそんな感じよ。作業のキリがいいところで『セーブ』しておけば、後からその時点の状態を正確に確認したり、もし何か失敗しても、そのセーブポイントに安全に戻ったりできるじゃない？」</p>
+
+<p>「うんうん！それで何度も命拾いしたことある！」</p>
+
+<p>「でしょ？千紘がやっていたみたいに、手動でファイルをコピーして『バックアップ_日付』みたいに名前を付けて管理するのも、原始的なバージョン管理の一つ。でも、その方法だと、どのファイルがどう違うのか、いつ何のために変更したのかが、すぐに分からなくなってしまう。現に今、千紘がそうなっているようにね」</p>
+
+<p>Gitは、この「セーブ（変更履歴の記録）」と「ロード（過去の状態に戻す）」を、もっとずっとスマートに、正確に、そして簡単に行うためのシステムなのよ。これを<strong>バージョン管理システム（Version Control System, VCS）</strong>って呼ぶわ。</p>
+
+<h3 id="gitが最強な理由分散型という考え方">Gitが最強な理由：「分散型」という考え方</h3>
+
+<p>「しかもね、Gitが特に優れているのは、<strong>『分散型』</strong>っていう仕組みを採用している点なの」</p>
+
+<p>私がそう言うと、千紘は「ぶんさんがた？」と首をかしげた。</p>
+
+<p>「ええ。昔主流だったバージョン管理システムは、いわば『中央集権型』だったの。一つの大きな親玉サーバーに変更履歴のすべてを保存して、みんながそこへアクセスして作業するイメージね。これだと、もし親玉サーバーがダウンしたら、誰も作業できなくなるし、最悪の場合、今までの履歴が全部消えちゃうリスクがあった」</p>
+
+<p>私はノートの切れ端に、簡単な図を描いて見せた。</p>
+
+<p>「でも、Gitが採用している『分散型』は違う。参加しているメンバー一人ひとりが、プロジェクトの最初から最後までの完全な変更履歴を、まるごと自分のPCに持っているの。いわば、冒険の記録史を全員が持っている状態ね」</p>
+
+<p>「これの何がすごいかって言うと、まず、親玉サーバーがなくても、自分のPCだけで履歴の記録や確認ができる。つまりオフラインでも作業が進められるの。それに、誰かのPCが壊れても、他のメンバーのPCから完全な履歴を復元できる。すごく合理的で、安全な仕組みだと思わない？」</p>
+
+<p>私の熱のこもった説明に、千紘は目を輝かせながら何度も頷いた。
+「なるほどー！全員がセーブデータを持ってるから、誰かがデータ飛ばしても安心ってことか！それ、超ヤバい！面白いじゃん！澪ー！早くそれ使いたい！」</p>
+
+<h3 id="gitの導入冒険の準備をしよう">Gitの導入：冒険の準備をしよう</h3>
+
+<p>「じゃあ、早速冒険の準備を始めましょうか。まずはGitを千紘のPCにインストールしないとね」</p>
+
+<h3 id="1-gitのインストール">1. Gitのインストール</h3>
+
+<p>Gitは公式サイトからダウンロードできるわ。自分のOSに合ったインストーラーを選んでね。</p>
+
+<ul>
+  <li><a href="https://git-scm.com/downloads">Git公式サイト</a></li>
+</ul>
+
+<p>インストール自体は、基本的に画面の指示に従って「Next」をクリックしていけば大丈夫。途中でいろいろ設定を聞かれるけど、最初はすべてデフォルトのままで問題ないわ。</p>
+
+<h3 id="2-最初の設定自分の名前を登録する">2. 最初の設定：自分の名前を登録する</h3>
+
+<p>インストールが終わったら、最初に一度だけ「自己紹介」が必要よ。これから作るセーブデータに、「これは私が記録しました」っていう署名を入れるための設定ね。</p>
+
+<p>Windowsなら「Git Bash」を、Macなら「ターミナル」を起動して、以下の2つのコマンドを一行ずつ入力して実行してみて。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config --global user.name "Your Name"
+git config --global user.email "youremail@example.com"
+
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">"Your Name"</code>の部分は自分の名前（半角英字がおすすめ）、<code class="language-plaintext highlighter-rouge">"youremail@example.com"</code>の部分は自分のメールアドレスに書き換えてね。これはGitHubに登録するものと同じにしておくと、後々スムーズよ。</p>
+
+<p>「え、これだけ？」</p>
+
+<p>「ええ、これだけ。入力しても何もメッセージが返ってこないけど、それで正常に設定されているから安心して。さあ、これで準備は万端よ」</p>
+
+<p>私はニヤリと笑って千紘を見た。</p>
+
+<p>「ここからが、Gitを使った新しい冒M…じゃなくて、開発の始まりよ、千紘」</p>
+
+<h2 id="第2部リポジトリの作成と3つのエリア">第2部：リポジトリの作成と「3つのエリア」</h2>
+
+<p>「冒険の始まり…！いいねいいね！で、まず何をすればいいの？ボスはどこー！？」</p>
+
+<p>すっかりその気になった千紘が拳を握りしめるのを、私は微笑ましく思いながら制した。</p>
+
+<p>「落ち着きなさい、千紘。冒険にだって準備は必要よ。まずは、これから記録していく私たちの冒険の歴史…つまり、ファイルの変更履歴をしまっておくための『保管庫』を作るところから始めましょう」</p>
+
+<p>「ほかんこ？」</p>
+
+<p>「ええ。Gitではその保管庫のことを<strong>リポジトリ</strong>って呼ぶわ。言ってみれば、プロジェクト専用のタイムカプセルみたいなものね。このリポジトリがあるおかげで、いつでも過去の時点に戻れるようになるの」</p>
+
+<h3 id="リポジトリの作成-git-init">リポジトリの作成： <code class="language-plaintext highlighter-rouge">git init</code></h3>
+
+<p>「じゃあ、さっそく作ってみましょうか。まず、千紘が今散らかしてるプロジェクトのために、新しいフォルダを一つ作ってくれる？」</p>
+
+<p>「お、おう！任せとけ！」</p>
+
+<p>千紘は慌ててデスクトップに<code class="language-plaintext highlighter-rouge">my-project</code>という名前のフォルダを作成した。</p>
+
+<p>「OK。そしたら、さっき使ったGit Bash（Macならターミナル）で、そのフォルダに移動するの。<code class="language-plaintext highlighter-rouge">cd</code>っていうコマンドを使うわよ」</p>
+
+<p>千紘は慣れない手つきでキーボードを叩き、<code class="language-plaintext highlighter-rouge">cd Desktop/my-project</code>と入力してEnterキーを押した。</p>
+
+<p>「よし、ちゃんと移動できたわね。じゃあ、いよいよリポジトリを作るための呪文を唱えるわよ」</p>
+
+<p>私がもったいぶってそう言うと、千紘はごくりと唾を飲んだ。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init
+
+</code></pre></div></div>
+
+<p>「コマンドはこれだけ。<code class="language-plaintext highlighter-rouge">init</code>は『初期化する』っていう意味のinitializeの略ね。さあ、実行してみて」</p>
+
+<p>千紘がコマンドを打ち込むと、ターミナルに<code class="language-plaintext highlighter-rouge">Initialized empty Git repository in C:/Users/Chihiro/Desktop/my-project/.git/</code>といったメッセージが表示された。</p>
+
+<p>「わ、何か英語が出てきた！澪ー！これって成功したってこと？」</p>
+
+<p>「ええ、大成功よ。『この場所に、空っぽのGitリポジトリを作りました』って言ってるわ。これで、この<code class="language-plaintext highlighter-rouge">my-project</code>フォルダは、ただのフォルダじゃなくて、Gitが変更を監視してくれる特別な『保管庫』になったの。証拠に、フォルダの中に<code class="language-plaintext highlighter-rouge">.git</code>っていう隠しフォルダができているはずよ」</p>
+
+<p>実際に確認すると、そこには<code class="language-plaintext highlighter-rouge">.git</code>という見慣れないフォルダが作られていた。</p>
+
+<p>「この<code class="language-plaintext highlighter-rouge">.git</code>フォルダこそがリポジトリの本体。変更履歴とか、管理に必要な情報が全部この中に詰まってるわ。だから、絶対にこのフォルダを直接いじったり、消したりしちゃダメよ。約束ね」</p>
+
+<p>「りょ、了解！なんか超重要アイテムって感じだね！」</p>
+
+<h3 id="最重要概念3つのエリアを理解する">最重要概念：「3つのエリア」を理解する</h3>
+
+<p>「さて、保管庫はできた。でも、ただファイルを変更しただけじゃ、自動で記録はしてくれないの。Gitに『この変更を記録してください』って、ちゃんとお伺いを立てる必要がある。その手順を理解するために、Gitが使う<strong>『3つのエリア』</strong>という、ものすごく大事な考え方を説明するわね」</p>
+
+<p>私はまたノートの切れ端を取り出し、ペンで図を描き始めた。</p>
+
+<p>「まず、私たちが普段ファイルを編集している場所、つまり今作った<code class="language-plaintext highlighter-rouge">my-project</code>フォルダそのものが<strong>① ワーキングディレクトリ</strong>。いわば『作業場』ね」</p>
+
+<p>「うんうん、作業場」</p>
+
+<p>「次に、変更したファイルの中から、『よし、これは次のセーブデータに含めよう』と決めたものを置いておく、一時的な待機場所があるの。これが<strong>② ステージングエリア</strong>。『舞台袖』ってイメージかしら。舞台に出す準備ができた役者を待たせておく場所ね」</p>
+
+<p>「ぶたいそで！面白いじゃん！」</p>
+
+<p>「そして最後に、舞台袖にいる役者たちを、『開演！』の合図で本番の記録として保管庫に登録する。その保管庫が<strong>③ リポジトリ</strong>。これが最終的なセーブポイントになるわけ」</p>
+
+<p>この3つのエリアの関係をまとめると、こうなるわ。</p>
+
+<ol>
+  <li><strong>ワーキングディレクトリ</strong>でファイルを編集する。</li>
+  <li>記録したい変更を<code class="language-plaintext highlighter-rouge">git add</code>コマンドで<strong>ステージングエリア</strong>に送る（これを<strong>ステージする</strong>と言うわ）。</li>
+  <li>ステージングエリアにある変更内容を<code class="language-plaintext highlighter-rouge">git commit</code>コマンドで<strong>リポジトリ</strong>に記録する（これを<strong>コミットする</strong>と言うの）。</li>
+</ol>
+
+<p>「なんでそんな面倒なことするの？作業場で変更したら、直接セーブ（リポジトリに記録）じゃダメなの？」</p>
+
+<p>千紘の素朴な疑問に、私は満足げに頷いた。</p>
+
+<p>「いい質問ね。例えば、一度に5つのファイルを変更したとするじゃない？でも、そのうち3つは『機能Aの実装』に関する変更で、残りの2つは『ちょっとした誤字脱字の修正』だった。これを全部まとめて一つのセーブデータにしちゃうと、後から見返したときに『このセーブでは何をしたんだっけ？』って分かりにくくなるでしょ？」</p>
+
+<p>「あー、確かに！」</p>
+
+<p>「ステージングエリアというワンクッションを挟むことで、『今回はこのファイルとこのファイルの変更だけを、”機能Aの実装”という名前で記録しよう』みたいに、関連する変更だけを、意味のある単位で選び取ってから記録できるの。これが、後々の管理をとっても楽にしてくれるのよ」</p>
+
+<h3 id="現状確認の達人になろう-git-status">現状確認の達人になろう： <code class="language-plaintext highlighter-rouge">git status</code></h3>
+
+<p>「じゃあ、今の私たちの冒険の状況を確認してみましょうか。ここで一番よく使うことになるコマンドを教えるわ」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git status
+
+</code></pre></div></div>
+
+<p>「<code class="language-plaintext highlighter-rouge">status</code>は『状態』っていう意味。その名の通り、今のリポジトリの状態を教えてくれる、ものすごくお世話になるコマンドよ。何か困ったら、まず<code class="language-plaintext highlighter-rouge">git status</code>。これを癖にしておくといいわ」</p>
+
+<p>千紘がコマンドを打つと、ターミナルにメッセージが表示された。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>On branch master
+No commits yet
+nothing to commit (create/copy files and use "git add" to track)
+
+</code></pre></div></div>
+
+<p>「『masterブランチにいます』『まだコミット（記録）は一つもありません』『コミットするものは何もありません』って書いてあるわね。まさに今の状況そのもの」</p>
+
+<p>「じゃあ、試しに何かファイルを作ってみて。<code class="language-plaintext highlighter-rouge">my-project</code>フォルダの中に、<code class="language-plaintext highlighter-rouge">index.html</code>っていう空のファイルを作ってみてくれる？」</p>
+
+<p>千紘がファイルを作成し、もう一度<code class="language-plaintext highlighter-rouge">git status</code>を実行すると、今度は表示が変わった。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>On branch master
+No commits yet
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+        index.html
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+</code></pre></div></div>
+
+<p>「わ、何か赤い文字が出た！<code class="language-plaintext highlighter-rouge">index.html</code>って書いてある！」</p>
+
+<p>「その通り。『Untracked files』、つまり『まだGitの管理下に置かれていない、未知のファイルがありますよ』って教えてくれてるの。Gitは賢いから、フォルダ内に新しいファイルが作られたことをちゃんと検知して、『このファイル、どうしますか？ステージングエリアに加えますか？』って聞いてきてるわけ」</p>
+
+<p>私はニヤリと笑った。</p>
+
+<p>「どう？Gitが私たちの作業をちゃんと見ててくれる、頼もしい相棒だってことが、少しは分かってきたんじゃない？」</p>
+
+<p>千HORIは興奮気味に頷いた。
+「うん！なんかすごい！面白いじゃん！早くこの赤いヤツを何とかしたい！」</p>
+
+<p>「ふふ、じゃあ次は、いよいよ最初のセーブデータ、『コミット』を作ってみましょうか」</p>
+
+<h2 id="第3部変更履歴の記録と確認">第3部：変更履歴の記録と確認</h2>
+
+<p>「ふふ、じゃあ次は、いよいよ最初のセーブデータ、『コミット』を作ってみましょうか」</p>
+
+<p>私の言葉に、千紘は「待ってました！」とばかりに身を乗り出した。</p>
+
+<p>「<code class="language-plaintext highlighter-rouge">git status</code>で赤く表示された<code class="language-plaintext highlighter-rouge">index.html</code>は、Gitが『こんなファイルを見つけたけど、どうする？』って私たちに尋ねてきている状態だったわよね。これに答える最初のステップが、そのファイルを『舞台袖』、つまりステージングエリアに上げてあげることなの」</p>
+
+<h3 id="変更をステージする-git-add">変更をステージする： <code class="language-plaintext highlighter-rouge">git add</code></h3>
+
+<p>「そのためのコマンドがこれよ」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add &lt;ファイル名&gt;
+
+</code></pre></div></div>
+
+<p>「<code class="language-plaintext highlighter-rouge">add</code>は『加える』。文字通り、リポジトリに記録したい変更内容の候補として、ファイルをステージングエリアに加えてあげる、という意味ね。今回は<code class="language-plaintext highlighter-rouge">index.html</code>を加えたいから、こう入力してみて」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add index.html
+
+</code></pre></div></div>
+
+<p>千紘がコマンドを打ち込んでも、ターミナルは沈黙したまま。</p>
+
+<p>「あれ？また何も起きないよ？失敗？」</p>
+
+<p>「ううん、成功よ。Gitやこういうコマンドラインのツールはね、『何も言ってこないのは、うまく行った証拠』ってことが多いの。じゃあ、本当にステージングエリアに上がったか、あのコマンドで確認してみましょうか」</p>
+
+<p>「あ！わかった！<code class="language-plaintext highlighter-rouge">git status</code>でしょ！」</p>
+
+<p>千紘は得意げに<code class="language-plaintext highlighter-rouge">git status</code>を打ち込んだ。すると、さっきとはまた違う色のメッセージが表示された。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>On branch master
+No commits yet
+Changes to be committed:
+  (use "git rm --cached &lt;file&gt;..." to unstage)
+        new file:   index.html
+
+</code></pre></div></div>
+
+<p>「わー！今度は緑色になった！『Changes to be committed』だって！」</p>
+
+<p>「その通り！『コミットされるべき変更』っていう意味ね。これで<code class="language-plaintext highlighter-rouge">index.html</code>は、ワーキングディレクトリからステージングエリアへと無事に移動した。Gitが『このファイルを次のセーブに含める準備ができましたよ』って教えてくれてるの」</p>
+
+<p>「なるほどー！赤は『未知との遭遇』で、緑は『仲間になった』って感じだね！」</p>
+
+<p>「ふふ、そんなところね。さあ、いよいよ本番よ。舞台袖にいるこのファイルを、歴史の1ページとしてリポジトリに刻みましょう」</p>
+
+<h3 id="変更を記録する-git-commit">変更を記録する： <code class="language-plaintext highlighter-rouge">git commit</code></h3>
+
+<p>「ステージングエリアにある変更を、リポジトリという名の保管庫に永久保存する。これが<strong>コミット</strong>よ。RPGで言えば、教会の神父様に冒険の書を記録してもらう、まさにその瞬間ね。コマンドはこう」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit
+
+</code></pre></div></div>
+
+<p>「ただし、これだけだと少し不親切なの。神父様だって、『どんな冒険をしてきたのか』を一言メモで残してくれるでしょ？Gitでも、『今回は何のためのセーブなのか』をちゃんと記録しておく必要がある。そのメモのことを<strong>コミットメッセージ</strong>って言うわ」</p>
+
+<p>私は千紘に、メッセージ付きでコミットする、一番簡単な方法を教えた。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit -m "コミットメッセージ"
+
+</code></pre></div></div>
+
+<p>「<code class="language-plaintext highlighter-rouge">-m</code>っていうのは『メッセージ』のオプション。この後ろの<code class="language-plaintext highlighter-rouge">" "</code>で囲んだ部分に、変更内容を要約したメモを書くの。後から自分や他の人が見たときに、『ああ、この時のセーブは、こういう変更をしたんだな』って一目でわかるようにね。今回は最初のコミットだから、『<code class="language-plaintext highlighter-rouge">index.html</code>を作成』みたいな内容でいいんじゃないかしら」</p>
+
+<p>「おっけー！じゃあ…こうかな？」</p>
+
+<p>千紘はキーボードを叩いた。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit -m "Create index.html"
+
+</code></pre></div></div>
+
+<p>Enterキーを押すと、今度はたくさんのメッセージが返ってきた。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[master (root-commit) a1b2c3d] Create index.html
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 index.html
+
+</code></pre></div></div>
+
+<p>「うわっ！また英語がいっぱい！でもなんかすごそう！」</p>
+
+<p>「ええ、大成功。『masterブランチに、”Create index.html”というメッセージで新しいコミットが作られました』『1つのファイルが変更されましたよ』って内容ね。これで、千紘のプロジェクト史上、記念すべき最初のセーブポイントが作られたわ」</p>
+
+<p>もう一度<code class="language-plaintext highlighter-rouge">git status</code>を叩くと、今度は<code class="language-plaintext highlighter-rouge">nothing to commit, working tree clean</code>と表示された。作業場は綺麗で、記録すべき変更はもう何もない、という状態だ。</p>
+
+<h3 id="冒険の書を読み返す-git-log">冒険の書を読み返す： <code class="language-plaintext highlighter-rouge">git log</code></h3>
+
+<p>「じゃあ、せっかくだから今記録したばかりの冒険の書を読み返してみましょうか。過去のコミット履歴を確認するのが、このコマンドよ」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log
+
+</code></pre></div></div>
+
+<p>千紘が実行すると、ターミナルに先ほどのコミットの情報が詳しく表示された。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>commit a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0 (HEAD -&gt; master)
+Author: Chihiro &lt;chihiro@example.com&gt;
+Date:   Thu Oct 9 10:48:00 2025 +0900
+
+    Create index.html
+
+</code></pre></div></div>
+
+<p>「わー！私の名前とメールアドレス、それに日時と、さっき書いたメッセージがちゃんと記録されてる！」</p>
+
+<p>「でしょ？この<code class="language-plaintext highlighter-rouge">commit</code>から始まる長い文字列が、セーブデータ一つひとつに割り振られた、世界で一つだけのID番号みたいなもの。そして、誰が、いつ、何のために変更したかが、こうして一目瞭然になる。これが、手作業でファイルをコピーするのとは比べ物にならないくらい、Gitが優れている点なのよ」</p>
+
+<p>私は<code class="language-plaintext highlighter-rouge">index.html</code>を開き、千紘に何か簡単な文字を入力するように促した。千紘は楽しそうに<code class="language-plaintext highlighter-rouge">&lt;h1&gt;Hello, Git!&lt;/h1&gt;</code>と打ち込んだ。</p>
+
+<p>「さあ、ファイルの中身が変わったわ。ということは？」</p>
+
+<p>「あ！もしかして、また<code class="language-plaintext highlighter-rouge">git status</code>をすると何か変わる！？」</p>
+
+<p>千紘がコマンドを打つと、案の定、<code class="language-plaintext highlighter-rouge">index.html</code>が今度は<code class="language-plaintext highlighter-rouge">modified</code>（変更された）という状態で、また赤く表示された。</p>
+
+<p>「面白いじゃん！じゃあ、これもさっきと同じように、<code class="language-plaintext highlighter-rouge">git add</code>で緑にして、<code class="language-plaintext highlighter-rouge">git commit</code>でセーブすればいいんだね！」</p>
+
+<p>「その通りよ。やってみて。メッセージは『見出しを追加』とか、分かりやすいものがいいわね」</p>
+
+<p>千紘は慣れた手つきでコマンドを打ち込んでいく。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add index.html
+git commit -m "Add h1 heading"
+
+</code></pre></div></div>
+
+<p>そして、もう一度<code class="language-plaintext highlighter-rouge">git log</code>を実行した。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>commit f0e9d8c7b6a5f4e3d2c1b0a9f8e7d6c5b4a3b2a1 (HEAD -&gt; master)
+Author: Chihiro &lt;chihiro@example.com&gt;
+Date:   Thu Oct 9 10:52:00 2025 +0900
+
+    Add h1 heading
+
+commit a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0
+Author: Chihiro &lt;chihiro@example.com&gt;
+Date:   Thu Oct 9 10:48:00 2025 +0900
+
+    Create index.html
+
+</code></pre></div></div>
+
+<p>「わー！増えてる！ちゃんと2つ目の記録が、最初の記録の上に積み重なってる！」</p>
+
+<p>「そういうこと。こうして、変更の歴史を一つひとつ、安全に、そして正確に積み重ねていく。これがGitの基本的な使い方。<strong>『変更 → add → commit』</strong>このサイクルが、これからの冒険の基本になるわ」</p>
+
+<p>千紘は、さっきまでカオスだったデスクトップと、今ターミナルに表示されている整然とした歴史を見比べて、深く頷いた。</p>
+
+<p>「すごい…なんか、超面白いじゃん、Git！私、最強のセーブ職人になれる気がしてきた！」</p>
+
+<p>その満面の笑みを見て、私も嬉しくなった。</p>
+
+<p>「ふふ、その意気よ。じゃあ、自分のPCの中での冒険はこれくらいにして、次は、この冒険の書を世界に公開して、他の人と共有する方法を学びましょうか」</p>
+
+<h1 id="第2章githubとの連携とリモート操作">第2章：GitHubとの連携とリモート操作</h1>
+
+<h2 id="第1部githubアカウントの作成とリモートリポジトリ">第1部：GitHubアカウントの作成とリモートリポジトリ</h2>
+
+<p>「私、最強のセーブ職人になれる気がしてきた！」</p>
+
+<p>目をキラキラさせながら自分のPCの画面を眺めている千紘に、私は微笑みかけた。</p>
+
+<p>「ふふ、その意気よ。でもね、千紘。本当の冒険は、まだ始まったばかり。今千紘が作っている冒険の書は、まだ千紘のPCの中にしかない、いわば『日記』みたいなものなの」</p>
+
+<p>「日記？」</p>
+
+<p>「ええ。でも、すごい冒険譚が書けたら、誰かに読んでほしくなるし、仲間と一緒に冒険の続きを書き加えたくなると思わない？」</p>
+
+<p>「なるなる！超なる！みんなに自慢したい！」</p>
+
+<p>「でしょ？そのために、自分のPC（<strong>ローカル</strong>）にある冒険の書を、インターネット上にある大きな図書館に預けて、世界中に公開したり、仲間と共有したりするための場所が必要になる。その、世界中の開発者が使っている巨大な図書館こそが、<strong>GitHub（ギットハブ）</strong>なのよ」</p>
+
+<h3 id="gitとgithubの違い魔法の書と大図書館">GitとGitHubの違い：魔法の書と大図書館</h3>
+
+<p>「ぎっとはぶ？Gitと名前は似てるけど、何が違うの？」</p>
+
+<p>千紘の素朴な疑問に、私は頷いた。</p>
+
+<p>「いいところに気が付いたわね。この二つは、よく混同されるけど、役割は全く違うのよ」</p>
+
+<ul>
+  <li><strong>Git</strong>: バージョン管理をするための<strong>『仕組み・道具』</strong>そのもの。歴史を記録する魔法の書、とでも言おうかしら。</li>
+  <li><strong>GitHub</strong>: Gitで作ったその魔法の書（リポジトリ）を、インターネット上で保管・公開するための<strong>『場所・サービス』</strong>。世界中の魔法の書が集まる大図書館ね。</li>
+</ul>
+
+<p>「なるほどー！Gitっていう魔法でセーブデータを作って、GitHubっていう図書館に預かってもらうんだね！分かりやすいじゃん！」</p>
+
+<p>「そういうこと。だから、他の人と共同で作業するには、このGitHubが欠かせないの。さあ、まずはこの大図書館の利用者カード、つまりアカウントを作ることから始めましょう」</p>
+
+<h3 id="githubアカウントの作成">GitHubアカウントの作成</h3>
+
+<p>「GitHubのサイトにアクセスしてみて。Googleとかで検索すればすぐに見つかるわ」</p>
+
+<ul>
+  <li><a href="https://github.com/">GitHub公式サイト</a></li>
+</ul>
+
+<p>千紘がサイトを開くと、英語のページが表示された。</p>
+
+<p>「うわ、英語じゃん！？」</p>
+
+<p>「大丈夫、大丈夫。最近は日本語にも対応してるし、入力するのはユーザー名とメールアドレス、パスワードくらいだから。画面の指示に従って登録を進めてみて」</p>
+
+<p>ユーザー名は、世界中でユニーク（他の人と同じものは使えない）である必要があるわ。後から変更もできるけど、なるべく自分が愛着を持てる、分かりやすいものがいいわね。</p>
+
+<p>千紘は少し悩んだ末に、<code class="language-plaintext highlighter-rouge">chihiro-adventurer</code>という、なんとも彼女らしいユーザー名で登録を完了させた。</p>
+
+<p>「できたー！私、今日から図書館デビューだよ！」</p>
+
+<p>「おめでとう。じゃあ、いよいよ千紘の冒険の書を置くための、専用の書棚を作りましょうか」</p>
+
+<h3 id="リモートリポジトリの作成">リモートリポジトリの作成</h3>
+
+<p>「GitHubに預けるリポジトリのことを、自分のPCにある<strong>ローカルリポジトリ</strong>と対比して、<strong>リモートリポジトリ</strong>と呼ぶわ。『遠隔の』っていう意味の、あのリモートね」</p>
+
+<p>ログインした状態で、画面の右上にある「+」のアイコンをクリックして、「New repository」を選んでみて。</p>
+
+<p>「お、何か入力フォームがいっぱい出てきた！」</p>
+
+<p>「一つずつ説明するから、落ち着いて」</p>
+
+<ol>
+  <li><strong>Repository name</strong>: リポジトリの名前ね。これは自分のアカウント内ではユニークである必要があるわ。ローカルリポジトリと同じ<code class="language-plaintext highlighter-rouge">my-project</code>にしておくのが分かりやすいでしょう。</li>
+  <li><strong>Description</strong>: このリポジトリがどんなプロジェクトなのかを説明する場所。今は空欄でもいいわよ。</li>
+  <li><strong>Public / Private</strong>: <code class="language-plaintext highlighter-rouge">Public</code>を選ぶと、このリポジトリは世界中の誰でも見ることができるようになるわ。<code class="language-plaintext highlighter-rouge">Private</code>なら、自分と、自分が許可した人しか見られない。勉強用なら<code class="language-plaintext highlighter-rouge">Public</code>でいいでしょう。</li>
+  <li><strong>Initialize this repository with:</strong>: 「このリポジトリを初期化するファイルを追加しますか？」というオプションね。<code class="language-plaintext highlighter-rouge">Add a README file</code>とかいくつかあるけど…<strong>今回は、絶対に何もチェックを入れないで。</strong></li>
+</ol>
+
+<p>「え、なんで？READMEってよく見るやつじゃん」</p>
+
+<p>「いい質問ね。今回は、すでに自分のPCに『冒険の書（ローカルリポジトリ）』がある状態で、それを預けるための『空の書棚（リモートリポジトリ）』を作りたいの。もしここでファイルを追加しちゃうと、空っぽじゃない書棚ができてしまって、預けるときにちょっとしたひと悶着が起きるのよ。今は、『まっさらな場所を用意する』ってことだけを覚えておいて」</p>
+
+<p>千紘は私の説明に頷きながら、必要な項目を埋めて、緑色の「Create repository」ボタンをクリックした。</p>
+
+<p>すると、画面が切り替わり、何やらコマンドがいくつか表示されたページが現れた。</p>
+
+<p>「わ、また英語のコマンドがいっぱい！澪ー！これ、どうすればいいの！？」</p>
+
+<p>慌てる千紘を見て、私は満足げに微笑んだ。</p>
+
+<p>「ふふ、慌てないで。これはね、GitHubが『空っぽの書棚は用意できましたよ。ここにあなたの魔法の書を置くには、この呪文を唱えなさい』って、親切に教えてくれている、いわば『接続のための地図』なのよ」</p>
+
+<p>私はその画面を指さした。</p>
+
+<p>「さあ、冒険の準備は整ったわ。次は、この地図を使って、いよいよあなたのPCと、このGitHubという大図書館を、一本の魔法の線で繋いでみましょうか」</p>
+
+<h2 id="第2部ローカルリポジトリとリモートリポジトリの接続">第2部：ローカルリポジトリとリモートリポジトリの接続</h2>
+
+<p>「さあ、冒険の準備は整ったわ。次は、この地図を使って、いよいよあなたのPCと、このGitHubという大図書館を、一本の魔法の線で繋いでみましょうか」</p>
+
+<p>私が指さしたGitHubの画面には、<code class="language-plaintext highlighter-rouge">…or push an existing repository from the command line</code>という見出しの下に、いくつかのコマンドが並んでいる。</p>
+
+<p>「この英語のコマンドたち、一見すると難しそうだけど、やってることはすごくシンプルよ。千紘のPCの中にある冒行の書（ローカルリポジトリ）に、『あなたの置き場所は、この大図書館（GitHub）の、この住所の書棚ですよ』って教えてあげるだけ」</p>
+
+<p>「住所…なるほど！」</p>
+
+<p>「そのための最初のコマンドがこれね」</p>
+
+<h3 id="リモートリポジトリのurlを登録する-git-remote-add">リモートリポジトリのURLを登録する： <code class="language-plaintext highlighter-rouge">git remote add</code></h3>
+
+<p>私は画面に表示されている一行を指さした。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add origin https://github.com/chihiro-adventurer/my-project.git
+
+</code></pre></div></div>
+
+<p>「コマンドを分解してみるわね」</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">git remote</code>: リモートリポジトリに関する操作をしますよ、という合図。</li>
+  <li><code class="language-plaintext highlighter-rouge">add</code>: これから新しいリモートリポジトリの情報を追加します、という意味。</li>
+  <li><code class="language-plaintext highlighter-rouge">origin</code>: これから追加するリモートリポジトリに付ける『あだ名』よ。一般的に、一番メインになるリモートリポジトリには<code class="language-plaintext highlighter-rouge">origin</code>（『起源』とか『元』っていう意味）って名前を付けるのが慣習なの。</li>
+  <li><code class="language-plaintext highlighter-rouge">https://...git</code>: そして、これがリモートリポジトリの具体的な『住所』、つまりURLね。</li>
+</ul>
+
+<p>「つまり、『<code class="language-plaintext highlighter-rouge">origin</code>というあだ名で、この住所をリモートリポジトリとして登録します』っていう命令なの。さあ、この一行をコピーして、Git Bashに貼り付けて実行してみて」</p>
+
+<p>千紘がコマンドを実行すると、またしてもターミナルは沈黙した。</p>
+
+<p>「うん、成功ね。これで、千紘のローカルリポジトリは、GitHub上のリモートリポジトリの場所を覚えたわ」</p>
+
+<h3 id="ブランチ名を変更する-git-branch--m-main">ブランチ名を変更する： <code class="language-plaintext highlighter-rouge">git branch -M main</code></h3>
+
+<p>「次に、もう一つだけ準備。GitHubの画面にある、次のコマンドを見てくれる？」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch -M main
+
+</code></pre></div></div>
+
+<p>「これはね、私たちの冒険の書の『メインストーリーの章』の名前を、<code class="language-plaintext highlighter-rouge">master</code>から<code class="language-plaintext highlighter-rouge">main</code>に変えるためのコマンドなの。昔は<code class="language-plaintext highlighter-rouge">master</code>という名前が一般的だったんだけど、最近では<code class="language-plaintext highlighter-rouge">main</code>という名前を使うのが主流になっているのよ。大図書館の作法に合わせて、章の名前を書き換えておきましょう、っていうおまじないみたいなものね」</p>
+
+<p>千紘は言われた通りにコマンドを実行した。これで、ローカルリポジトリのメインブランチの名前が<code class="language-plaintext highlighter-rouge">main</code>に変更された。</p>
+
+<h3 id="ローカルの変更を送信する-git-push">ローカルの変更を送信する： <code class="language-plaintext highlighter-rouge">git push</code></h3>
+
+<p>「さあ、住所も覚えたし、章の名前も整えた。いよいよ、千紘のPCに記録してきた冒険の歴史を、GitHubの大図書館に送り届ける時が来たわ。そのためのコマンドが<strong>push（プッシュ）</strong>よ」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push -u origin main
+
+</code></pre></div></div>
+
+<p>「これも分解すると…」</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">git push</code>: ローカルリポジトリの変更内容を、リモートリポジトリに送信（アップロード）します、という命令。</li>
+  <li><code class="language-plaintext highlighter-rouge">u origin main</code>: 『<code class="language-plaintext highlighter-rouge">origin</code>というあだ名のリモートリポジトリの、<code class="language-plaintext highlighter-rouge">main</code>というブランチ（章）に対してプッシュします』という意味になるわ。</li>
+</ul>
+
+<p>「 <code class="language-plaintext highlighter-rouge">-u</code> っていうのは何なの？」</p>
+
+<p>「いい質問ね。これは<code class="language-plaintext highlighter-rouge">--set-upstream</code>の略で、『これからの<code class="language-plaintext highlighter-rouge">push</code>や<code class="language-plaintext highlighter-rouge">pull</code>は、基本的にこの<code class="language-plaintext highlighter-rouge">origin</code>の<code class="language-plaintext highlighter-rouge">main</code>ブランチとやり取りするのを基本にしますね』っていう設定を、最初の一回だけしてあげるためのオプションなの。これを一度やっておけば、次からは単に<code class="language-plaintext highlighter-rouge">git push</code>って打つだけで、同じ場所に送信してくれるようになるのよ」</p>
+
+<p>「へぇー！便利じゃん！」</p>
+
+<p>「じゃあ、いよいよ実行してみて。もしかしたら、GitHubのユーザー名とパスワードを聞かれるかもしれないわ」</p>
+
+<p>千紘がコマンドを叩くと、ターミナルに何行かのメッセージが表示され、アップロードの進捗を示すような表示が出た後、最終的に<code class="language-plaintext highlighter-rouge">Branch 'main' set up to track remote branch 'main' from 'origin'.</code>といったメッセージが表示された。</p>
+
+<p>「できた…の！？なんかうまくいったっぽいメッセージが出てるよ！」</p>
+
+<p>「ええ、完璧よ。じゃあ、証拠を確認しに行きましょうか。さっきのリモートリポジトリのGitHubのページを、ブラウザで更新してみて」</p>
+
+<p>千紘が恐る恐る更新ボタンをクリックすると、さっきまでコマンドが表示されていただけの殺風景なページが、一変していた。</p>
+
+<p>「わーーーーーっ！すごい！私の作った<code class="language-plaintext highlighter-rouge">index.html</code>がここにいる！コミットのメッセージもちゃんと表示されてる！」</p>
+
+<p>そこには、ローカルで作った<code class="language-plaintext highlighter-rouge">index.html</code>ファイルと、2つのコミット履歴が、間違いなく表示されていた。自分のPCの中だけで完結していた冒険の書が、インターネットという広大な世界に、確かにその第一歩を刻んだ瞬間だった。</p>
+
+<p>「どう？自分の書いたコードが、こうして世界中のどこからでも見られる場所に置かれた気分は」</p>
+
+<p>「最高！超すごいじゃん！なんか私、本物のプログラマーになった気分だよ！」</p>
+
+<p>千紘は子供のようにはしゃいでいる。その姿を見て、私は静かに頷いた。</p>
+
+<p>「ええ、そうよ。あなたはもう、立派な冒険者。そして、このGitHubという図書館を使えば、世界中の冒-険者と繋がることができる。じゃあ次は、他の人が書いた冒険の書を、自分のPCに持ってくる方法を学んでみましょうか」</p>
+
+<h2 id="第3部他の人のプロジェクトに参加する">第3部：他の人のプロジェクトに参加する</h2>
+
+<p>「最高！超すごいじゃん！なんか私、本物のプログラマーになった気分だよ！」</p>
+
+<p>自分のプロジェクトがGitHubに公開されたことで、千紘はすっかり有頂天になっていた。その興奮が冷めやらないうちに、私は次のステップへと彼女を誘う。</p>
+
+<p>「ええ、そうよ。あなたはもう、立派な冒険者。そして、このGitHubという図書館を使えば、世界中の冒険者と繋がることができる。じゃあ次は、視点を変えてみましょうか」</p>
+
+<p>「視点を変える？」</p>
+
+<p>「そう。今までは、千紘が『自分の冒険の書』を図書館に預ける、という話だったわよね。今度は逆に、図書館に置いてある『他の誰かの冒険の書』を、自分の机に持ってきて読んでみたり、続きを書き加えるための準備をしたりする方法を学ぶの」</p>
+
+<p>「おおー！他の人のプロジェクトに参加するってことだね！面白そうじゃん！」</p>
+
+<p>「その通り。じゃあ、練習台として、私が作ったプロジェクトがGitHubにあるから、それを千紘のPCに持ってくる、というのをやってみましょうか」</p>
+
+<h3 id="既存のリポジトリを複製する-git-clone">既存のリポジトリを複製する： <code class="language-plaintext highlighter-rouge">git clone</code></h3>
+
+<p>「GitHubにある公開プロジェクトを手元に持ってくるのは、実はすごく簡単。たった一つのコマンドで、プロジェクトのファイル一式はもちろん、これまでの全ての歴史、つまりコミット履歴も丸ごとコピーしてこられるの。その魔法のコマンドが <strong>clone（クローン）</strong> よ」</p>
+
+<p>「クローン！SF映画みたいでかっこいいじゃん！」</p>
+
+<p>「ふふ、まさにそんなイメージね。プロジェクトの完全な複製を作る、という意味だから。やり方はこう」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone &lt;リモートリポジトリのURL&gt;
+
+</code></pre></div></div>
+
+<p>「私が用意したプロジェクトのURLはこれよ」と、私はチャットでURLを送った。千紘の画面に <code class="language-plaintext highlighter-rouge">https://github.com/mio-example/sample-project.git</code> という文字列が表示される。</p>
+
+<p>「このURLをコピーしたら、まずは今の作業場所から一つ上の階層に戻りましょうか。<code class="language-plaintext highlighter-rouge">cd ..</code> って覚えてる？」</p>
+
+<p>「うん！ディレクトリを移動するやつ！」</p>
+
+<p>千紘が<code class="language-plaintext highlighter-rouge">cd ..</code>を実行し、<code class="language-plaintext highlighter-rouge">my-project</code>の外に出たことを確認してから、私は続けた。</p>
+
+<p>「じゃあ、そこでさっきの<code class="language-plaintext highlighter-rouge">git clone</code>コマンドを実行してみて」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/mio-example/sample-project.git
+
+</code></pre></div></div>
+
+<p>コマンドが実行されると、ターミナルに<code class="language-plaintext highlighter-rouge">Cloning into 'sample-project'...</code>といったメッセージが表示され、何かがダウンロードされていく様子が見えた。</p>
+
+<p>「わ、何か始まった！…終わったみたい！」</p>
+
+<p>「じゃあ、<code class="language-plaintext highlighter-rouge">ls</code>コマンドで、今いる場所にどんなファイルやフォルダがあるか確認してみて」</p>
+
+<p>千紘が<code class="language-plaintext highlighter-rouge">ls</code>を叩くと、そこには<code class="language-plaintext highlighter-rouge">my-project</code>と並んで、新しく<code class="language-plaintext highlighter-rouge">sample-project</code>という名前のディレクトリが作られていた。</p>
+
+<p>「本当だ！<code class="language-plaintext highlighter-rouge">sample-project</code>ってフォルダができてる！これって…」</p>
+
+<p>「ええ、それが私のプロジェクトの完全なクローンよ。<code class="language-plaintext highlighter-rouge">cd sample-project</code>で中に入って、<code class="language-plaintext highlighter-rouge">git log</code>を叩いてみてくれる？」</p>
+
+<p>千紘が言われた通りに操作すると、画面には彼女が見たことのないコミット履歴が表示された。</p>
+
+<p><code class="language-plaintext highlighter-rouge">Author: Mio &lt;mio@example.com&gt;</code>という、私の名前で作られたいくつかのセーブデータが、そこにはっきりと記録されていた。</p>
+
+<p>「すごい！澪が作った歴史が、そっくりそのまま私のPCに来ちゃった！ただファイルをダウンロードするのとは、全然違うんだね！」</p>
+
+<p>「その通り。これが<code class="language-plaintext highlighter-rouge">clone</code>のすごいところ。あなたは今、このプロジェクトの歴史の全てを手に入れた。これで、千紘もこのプロジェクトの開発に参加する準備が整った、というわけ」</p>
+
+<h3 id="リモートの更新を取り込む-git-pull">リモートの更新を取り込む： <code class="language-plaintext highlighter-rouge">git pull</code></h3>
+
+<p>「さて、ここからが共同作業の面白いところよ」</p>
+
+<p>私はそう言うと、自分の手元のPCを操作し始めた。</p>
+
+<p>「今、私がこの<code class="language-plaintext highlighter-rouge">sample-project</code>に、一つ新しいファイルを追加して、GitHubに<code class="language-plaintext highlighter-rouge">push</code>したわ。GitHubのプロジェクトページをブラウザで更新してみて」</p>
+
+<p>千紘がページを更新すると、ファイル一覧に<code class="language-plaintext highlighter-rouge">new-feature.txt</code>という、さっきまでなかったファイルが表示されている。</p>
+
+<p>「あ！本当だ！ファイルが増えてる！」</p>
+
+<p>「でも、千紘のPCの中にある<code class="language-plaintext highlighter-rouge">sample-project</code>は、まだ古いままのはずよ。<code class="language-plaintext highlighter-rouge">ls</code>で確認してみて」</p>
+
+<p>千紘が確認すると、案の定、ローカルのディレクトリに<code class="language-plaintext highlighter-rouge">new-feature.txt</code>は存在しなかった。</p>
+
+<p>「ほんとだ、ない…。じゃあ、このままだと、私の冒険の書は古い情報ってことになっちゃうの？」</p>
+
+<p>「その通り。だから、他の人が更新した最新の歴史を、自分のPCに持ってきて反映させる必要がある。そのためのコマンドが <strong>pull（プル）</strong> よ。『引っ張ってくる』っていう意味ね」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull
+
+</code></pre></div></div>
+
+<p>「<code class="language-plaintext highlighter-rouge">clone</code>してきたリポジトリでは、もうリモートの場所は登録済みだから、単に<code class="language-plaintext highlighter-rouge">git pull</code>と打つだけでいいの。さあ、実行してみて」</p>
+
+<p>千紘がコマンドを実行すると、ターミナルに変更内容をダウンロードした旨のメッセージが表示された。</p>
+
+<p>「じゃあ、もう一度<code class="language-plaintext highlighter-rouge">ls</code>を」</p>
+
+<p>「あーーーーっ！<code class="language-plaintext highlighter-rouge">new-feature.txt</code>がいる！私のPCにやってきた！」</p>
+
+<p>千紘は、まるで魔法でも見たかのように目を丸くしている。</p>
+
+<p>「これが、チームで開発を進める上での基本サイクル。誰かが<code class="language-plaintext highlighter-rouge">push</code>した変更を、別の人が<code class="language-plaintext highlighter-rouge">pull</code>で受け取る。こうして、みんなが常に最新の状態で作業を進めていくの」</p>
+
+<p>私は満足げに頷いた。</p>
+
+<p>「これで、自分の冒険の書を世界に発信する方法（push）と、他の人の冒険の書を自分のものにする方法（clone）、そして最新の物語を取り込む方法（pull）を学んだわね」</p>
+
+<p>「うん！なんか、GitとGitHubが最強の道具だってことが、よーく分かったよ！」</p>
+
+<p>「ふふ、それなら良かった。でもね、千紘。もし、同じ本の同じページを、あなたと私が同時に書き換えてしまったら、どうなると思う？」</p>
+
+<p>「え…？ケンカになる？」</p>
+
+<p>「そう、Gitの世界ではそれを<strong>コンフリクト（競合）</strong>って言うの。そして、そのケンカを避けるための、もっと賢くて安全な方法がある。次は、そのための『ブランチ』という、Git最強の機能を学びましょうか」</p>
+
+<h1 id="第3章並行開発のためのブランチ戦略">第3章：並行開発のためのブランチ戦略</h1>
+
+<h2 id="第1部ケンカしないための最強の魔法ブランチ">第1部：ケンカしないための最強の魔法、ブランチ</h2>
+
+<p>「<code class="language-plaintext highlighter-rouge">push</code>と<code class="language-plaintext highlighter-rouge">pull</code>と<code class="language-plaintext highlighter-rouge">clone</code>！なんかもう、私、Gitマスターに近づいてきたんじゃない！？」</p>
+
+<p>「ふふ、頼もしいわね。でも、本当の冒険はここからよ。千紘、もし同じ本の同じページを、あなたと私が同時に書き換えてしまったら、どうなると思う？」</p>
+
+<p>私の問いに、千紘は少し考えてから答えた。</p>
+
+<p>「え…？ケンカになる？」</p>
+
+<p>「そう、Gitの世界ではそれを<strong>コンフリクト（競合）</strong>って言うの。どっちの変更を優先すればいいか、Gitが分からなくなってしまう状態ね。これを解決するのは、結構大変な作業なの」</p>
+
+<p>「うわー、それは面倒くさそうじゃん…」</p>
+
+<p>「でしょう？だから、そんな面倒なことにならないように、もっと賢くて安全な方法があるの。それが、これから学ぶ<strong>ブランチ</strong>という、Git最強の機能よ」</p>
+
+<h3 id="ブランチとは冒険の書を分岐させる魔法">ブランチとは？：冒険の書を分岐させる魔法</h3>
+
+<p>「ブランチって、木の枝のこと？」</p>
+
+<p>「ええ、そのイメージで合ってるわ。今の私たちの冒険の書は、<code class="language-plaintext highlighter-rouge">main</code>という一本の太い幹に、歴史をずっと記録し続けている状態。でも、例えば『新しい魔法を試作する』とか『ちょっと危険なダンジョンを偵察する』みたいな、本編にすぐに入れるか分からないような追加ストーリーを書きたい時、いきなりメインの幹に書き込んじゃうのは危ないと思わない？」</p>
+
+<p>「確かに！失敗したら、メインストーリーがぐちゃぐちゃになっちゃうもんね」</p>
+
+<p>「その通り。そこでブランチの出番よ。ブランチを切る（作成する）と、その時点の冒険の書の完璧なコピーが作られて、そこから新しい歴史を刻み始めることができるの。メインの幹には一切影響を与えずにね。まるで、<strong>パラレルワールドを作る</strong>ようなものよ」</p>
+
+<p>「パラレルワールド！面白そうじゃん！」</p>
+
+<p>「ええ。そして、パラレルワールドでの冒険（新機能の開発）がうまくいって、『これは本編にも取り込もう！』ってなったら、その歴史をメインの幹に合流（<strong>マージ</strong>）させることができる。もし失敗したら、そのブランチは誰にも迷惑をかけずに、こっそり消してしまえばいい。これがブランチの基本的な考え方よ」</p>
+
+<h3 id="ブランチの基本操作">ブランチの基本操作</h3>
+
+<p>「じゃあ、早速やってみましょうか。今いる<code class="language-plaintext highlighter-rouge">sample-project</code>で、新しい機能を追加するためのブランチを作ってみるわよ」</p>
+
+<h3 id="ブランチの作成と一覧表示-git-branch">ブランチの作成と一覧表示： <code class="language-plaintext highlighter-rouge">git branch</code></h3>
+
+<p>「ブランチを作るコマンドは、すごくシンプル」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch &lt;新しいブランチ名&gt;
+
+</code></pre></div></div>
+
+<p>「じゃあ、『新しい機能』っていう意味で、<code class="language-plaintext highlighter-rouge">add-new-feature</code>という名前のブランチを作ってみて」</p>
+
+<p>千紘がコマンドを叩く。<code class="language-plaintext highlighter-rouge">git branch add-new-feature</code>。またしても、ターミナルは沈黙した。</p>
+
+<p>「うん、これでブランチができたわ。どんなブランチがあるか確認するには、ブランチ名を付けずに<code class="language-plaintext highlighter-rouge">git branch</code>コマンドだけを打つと、一覧が表示されるのよ」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch
+
+</code></pre></div></div>
+
+<p>千紘が実行すると、画面にこう表示された。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  add-new-feature
+* main
+
+</code></pre></div></div>
+
+<p>「わ、二つある！<code class="language-plaintext highlighter-rouge">*</code>が付いてるのが、今自分がいる場所ってこと？」</p>
+
+<p>「大正解。さすがね、千紘。今はまだ<code class="language-plaintext highlighter-rouge">main</code>ブランチにいる、ということね」</p>
+
+<h3 id="ブランチの切り替え-git-switch">ブランチの切り替え： <code class="language-plaintext highlighter-rouge">git switch</code></h3>
+
+<p>「じゃあ、新しく作ったパラレルワールドに移動しましょうか。ブランチを切り替えるには、<code class="language-plaintext highlighter-rouge">switch</code>コマンドを使うわ」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git switch &lt;移動したいブランチ名&gt;
+
+</code></pre></div></div>
+
+<p>「さあ、<code class="language-plaintext highlighter-rouge">git switch add-new-feature</code>を実行して」</p>
+
+<p>千紘がコマンドを実行すると、<code class="language-plaintext highlighter-rouge">Switched to branch 'add-new-feature'</code>というメッセージが表示された。</p>
+
+<p>「メッセージが出た！じゃあ、もう一度<code class="language-plaintext highlighter-rouge">git branch</code>で現在地を確認してみて」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* add-new-feature
+  main
+
+</code></pre></div></div>
+
+<p>「本当だ！<code class="language-plaintext highlighter-rouge">*</code>が移動してる！私、今パラレルワールドにいるんだね！」</p>
+
+<h3 id="ブランチの独立性を体感する">ブランチの独立性を体感する</h3>
+
+<p>「じゃあ、この新しいブランチで、冒険の書に何か書き加えてみましょうか。例えば、新しいファイルを作ってみるのが分かりやすいわね」</p>
+
+<p>千紘は言われた通り、<code class="language-plaintext highlighter-rouge">touch feature.txt</code>というコマンドで新しいファイルを作り、中身を少し編集してから、いつもの手順でコミットした。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add feature.txt
+git commit -m "Add new feature file"
+
+</code></pre></div></div>
+
+<p>「よし、コミットできたよ！<code class="language-plaintext highlighter-rouge">git log</code>で見ても、ちゃんと新しい歴史が記録されてる！」</p>
+
+<p>「ええ、完璧ね。じゃあ、ここで元の世界、<code class="language-plaintext highlighter-rouge">main</code>ブランチに戻ってみましょうか。<code class="language-plaintext highlighter-rouge">git switch main</code>よ」</p>
+
+<p>千紘がブランチを<code class="language-plaintext highlighter-rouge">main</code>に戻す。そして、私は言った。</p>
+
+<p>「じゃあ、<code class="language-plaintext highlighter-rouge">ls</code>コマンドで、今いる場所のファイル一覧を見てみて」</p>
+
+<p>「え…？あれ…？<code class="language-plaintext highlighter-rouge">feature.txt</code>が…ない！？」</p>
+
+<p>画面には、<code class="language-plaintext highlighter-rouge">feature.txt</code>が存在しない、元の状態のファイル一覧が表示されていた。</p>
+
+<p>「<code class="language-plaintext highlighter-rouge">git log</code>も見てみて」</p>
+
+<p>千紘がログを見ると、そこには先ほど彼女が作った<code class="language-plaintext highlighter-rouge">"Add new feature file"</code>というコミットは影も形もなかった。</p>
+
+<p>「うそ！？消えちゃったの！？」</p>
+
+<p>「ううん、消えたんじゃないわ。ちゃんと<code class="language-plaintext highlighter-rouge">add-new-feature</code>ブランチに記録されてる。もう一度<code class="language-plaintext highlighter-rouge">git switch add-new-feature</code>で戻ってみて」</p>
+
+<p>千紘が慌ててブランチを戻すと、そこには<code class="language-plaintext highlighter-rouge">feature.txt</code>も、新しいコミットも、ちゃんと存在していた。</p>
+
+<p>「わ、わ、わ、すごい！本当に世界が分かれてるんだ！これなら、安心して何でも試せるじゃん！」</p>
+
+<p>千紘は、ブランチという魔法の本当のすごさを、身をもって体験した。</p>
+
+<p>「ふふ、でしょう？これがブランチの力よ。メインの世界を汚さずに、安全な場所で自由に開発を進めることができる。さて、千紘。この素晴らしい新機能を、いよいよメインストーリーにデビューさせてあげたいと思わない？」</p>
+
+<p>「うん！超思う！」</p>
+
+<p>「じゃあ次は、この二つに分かれた世界を、再び一つに統合する方法、<strong>マージ</strong>について学びましょうか」</p>
+
+<h2 id="第2部世界の統合マージと避けられない宿命コンフリクト">第2部：世界の統合『マージ』と避けられない宿命『コンフリクト』</h2>
+
+<p>「わ、わ、わ、すごい！本当に世界が分かれてるんだ！これなら、安心して何でも試せるじゃん！」</p>
+
+<p>ブランチの本当の力に、千紘はすっかり興奮していた。</p>
+
+<p>「ふふ、でしょう？これがブランチの力よ。メインの世界を汚さずに、安全な場所で自由に開発を進めることができる。さて、千紘。この素晴らしい新機能を、いよいよメインストーリーにデビューさせてあげたいと思わない？」</p>
+
+<p>「うん！超思う！」</p>
+
+<p>「じゃあ次は、この二つに分かれた世界を、再び一つに統合する方法、<strong>マージ</strong>について学びましょうか」</p>
+
+<h3 id="ブランチの統合-git-merge">ブランチの統合： <code class="language-plaintext highlighter-rouge">git merge</code></h3>
+
+<p>「マージは『合流させる』っていう意味。<code class="language-plaintext highlighter-rouge">add-new-feature</code>ブランチで加えた変更の歴史を、<code class="language-plaintext highlighter-rouge">main</code>ブランチの歴史に合流させるの。やり方は簡単だけど、一つだけ大事なルールがあるわ」</p>
+
+<p>「ルール？」</p>
+
+<p>「<strong>『合流させたい先のブランチ』に移動してから、マージを実行する</strong>こと。今回は<code class="language-plaintext highlighter-rouge">main</code>ブランチに<code class="language-plaintext highlighter-rouge">add-new-feature</code>の変更を取り込みたいから、まずは<code class="language-plaintext highlighter-rouge">main</code>ブランチにいることを確認するの」</p>
+
+<p>千紘は<code class="language-plaintext highlighter-rouge">git switch main</code>で<code class="language-plaintext highlighter-rouge">main</code>ブランチに戻った。</p>
+
+<p>「よし、<code class="language-plaintext highlighter-rouge">main</code>にいるよ！」</p>
+
+<p>「OK。じゃあ、いよいよ統合の呪文を唱えるわよ」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge &lt;合流させたいブランチ名&gt;
+
+</code></pre></div></div>
+
+<p>「今回は<code class="language-plaintext highlighter-rouge">add-new-feature</code>を合流させたいから…」</p>
+
+<p>「<code class="language-plaintext highlighter-rouge">git merge add-new-feature</code>だね！」</p>
+
+<p>千紘がコマンドを叩くと、ターミナルに<code class="language-plaintext highlighter-rouge">Updating ...</code>や<code class="language-plaintext highlighter-rouge">... file changed, ... insertion(+)</code>といったメッセージが表示された。</p>
+
+<p>「じゃあ、<code class="language-plaintext highlighter-rouge">ls</code>コマンドでファイル一覧を見てみて」</p>
+
+<p>「あ！<code class="language-plaintext highlighter-rouge">feature.txt</code>がいる！<code class="language-plaintext highlighter-rouge">main</code>ブランチにやってきた！」</p>
+
+<p><code class="language-plaintext highlighter-rouge">git log</code>を叩くと、そこには<code class="language-plaintext highlighter-rouge">add-new-feature</code>ブランチで作ったコミットもしっかりと歴史に刻まれていた。二つの世界は、見事に一つになったのだ。</p>
+
+<h3 id="お片付けと次なる冒険">お片付けと、次なる冒険</h3>
+
+<p>「パラレルワールドでの冒険が無事に終わって、本編に統合されたら、そのブランチはもう役割を終えたことになるわ。取っておいてもいいけど、増えすぎるとごちゃごちゃするから、消してしまうのが一般的よ」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch -d &lt;削除したいブランチ名&gt;
+
+</code></pre></div></div>
+
+<p>「<code class="language-plaintext highlighter-rouge">-d</code>は<code class="language-plaintext highlighter-rouge">--delete</code>の略ね。さあ、<code class="language-plaintext highlighter-rouge">git branch -d add-new-feature</code>で、お片付けしてみて」</p>
+
+<p><code class="language-plaintext highlighter-rouge">Deleted branch add-new-feature.</code>というメッセージが表示され、ブランチは綺麗に消去された。</p>
+
+<p>「よし。これで一連の流れは完璧ね。でも、千紘。今のは、あなた一人が別の世界で冒険して、それを元の世界に持ち帰る、っていう単純な話だった」</p>
+
+<p>「うん」</p>
+
+<p>「でも、もし…あなたがパラレルワールドで冒険している間に、元の世界でも、誰かが歴史を書き換えていたら？しかも、それが偶然にも、あなたが書き換えたのと同じ場所だったら…？」</p>
+
+<p>「え…どうなるの？」</p>
+
+<p>「それが<strong>コンフリクト</strong>よ。Gitが『どっちの歴史を信じればいいか分からない！』ってパニックを起こしちゃうの。でも、大丈夫。それも冒険の一部。解決する方法を、今から体験してみましょう」</p>
+
+<h3 id="コンフリクトの発生と解決">コンフリクトの発生と解決</h3>
+
+<p>「じゃあ、わざとコンフリクトを起こしてみるわよ。まず、<code class="language-plaintext highlighter-rouge">main</code>ブランチで<code class="language-plaintext highlighter-rouge">README.md</code>を編集して、『このプロジェクトは千紘の冒険の書です。』って一行だけ書いて、コミットしてみて」</p>
+
+<p>千紘は言われた通りにファイルを編集し、<code class="language-plaintext highlighter-rouge">add</code>して<code class="language-plaintext highlighter-rouge">commit</code>した。</p>
+
+<p>「OK。じゃあ次に、<code class="language-plaintext highlighter-rouge">fix-typo</code>っていう新しいブランチを作って、そっちに移動して」</p>
+
+<p><code class="language-plaintext highlighter-rouge">git branch fix-typo</code>、<code class="language-plaintext highlighter-rouge">git switch fix-typo</code>。千紘はスムーズにパラレルワールドへ移動した。</p>
+
+<p>「その新しい世界で、さっき書いた<code class="language-plaintext highlighter-rouge">README.md</code>の『千紘の』を、『<strong>偉大なる</strong>千紘の』に書き換えてコミットしてくれる？」</p>
+
+<p>「えへへ、照れるじゃん！…よし、コミットしたよ！」</p>
+
+<p>「ありがとう。…さて、ここからが本番。あなたが<code class="language-plaintext highlighter-rouge">fix-typo</code>の世界で作業している間に、<code class="language-plaintext highlighter-rouge">main</code>の世界でも歴史が進んだ、という状況を再現するわ。<code class="language-plaintext highlighter-rouge">main</code>ブランチに戻って」</p>
+
+<p><code class="language-plaintext highlighter-rouge">git switch main</code>で元の世界に戻った千紘に、私は非情な指示を出す。</p>
+
+<p>「<code class="language-plaintext highlighter-rouge">main</code>ブランチの<code class="language-plaintext highlighter-rouge">README.md</code>を、今度は『このプロジェクトは、<strong>駆け出し冒険者</strong>・千紘の冒険の書です。』に書き換えて、コミットして」</p>
+
+<p>「え！？<code class="language-plaintext highlighter-rouge">偉大なる</code>じゃなくて！？…まあ、いっか。よし、こっちもコミットしたよ」</p>
+
+<p>「これで準備は整ったわ。今の状況を整理するとこう」</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">main</code>ブランチでは、「駆け出し冒険者」という修正が加えられた。</li>
+  <li><code class="language-plaintext highlighter-rouge">fix-typo</code>ブランチでは、「偉大なる」という修正が加えられた。</li>
+  <li>どちらも、同じファイルの、同じ行を変更している。</li>
+</ul>
+
+<p>「さあ、千紘。<code class="language-plaintext highlighter-rouge">main</code>ブランチにいるその状態で、<code class="language-plaintext highlighter-rouge">fix-typo</code>ブランチをマージしてみて。何が起こるか…」</p>
+
+<p>千紘がゴクリと唾を飲んで<code class="language-plaintext highlighter-rouge">git merge fix-typo</code>を実行すると、ターミナルは今まで見たことのない、不穏なメッセージを返した。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+
+</code></pre></div></div>
+
+<p>「わー！なんか怒られた！CONFLICTって書いてある！」</p>
+
+<p>「ええ、これがコンフリクトよ。Gitの悲鳴だと思って。じゃあ、パニックになっている<code class="language-plaintext highlighter-rouge">README.md</code>の中身を見てみましょうか」</p>
+
+<p>ファイルを開くと、そこには奇妙な記号が書き加えられていた。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+このプロジェクトは、駆け出し冒険者・千紘の冒険の書です。
+=======
+このプロジェクトは、偉大なる千紘の冒険の書です。
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fix-typo
+
+</code></pre></div></div>
+
+<p>「何これ！？」</p>
+
+<p>「これがコンフリクトの目印よ」</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code>から<code class="language-plaintext highlighter-rouge">=======</code>までが、今いるブランチ（<code class="language-plaintext highlighter-rouge">main</code>）での変更内容。</li>
+  <li><code class="language-plaintext highlighter-rouge">=======</code>から<code class="language-plaintext highlighter-rouge">&gt;&gt;&gt;&gt;&gt;&gt;&gt; fix-typo</code>までが、マージしようとしたブランチ（<code class="language-plaintext highlighter-rouge">fix-typo</code>）での変更内容。</li>
+</ul>
+
+<p>「Gitは『どっちを採用すればいいか分からないから、君が判断して、正しい形にファイルを修正してくれ』って言ってるの。さあ、この記号を全部消して、千紘が思う一番いい形にファイルを編集してみて。例えば、『このプロジェクトは、偉大なる駆け出し冒険者・千紘の冒険の書です。』とかね」</p>
+
+<p>千紘は少し悩んでから、ファイルを綺麗に修正した。</p>
+
+<p>「よし、できたよ！」</p>
+
+<p>「素晴らしいわ。じゃあ、最後の仕上げよ。修正したファイルを、もう一度<code class="language-plaintext highlighter-rouge">add</code>して、<code class="language-plaintext highlighter-rouge">commit</code>するの」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add README.md
+git commit
+
+</code></pre></div></div>
+
+<p>「今回は<code class="language-plaintext highlighter-rouge">-m</code>を付けずに<code class="language-plaintext highlighter-rouge">commit</code>してみて。そうすると、エディタが立ち上がって、Gitが用意した『マージのコンフリクトを解決しました』っていうデフォルトメッセージが表示されるから、それをそのまま保存すればOKよ」</p>
+
+<p>千紘がコミットを完了させると、コンフリクトは無事に解決され、二つの歴史は正しく一つに統合された。</p>
+
+<p>「やったー！できた！コンフリクト、最初はびっくりしたけど、解決できると超スッキリするじゃん！」</p>
+
+<p>「ええ。これであなたも、一人前の冒険者ね。ローカルでの作業は、もう何も怖くないはずよ。じゃあ、いよいよ次の章では、このブランチの魔法をGitHubと組み合わせた、本当のチーム開発の世界へご案内するわ」</p>
+
+<h1 id="第4章githubを活用したチーム開発フロー">第4章：GitHubを活用したチーム開発フロー</h1>
+
+<h2 id="第1部はじめましてプルリクエスト">第1部：はじめまして、プルリクエスト</h2>
+
+<p>「コンフリクトも解決できるようになったし、もう私に敵はいないじゃん！」</p>
+
+<p>「ふふ、頼もしい限りね。でも、本当のチーム開発は、もっと安全で、もっと対話的な方法で行われるのよ」</p>
+
+<p>私は千紘のGitHubリポジトリのページを開き、「Settings」タブをクリックした。そして、<code class="language-plaintext highlighter-rouge">main</code>ブランチを『保護』する設定を有効にする。</p>
+
+<p>「これは…？」</p>
+
+<p>「今、私がこのリポジトリの<code class="language-plaintext highlighter-rouge">main</code>ブランチに、直接<code class="language-plaintext highlighter-rouge">push</code>できないように魔法をかけたわ。試しに、何かローカルの<code class="language-plaintext highlighter-rouge">main</code>ブランチで変更を加えて、<code class="language-plaintext highlighter-rouge">push</code>してみてくれる？」</p>
+
+<p>千紘が試してみると、ターミナルは無情にも<code class="language-plaintext highlighter-rouge">! [remote rejected]</code>というエラーを返した。</p>
+
+<p>「うわ！また怒られた！なんで！？」</p>
+
+<p>「実際のチーム開発では、<code class="language-plaintext highlighter-rouge">main</code>ブランチは『常に安定して動く、製品版の設計図』として、とても大事に扱われるの。未完成の機能や、まだ誰もチェックしていないコードが、うっかり混ざってしまうのを防ぐためよ」</p>
+
+<p>「じゃあ、どうやって私が作った新機能を<code class="language-plaintext highlighter-rouge">main</code>に入れるのさ！？」</p>
+
+<p>「そこで登場するのが、GitHubが生んだ最高の発明、<strong>プルリクエスト</strong>よ」</p>
+
+<h3 id="プルリクエストとは丁寧なご提案">プルリクエストとは？：丁寧な『ご提案』</h3>
+
+<p>「プルリクエストは、英語だと<strong>Pull Request</strong>、略して<strong>PR</strong>ってよく呼ばれるわ。これは、文字通り『私のこの変更（ブランチ）を、あなたのブランチに<strong>引き込んで（Pull）</strong>もらえませんか？』と<strong>お願い（Request）</strong>する機能なの」</p>
+
+<p>「お願い…？」</p>
+
+<p>「そう。いきなり<code class="language-plaintext highlighter-rouge">merge</code>するんじゃなくて、『こんな機能を作ってみたんですけど、どうでしょうか？内容を確認してもらって、問題なければ、<code class="language-plaintext highlighter-rouge">main</code>ブランチに取り込んでもらえませんか？』って、レビューを依頼するためのものなのよ。いわば、<strong>変更内容のプレゼンテーション</strong>ね」</p>
+
+<h3 id="プルリクエストを送ってみよう">プルリクエストを送ってみよう</h3>
+
+<p>「じゃあ、早速やってみましょう。さっきコンフリクトを解決した<code class="language-plaintext highlighter-rouge">fix-typo</code>ブランチはもう消したかしら？まだなら、<code class="language-plaintext highlighter-rouge">git branch -d fix-typo</code>で消しておいて」</p>
+
+<p>「うん、消したよ！」</p>
+
+<p>「じゃあ、新しいブランチ<code class="language-plaintext highlighter-rouge">add-chapter1</code>を作って、<code class="language-plaintext highlighter-rouge">chapter1.txt</code>というファイルを追加して、何か内容を書いてコミットしてみて」</p>
+
+<p>千紘は手慣れた様子でブランチを作り、ファイルを追加してコミットした。</p>
+
+<p>「よし、できたよ！」</p>
+
+<p>「OK。今、その<code class="language-plaintext highlighter-rouge">add-chapter1</code>ブランチは、まだ千紘のPCの中にしかないわ。プルリクエストを出すには、まずこのブランチをGitHubに<code class="language-plaintext highlighter-rouge">push</code>して、他の人が見れるようにする必要があるの」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin &lt;ブランチ名&gt;
+
+</code></pre></div></div>
+
+<p>「さあ、<code class="language-plaintext highlighter-rouge">git push origin add-chapter1</code>を実行してみて」</p>
+
+<p>千紘がコマンドを実行すると、ローカルのブランチがGitHubにアップロードされた。</p>
+
+<p>「じゃあ、GitHubのリポジトリページをブラウザで見てみて。何か変化があるはずよ」</p>
+
+<p>千紘がページを更新すると、<code class="language-plaintext highlighter-rouge">add-chapter1 had recent pushes ...</code>というメッセージと共に、緑色の<strong>[Compare &amp; pull request]</strong>ボタンが表示されていた。</p>
+
+<p>「わ！なんかボタンが出てる！」</p>
+
+<p>「ええ。GitHubが『新しいブランチがpushされたみたいだけど、プルリクエストを作るかい？』って気を利かせてくれてるの。さあ、そのボタンを押してみて」</p>
+
+<p>ボタンを押すと、プルリクエストの作成画面に移動した。そこには、タイトルと説明を書き込むためのテキストボックスが用意されている。</p>
+
+<p>「ここがプレゼン会場よ。タイトルには『第一章を追加』みたいに、変更内容を分かりやすく書くの。そして、下の大きなテキストボックスには、『なぜこの変更をしたのか』『どんな機能を追加したのか』といった、詳しい説明を書くのよ。レビューしてくれる人が、変更の意図を理解しやすくなるようにね」</p>
+
+<p>千horaが説明を書き終えると、私は右側のサイドバーにある「Reviewers」という項目を指さした。</p>
+
+<p>「そして、ここで『この人に見てもらいたい』っていうレビュー担当者を指名できるの。今回は、私を指名してみて」</p>
+
+<p>千紘が私をレビュアーに設定し、最後に緑色の<strong>[Create pull request]</strong>ボタンを押した。これで、彼女の『ご提案』が、正式に提出された。</p>
+
+<hr />
+
+<h3 id="レビューとコミュニケーション">レビューとコミュニケーション</h3>
+
+<p>プルリクエストが作成されると、私（レビュアー）に通知が届く。私はそのプルリクエストのページを開いた。</p>
+
+<p>「今、私はレビュアーとして、千紘の提案を見ているわ。この画面では、どんなファイルが変更されたのか、具体的にどの行が追加・削除されたのかが一目で分かるの」</p>
+
+<p>私は「Files changed」タブを開き、追加された<code class="language-plaintext highlighter-rouge">chapter1.txt</code>の内容に、あえて一つコメントを残してみることにした。コードの特定の行の横にある「＋」ボタンを押して、コメントを入力する。</p>
+
+<p><code class="language-plaintext highlighter-rouge">「すごくいいね！ただ、ここの表現はもう少し具体的に書いたほうが、読者が分かりやすいかもしれないわ」</code></p>
+
+<p>そして、[Start a review]ボタンを押して、コメントを送信した。</p>
+
+<p>「千紘、プルリクエストのページを更新してみて」</p>
+
+<p>千horaが更新すると、私からのコメントが表示されている。</p>
+
+<p>「わ！澪からコメントが来てる！」</p>
+
+<p>「そう。こうやって、コードについて具体的な場所を指しながら、チームで議論をすることができるの。もし私が『ここ、バグがあるから直して』って指摘したら、千紘はどうする？」</p>
+
+<p>「えっと…また自分のPCで直して、コミットして…」</p>
+
+<p>「そう！そして、もう一度<code class="language-plaintext highlighter-rouge">git push origin add-chapter1</code>をするの。同じブランチにpushすれば、このプルリクエストに自動的にその修正が追加されるわ。さあ、私の指摘を受けて、何か少しだけファイルを修正して、もう一度pushしてみて」</p>
+
+<p>千紘は言われた通りにファイルを修正し、コミットして、再度<code class="language-plaintext highlighter-rouge">push</code>した。すると、GitHubのプルリクエスト画面が自動で更新され、新しいコミットが追加されたことが表示された。</p>
+
+<p>「すごい！自動で反映された！」</p>
+
+<p>「ええ。こうしてレビューと修正のサイクルを繰り返して、コードの品質を高めていくの。…うん、修正された内容、とても良くなったわ。これなら問題ない。じゃあ、私がこの提案を<strong>承認（Approve）</strong>するわね」</p>
+
+<p>私は[Review changes]ボタンから「Approve」を選択し、送信した。プルリクエストのステータスに、緑色のチェックマークが付いた。</p>
+
+<p>「承認された！やったー！」</p>
+
+<p>「これで、この変更は<code class="language-plaintext highlighter-rouge">main</code>ブランチに取り込んでも安全だ、というお墨付きがもらえたわけ。じゃあ、最後に緑色の<strong>[Merge pull request]</strong>ボタンを押してみて。いよいよ、あなたの冒険が、公式の歴史になる瞬間よ」</p>
+
+<p>千紘がボタンを押すと、<code class="language-plaintext highlighter-rouge">add-chapter1</code>ブランチの変更が、無事に<code class="language-plaintext highlighter-rouge">main</code>ブランチにマージされた。</p>
+
+<p>「これが、GitHubを使ったチーム開発の基本的な流れよ。どう？いきなり<code class="language-plaintext highlighter-rouge">push</code>するより、ずっと安全で丁寧な感じがしない？」</p>
+
+<p>「うん！超する！なんか、ちゃんと『お仕事』してるって感じがするじゃん！」</p>
+
+<p>千紘は、また一つ、プロの冒険者への階段を上ったのだった。</p>
+
+<h2 id="第2部世界への貢献フォークとプルリクエスト">第2部：世界への貢献『フォーク』と『プルリクエスト』</h2>
+
+<p>「プルリクエスト、超すごいじゃん！これなら、みんなで安全に開発できるね！」</p>
+
+<p>千紘は、チーム開発の洗練された流れにすっかり感心していた。</p>
+
+<p>「ええ。でもね、千紘。今やったのは、千紘が『このプロジェクトの正式なメンバー』だったからできることなの」</p>
+
+<p>「え、そうなの？」</p>
+
+<p>「そうよ。世の中には、世界中の誰もが自由に参加できる<strong>オープンソースプロジェクト</strong>というものがたくさんあるわ。そういうプロジェクトでは、誰でも彼でもメンバーに追加するわけにはいかないでしょう？」</p>
+
+<p>「確かに！知らない人がいきなりブランチ作ったりしたら、めちゃくちゃになっちゃうもんね」</p>
+
+<p>「その通り。じゃあ、メンバーじゃないプロジェクトに、どうやって貢献するのか。そのための仕組みが<strong>フォーク（Fork）</strong>よ」</p>
+
+<h3 id="フォークとは自分だけの研究室を持つこと">フォークとは？：自分だけの研究室を持つこと</h3>
+
+<p>「フォークはね、他人のリモートリポジトリを、自分のGitHubアカウントに丸ごとコピーしてくる機能よ。文字通り、食器のフォークのように『突き刺して、自分のところに持ってくる』イメージね」</p>
+
+<p>「ふむふむ。<code class="language-plaintext highlighter-rouge">clone</code>とは違うの？」</p>
+
+<p>「いい質問ね。<code class="language-plaintext highlighter-rouge">clone</code>は、リモートリポジトリを<strong>自分のPC（ローカル）に持ってくること。フォークは、他人のリモートリポジトリ</strong>を、自分の<strong>リモートリポジトリ</strong>としてコピーすること。段階が一つ違うの」</p>
+
+<p>私は一枚の図を描いて見せた。</p>
+
+<ol>
+  <li><strong>フォーク</strong>: 他人の公開リポジトリ（大図書館の本）を、自分のGitHub（自分専用の図書館分室）に丸ごとコピーする。</li>
+  <li><strong>クローン</strong>: 自分の分室に持ってきた本を、自分のPC（自分の机）に持ってくる。</li>
+  <li><strong>開発</strong>: 自分の机で、心ゆくまで本に書き込み（修正）をする。</li>
+  <li><strong>プッシュ</strong>: 書き込んだ内容を、自分の分室の本に反映させる。</li>
+  <li><strong>プルリクエスト</strong>: 自分の分室から、大図書館の司書（元の開発者）に「こんな修正案を考えたのですが、原本にも取り入れてもらえませんか？」と提案する。</li>
+</ol>
+
+<p>「なるほど！いきなり大図書館で作業するんじゃなくて、まず自分専用の研究室にコピーを持ってきて、そこで完璧に仕上げてから提案するって感じだね！」</p>
+
+<p>「まさにその通りよ。じゃあ、やってみましょうか」</p>
+
+<h3 id="オープンソースプロジェクトに参加する流れ">オープンソースプロジェクトに参加する流れ</h3>
+
+<p>「ここに、私が作ったオープンソースのサンプルプロジェクトがあるわ」</p>
+
+<p>私は千紘に<code class="language-plaintext highlighter-rouge">github.com/mio-example/open-project</code>というURLを送った。ページを開くと、千紘のリポジトリとは違い、右上の方に<strong>[Fork]</strong>というボタンがある。</p>
+
+<p>「そのボタンを押してみて。自分のアカウントにフォークを作成するの」</p>
+
+<p>千紘がボタンを押すと、少し待った後、<code class="language-plaintext highlighter-rouge">chihiro-account/open-project</code>というリポジトリに画面が切り替わった。URLも自分のアカウントのものになっている。</p>
+
+<p>「わ！私のリポジトリになった！でも、<code class="language-plaintext highlighter-rouge">forked from mio-example/open-project</code>って書いてある！」</p>
+
+<p>「それが、このリポジトリの出所を示している証拠よ。じゃあ、次にこの<strong>フォークしてきた自分のリポジトリ</strong>を、<code class="language-plaintext highlighter-rouge">git clone</code>でローカルに持ってきて」</p>
+
+<p>千紘は<code class="language-plaintext highlighter-rouge">git clone</code>コマンドで、<code class="language-plaintext highlighter-rouge">chihiro-account/open-project</code>をローカルに複製した。</p>
+
+<p>「OK。じゃあ、ここでリモートリポジトリの登録情報を確認してみましょうか。<code class="language-plaintext highlighter-rouge">git remote -v</code>っていうコマンドを打ってみて」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>origin  https://github.com/chihiro-account/open-project.git (fetch)
+origin  https://github.com/chihiro-account/open-project.git (push)
+
+</code></pre></div></div>
+
+<p>「<code class="language-plaintext highlighter-rouge">origin</code>が、ちゃんと自分のリポジトリになってるね！」</p>
+
+<p>「ええ。でも、これだけだと、大元である私のリポジトリの更新情報が分からなくなってしまう。だから、『このリポジトリの元になった場所』も登録しておくのが一般的なの。その慣習として、大元のリポジトリは<strong>upstream（上流）</strong>という名前で登録するわ」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add upstream &lt;大元のリポジトリURL&gt;
+
+</code></pre></div></div>
+
+<p>「さあ、<code class="language-plaintext highlighter-rouge">git remote add upstream https://github.com/mio-example/open-project.git</code> を実行して、もう一度<code class="language-plaintext highlighter-rouge">git remote -v</code>で確認してみて」</p>
+
+<p>実行後、ターミナルにはこう表示された。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>origin    https://github.com/chihiro-account/open-project.git (fetch)
+origin    https://github.com/chihiro-account/open-project.git (push)
+upstream  https://github.com/mio-example/open-project.git (fetch)
+upstream  https://github.com/mio-example/open-project.git (push)
+
+</code></pre></div></div>
+
+<p>「本当だ！<code class="language-plaintext highlighter-rouge">origin</code>と<code class="language-plaintext highlighter-rouge">upstream</code>、二つ登録された！」</p>
+
+<p>「これで準備万端ね。あとは、今まで通り。新しいブランチを作って、何か修正を加えて、自分のリポジトリ（<code class="language-plaintext highlighter-rouge">origin</code>）に<code class="language-plaintext highlighter-rouge">push</code>して。そして、GitHubのページから、<strong>自分のフォークリポジトリ</strong>から<strong>大元のリポジトリ</strong>へ向けて、プルリクエストを送るの」</p>
+
+<p>千紘は一連の流れをスムーズにこなし、見事にプルリクエストを作成した。</p>
+
+<p>「できた！これ、世界中のプロジェクトに、誰でも参加できるってことだよね？超すごいじゃん！」</p>
+
+<p>「ええ、そうよ。これがオープンソースの力。そして、GitとGitHubが、その文化を支える強力な土台になっているの。…さて、基本的な共同作業の流れはこれでマスターね。最終章では、日々の作業をもっと快適にするための、便利な魔法をいくつか教えてあげる」</p>
+
+<h1 id="第5章もっとgitを使いこなすための便利な魔法">第5章：もっとGitを使いこなすための便利な魔法</h1>
+
+<h2 id="第1部過去を自在に書き換える呪文">第1部：過去を自在に書き換える呪文</h2>
+
+<p>「ふぅー、GitとGitHub、完全に理解した！って感じだよ！」</p>
+
+<p>「ふふ、素晴らしいわ。でも、冒険にはトラブルがつきもの。時には、唱えた魔法をキャンセルしたり、ちょっとだけ修正したりしたくなることもあるでしょう？最終章では、そんな『ちょっと困った』を解決する、便利な呪文を教えてあげる」</p>
+
+<p>「おー！気になるじゃん！」</p>
+
+<h3 id="やっちゃったを無かったことにする">やっちゃった！を無かったことにする</h3>
+
+<h3 id="直前のコミットを修正する-git-commit---amend">直前のコミットを修正する： <code class="language-plaintext highlighter-rouge">git commit --amend</code></h3>
+
+<p>「じゃあ、まず最初のシチュエーション。何か作業をして、<code class="language-plaintext highlighter-rouge">git commit</code>した直後に、『あ！コミットメッセージにタイプミスが！』って気づいた時。あなたならどうする？」</p>
+
+<p>「えーっと…もう一回コミットし直す？」</p>
+
+<p>「それも間違いではないけど、同じような修正のコミットが二つ並ぶのは、歴史がごちゃごちゃするわよね。そんな時、<strong>直前のコミットに限り</strong>、修正を上書きできる魔法があるの。それが<code class="language-plaintext highlighter-rouge">--amend</code>よ」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit --amend
+
+</code></pre></div></div>
+
+<p>「例えば、<code class="language-plaintext highlighter-rouge">README.md</code>を少し編集して、<code class="language-plaintext highlighter-rouge">git commit -m "Add documentt"</code>みたいに、わざと間違えてコミットしてみて」</p>
+
+<p>千紘がコミットした後、<code class="language-plaintext highlighter-rouge">git log</code>で確認すると、確かに間違ったメッセージのコミットが記録されている。</p>
+
+<p>「うわ、本当だ。恥ずかしい…」</p>
+
+<p>「じゃあ、ここで<code class="language-plaintext highlighter-rouge">git commit --amend</code>を実行してみて。<code class="language-plaintext highlighter-rouge">-m</code>は付けずにね」</p>
+
+<p>千紘がコマンドを叩くと、エディタが立ち上がり、先ほどのコミットメッセージが表示された。</p>
+
+<p>「ここで正しいメッセージに書き換えて、保存して終了すればOKよ」</p>
+
+<p>千紘がメッセージを修正すると、<code class="language-plaintext highlighter-rouge">git log</code>で見た歴史が、綺麗に正しいものに書き換わっていた。</p>
+
+<p>「すごい！さっきの間違いが、最初から無かったことになってる！」</p>
+
+<p>「ええ。メッセージだけじゃなく、<code class="language-plaintext highlighter-rouge">add</code>し忘れたファイルを<code class="language-plaintext highlighter-rouge">add</code>してから<code class="language-plaintext highlighter-rouge">--amend</code>すれば、直前のコミットにファイルを追加することもできる。ただし、<strong>絶対にpush済みのコミットには使わないこと</strong>。歴史を無理やり書き換える強力な魔法だから、他の人の歴史と食い違って、大混乱を招くことになるわ」</p>
+
+<h3 id="コミットを取り消して過去に戻る-git-reset">コミットを取り消して過去に戻る： <code class="language-plaintext highlighter-rouge">git reset</code></h3>
+
+<p>「じゃあ、次はもっと深刻なケース。『このコミット、機能ごと丸っと間違いだった！』って時。冒険の書から、ページごと破り捨てたくなる時ね。それを実現するのが<code class="language-plaintext highlighter-rouge">reset</code>よ」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset --hard &lt;戻りたいコミットのID&gt;
+
+</code></pre></div></div>
+
+<p>「<code class="language-plaintext highlighter-rouge">git log</code>で表示される、<code class="language-plaintext highlighter-rouge">commit</code>の横にある長い文字列がコミットIDよ。最初の7文字くらいを指定すれば大丈夫。でも、この<code class="language-plaintext highlighter-rouge">--hard</code>オプションは、ファイルへの変更もろとも、<strong>完全に消し去る</strong>超危険な魔法。一度やったら、もう元には戻せない。だから、使う時は本当に慎重にね」</p>
+
+<p>「こ、こわい…」</p>
+
+<p>「そう。だから、<code class="language-plaintext highlighter-rouge">push</code>済みの歴史には絶対に使ってはいけないし、ローカルでも、もっと安全な方法があるの」</p>
+
+<h3 id="安全にコミットを打ち消す-git-revert">安全にコミットを打ち消す： <code class="language-plaintext highlighter-rouge">git revert</code></h3>
+
+<p>「ページを破り捨てるんじゃなくて、『前のページの記述は間違いでした』って、<strong>新しいページに訂正文を書く</strong>のが、一番安全で誠実な方法だと思わない？」</p>
+
+<p>「あ、なるほど！」</p>
+
+<p>「それをやるのが<code class="language-plaintext highlighter-rouge">revert</code>よ。『打ち消す』っていう意味ね。これは、指定したコミットの変更内容を、そっくりそのまま打ち消す<strong>新しいコミット</strong>を作ってくれるの」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git revert &lt;打ち消したいコミットのID&gt;
+
+</code></pre></div></div>
+
+<p>「<code class="language-plaintext highlighter-rouge">reset</code>と違って歴史を書き換えないから、<code class="language-plaintext highlighter-rouge">push</code>済みのコミットを安全に打ち消すことができる。チーム開発で間違いを修正する時は、基本的にこちらを使うのがマナーよ」</p>
+
+<p>「なるほどー！歴史を消すんじゃなくて、歴史で上書きするんだね！それなら安心じゃん！」</p>
+
+<p>「ええ。過去は消せないけど、過ちを正すことはできる。Gitも人生も、同じってことね」</p>
+
+<h2 id="第2部魔法のポケットスタッシュと旅の終わり">第2部：魔法のポケット『スタッシュ』と旅の終わり</h2>
+
+<p>「過去を修正する魔法かー。なんか、すごいことできるようになった気分だよ！」</p>
+
+<p>「ええ。でも、冒険の途中で、もっと現実的な問題に直面することもあるわ。例えば…」</p>
+
+<p>私は千紘に、とある状況を想像させた。</p>
+
+<p>「千紘は今、<code class="language-plaintext highlighter-rouge">new-feature</code>ブランチで、新しい魔法の開発に没頭している。ファイルAもファイルBも中途半端に書き換えていて、まだコミットできる状態じゃないわ。そんな時、私から緊急連絡。『千紘！<code class="language-plaintext highlighter-rouge">main</code>ブランチに、今すぐ直さないといけない致命的なバグが見つかったわ！』…さあ、どうする？」</p>
+
+<p>「え！？で、でも、この作業、まだ中途半端だし、コミットできないよ！ブランチも切り替えられないじゃん！うわー、どうしよう！」</p>
+
+<p>慌てる千紘を見て、私は静かに微笑んだ。</p>
+
+<p>「そんな時のための、とっておきの魔法があるのよ。それが<strong>スタッシュ（Stash）</strong>」</p>
+
+<h3 id="作業を一時的に隠す魔法-git-stash">作業を一時的に隠す魔法： <code class="language-plaintext highlighter-rouge">git stash</code></h3>
+
+<p>「スタッシュは『隠しておく』『しまい込む』っていう意味。まだコミットしたくないけど、ちょっと脇に置いておきたい作業を、まるごと魔法のポケットに一時退避させてくれる機能よ」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash
+
+</code></pre></div></div>
+
+<p>「コマンドはこれだけ。これを実行すると、今ある変更が全部隠されて、ワーキングディレクトリが『最後のコミット』の状態まで綺麗になるの。まるで、散らかった机の上を、魔法の布で一瞬で片付けるようなものね」</p>
+
+<p>「なにそれ超便利じゃん！」</p>
+
+<p>「じゃあ、試してみましょうか。何か適当なファイルを編集して、<code class="language-plaintext highlighter-rouge">git status</code>で変更がある状態にしてみて」</p>
+
+<p>千紘がファイルを変更すると、<code class="language-plaintext highlighter-rouge">git status</code>は真っ赤な<code class="language-plaintext highlighter-rouge">modified</code>の文字を返した。</p>
+
+<p>「OK。じゃあ、ここで<code class="language-plaintext highlighter-rouge">git stash</code>を実行してみて」</p>
+
+<p>千紘がコマンドを叩くと、<code class="language-plaintext highlighter-rouge">Saved working directory and index state ...</code>というメッセージが表示された。そして、もう一度<code class="language-plaintext highlighter-rouge">git status</code>を叩くと…</p>
+
+<p><code class="language-plaintext highlighter-rouge">nothing to commit, working tree clean</code></p>
+
+<p>「うそ！さっきまで赤かったのに！きれいさっぱり消えちゃった！」</p>
+
+<p>「ええ。これで心置きなく、緊急のバグ修正に移れるわ。<code class="language-plaintext highlighter-rouge">git switch main</code>でブランチを切り替えて、バグを直して、コミットして…」</p>
+
+<p>（バグ修正作業を終えた、という体で…）</p>
+
+<p>「さて、緊急の任務は終わったわ。自分の<code class="language-plaintext highlighter-rouge">new-feature</code>ブランチに戻って、作業の続きをしましょうか」</p>
+
+<p>千紘が<code class="language-plaintext highlighter-rouge">git switch new-feature</code>でブランチを戻す。机の上は、まだ綺麗なままだ。</p>
+
+<p>「じゃあ、魔法のポケットから、さっき隠した作業を元に戻しましょう。その呪文がこれ」</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash pop
+
+</code></pre></div></div>
+
+<p>千紘がコマンドを実行すると、<code class="language-plaintext highlighter-rouge">On branch new-feature ... Changes not staged for commit: ...</code>といったメッセージと共に、先ほど消えたはずの変更が、そっくりそのまま元通りに現れた。</p>
+
+<p>「うわーーーー！戻ってきた！私の書きかけのコードが！すごい！スタッシュ最強じゃん！」</p>
+
+<p>「ふふ、でしょ？ちなみに、隠した作業の一覧は<code class="language-plaintext highlighter-rouge">git stash list</code>で見れるし、<code class="language-plaintext highlighter-rouge">pop</code>じゃなくて<code class="language-plaintext highlighter-rouge">apply</code>を使えば、ポケットにデータを残したまま復元することもできるわ。これで、どんな緊急事態が起きても、もう慌てる必要はないわね」</p>
+
+<hr />
+
+<h3 id="旅の終わりに">旅の終わりに</h3>
+
+<p>「…と、いうわけで。GitとGitHubを巡る冒険の旅は、これでおしまい。どうだった、千紘？」</p>
+
+<p>私たちは、いつものカフェで、PCを閉じてコーヒーを飲んでいた。</p>
+
+<p>「超、超、超面白かった！最初は黒い画面に文字打つだけって、何が楽しいんだろって思ってたけど、<code class="language-plaintext highlighter-rouge">commit</code>で歴史を刻んだり、<code class="language-plaintext highlighter-rouge">branch</code>でパラレルワールド作ったり、<code class="language-plaintext highlighter-rouge">pull request</code>で澪と会話したり…なんか、ただのツールじゃないんだなって思ったよ」</p>
+
+<p>「ええ、その通りよ。これは、思考を整理し、仲間と協力し、そして世界中の知識と繋がるための、現代の冒-険者にとっての『読み書き』みたいなものなの」</p>
+
+<p>「うん！私、この冒険の書、もっともっと書き進めていきたいな！澪、また分からないことがあったら、教えてくれる？」</p>
+
+<p>「もちろんよ。いつでも声をかけて。私たちの冒険は、まだ始まったばかりなんだから」</p>
+
+<p>私たちはカップを合わせ、未来の冒険に思いを馳せた。黒い画面の向こうに広がる、無限の世界。そこでは、きっとたくさんの失敗と、それを乗り越えるための発見が待っている。</p>
+
+<p>千紘が、そしてこれを読んでくれたあなたが、GitとGitHubという強力な羅針盤を手に、素晴らしい冒険の旅を続けられることを、心から願っているわ。</p>
+
+</article>
+
+
+        </main>
+    </div>
+
+    <!-- フッター（色付き） -->
+    <footer class="bg-[#7278a8] text-white mt-8">
+        <div class="container mx-auto px-4 md:px-8 py-8 text-center">
+            <div class="flex flex-wrap justify-center gap-4 md:gap-6 mb-6">
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/" class="text-white/90 hover:text-white transition-colors">ホーム</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/posts/"
+                    class="text-white/90 hover:text-white transition-colors">記事一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/tools/"
+                    class="text-white/90 hover:text-white transition-colors">ツール一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/novel/"
+                    class="text-white/90 hover:text-white transition-colors">Novel</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/game/"
+                    class="text-white/90 hover:text-white transition-colors">Game</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/contact/"
+                    class="text-white/90 hover:text-white transition-colors">お問い合わせ</a>
+            </div>
+            <div class="mb-4 text-white/80 text-sm space-y-1">
+                <p>GitHub: <a
+                        href="https://github.com/ruri-sayo/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog"
+                        class="text-white hover:underline">ruri-sayo</a></p>
+                <p>About us: <a href="https://ruri-sayo.github.io/SSC_site/" class="text-white hover:underline">Sayo
+                        Social Connect</a></p>
+            </div>
+            <p class="text-sm text-white/70">&copy; 2025 <a
+                    href="https://ruri-sayo.github.io/SSC_site/" class="hover:underline">Sayo Social Connect</a>. All
+                Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- モバイルナビゲーション用JavaScript -->
+    <script>
+        (function () {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const menuClose = document.getElementById('mobile-menu-close');
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-menu-overlay');
+
+            function openMenu() {
+                menu.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+                menuBtn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                menu.classList.add('translate-x-full');
+                overlay.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+
+            menuBtn.addEventListener('click', openMenu);
+            menuClose.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+
+            // Escキーでメニューを閉じる
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && !menu.classList.contains('translate-x-full')) {
+                    closeMenu();
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>

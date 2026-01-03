@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スピーチ所要時間計算機</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .input-group:focus-within label {
+            color: #3b82f6;
+        }
+        .input-group:focus-within input, .input-group:focus-within textarea {
+            border-color: #3b82f6;
+            ring: 2px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white w-full max-w-2xl rounded-2xl shadow-xl overflow-hidden">
+        <!-- Header -->
+        <div class="bg-blue-600 p-6 text-white">
+            <h1 class="text-2xl font-bold flex items-center gap-2">
+                <i class="fas fa-stopwatch"></i> スピーチ所要時間計算機
+            </h1>
+            <p class="text-blue-100 text-sm mt-1">文字数から最適なスピーチ時間を算出します</p>
+        </div>
+
+        <div class="p-6 space-y-8">
+            
+            <!-- Settings Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Speed Input -->
+                <div class="input-group">
+                    <label class="block text-sm font-bold text-gray-700 mb-1">
+                        読む速度 (文字/分)
+                    </label>
+                    <div class="relative">
+                        <input type="number" id="speedInput" value="300" min="1" 
+                            class="w-full pl-4 pr-12 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-colors text-lg font-mono"
+                        >
+                        <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm">char/min</span>
+                    </div>
+                    <div class="mt-2 flex justify-between text-xs text-gray-500">
+                        <button onclick="setSpeed(250)" class="hover:text-blue-600 underline">ゆっくり (250)</button>
+                        <button onclick="setSpeed(300)" class="hover:text-blue-600 underline font-bold text-blue-600">標準 (300)</button>
+                        <button onclick="setSpeed(350)" class="hover:text-blue-600 underline">早口 (350)</button>
+                    </div>
+                </div>
+
+                <!-- Character Count Input -->
+                <div class="input-group">
+                    <label class="block text-sm font-bold text-gray-700 mb-1">
+                        文字数
+                    </label>
+                    <div class="relative">
+                        <input type="number" id="charCountInput" value="0" min="0" placeholder="0"
+                            class="w-full pl-4 pr-12 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-colors text-lg font-mono"
+                        >
+                        <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm">chars</span>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2 text-right">※下のエリアに入力すると自動計算</p>
+                </div>
+            </div>
+
+            <!-- Result Section -->
+            <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 text-center relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
+                
+                <h2 class="text-gray-500 text-sm font-bold uppercase tracking-wider mb-2">想定所要時間</h2>
+                
+                <div class="flex flex-col items-center justify-center">
+                    <div class="text-5xl md:text-6xl font-bold text-gray-800 font-mono tracking-tight my-2" id="timeDisplay">
+                        0<span class="text-2xl text-gray-400 mx-1">分</span>00<span class="text-2xl text-gray-400 mx-1">秒</span>
+                    </div>
+                    <div class="text-gray-400 font-mono text-sm">
+                        Total: <span id="totalSeconds">0</span> seconds
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text Area Section -->
+            <div class="input-group">
+                <div class="flex justify-between items-center mb-1">
+                    <label class="block text-sm font-bold text-gray-700">
+                        原稿テキスト (任意)
+                    </label>
+                    <button onclick="clearText()" class="text-xs text-red-500 hover:text-red-700 font-medium">
+                        <i class="fas fa-trash-alt mr-1"></i>クリア
+                    </button>
+                </div>
+                <textarea id="textInput" rows="6" 
+                    class="w-full p-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-colors resize-none text-gray-700"
+                    placeholder="ここに原稿を貼り付けると、自動的に文字数をカウントして時間を計算します。改行やスペースはカウントから除外されます。"
+                ></textarea>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Elements
+        const speedInput = document.getElementById('speedInput');
+        const charCountInput = document.getElementById('charCountInput');
+        const textInput = document.getElementById('textInput');
+        const timeDisplay = document.getElementById('timeDisplay');
+        const totalSecondsDisplay = document.getElementById('totalSeconds');
+
+        // State
+        let currentCount = 0;
+        let currentSpeed = 300;
+
+        // Initialize
+        function init() {
+            addEventListeners();
+            calculate();
+        }
+
+        function addEventListeners() {
+            // Update on manual count input
+            charCountInput.addEventListener('input', (e) => {
+                const val = parseInt(e.target.value) || 0;
+                currentCount = val;
+                // Don't update text area, just decouple logic implies manual override
+                calculate();
+            });
+
+            // Update on text paste/type
+            textInput.addEventListener('input', (e) => {
+                const text = e.target.value;
+                // Remove whitespace/newlines for more accurate speech count usually
+                // But simple length is often expected. 
+                // Let's remove only newlines and tabs to be safe, keep spaces as pauses?
+                // Standard Japanese counting often ignores whitespace.
+                const cleanText = text.replace(/\s/g, ''); 
+                currentCount = cleanText.length;
+                charCountInput.value = currentCount;
+                calculate();
+            });
+
+            // Update on speed change
+            speedInput.addEventListener('input', (e) => {
+                const val = parseInt(e.target.value) || 300; // avoid div by zero logic later
+                currentSpeed = val > 0 ? val : 1;
+                calculate();
+            });
+        }
+
+        // Helper to set speed from buttons
+        window.setSpeed = function(speed) {
+            speedInput.value = speed;
+            currentSpeed = speed;
+            calculate();
+        }
+
+        // Helper to clear text
+        window.clearText = function() {
+            textInput.value = '';
+            charCountInput.value = 0;
+            currentCount = 0;
+            calculate();
+        }
+
+        // Core Calculation Logic
+        function calculate() {
+            if (currentCount <= 0) {
+                updateDisplay(0);
+                return;
+            }
+
+            // Formula: (Characters / Speed per min) * 60 seconds
+            const totalSeconds = (currentCount / currentSpeed) * 60;
+            updateDisplay(totalSeconds);
+        }
+
+        // Display Formatting
+        function updateDisplay(secondsFloat) {
+            const totalSec = Math.round(secondsFloat);
+            const minutes = Math.floor(totalSec / 60);
+            const seconds = totalSec % 60;
+
+            // Format with padding
+            const formattedMin = String(minutes);
+            const formattedSec = String(seconds).padStart(2, '0');
+
+            timeDisplay.innerHTML = `
+                ${formattedMin}<span class="text-2xl text-gray-400 mx-1">分</span>${formattedSec}<span class="text-2xl text-gray-400 mx-1">秒</span>
+            `;
+            
+            // For very specific engineering needs, show decimal seconds too if needed, 
+            // but for speech, integer seconds is standard.
+            totalSecondsDisplay.textContent = secondsFloat.toFixed(1);
+        }
+
+        // Run
+        init();
+
+    </script>
+</body>
+</html>

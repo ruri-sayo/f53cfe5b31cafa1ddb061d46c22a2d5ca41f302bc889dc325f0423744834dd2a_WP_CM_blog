@@ -1,0 +1,50 @@
+[
+  {
+    "id": "Character_Reversi",
+    "title": "キャラクターリバーシ",
+    "url": "https://ruri-sayo.github.io/Character_Reversi/",
+    "description": "キャラクタによって取り方が変わるオセロです。",
+    "tag": "game",
+    "platform": "all"
+  },
+  {
+    "id": "Typing_stories",
+    "title": "Typing stories",
+    "url": "https://ruri-sayo.github.io/typing_stories/",
+    "description": "タイピングゲーム",
+    "tag": "game",
+    "platform": "pc"
+  },
+  {
+    "id": "Character_daifugou",
+    "title": "キャラクター大富豪",
+    "url": "https://ruri-sayo.github.io/Character_Daifugou/",
+    "description": "キャラクターによって、出し方が変わる大富豪です。",
+    "tag": "game",
+    "platform": "all"
+  },
+  {
+    "id": "flow_puzzle_app",
+    "title": "Flow Puzzle App",
+    "url": "/game/flow_puzzle/",
+    "description": "ノードを組み合わせて指定の数量にしよう！",
+    "tag": "puzzle",
+    "platform": "pc"
+  },
+  {
+    "id": "word_quiz",
+    "title": "Word Quiz",
+    "url": "/game/word_quiz/",
+    "description": "スウェーデン語とアイヌ語のランダム出題の4択クイズ。解説付きです。",
+    "tag": "quiz",
+    "platform": "all"
+  },
+  {
+    "id": "meiro_3",
+    "title": "Meiro 3",
+    "url": "/game/meiro3/",
+    "description": "ブラウザで遊べる3D迷路です。赤色のタイルのゴール目指して突き進もう！",
+    "tag": "Maze",
+    "platform": "all"
+  }
+]

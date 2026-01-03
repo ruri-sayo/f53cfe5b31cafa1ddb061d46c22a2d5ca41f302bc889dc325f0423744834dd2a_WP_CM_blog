@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迷路ゲーム</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding-top: 20px;
+            background-color: #f0f8ff; /* 薄い青色背景 */
+            color: #333;
+        }
+        h1 {
+            color: #2a5282; /* 少し濃い青 */
+        }
+        #gameContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        canvas {
+            border: 3px solid #2a5282; /* 枠線を少し太く、色を変更 */
+            background-color: #e6f2ff; /* Canvas背景をさらに薄い青に */
+            border-radius: 8px; /* Canvasにも角丸 */
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+        }
+        #infoPanel {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            font-size: 1.2em;
+            color: #1a3a5a;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        #stageNumber {
+            font-weight: bold;
+            color: #d9534f; /* ステージ番号の色を赤系に */
+        }
+        #message {
+            margin-top: 15px;
+            font-size: 1.1em;
+            color: #4CAF50; /* メッセージを緑色に */
+            font-weight: bold;
+            min-height: 1.5em; /* メッセージエリアの高さを確保 */
+            text-align: center;
+        }
+        .controls {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.95em;
+            color: #555;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .controls p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>自動生成迷路ゲーム</h1>
+
+    <div id="gameContainer">
+        <canvas id="mazeCanvas"></canvas>
+        <div id="infoPanel">ステージ: <span id="stageNumber">1</span></div>
+        <div id="message"></div>
+    </div>
+
+    <div class="controls">
+        <p><strong>操作方法:</strong></p>
+        <p>W: 上へ移動</p>
+        <p>A: 左へ移動</p>
+        <p>S: 下へ移動</p>
+        <p>D: 右へ移動</p>
+    </div>
+
+    <script>
+        // Canvas要素とコンテキストを取得
+        const canvas = document.getElementById('mazeCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // DOM要素を取得
+        const stageNumberDisplay = document.getElementById('stageNumber');
+        const messageDisplay = document.getElementById('message');
+
+        // ゲーム設定
+        let cellSize = 20; // 各セルのサイズ(ピクセル)
+        let mazeWidth, mazeHeight; // 迷路の幅と高さ（セル数）
+        let player;
+        let goal;
+        let maze;
+        let currentStage = 1;
+
+        // プレイヤーの色
+        const playerColor = '#3498db'; // 明るい青
+        // ゴールの色
+        const goalColor = '#e74c3c';   // 明るい赤
+        // 壁の色
+        const wallColor = '#2c3e50';   // 暗い青灰色
+        // 通路の色
+        const pathColor = '#ecf0f1';   // 明るい灰色
+
+        /**
+         * 新しいステージを開始する関数
+         */
+        function startNewStage() {
+            // ステージに応じて迷路のサイズを決定（奇数に保つ）
+            mazeWidth = 11 + (currentStage -1) * 2;
+            mazeHeight = 9 + (currentStage -1) * 2;
+            if (mazeWidth > 35) mazeWidth = 35; // 最大サイズ制限
+            if (mazeHeight > 25) mazeHeight = 25; // 最大サイズ制限
+
+
+            // Canvasのサイズを設定
+            canvas.width = mazeWidth * cellSize;
+            canvas.height = mazeHeight * cellSize;
+
+            // 迷路を生成
+            maze = generateMaze(mazeWidth, mazeHeight);
+
+            // プレイヤーの初期位置を設定 (左上隅の通路)
+            player = { x: 1, y: 1 };
+            maze[player.y][player.x] = 0; // 念のため通路に
+
+            // ゴールの位置を設定 (右下隅の通路)
+            goal = { x: mazeWidth - 2, y: mazeHeight - 2 };
+            maze[goal.y][goal.x] = 0; // 念のため通路に
+
+            // ステージ番号を更新
+            stageNumberDisplay.textContent = currentStage;
+            messageDisplay.textContent = ''; // メッセージをクリア
+
+            // ゲームを描画
+            drawGame();
+        }
+
+        /**
+         * 迷路を生成する関数 (深さ優先探索アルゴリズム)
+         * @param {number} width - 迷路の幅 (セル数)
+         * @param {number} height - 迷路の高さ (セル数)
+         * @returns {Array<Array<number>>} 生成された迷路データ (0: 通路, 1: 壁)
+         */
+        function generateMaze(width, height) {
+            // 迷路を壁で初期化
+            let newMaze = Array.from({ length: height }, () => Array(width).fill(1));
+            // スタック（経路探索用）
+            let stack = [];
+            // 開始位置 (奇数座標)
+            let startX = 1;
+            let startY = 1;
+
+            newMaze[startY][startX] = 0; // 開始位置を通路にする
+            stack.push({ x: startX, y: startY });
+
+            while (stack.length > 0) {
+                let current = stack[stack.length - 1]; // スタックの最後尾を参照 (popしない)
+                let neighbors = [];
+
+                // 周囲2マスのセルをチェック (上、右、下、左)
+                const directions = [
+                    { dx: 0, dy: -2, wallDx: 0, wallDy: -1 }, // 上
+                    { dx: 2, dy: 0, wallDx: 1, wallDy: 0 },   // 右
+                    { dx: 0, dy: 2, wallDx: 0, wallDy: 1 },   // 下
+                    { dx: -2, dy: 0, wallDx: -1, wallDy: 0 }  // 左
+                ];
+
+                for (let dir of directions) {
+                    let nx = current.x + dir.dx;
+                    let ny = current.y + dir.dy;
+
+                    // 迷路の範囲内で、かつ壁であるかチェック
+                    if (nx > 0 && nx < width - 1 && ny > 0 && ny < height - 1 && newMaze[ny][nx] === 1) {
+                        neighbors.push({ nx, ny, wallX: current.x + dir.wallDx, wallY: current.y + dir.wallDy });
+                    }
+                }
+
+                if (neighbors.length > 0) {
+                    // ランダムな隣接セルを選択
+                    let chosenNeighbor = neighbors[Math.floor(Math.random() * neighbors.length)];
+                    // 壁を壊す
+                    newMaze[chosenNeighbor.wallY][chosenNeighbor.wallX] = 0;
+                    // 新しいセルを通路にする
+                    newMaze[chosenNeighbor.ny][chosenNeighbor.nx] = 0;
+                    // スタックに新しいセルを追加
+                    stack.push({ x: chosenNeighbor.nx, y: chosenNeighbor.ny });
+                } else {
+                    // 行き止まりならスタックから取り出す (バックトラック)
+                    stack.pop();
+                }
+            }
+            return newMaze;
+        }
+
+        /**
+         * 迷路、プレイヤー、ゴールを描画する関数
+         */
+        function drawGame() {
+            // Canvasをクリア
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 背景色を設定 (通路の色で全体を塗りつぶす)
+            ctx.fillStyle = pathColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // 迷路を描画
+            for (let y = 0; y < mazeHeight; y++) {
+                for (let x = 0; x < mazeWidth; x++) {
+                    if (maze[y][x] === 1) { // 壁の場合
+                        ctx.fillStyle = wallColor;
+                        ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+                    }
+                }
+            }
+
+            // ゴールを描画
+            ctx.fillStyle = goalColor;
+            ctx.beginPath();
+            ctx.arc(
+                goal.x * cellSize + cellSize / 2,
+                goal.y * cellSize + cellSize / 2,
+                cellSize / 2.5, // 少し小さめの円
+                0,
+                Math.PI * 2
+            );
+            ctx.fill();
+            // ゴールに星印を描画 (オプション)
+            ctx.fillStyle = '#FFD700'; //金色
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.font = `${cellSize * 0.6}px Arial`;
+            ctx.fillText('★', goal.x * cellSize + cellSize / 2, goal.y * cellSize + cellSize / 2 + cellSize * 0.05);
+
+
+            // プレイヤーを描画
+            ctx.fillStyle = playerColor;
+            ctx.beginPath();
+            ctx.arc(
+                player.x * cellSize + cellSize / 2,
+                player.y * cellSize + cellSize / 2,
+                cellSize / 3, // ゴールより少し小さい円
+                0,
+                Math.PI * 2
+            );
+            ctx.fill();
+        }
+
+        /**
+         * キー入力イベントを処理する関数
+         * @param {KeyboardEvent} e - キーボードイベントオブジェクト
+         */
+        function handleKeyPress(e) {
+            let dx = 0;
+            let dy = 0;
+
+            switch (e.key.toLowerCase()) {
+                case 'w': // 上
+                case 'arrowup':
+                    dy = -1;
+                    break;
+                case 's': // 下
+                case 'arrowdown':
+                    dy = 1;
+                    break;
+                case 'a': // 左
+                case 'arrowleft':
+                    dx = -1;
+                    break;
+                case 'd': // 右
+                case 'arrowright':
+                    dx = 1;
+                    break;
+                default:
+                    return; // WASD以外のキーは無視
+            }
+
+            // 移動先の座標
+            const nextX = player.x + dx;
+            const nextY = player.y + dy;
+
+            // 移動先が通路であればプレイヤーを移動
+            if (nextX >= 0 && nextX < mazeWidth &&
+                nextY >= 0 && nextY < mazeHeight &&
+                maze[nextY][nextX] === 0) {
+                player.x = nextX;
+                player.y = nextY;
+            }
+
+            // ゲームを再描画
+            drawGame();
+
+            // ゴール判定
+            if (player.x === goal.x && player.y === goal.y) {
+                messageDisplay.textContent = `ステージ ${currentStage} クリア！おめでとう！`;
+                currentStage++;
+                // 少し待ってから次のステージへ
+                setTimeout(startNewStage, 1500);
+            }
+        }
+
+        // キー入力イベントリスナーを追加
+        window.addEventListener('keydown', handleKeyPress);
+
+        // ゲーム開始
+        startNewStage();
+    </script>
+</body>
+</html>

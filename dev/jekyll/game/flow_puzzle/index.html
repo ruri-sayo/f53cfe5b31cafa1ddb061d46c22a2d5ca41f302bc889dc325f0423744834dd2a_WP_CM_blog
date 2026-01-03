@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow Logic</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>FLOW LOGIC</h1>
+        <div class="status-bar">
+            <span>LEVEL: <b id="level-display">1</b></span>
+            <span>SOURCE: <b id="source-val" class="highlight">?</b></span>
+            <button id="reset-btn">RESET BOARD</button>
+            <button id="run-btn" class="primary-btn">RUN FLOW</button>
+        </div>
+        <p class="instruction">ゴール条件を満たすように、ツールボックスからノードを配置してください。<br>右クリックでノード削除。</p>
+    </header>
+
+    <div class="game-area">
+        <aside class="toolbox">
+            <h3>NODES</h3>
+            <div id="toolbox-items">
+                </div>
+        </aside>
+
+        <main class="grid-container">
+            <div id="grid-board">
+                </div>
+        </main>
+    </div>
+</div>
+
+<div id="modal" class="modal hidden">
+    <div class="modal-content">
+        <h2>SYSTEM STABLE</h2>
+        <p>Flow logic verified.</p>
+        <button id="next-level-btn">PROCEED TO NEXT LEVEL</button>
+    </div>
+</div>
+
+<script src="js/game.js"></script>
+</body>
+</html>

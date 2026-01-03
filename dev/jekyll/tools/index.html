@@ -1,0 +1,46 @@
+---
+layout: page
+title: ツール一覧
+permalink: /tools/
+---
+
+<h1 class="text-3xl font-bold border-b pb-2 mb-8">ツール一覧</h1>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+  {%- assign tools = site.data.tools | default: [] -%}
+  {%- for tool in tools -%}
+    <a href="{{ tool.url | relative_url }}" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
+      <!-- サムネ（画像 or アイコン or プレースホルダ） -->
+      <div class="h-40 overflow-hidden bg-gray-100 flex items-center justify-center">
+        {%- if tool.image -%}
+          <img src="{{ tool.image | relative_url }}" alt="{{ tool.title | escape }}" class="w-full h-full object-cover">
+        {%- elsif tool.icon -%}
+          {%- if tool.icon contains "<svg" -%}
+            {{ tool.icon }}  
+          {%- else -%}
+            <img src="{{ tool.icon | relative_url }}" alt="{{ tool.title | escape }}" class="max-h-32">
+          {%- endif -%}
+        {%- else -%}
+          <!-- 画像なし用の簡易プレースホルダ（インラインSVG） -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2" stroke-width="1.5"/>
+            <path d="M3 16l5-5 4 4 3-3 6 6" stroke-width="1.5" />
+          </svg>
+        {%- endif -%}
+      </div>
+
+      <!-- 本文 -->
+      <div class="p-4 grow">
+        <h3 class="text-lg font-bold">{{ tool.title }}</h3>
+        {%- if tool.description -%}
+          <p class="text-gray-600 mt-1 text-sm">{{ tool.description }}</p>
+        {%- endif -%}
+        {%- if tool.tag -%}
+          <div class="mt-4 flex justify-end">
+            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">{{ tool.tag }}</span>
+          </div>
+        {%- endif -%}
+      </div>
+    </a>
+  {%- endfor -%}
+</div>

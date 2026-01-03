@@ -1,0 +1,69 @@
+---
+layout: game_page
+title: "Word Quiz"
+description: "スウェーデン語とアイヌ語のランダム出題の4択クイズ。解説付きです。"
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multilingual Quiz App</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-container">
+    <header>
+        <h1>Word Quiz</h1>
+        <div class="highscore-board">
+            <div class="score-item">
+                <span>🇸🇪 Swedish Best:</span>
+                <span id="score-swedish">0</span>
+            </div>
+            <div class="score-item">
+                <span>🐻 Ainu Best:</span>
+                <span id="score-ainu">0</span>
+            </div>
+            <button id="reset-score-btn" class="text-btn">スコアリセット</button>
+        </div>
+    </header>
+
+    <main id="home-screen" class="screen active">
+        <h2>言語を選択してください</h2>
+        <div class="menu-buttons">
+            <button class="menu-btn" data-lang="swedish">Svenska (スウェーデン語)</button>
+            <button class="menu-btn" data-lang="ainu">Aynu itak (アイヌ語)</button>
+        </div>
+    </main>
+
+    <main id="quiz-screen" class="screen">
+        <div class="quiz-header">
+            <button id="back-home-btn" class="nav-btn">← Home</button>
+            <div class="current-score">Score: <span id="current-score-display">0</span></div>
+        </div>
+
+        <div class="question-area">
+            <p id="question-label">問題</p>
+            <h3 id="question-text">Loading...</h3>
+        </div>
+
+        <div id="choices-container" class="choices-grid">
+            </div>
+
+        <div id="feedback-area" class="feedback hidden">
+            <h3 id="feedback-title"></h3>
+            <p id="correct-answer-info"></p>
+            <div class="explanations">
+                <h4>選択肢の解説:</h4>
+                <ul id="explanations-list"></ul>
+            </div>
+            <button id="next-btn" class="action-btn">次の問題へ</button>
+        </div>
+    </main>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
