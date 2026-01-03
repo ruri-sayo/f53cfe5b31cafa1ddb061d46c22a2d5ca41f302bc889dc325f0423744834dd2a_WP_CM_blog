@@ -1,0 +1,29 @@
+---
+/**
+ * 文字数カウンター（React版）
+ * Astroアイランドとして実装
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CharacterCounter from '../../components/tools/CharacterCounter';
+---
+
+<BaseLayout title="文字数カウンター" description="入力したテキストの文字数をリアルタイムでカウントします。">
+  <div class="py-8">
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-gray-800 mb-2">文字数カウンター</h1>
+      <p class="text-gray-600">テキストを入力すると、リアルタイムで文字数をカウントします。</p>
+    </div>
+    
+    {/* client:load でクライアントサイドでReactをハイドレート */}
+    <CharacterCounter client:load />
+    
+    <div class="max-w-lg mx-auto mt-8 text-sm text-gray-500">
+      <h3 class="font-semibold mb-2">使い方</h3>
+      <ul class="list-disc list-inside space-y-1">
+        <li>テキストエリアに文字を入力してください</li>
+        <li>リアルタイムで各種カウントが更新されます</li>
+        <li>スペース込み/除く、行数、単語数を表示</li>
+      </ul>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,51 @@
+---
+/**
+ * ゲーム一覧ページ
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getFullPath } from '../../consts';
+import gamesData from '../../data/games.json';
+---
+
+<BaseLayout title="Game / App" description="城上コードメモで提供しているブラウザゲーム一覧">
+  <section class="space-y-6">
+    <h1 class="text-3xl font-bold mb-4">Game / App 一覧</h1>
+    <p class="text-gray-600 mb-6">全{gamesData.length}件のゲーム・アプリをブラウザで遊べます。</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {gamesData.map((game) => (
+        <a href={game.url.startsWith('http') ? game.url : getFullPath(game.url)}
+          class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+          target={game.url.startsWith('http') ? '_blank' : undefined}
+          rel={game.url.startsWith('http') ? 'noopener' : undefined}>
+          <div class="flex items-center justify-between">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                {/* プラットフォームアイコン */}
+                {game.platform === "pc" ? (
+                  <svg class="w-4 h-4 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    title="PC推奨">
+                    <rect x="2" y="3" width="20" height="14" rx="2" stroke-width="1.5" />
+                    <path d="M8 21h8M12 17v4" stroke-width="1.5" />
+                  </svg>
+                ) : (
+                  <svg class="w-4 h-4 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    title="スマホ対応">
+                    <rect x="5" y="2" width="14" height="20" rx="2" stroke-width="1.5" />
+                    <circle cx="12" cy="18" r="1" fill="currentColor" />
+                  </svg>
+                )}
+                <p class="text-sm text-gray-500 uppercase tracking-wide">{game.tag || 'game/app'}</p>
+              </div>
+              <h2 class="text-xl font-bold hover:text-blue-600">{game.title}</h2>
+              {game.description && (
+                <p class="text-gray-600 mt-1">{game.description}</p>
+              )}
+            </div>
+            <span class="text-blue-600 text-lg">&rarr;</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

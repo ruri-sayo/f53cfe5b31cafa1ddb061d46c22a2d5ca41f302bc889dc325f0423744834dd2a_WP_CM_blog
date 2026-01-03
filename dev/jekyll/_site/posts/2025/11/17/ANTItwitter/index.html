@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- 限定公開運用のため既定で noindex -->
+<meta name="robots" content="noindex,nofollow">
+
+
+<title>Xを読むな。城上を読め。 | 城上コードメモ(v2.1:beta)</title>
+
+<!-- Meta Description -->
+<meta name="description"
+  content="ー現代人よ。Xを読むな。城上を読め。">
+
+<!-- ファビコン（最適化済みPNG） -->
+<link rel="icon" type="image/png" sizes="32x32" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/apple-touch-icon.png">
+
+<!-- Tailwind CSS CDN -->
+<!--<script src="https://cdn.tailwindcss.com"></script> -->
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+<!-- お好みでカスタム CSS を足す場合（SCSS を使うなら /assets/css/style.css をビルド）-->
+<link rel="stylesheet" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/css/custom.css">
+
+<!-- イベントモード用CSS -->
+<link rel="stylesheet" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/css/events.css">
+
+<!-- イベントデータ埋め込み -->
+<script>
+  window.SHIROGAMI_EVENTS = [
+    
+    {
+      id: "newyear",
+      name: "正月",
+      start_month: 1,
+      start_day: 1,
+      end_month: 1,
+      end_day: 4,
+      bg_color: "#FFE4E8",
+      header_color: "#C41E3A",
+      decoration: "newyear",
+      emoji: "🎍"
+    },
+    
+    {
+      id: "setsubun",
+      name: "節分",
+      start_month: 2,
+      start_day: 3,
+      end_month: 2,
+      end_day: 3,
+      bg_color: "#FFF5E6",
+      header_color: "#8B4513",
+      decoration: "setsubun",
+      emoji: "👹"
+    },
+    
+    {
+      id: "valentine",
+      name: "バレンタイン",
+      start_month: 2,
+      start_day: 14,
+      end_month: 2,
+      end_day: 14,
+      bg_color: "#FFE4EC",
+      header_color: "#FF69B4",
+      decoration: "valentine",
+      emoji: "💝"
+    },
+    
+    {
+      id: "aprilfool",
+      name: "エイプリルフール",
+      start_month: 4,
+      start_day: 1,
+      end_month: 4,
+      end_day: 1,
+      bg_color: "#E6FFE6",
+      header_color: "#32CD32",
+      decoration: "aprilfool",
+      emoji: "🤡"
+    },
+    
+    {
+      id: "tango",
+      name: "端午の節句",
+      start_month: 5,
+      start_day: 5,
+      end_month: 5,
+      end_day: 5,
+      bg_color: "#E6F0FF",
+      header_color: "#4169E1",
+      decoration: "tango",
+      emoji: "🎏"
+    },
+    
+    {
+      id: "tanabata",
+      name: "七夕",
+      start_month: 7,
+      start_day: 7,
+      end_month: 7,
+      end_day: 7,
+      bg_color: "#E6E6FF",
+      header_color: "#6A5ACD",
+      decoration: "tanabata",
+      emoji: "🎋"
+    },
+    
+    {
+      id: "obon",
+      name: "お盆",
+      start_month: 8,
+      start_day: 13,
+      end_month: 8,
+      end_day: 16,
+      bg_color: "#F0FFF0",
+      header_color: "#228B22",
+      decoration: "obon",
+      emoji: "🏮"
+    },
+    
+    {
+      id: "tsukimi",
+      name: "十五夜",
+      start_month: 9,
+      start_day: 10,
+      end_month: 9,
+      end_day: 10,
+      bg_color: "#FFFACD",
+      header_color: "#DAA520",
+      decoration: "tsukimi",
+      emoji: "🌕"
+    },
+    
+    {
+      id: "blog_birthday",
+      name: "ブログ誕生日",
+      start_month: 10,
+      start_day: 16,
+      end_month: 10,
+      end_day: 16,
+      bg_color: "#FFF0F5",
+      header_color: "#FF1493",
+      decoration: "blog_birthday",
+      emoji: "🎂"
+    },
+    
+    {
+      id: "halloween",
+      name: "ハロウィン",
+      start_month: 10,
+      start_day: 31,
+      end_month: 10,
+      end_day: 31,
+      bg_color: "#FFF0E6",
+      header_color: "#FF8C00",
+      decoration: "halloween",
+      emoji: "🎃"
+    },
+    
+    {
+      id: "christmas",
+      name: "クリスマス",
+      start_month: 12,
+      start_day: 24,
+      end_month: 12,
+      end_day: 25,
+      bg_color: "#FFE4E4",
+      header_color: "#C41E3A",
+      decoration: "christmas",
+      emoji: "🎄"
+    }
+    
+  ];
+</script>
+
+<!-- イベントモード用JavaScript -->
+<script src="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/js/event-mode.js" defer></script>
+
+
+<!-- この設定を先に置く（MathJax script の前） -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+    // 必要ならここに他オプション（例: packages 追加 など）
+  };
+</script>
+
+<!-- MathJax（数式） -->
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+    <!-- ヘッダー（色付き） -->
+    <header class="bg-[#7278a8] text-white shadow-md">
+        <div class="container mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl md:text-3xl font-bold">
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/" class="hover:opacity-90 transition-opacity">城上コードメモver2.2</a>
+            </h1>
+            <!-- デスクトップナビゲーション -->
+            <nav class="hidden md:flex space-x-6">
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/" class="text-white/90 hover:text-white transition-colors">ホーム</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/posts/"
+                    class="text-white/90 hover:text-white transition-colors">記事一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/tools/"
+                    class="text-white/90 hover:text-white transition-colors">ツール一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/novel/"
+                    class="text-white/90 hover:text-white transition-colors">Novel</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/game/"
+                    class="text-white/90 hover:text-white transition-colors">Game</a>
+            </nav>
+            <!-- モバイルメニューボタン -->
+            <button id="mobile-menu-btn"
+                class="md:hidden p-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+                aria-label="メニューを開く" aria-expanded="false">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- モバイルナビゲーションオーバーレイ -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden" aria-hidden="true">
+    </div>
+
+    <!-- モバイルナビゲーションメニュー -->
+    <nav id="mobile-menu"
+        class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
+        aria-label="モバイルナビゲーション">
+        <div class="p-4 border-b bg-[#7278a8] text-white flex justify-between items-center">
+            <span class="text-lg font-bold">メニュー</span>
+            <button id="mobile-menu-close"
+                class="p-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+                aria-label="メニューを閉じる">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div class="p-4 space-y-4">
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">ホーム</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/posts/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">記事一覧</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/tools/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">ツール一覧</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/novel/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">Novel</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/game/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">Game</a>
+        </div>
+    </nav>
+
+    <!-- メインコンテンツ（中央配置・左揃え） -->
+    <div class="container mx-auto px-4 md:px-8 py-8">
+        <main class="max-w-4xl mx-auto text-left">
+            <article class="prose prose-neutral max-w-none">
+<header class="mb-6">
+<h1 class="text-3xl font-bold">Xを読むな。城上を読め。</h1>
+<p class="text-gray-500 text-sm">2025-11-17
+
+· <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold">Essay</span>
+
+</p>
+
+<p class="text-gray-600 mt-2">ー現代人よ。Xを読むな。城上を読め。</p>
+
+</header>
+<h1 id="xを読むな城上を読め">「Xを読むな。城上を読め。」</h1>
+
+<p>スマホを開く。<br />
+何となく親指がアイコンを探しにいく。<br />
+気がついたら、タイムラインを30分以上スクロールしている——。</p>
+
+<p>もし、そんな自分に覚えがあるなら、このブログのタイトルをもう一度、強めに言わせてください。</p>
+
+<blockquote>
+  <p><strong>Xを読むな。城上を読め。</strong></p>
+</blockquote>
+
+<p>これは単なるキャッチコピーではなく、「情報との付き合い方」を変えたい人への、わりと本気の宣戦布告です。</p>
+
+<hr />
+
+<h2 id="なぜxを読むなと言うのか">なぜ「Xを読むな」と言うのか</h2>
+
+<p>別に「Xは今すぐやめろ」と言いたいわけではありません。<br />
+ただし、<strong>“読むもの”としてXを優先するのは、正直おすすめしない</strong>、という話です。</p>
+
+<h3 id="1-xは情報ではなく刺激を売っている">1. Xは「情報」ではなく「刺激」を売っている</h3>
+
+<p>Xのタイムラインは、あなたのために作られているようでいて、<br />
+実際は「プラットフォームのため」に最適化されています。</p>
+
+<ul>
+  <li>強い言葉</li>
+  <li>喧嘩腰のコメント</li>
+  <li>炎上ギリギリのネタ</li>
+  <li>短くて過激な主張</li>
+</ul>
+
+<p>これらはすべて、「人間の感情を揺らしてスクロールを止める」ためのフックです。<br />
+冷静で地味だけど重要な情報より、<strong>派手で大声のポスト</strong>が優遇されます。</p>
+
+<p>つまり、Xは</p>
+<blockquote>
+  <p>あなたの知性より、あなたの“反射神経”を狙ってくる<br />
+メディアなのです。</p>
+</blockquote>
+
+<h3 id="2-わかった気だけが増えていく">2. 「わかった気」だけが増えていく</h3>
+
+<p>Xで流れてくるのは、140字前後の“切り身”です。</p>
+
+<ul>
+  <li>議論の結論っぽい一文</li>
+  <li>感情的な感想</li>
+  <li>誰かの要約らしきもの</li>
+  <li>出典がよくわからないグラフのスクショ</li>
+</ul>
+
+<p>これらを大量に浴び続けると、<br />
+<strong>「自分は色々知っている」という感覚だけが膨らんでいきます。</strong></p>
+
+<p>でも、いざ人に説明しようとすると、</p>
+
+<ul>
+  <li>「なんか、そういう話を見た気がするんだけど…」</li>
+  <li>「ソース？えーと、誰かがツイートしてたような…」</li>
+</ul>
+
+<p>となりがちです。<br />
+<strong>知識ではなく「印象」だけが増える。</strong><br />
+これがX読みすぎ問題の、本質的に厄介なところです。</p>
+
+<h3 id="3-タイムラインは積み上がらない">3. タイムラインは「積み上がらない」</h3>
+
+<p>Xは基本的に、「流れていく」設計です。</p>
+
+<ul>
+  <li>一時間後には、さっきの良ポストはタイムラインの海の底</li>
+  <li>昨日読んだ有益なスレッドは、もうどこにあるか分からない</li>
+  <li>メモろうと思ったけど、とりあえずいいねしてそのまま埋もれる</li>
+</ul>
+
+<p><strong>学びや思考は、本来“積み上げる”もの</strong>なのに、<br />
+Xでは、ほとんどが流れ去っていきます。</p>
+
+<p>これでは、いくら時間を溶かしても、<br />
+<strong>自分の中に残る「体系」は育っていきません。</strong></p>
+
+<hr />
+
+<h2 id="城上は何をしたい場所なのか">「城上」は何をしたい場所なのか</h2>
+
+<p>そこで、このブログ「城上」の話です。<br />
+偉そうなことを言うつもりはありませんが、少なくともここは、</p>
+
+<blockquote>
+  <p>反射的に“いいね”する場所ではなく、<br />
+<strong>ゆっくり考えるための場所</strong></p>
+</blockquote>
+
+<p>として運営したいと思っています。</p>
+
+<h3 id="1-流れて消えないまとまりとして残す">1. 流れて消えない、「まとまり」として残す</h3>
+
+<p>Xのポストが「断片」だとしたら、<br />
+ブログの記事はひとつひとつが<strong>「単位」</strong>です。</p>
+
+<ul>
+  <li>ひとつのテーマに対して、ちゃんと入口と出口を用意する</li>
+  <li>途中経過も含めて「どう考えて、どう悩んだか」を書く</li>
+  <li>後から読み返しても、文脈が辿れるようにする</li>
+</ul>
+
+<p>こういう形で書いておけば、<br />
+半年後、1年後に読み返しても、<strong>そのときの自分の思考が残っている。</strong></p>
+
+<p>Xのログではまず味わえない、「時間を超えた対話」が可能になります。</p>
+
+<h3 id="2-読み手を煽るより一緒に考えるを優先する">2. 読み手を「煽る」より、「一緒に考える」を優先する</h3>
+
+<p>Xで伸びる文章のテンプレは、だいたい決まっています。</p>
+
+<ul>
+  <li>「〇〇してない人はヤバい」</li>
+  <li>「成功者はみんな××している」</li>
+  <li>「これだけは絶対にやめろ」</li>
+</ul>
+
+<p>こういう“断言＋煽り”は、<br />
+確かに<strong>バズりやすい</strong>けれど、<strong>人を賢くはしません。</strong></p>
+
+<p>一方、城上の記事は——</p>
+
+<ul>
+  <li>迷っていることは、ちゃんと「迷っている」と書く</li>
+  <li>他の可能性や反論も、できるだけ併記する</li>
+  <li>読み手が自分で選べるように、情報を並べる</li>
+</ul>
+
+<p>つまり、</p>
+<blockquote>
+  <p><strong>読んだ人が「自分の頭で考える」ための素材</strong>
+を揃えるのが目的です。</p>
+</blockquote>
+
+<p>「答えを押しつけたい」わけではなく、<br />
+「一緒に考える相手がほしい」から、文章を書いています。</p>
+
+<h3 id="3-アルゴリズムではなく人間の都合で構成する">3. アルゴリズムではなく、「人間の都合」で構成する</h3>
+
+<p>Xのタイムラインは、<br />
+あなたの<strong>その瞬間の反応</strong>を最大化するように設計されています。</p>
+
+<p>それに対して、ブログはもっと <strong>“人間の時間”</strong> に合わせられます。</p>
+
+<ul>
+  <li>長い記事は見出しをつけて、途中で一旦閉じても再開しやすく</li>
+  <li>シリーズ化して、少しずつ理解を深める道筋を用意する</li>
+  <li>過去記事同士をリンクさせて、知識の「地図」を作る</li>
+</ul>
+
+<p>アルゴリズムではなく、<br />
+<strong>「読む人がどういう順番で理解していくと楽か」</strong>を基準に構成する。</p>
+
+<p>それができるのは、ブログという形式ならではです。</p>
+
+<hr />
+
+<h2 id="情報ダイエットのすすめ">「情報ダイエット」のすすめ</h2>
+
+<p>ここで、少しだけ本題から寄り道します。</p>
+
+<h3 id="xはお菓子ブログはごはん">Xは「お菓子」、ブログは「ごはん」</h3>
+
+<p>Xを完全に悪者扱いするつもりはありません。<br />
+ただ、イメージとしてはこんな感じです。</p>
+
+<ul>
+  <li>X：
+    <ul>
+      <li>味が濃くて一瞬楽しい</li>
+      <li>ついつい止まらなくなる</li>
+      <li>食べた直後は満足感がある</li>
+      <li>でも栄養は薄くて、すぐにお腹が減る</li>
+    </ul>
+  </li>
+  <li>ブログや本：
+    <ul>
+      <li>一見地味で、準備に少しエネルギーがいる</li>
+      <li>一気にバクバクは読めない</li>
+      <li>でも、ちゃんと腹の足しになる</li>
+      <li>後から思い出せる「糧」になる</li>
+    </ul>
+  </li>
+</ul>
+
+<p>だからこそ、<br />
+<strong>「お菓子」を完全にやめろとは言わないけれど、<br />
+メインは「ごはん」にしようよ、という提案</strong>です。</p>
+
+<hr />
+
+<h2 id="それでもxを読みたい人へ">それでもXを読みたい人へ</h2>
+
+<p>「とはいえ、Xやめるのは無理！」<br />
+という声も聞こえます。分かります。中毒性高いですからね。</p>
+
+<p>なので、<strong>現実的な折衷案</strong>を置いておきます。</p>
+
+<h3 id="1-x--城上の導線を作る">1. 「X → 城上」の導線を作る</h3>
+
+<ul>
+  <li>Xで何か気になる話題を見かけたら、<br />
+→ そのキーワードで、このブログ内の記事を探してみる</li>
+  <li>話題になっているトピックを、<br />
+→ 「まとめ」「背景」「長期的な視点」で整理した記事を読む</li>
+</ul>
+
+<p><strong>きっかけはXでもいい。<br />
+でも、理解を深めるのはブログ側で。</strong></p>
+
+<p>そんな使い分けにすると、<br />
+「X＝興奮」「ブログ＝理解」という役割分担ができます。</p>
+
+<h3 id="2-タイムラインを閉じたら城上を開くルール">2. 「タイムラインを閉じたら、城上を開く」ルール</h3>
+
+<ul>
+  <li>電車の中でなんとなくXを開いたら、<br />
+→ 5分経ったところで一度閉じる</li>
+  <li>そのあと、スマホのブラウザで城上を開く</li>
+  <li>1記事の途中まででもいいので、<strong>“一本筋の通った文章”</strong>に触れてみる</li>
+</ul>
+
+<p>それだけでも、<br />
+頭の中のノイズが少しずつ整っていくはずです。</p>
+
+<hr />
+
+<h2 id="結局何が言いたいのか">結局、何が言いたいのか？</h2>
+
+<p>ここまで色々書いてきましたが、<br />
+言いたいことは極めてシンプルです。</p>
+
+<blockquote>
+  <p><strong>「流れて消える140字」だけじゃなくて、<br />
+たまには「腰を据えて読めるテキスト」に時間を使ってほしい。</strong></p>
+</blockquote>
+
+<p>そして、もしその「腰を据えて読むテキスト」の候補のひとつとして、<br />
+このブログ「城上」があなたの選択肢に入るなら——</p>
+
+<blockquote>
+  <p><strong>Xを読むな。城上を読め。</strong></p>
+</blockquote>
+
+<p>と、少しだけ誇らしげに、もう一度言いたいのです。</p>
+
+<hr />
+
+<h2 id="おわりにあなたの時間はアルゴリズムの燃料じゃない">おわりに：あなたの時間は、アルゴリズムの燃料じゃない</h2>
+
+<p>最後に、ちょっとだけ強いことを書いて締めます。</p>
+
+<p>Xは便利です。面白いです。<br />
+でも、その裏側でずっと回り続けているのは、</p>
+
+<ul>
+  <li>「あなたの時間」</li>
+  <li>「あなたの集中力」</li>
+  <li>「あなたの感情」</li>
+</ul>
+
+<p>です。</p>
+
+<p>それを全部まとめて、<br />
+<strong>“エンゲージメント”という数字に変換する装置</strong>が、タイムラインです。</p>
+
+<p>その仕組みごと否定する気はないけれど、<br />
+少なくとも、その燃料に「自分の人生の全部」を突っ込むのは、もったいなさすぎる。</p>
+
+<p>だからこそ、あえてもう一度。</p>
+
+<blockquote>
+  <p><strong>Xを読むな。城上を読め。</strong><br />
+あなたの時間は、もっと意図的に使っていい。</p>
+</blockquote>
+
+<p>ここまで読んでくれたあなたへ。<br />
+次に親指がXのアイコンに伸びそうになったら、<br />
+一度だけ、その動きを止めてみてください。</p>
+
+<p>そして、代わりに城上を開いてくれたら——<br />
+その選択に見合う文章を、これからも用意しておきます。</p>
+
+</article>
+
+
+        </main>
+    </div>
+
+    <!-- フッター（色付き） -->
+    <footer class="bg-[#7278a8] text-white mt-8">
+        <div class="container mx-auto px-4 md:px-8 py-8 text-center">
+            <div class="flex flex-wrap justify-center gap-4 md:gap-6 mb-6">
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/" class="text-white/90 hover:text-white transition-colors">ホーム</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/posts/"
+                    class="text-white/90 hover:text-white transition-colors">記事一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/tools/"
+                    class="text-white/90 hover:text-white transition-colors">ツール一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/novel/"
+                    class="text-white/90 hover:text-white transition-colors">Novel</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/game/"
+                    class="text-white/90 hover:text-white transition-colors">Game</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/contact/"
+                    class="text-white/90 hover:text-white transition-colors">お問い合わせ</a>
+            </div>
+            <div class="mb-4 text-white/80 text-sm space-y-1">
+                <p>GitHub: <a
+                        href="https://github.com/ruri-sayo/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog"
+                        class="text-white hover:underline">ruri-sayo</a></p>
+                <p>About us: <a href="https://ruri-sayo.github.io/SSC_site/" class="text-white hover:underline">Sayo
+                        Social Connect</a></p>
+            </div>
+            <p class="text-sm text-white/70">&copy; 2025 <a
+                    href="https://ruri-sayo.github.io/SSC_site/" class="hover:underline">Sayo Social Connect</a>. All
+                Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- モバイルナビゲーション用JavaScript -->
+    <script>
+        (function () {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const menuClose = document.getElementById('mobile-menu-close');
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-menu-overlay');
+
+            function openMenu() {
+                menu.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+                menuBtn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                menu.classList.add('translate-x-full');
+                overlay.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+
+            menuBtn.addEventListener('click', openMenu);
+            menuClose.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+
+            // Escキーでメニューを閉じる
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && !menu.classList.contains('translate-x-full')) {
+                    closeMenu();
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>

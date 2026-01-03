@@ -1,0 +1,38 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import PostLayout from '../../layouts/PostLayout.astro';
+
+/**
+ * Jekyll互換のURL構造を生成
+ * ファイル名: 2025-10-14-bibouroku.md
+ * URL: /posts/2025/10/14/bibouroku/
+ */
+export async function getStaticPaths() {
+	const posts = await getCollection('posts');
+	return posts.map((post) => {
+		// ファイル名から日付とスラグを抽出
+		// 例: "2025-10-14-bibouroku" -> ["2025", "10", "14", "bibouroku"]
+		const parts = post.slug.split('-');
+		const year = parts[0];
+		const month = parts[1];
+		const day = parts[2];
+		const titleSlug = parts.slice(3).join('-');
+		
+		// Jekyll互換パス: /posts/2025/10/14/bibouroku/
+		return {
+			params: { slug: `${year}/${month}/${day}/${titleSlug}` },
+			props: post,
+		};
+	});
+}
+
+type Props = CollectionEntry<'posts'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<PostLayout {...post.data}>
+	<Content />
+</PostLayout>
+

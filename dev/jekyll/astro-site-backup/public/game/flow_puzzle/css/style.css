@@ -1,0 +1,185 @@
+:root {
+    --bg-color: #1e1e1e;
+    --panel-color: #252526;
+    --accent-color: #007acc;
+    --text-color: #d4d4d4;
+    --grid-line: #3e3e42;
+    --success-color: #4ec9b0;
+    --error-color: #f44747;
+    --node-bg: #3c3c3c;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Consolas', 'Monaco', monospace;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    user-select: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+header {
+    border-bottom: 1px solid var(--grid-line);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+h1 { margin: 0; font-size: 1.5rem; color: var(--accent-color); letter-spacing: 2px; }
+
+.status-bar {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.highlight { color: var(--success-color); font-size: 1.2em; }
+
+button {
+    background: var(--node-bg);
+    color: var(--text-color);
+    border: 1px solid var(--grid-line);
+    padding: 5px 15px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: 0.2s;
+}
+button:hover { background: var(--grid-line); }
+.primary-btn { border-color: var(--accent-color); color: var(--accent-color); font-weight: bold; }
+.primary-btn:hover { background: var(--accent-color); color: white; }
+
+.game-area {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+}
+
+.toolbox {
+    width: 150px;
+    background: var(--panel-color);
+    padding: 10px;
+    border: 1px solid var(--grid-line);
+}
+
+.node-item {
+    background: var(--node-bg);
+    border: 1px solid var(--grid-line);
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    cursor: grab;
+    font-weight: bold;
+}
+.node-item:active { cursor: grabbing; }
+
+.grid-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    background: var(--panel-color);
+    border: 1px solid var(--grid-line);
+    padding: 20px;
+    overflow: auto;
+}
+
+#grid-board {
+    display: grid;
+    /* 6列 x 8行 を想定 */
+    grid-template-columns: repeat(6, 80px);
+    grid-template-rows: repeat(8, 80px);
+    gap: 5px;
+}
+
+.cell {
+    background: var(--bg-color);
+    border: 1px solid var(--grid-line);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: 0.8rem;
+}
+
+.cell.droppable:hover { background: #2d2d30; }
+
+/* ノードの見た目 */
+.placed-node {
+    width: 90%;
+    height: 90%;
+    background: var(--accent-color);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    font-weight: bold;
+    z-index: 2;
+}
+.placed-node.type-source { background: #dcdcaa; color: #1e1e1e; }
+.placed-node.type-goal { background: #ce9178; color: #1e1e1e; border: 2px dashed #d4d4d4;}
+.placed-node.type-trash { background: #569cd6; }
+.placed-node.type-split { background: #c586c0; }
+.placed-node.type-merge { background: #4ec9b0; color: #1e1e1e;}
+
+/* --- ノードスタイルの追加 --- */
+
+/* 配管系（グレー・金属的） */
+.placed-node.type-pipe-down,
+.placed-node.type-pipe-left,
+.placed-node.type-pipe-right {
+    background: #606060;
+    color: #ffffff;
+    border: 1px solid #888;
+}
+
+/* 矢印を大きく見やすく */
+.placed-node.type-pipe-down { font-size: 1.5rem; }
+.placed-node.type-pipe-left { font-size: 1.5rem; }
+.placed-node.type-pipe-right { font-size: 1.5rem; }
+
+/* 既存の上書き・微調整 */
+.placed-node.type-split2 { background: #c586c0; }
+.placed-node.type-split3 { background: #9cdcfe; color: #1e1e1e; }
+.placed-node.type-merge { background: #4ec9b0; color: #1e1e1e; font-weight: 900; font-size: 1.2rem;}
+.placed-node.type-trash { background: #f44747; }
+
+/* 流量表示 */
+.flow-value {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    font-size: 10px;
+    color: var(--success-color);
+    background: rgba(0,0,0,0.8);
+    padding: 2px;
+    display: none;
+    z-index: 10;
+}
+.cell.has-flow .flow-value { display: block; }
+.cell.error .flow-value { color: var(--error-color); }
+
+/* モーダル */
+.modal {
+    position: fixed; top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.8);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 100;
+}
+.hidden { display: none; }
+.modal-content {
+    background: var(--panel-color);
+    padding: 40px;
+    text-align: center;
+    border: 2px solid var(--accent-color);
+}

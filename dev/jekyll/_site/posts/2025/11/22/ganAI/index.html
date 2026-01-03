@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- 限定公開運用のため既定で noindex -->
+<meta name="robots" content="noindex,nofollow">
+
+
+<title>nano-banana proが発表されたね | 城上コードメモ(v2.1:beta)</title>
+
+<!-- Meta Description -->
+<meta name="description"
+  content="googleが発表した、新しい画像生成AIのnano-banana proについてまとめました。">
+
+<!-- ファビコン（最適化済みPNG） -->
+<link rel="icon" type="image/png" sizes="32x32" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/apple-touch-icon.png">
+
+<!-- Tailwind CSS CDN -->
+<!--<script src="https://cdn.tailwindcss.com"></script> -->
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+<!-- お好みでカスタム CSS を足す場合（SCSS を使うなら /assets/css/style.css をビルド）-->
+<link rel="stylesheet" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/css/custom.css">
+
+<!-- イベントモード用CSS -->
+<link rel="stylesheet" href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/css/events.css">
+
+<!-- イベントデータ埋め込み -->
+<script>
+  window.SHIROGAMI_EVENTS = [
+    
+    {
+      id: "newyear",
+      name: "正月",
+      start_month: 1,
+      start_day: 1,
+      end_month: 1,
+      end_day: 4,
+      bg_color: "#FFE4E8",
+      header_color: "#C41E3A",
+      decoration: "newyear",
+      emoji: "🎍"
+    },
+    
+    {
+      id: "setsubun",
+      name: "節分",
+      start_month: 2,
+      start_day: 3,
+      end_month: 2,
+      end_day: 3,
+      bg_color: "#FFF5E6",
+      header_color: "#8B4513",
+      decoration: "setsubun",
+      emoji: "👹"
+    },
+    
+    {
+      id: "valentine",
+      name: "バレンタイン",
+      start_month: 2,
+      start_day: 14,
+      end_month: 2,
+      end_day: 14,
+      bg_color: "#FFE4EC",
+      header_color: "#FF69B4",
+      decoration: "valentine",
+      emoji: "💝"
+    },
+    
+    {
+      id: "aprilfool",
+      name: "エイプリルフール",
+      start_month: 4,
+      start_day: 1,
+      end_month: 4,
+      end_day: 1,
+      bg_color: "#E6FFE6",
+      header_color: "#32CD32",
+      decoration: "aprilfool",
+      emoji: "🤡"
+    },
+    
+    {
+      id: "tango",
+      name: "端午の節句",
+      start_month: 5,
+      start_day: 5,
+      end_month: 5,
+      end_day: 5,
+      bg_color: "#E6F0FF",
+      header_color: "#4169E1",
+      decoration: "tango",
+      emoji: "🎏"
+    },
+    
+    {
+      id: "tanabata",
+      name: "七夕",
+      start_month: 7,
+      start_day: 7,
+      end_month: 7,
+      end_day: 7,
+      bg_color: "#E6E6FF",
+      header_color: "#6A5ACD",
+      decoration: "tanabata",
+      emoji: "🎋"
+    },
+    
+    {
+      id: "obon",
+      name: "お盆",
+      start_month: 8,
+      start_day: 13,
+      end_month: 8,
+      end_day: 16,
+      bg_color: "#F0FFF0",
+      header_color: "#228B22",
+      decoration: "obon",
+      emoji: "🏮"
+    },
+    
+    {
+      id: "tsukimi",
+      name: "十五夜",
+      start_month: 9,
+      start_day: 10,
+      end_month: 9,
+      end_day: 10,
+      bg_color: "#FFFACD",
+      header_color: "#DAA520",
+      decoration: "tsukimi",
+      emoji: "🌕"
+    },
+    
+    {
+      id: "blog_birthday",
+      name: "ブログ誕生日",
+      start_month: 10,
+      start_day: 16,
+      end_month: 10,
+      end_day: 16,
+      bg_color: "#FFF0F5",
+      header_color: "#FF1493",
+      decoration: "blog_birthday",
+      emoji: "🎂"
+    },
+    
+    {
+      id: "halloween",
+      name: "ハロウィン",
+      start_month: 10,
+      start_day: 31,
+      end_month: 10,
+      end_day: 31,
+      bg_color: "#FFF0E6",
+      header_color: "#FF8C00",
+      decoration: "halloween",
+      emoji: "🎃"
+    },
+    
+    {
+      id: "christmas",
+      name: "クリスマス",
+      start_month: 12,
+      start_day: 24,
+      end_month: 12,
+      end_day: 25,
+      bg_color: "#FFE4E4",
+      header_color: "#C41E3A",
+      decoration: "christmas",
+      emoji: "🎄"
+    }
+    
+  ];
+</script>
+
+<!-- イベントモード用JavaScript -->
+<script src="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/js/event-mode.js" defer></script>
+
+
+<!-- この設定を先に置く（MathJax script の前） -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+    // 必要ならここに他オプション（例: packages 追加 など）
+  };
+</script>
+
+<!-- MathJax（数式） -->
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+    <!-- ヘッダー（色付き） -->
+    <header class="bg-[#7278a8] text-white shadow-md">
+        <div class="container mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl md:text-3xl font-bold">
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/" class="hover:opacity-90 transition-opacity">城上コードメモver2.2</a>
+            </h1>
+            <!-- デスクトップナビゲーション -->
+            <nav class="hidden md:flex space-x-6">
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/" class="text-white/90 hover:text-white transition-colors">ホーム</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/posts/"
+                    class="text-white/90 hover:text-white transition-colors">記事一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/tools/"
+                    class="text-white/90 hover:text-white transition-colors">ツール一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/novel/"
+                    class="text-white/90 hover:text-white transition-colors">Novel</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/game/"
+                    class="text-white/90 hover:text-white transition-colors">Game</a>
+            </nav>
+            <!-- モバイルメニューボタン -->
+            <button id="mobile-menu-btn"
+                class="md:hidden p-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+                aria-label="メニューを開く" aria-expanded="false">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- モバイルナビゲーションオーバーレイ -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden" aria-hidden="true">
+    </div>
+
+    <!-- モバイルナビゲーションメニュー -->
+    <nav id="mobile-menu"
+        class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
+        aria-label="モバイルナビゲーション">
+        <div class="p-4 border-b bg-[#7278a8] text-white flex justify-between items-center">
+            <span class="text-lg font-bold">メニュー</span>
+            <button id="mobile-menu-close"
+                class="p-2 rounded-lg hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+                aria-label="メニューを閉じる">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div class="p-4 space-y-4">
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">ホーム</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/posts/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">記事一覧</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/tools/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">ツール一覧</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/novel/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">Novel</a>
+            <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/game/"
+                class="block py-2 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">Game</a>
+        </div>
+    </nav>
+
+    <!-- メインコンテンツ（中央配置・左揃え） -->
+    <div class="container mx-auto px-4 md:px-8 py-8">
+        <main class="max-w-4xl mx-auto text-left">
+            <article class="prose prose-neutral max-w-none">
+<header class="mb-6">
+<h1 class="text-3xl font-bold">nano-banana proが発表されたね</h1>
+<p class="text-gray-500 text-sm">2025-11-22
+
+· <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold">Knowledge</span>
+
+</p>
+
+<p class="text-gray-600 mt-2">googleが発表した、新しい画像生成AIのnano-banana proについてまとめました。</p>
+
+</header>
+<h1 id="なにこれ">なにこれ？</h1>
+
+<p>「文字が書けて、ネット検索もできて、修正指示も完璧に通じる、超ハイスペックな専属デザイナー」
+この表現が適切だと思う。
+要は、これまでの画像生成AIに比べて、性能とユーザ体験が圧倒的に進化しちゃった。</p>
+
+<h1 id="何がすごい">何がすごい？</h1>
+
+<h2 id="1-画像の中の文字が完璧に書ける">1. 画像の中の「文字」が完璧に書ける！</h2>
+
+<p>これまでの画像生成AIは、絵はうまくても、看板やポスターの中の文字が「謎の宇宙語」みたいにぐちゃぐちゃになるのが弱点でした。
+でも、Nano Banana Proは「日本語の漢字」や「英語のスペル」を、間違えずにキレイに画像の中に書き込めます。</p>
+
+<ul>
+  <li><strong>例:</strong> 「文化祭のポスターを作って。真ん中に『第50回 輝け青春』と大きく書いて」と頼めば、その通りの文字が入ったポスター画像が一発で作れます。<br />
+※実際に実行した例：プロンプト＝文化祭のポスターを作って。真ん中に『第50回 輝け青春』と大きく書いて
+<img src="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/img/genAI_image/bunnkasai.webp" alt="プロンプト = 文化祭のポスターを作って。真ん中に『第50回 輝け青春』と大きく書いて" /></li>
+</ul>
+
+<h2 id="2-最新情報を取り込んだ画像が作れる">2. 「最新情報」を取り込んだ画像が作れる！</h2>
+
+<p>Google検索とつながっているので、<strong>今のリアルタイムな情報を画像に反映</strong>できます。</p>
+
+<ul>
+  <li><strong>例:</strong> 「今日の東京の天気を反映した、スマホの壁紙を作って」と頼むと、本当に今日の天気を調べて、晴れなら晴れの、雨なら雨の雰囲気の画像を生成してくれます。スポーツの試合結果をグラフにした画像なども作れます。</li>
+</ul>
+
+<p>※実際に作成した例：プロンプト＝今日の東京の天気を反映した、スマホの壁紙を作って<br />
+※今日の東京は、晴れ、最高気温16度予想</p>
+
+<p><img src="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/img/genAI_image/sumaho.webp" alt="プロンプト = 今日の東京の天気を反映した、スマホの壁紙を作って" /></p>
+
+<h2 id="3-あとから修正が言葉だけで通じる">3. 「あとから修正」が言葉だけで通じる！</h2>
+
+<p>画像を作った後に、「あ、惜しい！」と思うことってありますよね。それをまるで友達に頼むように直せます。</p>
+
+<ul>
+  <li><strong>例:</strong>
+    <ul>
+      <li>「このキャラクター、服を赤から青に変えて」</li>
+      <li>「カメラのアングルを、もっと上から撮った感じにして」</li>
+      <li>「背景だけ土砂降りにして」
+  これらを、<strong>描き直しではなく「修正」として自然にやってくれます。</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<p>※編集前：実際に作成した画像：プロンプト＝2足歩行のコアラを描いてください。コアラは、赤色のアロハシャツを着ています。
+<img src="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/img/genAI_image/koara_aka.avif" alt="プロンプト = 2足歩行のコアラを描いてください。コアラは、赤色のアロハシャツを着ています。" /></p>
+
+<p>※編集後：プロンプト＝このキャラクター、服を赤から青に変えて</p>
+
+<p><img src="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/img/genAI_image/koara_ao.avif" alt="プロンプト = このキャラクター、服を赤から青に変えて" /></p>
+
+<p>※編集後：プロンプト＝カメラのアングルを、もっと上から撮った感じにして</p>
+
+<p><img src="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/img/genAI_image/koara_ue.avif" alt="プロンプト = カメラのアングルを、もっと上から撮った感じにして" /></p>
+
+<p>※編集後：プロンプト＝背景だけ土砂降りにして</p>
+
+<p><img src="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/assets/img/genAI_image/koara_ame.avif" alt="プロンプト = プロンプト＝背景だけ土砂降りにして" /></p>
+
+<h1 id="個人的な体感">個人的な体感</h1>
+
+<p>これまでは、体感、画像を0→1にするのは、chatGPTのほうが取り回しが良かったように感じてた。<br />
+nano-banana（旧モデル）も編集能力はすごかったが、文字の解釈モデルがflash（精度より速度を重視したモデル）だったこともあり、「なんか、違うよなぁ」が多発していた。<br />
+また、日本語に関しても、文字生成が苦手な印象を受けていた。</p>
+
+<p>それが、今回のアップデートで完全に覆された印象である。<br />
+なんというか、0→1の生成も8→10の編集もどちらも対応する「個人用デザイナー」がリリースされたような感覚である。</p>
+
+<p>学生はGemini proが使い放題なので、是非使い倒すべきだと思う。今回のGemini3.0アップデートでGemini系列は圧倒的に強く、使いやすくなった。</p>
+
+<p>少し、本題と離れるが、AIに関する残酷な話をしておきたい。<br />
+私は中の上ぐらいには文字入力が早いと思う。それでも、実際は、4.5～5キー/secondが限界である。<br />
+仮に、1万文字を作成するとすると、思考時間が0だったとしても、2000秒である。しかし、これが、AIを利用して、1000文字のプロンプト（入力）を与えて3分かかったと仮定しよう。<br />
+単純計算で、200+180＝380秒となって、処理時間が0.19倍となるといえばエグさが伝わるだろうか。<br />
+別の言い方をするならば、30分かかっていた作業が5分もかからずに終わるようになるのである。<br />
+これが積み重なると、圧倒的な差になる。これが私が感じているAIの恐怖である。<br />
+AIを使う個人、企業とAIを使わない個人、企業では覆せない恐ろしいほどの差が生じるのである。</p>
+
+<p>つまり、効率を考えれば考えるほど、AIを使わないと言う選択が無く、未だに「AIなんて何に使うの？」「ただのおしゃべりしかできないんでしょ？」「うちは、コードとか関係ないし」と言っているようでは、まあ、なかなか将来が厳しいかもしれないわけである。
+<br />これが、私が最近感じていることであり、まあ、社会的に今後、トレンドにはなっていくだろうなとは思う。</p>
+
+<h1 id="技術的な解説">技術的な解説</h1>
+
+<h2 id="そもそもtext-to-imageって何をしているの">そもそもtext-to-imageって何をしているの？</h2>
+
+<p>現在の主流である、潜在拡散モデル（Latent Diffusion Model）のアーキテクチャは、主に、以下の3ステップで構成される。</p>
+
+<p>1.拡散プロセス（Diffusion Process）：ノイズから絵を復元させる「推論エンジン」</p>
+
+<p>2.潜在空間（Latent Space）：計算コストを下げるための「圧縮空間」</p>
+
+<p>3.条件付け（Conditioning）：テキストを画像に反映させる「制御機構」</p>
+
+<p>ここから、個別にステップを解説する。</p>
+
+<h3 id="1拡散プロセス">1.拡散プロセス</h3>
+
+<p>これは、熱力学の「拡散」現象に着想を得たとされる。<br /></p>
+<ul>
+  <li>順方向プロセス（Forward Process / 破壊）<br />
+鮮明な画像に、徐々にガウスノイズ（正規分布に従うランダムなノイズ）を足してく。最終的には、完全な「砂嵐（ランダムノイズ）」になる。<br />
+    <ul>
+      <li><em>イメージ:</em> インクの滴が水の中で拡散して、一様に混ざり合う（エントロピーが増大する）過程。<br /></li>
+    </ul>
+  </li>
+  <li>逆方向プロセス（Reverse Process / 生成）<br />
+AIが行うのはこの逆であり「今の砂嵐から、さっき足されたノイズはどれか？」を予測して引き算することを繰り返す。<br />
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td><em>数理:</em> 時刻 $t$ のノイズ画像 $x_t$ から、時刻 $t-1$ の画像 $x_{t-1}$ を事後確率 $p(x_{t-1}</td>
+              <td>x_t)$ として推定するプロセスとなる。</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>ここで、順方向プロセスは、学習時の方向で、逆方向は生成時の方向である。<br />
+つまり、モデルが学習するのは、「<strong>ノイズから元画像を復元する</strong>」ことであり、「画像の描き方」を学習しているわけじゃない。</p>
+
+<p>そのため、これら、生成AIの画像生成の本質を見るなら、「ノイズを除去したら、たまたま美しい絵が出てきた」とも言える。</p>
+
+<h3 id="2潜在空間">2.潜在空間</h3>
+
+<p>高解像度（例えば：1024x1024x3色）をそのまま拡散プロセスに与えると、計算量がGPUで処理できる範囲を大幅に超えてしまう。<br />
+そのため、VAE（Variational Autoencoder）という技術が使われる。<br />
+これは、データを生成可能な数学的空間として、圧縮することである。<br /></p>
+
+<p>こちらは、主に2ステップで構成され、エンコード（圧縮）、デコード（展開）の2ステップである。</p>
+
+<p>エンコードでは、画像をピクセル空間から64x64x4程度の潜在空間に圧縮する。これは、直喩的に表現するなら、RNA-seqの生データをPCAで数個の主成分に圧縮するようなものである。</p>
+
+<p>デコードでは、潜在空間でノイズを除去した後に、ピクセル空間に戻す作業を行う。</p>
+
+<p>VAEが画期的な点は、通常のAutoencoderと異なり、潜在空間に確率分布として圧縮する点である。<br />
+単なる固定ベクトルではなく、確率分布として圧縮することによって、連続性と正規性が保証される。<br />
+VAE以前のAutoEncoder(AE)では、学習時の制約が「入出力の一致」のみであり、入力以外の箇所に関しては過学習され、離散的(不連続、非連続)な潜在空間となる。そのため入力に無い出力を行うと、データ間の点を補間できず、出力がノイズにしかならない。<br />
+しかし、VAEは画像を点ではなく、確率分布（雲のようなものをイメージ）することによって、学習データ間を滑らかにつなぐ、連続的な空間が形成される。</p>
+
+<p>Diffusionモデルは、単純化するとノイズからスタートして意味のある場所へ移動するプロセスである。そのため、AEを利用すると、虚無空間に入ると、勾配を見失い、生成ができない。</p>
+
+<h3 id="3条件付け">3.条件付け</h3>
+
+<p>ここが、テキスト（プロンプト）を画像に反映させるか？の核心である。<br />
+ここには、CLIPやT5と言った、テキストエンコーダーが使われる。</p>
+
+<p>これらは、以下のステップで動作する</p>
+
+<p>1.テキストのベクトル化<br />
+これは、入力されたテキストを多次元のベクトルに変換する</p>
+
+<p>2.cross-attention<br />
+ノイズ除去を行うニューラルネットワークに、画像の特徴量とテキストの特徴量を混ぜる層を設けることで、任意のテキストに従った画像の生成を可能にしている。</p>
+
+<h3 id="全体の生成フロー">全体の生成フロー</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">1.</span>準備：テキストをベクトル化する
+					↓
+<span class="p">2.</span>初期化：潜在空間上にランダムなノイズを用意する
+					↓
+<span class="p">3.</span>推論ループ
+・AIがノイズを見る。テキストベクトル（白い猫）を参照する (Cross-Attention)。
+・「このノイズの塊、テキストに沿うなら、ここは猫の耳になるべきだから、こっちの成分はノイズだ」と予測する。
+・予測されたノイズを引き算する。少し綺麗になったノイズ画像ができる。（これを繰り返す）
+					↓
+４．仕上げ: 完成した潜在変数を、VAEデコーダで人間が見える画像に展開する。
+</code></pre></div></div>
+
+<h3 id="補足">補足</h3>
+
+<p>前項でも説明しているが、実際の実用化されているstable diffusionアーキテクチャでは、以下の流れをたどる。</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>【1】初期化：latent空間でランダムノイズ z₀ を生成（砂嵐）
+           ↓
+【2】拡散 / ノイズ除去（latent空間上で実施）
+　　→ このとき cross-attention でテキストを混ぜる
+           ↓
+【3】latent から RGB画像へ復元
+　　→ VAE Decoder で変換
+           ↓
+【4】出力画像
+</code></pre></div></div>
+
+<p>つまり、VAEエンコーダーは学習のみで利用され、生成時は、デコーダーしか使われない。</p>
+
+<p>一応、以下に学習時の流れも同様に載せておく。</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code> (学習時のみ)
+画像 → VAE Encoder → latent → ノイズを足す → UNet → ノイズ除去 → VAE Decoder → 画像
+</code></pre></div></div>
+
+<h2 id="代表的なtext-to-image生成aiモデル">代表的なtext-to-image生成AIモデル</h2>
+
+<p>下記に、これまでに公開されている代表的で有名なt2iモデルをまとめておく。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>作成者（国）</th>
+      <th>概要（ざっくり）</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Stable Diffusion 3</strong></td>
+      <td>Stability AI（英・ロンドン拠点の企業）</td>
+      <td>オープン系 t2i の代表格。拡散モデル＋Transformer（MMDiT）で、高画質かつローカル実行しやすいのが強み。SD3世代では複雑プロンプト・タイポグラフィ・構図理解がかなり改善されている。</td>
+    </tr>
+    <tr>
+      <td><strong>DALL·E 3</strong></td>
+      <td>OpenAI（米）</td>
+      <td>ChatGPT から使える有名モデル。中身は拡散ベースの t2i だが、前段で GPT-4 がプロンプトをリライトしてから渡す構成なので、指示への忠実度が高く、ポスターやイラストもかなり狙って出せる。</td>
+    </tr>
+    <tr>
+      <td><strong>Midjourney（v6/v7系）</strong></td>
+      <td>Midjourney, Inc.（米）</td>
+      <td>Discord から使うクローズドな t2i サービス。フォトリアル〜ファンタジー寄りの「映え絵」特化。内部仕様は非公開だが、プロンプトから直接画像を出す典型的 t2i 系列。</td>
+    </tr>
+    <tr>
+      <td><strong>Imagen / Imagen 3</strong></td>
+      <td>Google（米）</td>
+      <td>Google の高画質 t2i モデル。Firefly や Vertex AI、Gemini API の裏側でも使われる。フォトリアルな画質と、Adobe同様 SynthID 透かしでの生成画像識別が特徴。</td>
+    </tr>
+    <tr>
+      <td><strong>Ideogram 3.0</strong></td>
+      <td>Ideogram Inc.（カナダ）</td>
+      <td>「画像内の文字が読める」ことをウリにした t2i。ロゴ・ポスター・看板・タイポグラフィなど文字入り画像に特化しており、多言語テキストもかなり綺麗にレンダリングできる。</td>
+    </tr>
+    <tr>
+      <td><strong>Kandinsky シリーズ</strong></td>
+      <td>Sber / SberDevices（ロシア）</td>
+      <td>ロシア発の latent diffusion ベース t2i／i2i。多言語対応のテキストエンコーダを持ち、テキスト→画像、画像→画像、インペインティングなど一通りこなすオープン系モデル。</td>
+    </tr>
+    <tr>
+      <td><strong>ERNIE-ViLG 2.0</strong></td>
+      <td>Baidu（中国）</td>
+      <td>中国語プロンプトに強い大規模 t2i。24Bクラスの拡散モデルで、知識強化＋denoising experts を組み合わせた事前学習を行い、中国語圏向けのイラスト・写真・国画風などを生成できる。</td>
+    </tr>
+    <tr>
+      <td><strong>通義万相（Tongyi Wanxiang）</strong></td>
+      <td>Alibaba Cloud（中国）</td>
+      <td>アリババの企業向け t2i/i2i。中国語と英語に対応し、水彩画・油絵・3D・アニメなど多彩なスタイル変換や、既存画像のスタイル変換をサポート。</td>
+    </tr>
+    <tr>
+      <td><strong>Adobe Firefly Image 3</strong></td>
+      <td>Adobe（米）</td>
+      <td>Adobe の Firefly スイートに含まれる最新画像モデル。Photoshop/Illustrator/Express とガッツリ統合されており、t2i だけでなく、Generative Fill / Expand など画像編集にも最適化。Image 3世代では、構図参照・スタイル参照などコントロール性とプロンプト理解が大幅に強化され、人物・照明・複雑構造の表現がかなり良くなっている。</td>
+    </tr>
+    <tr>
+      <td><strong>FLUX.1（Pro / Dev / Schnell 系）</strong></td>
+      <td>Black Forest Labs（ドイツ・フライブルク）</td>
+      <td>元 Stability AI のメンバーが立ち上げた Black Forest Labs による新世代 t2i。Rectified Flow Transformer というアーキで、12B パラメータのモデル（Pro/Dev/Schnell）が展開されている。高い画質・プロンプト忠実度・タイポグラフィ性能が評価され、Cloudflare Workers AI や各種クラウド、MLPerf のベンチマークにも採用されるなど、<strong>「現在のオープン系 t2i の新しい標準候補」</strong>になりつつある。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="nano-banana-proが核心的な点">nano-banana proが核心的な点</h2>
+
+<p>nano-banana proが何がそんなに核心的だったか？について、解説したい。<br />
+無論、nano-banana proが核心的なのは、タダでも使える点にもあるが、技術的にも面白いことをおこなっているようなのでそちらも解説する。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>特徴</strong></th>
+      <th><strong>Nano Banana (従来モデル)</strong></th>
+      <th><strong>Nano Banana Pro (新モデル)</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>正式名称</strong></td>
+      <td>Gemini 2.5 Flash Image</td>
+      <td><strong>Gemini 3 Pro Image</strong></td>
+    </tr>
+    <tr>
+      <td><strong>ベースモデル</strong></td>
+      <td>Gemini 2.5 Flash (軽量・高速・蒸留モデル)</td>
+      <td><strong>Gemini 3 Pro</strong> (高パラメータ・推論特化モデル)</td>
+    </tr>
+    <tr>
+      <td><strong>生成プロセス</strong></td>
+      <td>Text-to-Image (直結)</td>
+      <td><strong>Reasoning-to-Image</strong> (思考プロセス経由)</td>
+    </tr>
+    <tr>
+      <td><strong>外部知識</strong></td>
+      <td>モデル重み内の学習データのみ</td>
+      <td><strong>RAG的アプローチ</strong> (Google検索によるGrounding)</td>
+    </tr>
+    <tr>
+      <td><strong>計算リソース</strong></td>
+      <td>低レイテンシ・高スループット重視</td>
+      <td>高負荷・推論精度重視</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>こちらがかなり近いと思われる。
+どうも、今回の核心的な点は、単にtext to image(t2i)を行うモデルではなく、入力プロンプトを一旦思考（thinkingもしくはReasoning）を挟んでから、生成する点であるようである。</p>
+
+<p>今回、整理した感じDALL-E（openAI = chatGPTのお絵かき機能）も似た構造はあるものの、DALL-E 3は、画像生成の前段でLLMが指示を詳細化する仕組みであり、生成プロセスそのものに推論（Reasoning）が統合されているNano Banana Proとはアプローチが異なるようである。</p>
+
+</article>
+
+
+        </main>
+    </div>
+
+    <!-- フッター（色付き） -->
+    <footer class="bg-[#7278a8] text-white mt-8">
+        <div class="container mx-auto px-4 md:px-8 py-8 text-center">
+            <div class="flex flex-wrap justify-center gap-4 md:gap-6 mb-6">
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/" class="text-white/90 hover:text-white transition-colors">ホーム</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/posts/"
+                    class="text-white/90 hover:text-white transition-colors">記事一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/tools/"
+                    class="text-white/90 hover:text-white transition-colors">ツール一覧</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/novel/"
+                    class="text-white/90 hover:text-white transition-colors">Novel</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/game/"
+                    class="text-white/90 hover:text-white transition-colors">Game</a>
+                <a href="/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog/contact/"
+                    class="text-white/90 hover:text-white transition-colors">お問い合わせ</a>
+            </div>
+            <div class="mb-4 text-white/80 text-sm space-y-1">
+                <p>GitHub: <a
+                        href="https://github.com/ruri-sayo/f53cfe5b31cafa1ddb061d46c22a2d5ca41f302bc889dc325f0423744834dd2a_WP_CM_blog"
+                        class="text-white hover:underline">ruri-sayo</a></p>
+                <p>About us: <a href="https://ruri-sayo.github.io/SSC_site/" class="text-white hover:underline">Sayo
+                        Social Connect</a></p>
+            </div>
+            <p class="text-sm text-white/70">&copy; 2025 <a
+                    href="https://ruri-sayo.github.io/SSC_site/" class="hover:underline">Sayo Social Connect</a>. All
+                Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- モバイルナビゲーション用JavaScript -->
+    <script>
+        (function () {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const menuClose = document.getElementById('mobile-menu-close');
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-menu-overlay');
+
+            function openMenu() {
+                menu.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+                menuBtn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                menu.classList.add('translate-x-full');
+                overlay.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+
+            menuBtn.addEventListener('click', openMenu);
+            menuClose.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+
+            // Escキーでメニューを閉じる
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && !menu.classList.contains('translate-x-full')) {
+                    closeMenu();
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>

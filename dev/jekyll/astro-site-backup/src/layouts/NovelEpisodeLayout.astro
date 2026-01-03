@@ -1,0 +1,67 @@
+---
+/**
+ * 小説エピソードページ用レイアウト
+ */
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import { getFullPath } from '../consts';
+
+interface Props {
+  episode: CollectionEntry<'novel'>;
+}
+
+const { episode } = Astro.props;
+const { Content } = await episode.render();
+---
+
+<BaseLayout title={episode.data.title}>
+  <!-- Novelモード用CSS -->
+  <link rel="stylesheet" href={getFullPath("/assets/css/novel-mode.css")} slot="head" />
+
+  <article class="prose prose-neutral max-w-none novel-content">
+    <header class="mb-6">
+      <p class="text-sm text-gray-500 uppercase tracking-wide">Novel</p>
+      <h1 class="text-3xl font-bold">{episode.data.title}</h1>
+      <p class="text-gray-600 text-sm">Episode {episode.data.episode} · {episode.data.series_id}</p>
+    </header>
+
+    <Content />
+
+    <div class="mt-12">
+      <a href={getFullPath(`/novel/${episode.data.series_id}/`)}
+        class="text-blue-600 hover:underline">&larr; シリーズトップへ戻る</a>
+    </div>
+  </article>
+
+  <!-- Novelモード設定UI -->
+  <button id="novel-settings-toggle" title="表示設定">⚙️</button>
+
+  <div id="novel-settings-panel">
+    <div class="novel-settings-header">
+      <h4>表示設定</h4>
+      <button id="novel-settings-close" class="novel-settings-close">&times;</button>
+    </div>
+
+    <div class="novel-setting-group">
+      <label for="novel-theme-select">テーマ</label>
+      <select id="novel-theme-select">
+        <option value="light">ライト</option>
+        <option value="dark">ダーク</option>
+        <option value="sepia">セピア</option>
+      </select>
+    </div>
+
+    <div class="novel-setting-group">
+      <label for="novel-size-select">文字サイズ</label>
+      <select id="novel-size-select">
+        <option value="small">小</option>
+        <option value="medium">中</option>
+        <option value="large">大</option>
+      </select>
+    </div>
+
+    <button id="novel-reset-btn" class="novel-reset-btn">設定をリセット</button>
+  </div>
+
+  <script src={getFullPath("/assets/js/novel-mode.js")} is:inline></script>
+</BaseLayout>
