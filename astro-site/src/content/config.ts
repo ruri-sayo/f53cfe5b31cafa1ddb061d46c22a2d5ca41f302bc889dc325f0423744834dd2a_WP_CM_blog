@@ -8,22 +8,33 @@ import { defineCollection, z } from 'astro:content';
 const postsCollection = defineCollection({
     type: 'content',
     schema: z.object({
-        // layout は Astro では使用しないため除外
         title: z.string(),
-        // categoriesは文字列の配列または単一の文字列に対応
         categories: z.union([z.array(z.string()), z.string()]).optional(),
-        // tagsも同様
         tags: z.union([z.array(z.string()), z.string()]).optional(),
         description: z.string().optional(),
-        // 日付は様々なフォーマットに対応（Jekyllの形式を含む）
         date: z.coerce.date().optional(),
     }),
 });
 
-// 小説コレクションは後で追加（一時的に無効化）
-// const novelCollection = defineCollection({ ... });
+// 小説コレクション（シリーズ・エピソード両方に対応）
+const novelCollection = defineCollection({
+    type: 'content',
+    schema: z.object({
+        title: z.string(),
+        series_id: z.string(),
+        // シリーズインデックスの場合
+        is_series_index: z.boolean().optional(),
+        short_description: z.string().optional(),
+        status: z.string().optional(),
+        order: z.number().optional(),
+        // エピソードの場合
+        episode: z.number().optional(),
+    }),
+});
 
 export const collections = {
     posts: postsCollection,
+    novel: novelCollection,
 };
+
 

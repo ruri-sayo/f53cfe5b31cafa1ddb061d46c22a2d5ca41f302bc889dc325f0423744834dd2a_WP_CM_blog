@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迷路ゲーム</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding-top: 20px;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        h1 {
+            color: #2a5282;
+        }
+        #gameContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        canvas {
+            border: 3px solid #2a5282;
+            background-color: #e6f2ff;
+            border-radius: 8px;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+        }
+        #infoPanel {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            font-size: 1.2em;
+            color: #1a3a5a;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        #stageNumber {
+            font-weight: bold;
+            color: #d9534f;
+        }
+        #message {
+            margin-top: 15px;
+            font-size: 1.1em;
+            color: #4CAF50;
+            font-weight: bold;
+            min-height: 1.5em;
+            text-align: center;
+        }
+        .controls {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.95em;
+            color: #555;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .controls p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>自動生成迷路ゲーム</h1>
+
+    <div id="gameContainer">
+        <canvas id="mazeCanvas"></canvas>
+        <div id="infoPanel">ステージ: <span id="stageNumber">1</span></div>
+        <div id="message"></div>
+    </div>
+
+    <div class="controls">
+        <p><strong>操作方法:</strong></p>
+        <p>W: 上へ移動</p>
+        <p>A: 左へ移動</p>
+        <p>S: 下へ移動</p>
+        <p>D: 右へ移動</p>
+    </div>
+
+    <script>
+        // Canvas要素とコンテキストを取得
+        const canvas = document.getElementById('mazeCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // DOM要素を取得
+        const stageNumberDisplay = document.getElementById('stageNumber');
+        const messageDisplay = document.getElementById('message');
+
+        // ゲーム設定
+        let cellSize = 20; // 各セルのサイズ(ピクセル)
+        let mazeWidth, mazeHeight; // 迷路の幅と高さ（セル数）
+        let player;
+        let goal;
+        let maze;
+        let visibilityMap; // 各セルが見えるかどうかを管理
+        let currentStage = 1;
+        const revealRadius = 2; // プレイヤーの周囲何マスまで見えるか (0はプレイヤーのマスのみ)
+
+        // 色設定
+        const playerColor = '#3498db'; // 明るい青 (プレイヤー)
+        const goalColor = '#e74c3c';   // 明るい赤 (ゴール)
+        const wallColor = '#2c3e50';   // 暗い青灰色 (壁)
+        const pathColor = '#ecf0f1';   // 明るい灰色 (通路)
+        const fogColor = '#7f8c8d';    // 霧の色 (見えない部分)
+        const visitedFogColor = '#bdc3c7'; // 一度通ったが見えなくなった霧の色 (オプション、今回は未使用)
+
+
+        /**
+         * 新しいステージを開始する関数
+         */
+        function startNewStage() {
+            // ステージに応じて迷路のサイズを決定（奇数に保つ）
+            mazeWidth = 11 + (currentStage - 1) * 2;
+            mazeHeight = 9 + (currentStage - 1) * 2;
+            if (mazeWidth > 35) mazeWidth = 35; // 最大サイズ制限
+            if (mazeHeight > 25) mazeHeight = 25; // 最大サイズ制限
+
+            // Canvasのサイズを設定
+            canvas.width = mazeWidth * cellSize;
+            canvas.height = mazeHeight * cellSize;
+
+            // 迷路を生成
+            maze = generateMaze(mazeWidth, mazeHeight);
+
+            // プレイヤーの初期位置を設定 (左上隅の通路)
+            player = { x: 1, y: 1 };
+            maze[player.y][player.x] = 0; // 念のため通路に
+
+            // ゴールの位置をランダムに設定
+            setRandomGoal();
+
+            // 視界マップを初期化
+            visibilityMap = Array.from({ length: mazeHeight }, () => Array(mazeWidth).fill(false));
+            updateVisibility(); // 初期視界を更新
+
+            // ステージ番号を更新
+            stageNumberDisplay.textContent = currentStage;
+            messageDisplay.textContent = ''; // メッセージをクリア
+
+            // ゲームを描画
+            drawGame();
+        }
+
+        /**
+         * ゴールの位置をランダムに設定する関数
+         */
+        function setRandomGoal() {
+            let possibleGoalPositions = [];
+            for (let y = 1; y < mazeHeight - 1; y++) {
+                for (let x = 1; x < mazeWidth - 1; x++) {
+                    // 通路であり、プレイヤーの初期位置ではない場所
+                    if (maze[y][x] === 0 && (x !== player.x || y !== player.y)) {
+                        possibleGoalPositions.push({ x, y });
+                    }
+                }
+            }
+
+            if (possibleGoalPositions.length > 0) {
+                goal = possibleGoalPositions[Math.floor(Math.random() * possibleGoalPositions.length)];
+            } else {
+                // 万が一、適切なゴール位置が見つからない場合（通常はありえない）
+                // 右下隅をデフォルトゴールとする
+                goal = { x: mazeWidth - 2, y: mazeHeight - 2 };
+                if (maze[goal.y][goal.x] === 1) { // ゴールが壁なら無理やり通路に
+                    maze[goal.y][goal.x] = 0;
+                }
+            }
+             // ゴール地点を必ず通路にする
+            maze[goal.y][goal.x] = 0;
+        }
+
+
+        /**
+         * 迷路を生成する関数 (深さ優先探索アルゴリズム)
+         * @param {number} width - 迷路の幅 (セル数)
+         * @param {number} height - 迷路の高さ (セル数)
+         * @returns {Array<Array<number>>} 生成された迷路データ (0: 通路, 1: 壁)
+         */
+        function generateMaze(width, height) {
+            let newMaze = Array.from({ length: height }, () => Array(width).fill(1));
+            let stack = [];
+            let startX = 1;
+            let startY = 1;
+
+            newMaze[startY][startX] = 0;
+            stack.push({ x: startX, y: startY });
+
+            while (stack.length > 0) {
+                let current = stack[stack.length - 1];
+                let neighbors = [];
+                const directions = [
+                    { dx: 0, dy: -2, wallDx: 0, wallDy: -1 }, { dx: 2, dy: 0, wallDx: 1, wallDy: 0 },
+                    { dx: 0, dy: 2, wallDx: 0, wallDy: 1 },   { dx: -2, dy: 0, wallDx: -1, wallDy: 0 }
+                ];
+
+                for (let dir of directions) {
+                    let nx = current.x + dir.dx;
+                    let ny = current.y + dir.dy;
+                    if (nx > 0 && nx < width - 1 && ny > 0 && ny < height - 1 && newMaze[ny][nx] === 1) {
+                        neighbors.push({ nx, ny, wallX: current.x + dir.wallDx, wallY: current.y + dir.wallDy });
+                    }
+                }
+
+                if (neighbors.length > 0) {
+                    let chosenNeighbor = neighbors[Math.floor(Math.random() * neighbors.length)];
+                    newMaze[chosenNeighbor.wallY][chosenNeighbor.wallX] = 0;
+                    newMaze[chosenNeighbor.ny][chosenNeighbor.nx] = 0;
+                    stack.push({ x: chosenNeighbor.nx, y: chosenNeighbor.ny });
+                } else {
+                    stack.pop();
+                }
+            }
+            return newMaze;
+        }
+
+        /**
+         * プレイヤーの周囲の視界を更新する関数
+         */
+        function updateVisibility() {
+            for (let y = 0; y < mazeHeight; y++) {
+                for (let x = 0; x < mazeWidth; x++) {
+                    // プレイヤーからの距離を計算 (マンハッタン距離)
+                    const distance = Math.abs(x - player.x) + Math.abs(y - player.y);
+                    if (distance <= revealRadius) {
+                        visibilityMap[y][x] = true;
+                        // 壁の向こう側も一定範囲見えるようにする（より自然な視界のため）
+                        // 例えば、revealRadiusが1なら、プレイヤーの隣のマスは見える
+                        // revealRadiusが2なら、プレイヤーから2マス先まで見える
+                        // ここでは単純に距離で判定
+                    }
+                    // 一度見えた場所をずっと表示する場合は以下のコメントアウトを外す
+                    // if (visibilityMap[y][x]) continue;
+                }
+            }
+        }
+
+        /**
+         * 迷路、プレイヤー、ゴールを描画する関数
+         */
+        function drawGame() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 全体を霧の色で一旦塗りつぶす (オプション)
+            // ctx.fillStyle = fogColor;
+            // ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            for (let y = 0; y < mazeHeight; y++) {
+                for (let x = 0; x < mazeWidth; x++) {
+                    if (visibilityMap[y][x]) { // セルが見える場合
+                        if (maze[y][x] === 1) { // 壁の場合
+                            ctx.fillStyle = wallColor;
+                        } else { // 通路の場合
+                            ctx.fillStyle = pathColor;
+                        }
+                        ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+                    } else { // セルが見えない場合 (霧)
+                        ctx.fillStyle = fogColor;
+                        ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+                    }
+                }
+            }
+
+            // ゴールを描画 (見える場合のみ)
+            if (visibilityMap[goal.y][goal.x]) {
+                ctx.fillStyle = goalColor;
+                ctx.beginPath();
+                ctx.arc(
+                    goal.x * cellSize + cellSize / 2,
+                    goal.y * cellSize + cellSize / 2,
+                    cellSize / 2.5,
+                    0, Math.PI * 2
+                );
+                ctx.fill();
+                ctx.fillStyle = '#FFD700';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.font = `${cellSize * 0.6}px Arial`;
+                ctx.fillText('★', goal.x * cellSize + cellSize / 2, goal.y * cellSize + cellSize / 2 + cellSize * 0.05);
+            }
+
+            // プレイヤーを描画 (常に表示されるが、下のセルが見えていないと霧の上にいるように見える)
+            // プレイヤーのいるセルは必ず見えるので問題なし
+            ctx.fillStyle = playerColor;
+            ctx.beginPath();
+            ctx.arc(
+                player.x * cellSize + cellSize / 2,
+                player.y * cellSize + cellSize / 2,
+                cellSize / 3,
+                0, Math.PI * 2
+            );
+            ctx.fill();
+        }
+
+        /**
+         * キー入力イベントを処理する関数
+         * @param {KeyboardEvent} e - キーボードイベントオブジェクト
+         */
+        function handleKeyPress(e) {
+            let dx = 0;
+            let dy = 0;
+
+            switch (e.key.toLowerCase()) {
+                case 'w': case 'arrowup': dy = -1; break;
+                case 's': case 'arrowdown': dy = 1; break;
+                case 'a': case 'arrowleft': dx = -1; break;
+                case 'd': case 'arrowright': dx = 1; break;
+                default: return;
+            }
+
+            const nextX = player.x + dx;
+            const nextY = player.y + dy;
+
+            if (nextX >= 0 && nextX < mazeWidth &&
+                nextY >= 0 && nextY < mazeHeight &&
+                maze[nextY][nextX] === 0) {
+                player.x = nextX;
+                player.y = nextY;
+                updateVisibility(); // 移動後に視界を更新
+            }
+
+            drawGame();
+
+            if (player.x === goal.x && player.y === goal.y) {
+                messageDisplay.textContent = `ステージ ${currentStage} クリア！おめでとう！`;
+                currentStage++;
+                setTimeout(startNewStage, 1500);
+            }
+        }
+
+        window.addEventListener('keydown', handleKeyPress);
+        startNewStage();
+    </script>
+</body>
+</html>

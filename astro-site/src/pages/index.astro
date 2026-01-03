@@ -5,8 +5,6 @@ import { getFullPath } from '../consts';
 import heroData from '../data/hero.json';
 import toolsData from '../data/tools.json';
 import gamesData from '../data/games.json';
-// novelデータは型が未確定なため、一旦jsonとして読み込むか、feature/astro-migrationフェーズ後半で実装を完成させる
-// import homeNovelData from '../data/home_novel.json'; 
 
 // 記事取得とソート
 const posts = (await getCollection('posts')).sort(
@@ -16,6 +14,12 @@ const posts = (await getCollection('posts')).sort(
     return dateB - dateA;
   }
 ).slice(0, 5); // 最新5件
+
+// 小説シリーズ取得（is_series_index=trueのみ）
+const allNovel = await getCollection('novel');
+const novelSeries = allNovel
+  .filter((entry) => entry.data.is_series_index === true)
+  .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
 
 // ピックアップツールID
 const featuredToolIds = ["kazukazoe", "sky_high", "diff", "count"];
@@ -130,10 +134,25 @@ const hero = heroData;
 			<h2 class="text-2xl font-semibold border-b pb-2 mb-4">
 				<a href={getFullPath('/novel/')} class="hover:text-blue-600">Novel &rarr;</a>
 			</h2>
-      {/* Novel機能は準備中 */}
-      <div class="bg-white p-4 rounded-lg shadow-sm">
-        <p class="text-gray-600">小説コーナーは移行作業中です。</p>
-      </div>
+      {novelSeries.length > 0 ? (
+        novelSeries.map((series) => (
+          <a href={getFullPath(`/novel/${series.data.series_id}/`)}
+            class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-gray-500 uppercase tracking-wide">{series.data.status || 'series'}</p>
+                <h3 class="text-xl font-bold">{series.data.title}</h3>
+                {series.data.short_description && (
+                  <p class="text-gray-600 mt-1">{series.data.short_description}</p>
+                )}
+              </div>
+              <span class="text-blue-600 text-lg">&rarr;</span>
+            </div>
+          </a>
+        ))
+      ) : (
+        <p class="text-gray-600">シリーズが登録されていません。</p>
+      )}
 		</div>
 
 		<!-- Game セクション -->
