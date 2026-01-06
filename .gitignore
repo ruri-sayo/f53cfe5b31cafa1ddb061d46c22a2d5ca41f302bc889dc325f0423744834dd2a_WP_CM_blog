@@ -24,4 +24,4 @@ pnpm-debug.log*
 .idea/
 
 # 必要に応じて、切り替え
- /dev/
+/dev/

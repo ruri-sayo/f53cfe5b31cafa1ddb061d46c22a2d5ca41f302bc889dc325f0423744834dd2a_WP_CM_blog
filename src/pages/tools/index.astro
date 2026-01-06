@@ -5,14 +5,46 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getFullPath } from '../../consts';
 import toolsData from '../../data/tools.json';
+
+// クライアントサイド検索用のデータを作成
+const toolsForJson = toolsData.map((tool) => {
+  return {
+    ...tool,
+    icon: tool.icon ? getFullPath(tool.icon) : null,
+    url: getFullPath(tool.url)
+  };
+});
 ---
 
 <BaseLayout title="ツール一覧" description="城上コードメモで提供しているWebツール一覧">
   <section class="space-y-6">
-    <h1 class="text-3xl font-bold mb-4">ツール一覧</h1>
-    <p class="text-gray-600 mb-6">全{toolsData.length}件のツールを無料で利用できます。</p>
+    <div class="flex flex-col md:flex-row justify-between items-center border-b pb-4 mb-6 gap-4">
+      <div>
+        <h1 class="text-3xl font-bold">ツール一覧</h1>
+        <p class="text-gray-600 text-sm mt-1">全{toolsData.length}件のツールを無料で利用できます。</p>
+      </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="flex flex-col sm:flex-row items-center gap-2 w-full md:w-auto">
+        <input 
+          id="tool-search" 
+          type="search" 
+          placeholder="キーワード検索..."
+          class="w-full sm:w-auto border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow"
+        >
+        <select 
+          id="tool-tag" 
+          class="w-full sm:w-auto border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white transition-shadow"
+        >
+          <option value="">すべての区分</option>
+          {/* JSが自動でタグを追加します */}
+        </select>
+      </div>
+    </div>
+
+    <div id="tools-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 min-h-[200px]">
+      {/* 
+        初期表示はサーバーサイドレンダリングで出力
+      */}
       {toolsData.map((tool) => (
         <a href={getFullPath(tool.url)}
           class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
@@ -39,3 +71,109 @@ import toolsData from '../../data/tools.json';
     </div>
   </section>
 </BaseLayout>
+
+{/* データ受け渡し用スクリプト（隠し要素） */}
+<script id="tools-data" type="application/json" set:html={JSON.stringify(toolsForJson)}></script>
+
+<script>
+  (function () {
+    // 1) JSONデータの読込
+    const dataEl = document.getElementById('tools-data');
+    if (!dataEl) return;
+    
+    // 型定義（anyで代用）
+    const TOOLS = JSON.parse(dataEl.textContent || '[]');
+
+    // 2) DOM要素
+    const $container = document.getElementById('tools-container');
+    const $search = document.getElementById('tool-search') as HTMLInputElement;
+    const $tag = document.getElementById('tool-tag') as HTMLSelectElement;
+
+    if (!$container || !$search || !$tag) return;
+
+    // 3) タグを収集してセレクトに流し込む
+    const tagSet = new Set<string>();
+    TOOLS.forEach((t: any) => {
+      if (t.tag) tagSet.add(t.tag);
+    });
+
+    const tagList = Array.from(tagSet).sort((a, b) => a.localeCompare(b, 'ja'));
+    tagList.forEach(tag => {
+      const opt = document.createElement('option');
+      opt.value = tag;
+      opt.textContent = tag;
+      $tag.appendChild(opt);
+    });
+
+    // 4) レンダリング関数
+    function render(items: any[]) {
+      if (items.length === 0) {
+        $container!.innerHTML = '<div class="col-span-full text-center py-8 text-gray-500">該当するツールが見つかりませんでした。</div>';
+        return;
+      }
+
+      const html = items.map(t => {
+        const iconHtml = t.icon 
+          ? `<img src="${escapeHtml(t.icon)}" alt="" class="w-12 h-12 rounded-lg object-cover" />`
+          : '';
+        
+        const descriptionHtml = t.description 
+          ? `<p class="text-gray-600 mt-1 text-sm">${escapeHtml(t.description)}</p>`
+          : '';
+          
+        const tagHtml = t.tag 
+          ? `<div class="mt-2"><span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold">${escapeHtml(t.tag)}</span></div>`
+          : '';
+
+        return `
+          <a href="${escapeHtml(t.url)}" class="block bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-start gap-4">
+              ${iconHtml}
+              <div class="flex-1">
+                <h2 class="text-lg font-bold hover:text-blue-600">${escapeHtml(t.title)}</h2>
+                ${descriptionHtml}
+                ${tagHtml}
+              </div>
+            </div>
+          </a>
+        `;
+      }).join('');
+
+      $container!.innerHTML = html;
+    }
+
+    // 5) フィルタ関数
+    function filterTools() {
+      const q = ($search.value || '').trim().toLowerCase();
+      const t = ($tag.value || '').trim();
+
+      const filtered = TOOLS.filter((item: any) => {
+        // キーワード検索 (title + description)
+        const hay = (item.title + ' ' + (item.description || '')).toLowerCase();
+        const okQ = q === '' ? true : hay.includes(q);
+
+        // タグフィルタ (tag 文字列が一致するか)
+        const okT = t === '' ? true : (item.tag === t);
+
+        return okQ && okT;
+      });
+
+      render(filtered);
+    }
+
+    // 6) イベント登録
+    let timer: any = null;
+    $search.addEventListener('input', () => {
+      clearTimeout(timer);
+      timer = setTimeout(filterTools, 150);
+    });
+    $tag.addEventListener('change', filterTools);
+
+    // --- util: 簡易エスケープ ---
+    function escapeHtml(s: string) {
+      return String(s).replace(/[&<>"']/g, m => ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+      }[m as keyof typeof m]));
+    }
+  })();
+</script>
