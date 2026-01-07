@@ -1,11 +1,11 @@
 {
-  "enabled": false,
-  "title": "城上2.5への更新!",
-  "message": "城上が2.5に更新されました！",
-  "bg_class": "bg-gradient-to-r from-blue-500 to-purple-600",
+  "enabled": true,
+  "title": "城上コードメモ更新停止のお知らせ",
+  "message": "城上コードメモの一時的な更新停止のお知らせです。",
+  "bg_class": "bg-gradient-to-r from-red-500 to-red-600",
   "button": {
-    "enabled": false,
+    "enabled": true,
     "text": "詳しく見る",
-    "url": "/posts/2026/01/03/2_5/"
+    "url": "/posts/2026/01/08/oshirase/"
   }
 }
