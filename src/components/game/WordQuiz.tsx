@@ -23,9 +23,11 @@ interface RawAinuItem {
 
 type Lang = 'swedish' | 'ainu';
 
+const baseUrl = import.meta.env.BASE_URL ?? '/';
+
 const QUIZ_CONFIG = {
     swedish: {
-        path: '/game/word_quiz/data/swedish.json',
+        path: `${baseUrl}game/word_quiz/data/swedish.json`,
         storageKey: 'quiz_highscore_swedish',
         normalize: (item: RawSwedishItem): QuizItem => ({
             term: item["単語"],
@@ -34,7 +36,7 @@ const QUIZ_CONFIG = {
         })
     },
     ainu: {
-        path: '/game/word_quiz/data/ainu.json',
+        path: `${baseUrl}game/word_quiz/data/ainu.json`,
         storageKey: 'quiz_highscore_ainu',
         normalize: (item: RawAinuItem): QuizItem => ({
             term: `${item.word}\n(${item.reading})`,
