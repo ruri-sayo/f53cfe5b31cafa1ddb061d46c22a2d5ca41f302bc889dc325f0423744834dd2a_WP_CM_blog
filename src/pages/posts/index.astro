@@ -184,9 +184,10 @@ const postsForJson = allPosts.map((post) => {
 
     // --- util: 簡易エスケープ ---
     function escapeHtml(s: string) {
-      return String(s).replace(/[&<>"']/g, m => ({
+      const map: Record<string, string> = {
         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-      }[m as keyof typeof m]));
+      };
+      return String(s).replace(/[&<>"']/g, m => map[m]);
     }
   })();
 </script>

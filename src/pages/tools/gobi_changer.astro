@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { GobiChanger } from '../../components/tools/GobiChanger';
+import { GobiChanger as GobiChangerTool } from '../../components/tools/GobiChanger';
 
 const title = "語尾変換器";
 const description = "入力した文章の語尾をキャラクター風に変換するツールです。";
@@ -16,6 +16,6 @@ const description = "入力した文章の語尾をキャラクター風に変�
       <p class="text-gray-600">ルールベース変換エンジン</p>
     </div>
     
-    <GobiChanger client:only="react" />
+    <GobiChangerTool client:only="react" />
   </div>
 </BaseLayout>

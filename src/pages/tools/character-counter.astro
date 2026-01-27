@@ -4,7 +4,7 @@
  * Astroアイランドとして実装
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import CharacterCounter from '../../components/tools/CharacterCounter';
+import CharacterCounterTool from '../../components/tools/CharacterCounter';
 ---
 
 <BaseLayout title="文字数カウンター" description="入力したテキストの文字数をリアルタイムでカウントします。">
@@ -15,7 +15,7 @@ import CharacterCounter from '../../components/tools/CharacterCounter';
     </div>
     
     {/* client:load でクライアントサイドでReactをハイドレート */}
-    <CharacterCounter client:load />
+    <CharacterCounterTool client:load />
     
     <div class="max-w-lg mx-auto mt-8 text-sm text-gray-500">
       <h3 class="font-semibold mb-2">使い方</h3>

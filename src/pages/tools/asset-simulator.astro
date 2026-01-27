@@ -4,7 +4,7 @@
  * Astroアイランドとして実装
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AssetSimulator from '../../components/tools/AssetSimulator';
+import AssetSimulatorTool from '../../components/tools/AssetSimulator';
 ---
 
 <BaseLayout title="資産シミュレーション" description="将来の資産推移をシミュレーション。利回りやインフレ率を考慮した詳細な計算が可能です。">
@@ -20,7 +20,7 @@ import AssetSimulator from '../../components/tools/AssetSimulator';
         </p>
       </div>
       
-      <AssetSimulator client:load />
+      <AssetSimulatorTool client:load />
       
       <div class="mt-16 grid md:grid-cols-2 gap-8 text-sm text-gray-500">
         <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">

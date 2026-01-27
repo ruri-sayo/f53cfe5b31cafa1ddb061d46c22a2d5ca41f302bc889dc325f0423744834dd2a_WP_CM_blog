@@ -15,14 +15,17 @@ export default defineConfig({
 
   // Markdown設定
   markdown: {
-      shikiConfig: {
-          theme: 'github-dark',
-      },
+    shikiConfig: {
+      theme: 'github-dark',
+    },
   },
 
   integrations: [react()],
 
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      // @ts-ignore
+      tailwindcss()
+    ],
   },
 });

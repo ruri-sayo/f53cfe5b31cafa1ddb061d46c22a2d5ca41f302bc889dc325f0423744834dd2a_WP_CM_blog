@@ -3,17 +3,17 @@
  * Diff比較ツール（React版）
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import DiffCompare from '../../components/tools/DiffCompare';
+import DiffCompareTool from '../../components/tools/DiffCompare';
 ---
 
-<BaseLayout title="Diff比較ツール" description="2つのテキストを比較して差分を表示します。">
+<BaseLayout title="Diff/テキスト比較" description="2つのテキストの差分を抽出し、比較します。">
   <div class="py-8">
     <div class="text-center mb-8">
       <h1 class="text-3xl font-bold text-gray-800 mb-2">テキスト差分比較ツール</h1>
       <p class="text-gray-600">2つのテキストを入力して、行ごとの違いを確認します。</p>
     </div>
     
-    <DiffCompare client:load />
+    <DiffCompareTool client:load />
     
     <div class="max-w-2xl mx-auto mt-8 text-sm text-gray-500">
       <h3 class="font-semibold mb-2">凡例</h3>

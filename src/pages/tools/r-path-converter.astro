@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import RPathConverter from '../../components/tools/RPathConverter';
+import RPathConverterTool from '../../components/tools/RPathConverter';
 ---
 
 <BaseLayout title="Rパス変換ツール" description="WindowsのパスをR用フォワードスラッシュ形式に変換します。">
   <div class="py-8">
-    <RPathConverter client:load />
+    <RPathConverterTool client:load />
   </div>
 </BaseLayout>

@@ -1,0 +1,925 @@
+[2m05:43:51[22m [34m[content][39m Syncing content
+[2m05:43:51[22m [34m[content][39m Synced content
+[2m05:43:51[22m [34m[types][39m Generated [2m284ms[22m
+[2m05:43:51[22m [34m[check][39m Getting diagnostics for Astro files in C:\Users\miura\WP_blog\1_WP_CM_blog...
+[96mpublic/assets/js/event-mode.js[0m:[93m146[0m:[93m12[0m - [93mwarning[0m[90m ts(2568): [0mProperty 'setEvent' may not exist on type 'Window & typeof globalThis'. Did you mean 'TextEvent'?
+
+[7m146[0m     window.setEvent = function (eventId) {
+[7m   [0m [93m           ~~~~~~~~[0m
+
+[96msrc/components/tools/AssetSimulator.tsx[0m:[93m1[0m:[93m27[0m - [93mwarning[0m[90m ts(6133): [0m'useEffect' is declared but its value is never read.
+
+[7m1[0m import React, { useState, useEffect, useMemo } from 'react';
+[7m [0m [93m                          ~~~~~~~~~[0m
+
+[96msrc/components/tools/RPathConverter.tsx[0m:[93m1[0m:[93m8[0m - [93mwarning[0m[90m ts(6133): [0m'React' is declared but its value is never read.
+
+[7m1[0m import React, { useState } from 'react';
+[7m [0m [93m       ~~~~~[0m
+
+[96msrc/components/tools/SpeechTimer.tsx[0m:[93m1[0m:[93m8[0m - [93mwarning[0m[90m ts(6133): [0m'React' is declared but its value is never read.
+
+[7m1[0m import React, { useState } from 'react';
+[7m [0m [93m       ~~~~~[0m
+
+[96msrc/layouts/BaseLayout.astro[0m:[93m22[0m:[93m13[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m22[0m     <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+[7m  [0m [93m            ~~~~~[0m
+
+[96msrc/layouts/NovelSeriesLayout.astro[0m:[93m6[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'getCollection' is declared but its value is never read.
+
+[7m6[0m import { getCollection } from 'astro:content';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/index.astro[0m:[93m166[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType '{ children: any[]; class: string; fill: string; stroke: string; viewBox: string; title: string; }' is not assignable to type 'SVGAttributes'.
+  Property 'title' does not exist on type 'SVGAttributes'.
+
+[7m166[0m           title="スマホ対応">
+[7m   [0m [91m          ~~~~~[0m
+[96msrc/pages/index.astro[0m:[93m160[0m:[93m11[0m - [91merror[0m[90m ts(2322): [0mType '{ children: any[]; class: string; fill: string; stroke: string; viewBox: string; title: string; }' is not assignable to type 'SVGAttributes'.
+  Property 'title' does not exist on type 'SVGAttributes'.
+
+[7m160[0m           title="PC推奨">
+[7m   [0m [91m          ~~~~~[0m
+
+[96msrc/pages/game/index.astro[0m:[93m33[0m:[93m21[0m - [91merror[0m[90m ts(2322): [0mType '{ children: any[]; class: string; fill: string; stroke: string; viewBox: string; title: string; }' is not assignable to type 'SVGAttributes'.
+  Property 'title' does not exist on type 'SVGAttributes'.
+
+[7m33[0m                     title="スマホ対応">
+[7m  [0m [91m                    ~~~~~[0m
+[96msrc/pages/game/index.astro[0m:[93m27[0m:[93m21[0m - [91merror[0m[90m ts(2322): [0mType '{ children: any[]; class: string; fill: string; stroke: string; viewBox: string; title: string; }' is not assignable to type 'SVGAttributes'.
+  Property 'title' does not exist on type 'SVGAttributes'.
+
+[7m27[0m                     title="PC推奨">
+[7m  [0m [91m                    ~~~~~[0m
+
+[96msrc/pages/game/word_quiz.astro[0m:[93m3[0m:[93m10[0m - [91merror[0m[90m ts(2440): [0mImport declaration conflicts with local declaration of 'WordQuiz'.
+
+[7m3[0m import { WordQuiz } from '../../components/game/WordQuiz';
+[7m [0m [91m         ~~~~~~~~[0m
+
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(7053): [0mElement implicitly has an 'any' type because expression of type 'number | unique symbol | "length" | "concat" | "slice" | "indexOf" | "lastIndexOf" | "includes" | "at" | "toString" | "link" | "search" | "small" | "sub" | "sup" | "charAt" | "charCodeAt" | ... 35 more ... | "valueOf"' can't be used to index type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+  Property '[SymbolConstructor.iterator]' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'trimStart' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'trimRight' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'trimLeft' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'trimEnd' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'trim' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'toWellFormed' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'toUpperCase' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'toLowerCase' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'toLocaleUpperCase' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'toLocaleLowerCase' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'sup' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'substring' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'substr' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'sub' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'strike' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'startsWith' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'split' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'small' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'slice' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'search' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'replaceAll' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'replace' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'repeat' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'padStart' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'padEnd' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'normalize' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'matchAll' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'match' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'localeCompare' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'link' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'length' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'lastIndexOf' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'italics' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'isWellFormed' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'indexOf' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'includes' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'fontsize' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'fontcolor' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'fixed' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'endsWith' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'concat' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'codePointAt' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'charCodeAt' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'charAt' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'bold' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'blink' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'big' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'at' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m187[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'anchor' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m187[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m188[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m189[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/posts/index.astro[0m:[93m95[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m95[0m <script id="posts-data" type="application/json" set:html={JSON.stringify(postsForJson)}></script>
+[7m  [0m [93m        ~~[0m
+
+[96msrc/pages/tools/asset-simulator.astro[0m:[93m7[0m:[93m8[0m - [91merror[0m[90m ts(2440): [0mImport declaration conflicts with local declaration of 'AssetSimulator'.
+
+[7m7[0m import AssetSimulator from '../../components/tools/AssetSimulator';
+[7m [0m [91m       ~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/tools/character-counter.astro[0m:[93m7[0m:[93m8[0m - [91merror[0m[90m ts(2440): [0mImport declaration conflicts with local declaration of 'CharacterCounter'.
+
+[7m7[0m import CharacterCounter from '../../components/tools/CharacterCounter';
+[7m [0m [91m       ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/tools/diff-compare.astro[0m:[93m6[0m:[93m8[0m - [91merror[0m[90m ts(2440): [0mImport declaration conflicts with local declaration of 'DiffCompare'.
+
+[7m6[0m import DiffCompare from '../../components/tools/DiffCompare';
+[7m [0m [91m       ~~~~~~~~~~~[0m
+
+[96msrc/pages/tools/gobi_changer.astro[0m:[93m3[0m:[93m10[0m - [91merror[0m[90m ts(2440): [0mImport declaration conflicts with local declaration of 'GobiChanger'.
+
+[7m3[0m import { GobiChanger } from '../../components/tools/GobiChanger';
+[7m [0m [91m         ~~~~~~~~~~~[0m
+
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(7053): [0mElement implicitly has an 'any' type because expression of type 'number | unique symbol | "length" | "concat" | "slice" | "indexOf" | "lastIndexOf" | "includes" | "at" | "toString" | "link" | "search" | "small" | "sub" | "sup" | "charAt" | "charCodeAt" | ... 35 more ... | "valueOf"' can't be used to index type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+  Property '[SymbolConstructor.iterator]' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'trimStart' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'trimRight' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'trimLeft' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'trimEnd' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'trim' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'toWellFormed' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'toUpperCase' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'toLowerCase' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'toLocaleUpperCase' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'toLocaleLowerCase' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'sup' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'substring' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'substr' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'sub' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'strike' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'startsWith' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'split' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'small' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'slice' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'search' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'replaceAll' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'replace' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'repeat' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'padStart' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'padEnd' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'normalize' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'matchAll' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'match' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'localeCompare' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'link' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'length' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'lastIndexOf' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'italics' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'isWellFormed' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'indexOf' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'includes' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'fontsize' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'fontcolor' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'fixed' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'endsWith' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'concat' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'codePointAt' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'charCodeAt' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'charAt' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'bold' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'blink' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'big' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'at' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m174[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'anchor' does not exist on type '{ '&': string; '<': string; '>': string; '"': string; "'": string; }'.
+
+[7m174[0m       return String(s).replace(/[&<>"']/g, m => ({
+[7m   [0m [91m                                                 ~[0m
+[7m175[0m         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m176[0m       }[m as keyof typeof m]));
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/tools/index.astro[0m:[93m76[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m76[0m <script id="tools-data" type="application/json" set:html={JSON.stringify(toolsForJson)}></script>
+[7m  [0m [93m        ~~[0m
+
+[96msrc/pages/tools/r-path-converter.astro[0m:[93m3[0m:[93m8[0m - [91merror[0m[90m ts(2440): [0mImport declaration conflicts with local declaration of 'RPathConverter'.
+
+[7m3[0m import RPathConverter from '../../components/tools/RPathConverter';
+[7m [0m [91m       ~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/tools/screen-saver.astro[0m:[93m7[0m:[93m8[0m - [91merror[0m[90m ts(2440): [0mImport declaration conflicts with local declaration of 'ScreenSaver'.
+
+[7m7[0m import ScreenSaver from '../../components/tools/ScreenSaver';
+[7m [0m [91m       ~~~~~~~~~~~[0m
+
+[96msrc/pages/tools/speech-timer.astro[0m:[93m3[0m:[93m8[0m - [91merror[0m[90m ts(2440): [0mImport declaration conflicts with local declaration of 'SpeechTimer'.
+
+[7m3[0m import SpeechTimer from '../../components/tools/SpeechTimer';
+[7m [0m [91m       ~~~~~~~~~~~[0m
+
+Result (55 files): 
+- 112 errors
+- 0 warnings
+- 8 hints
+

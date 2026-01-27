@@ -4,7 +4,7 @@
  * Astroアイランドとして実装
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ScreenSaver from '../../components/tools/ScreenSaver';
+import ScreenSaverComp from '../../components/tools/ScreenSaver';
 import { getFullPath } from '../../consts';
 ---
 
@@ -37,7 +37,7 @@ import { getFullPath } from '../../consts';
   </div>
 
   <div id="ss-container" class="hidden">
-    <ScreenSaver client:only="react" />
+    <ScreenSaverComp client:only="react" />
   </div>
 
   <script is:inline>
