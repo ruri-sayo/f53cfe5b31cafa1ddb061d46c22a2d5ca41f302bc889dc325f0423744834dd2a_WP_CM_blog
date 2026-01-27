@@ -3,7 +3,7 @@ series_id: stellar_odyssey
 is_series_index: true
 title: "ステラ・オデッセイ"
 short_description: "旅客船クルーが宇宙のトラブルを解いていく短編集"
-status: "finished"
+status: "completed"
 order: 2
 ---
 
