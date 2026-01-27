@@ -24,14 +24,6 @@
     "platform": "all"
   },
   {
-    "id": "flow_puzzle_app",
-    "title": "Flow Puzzle App",
-    "url": "/game/flow_puzzle/",
-    "description": "ノードを組み合わせて指定の数量にしよう！",
-    "tag": "puzzle",
-    "platform": "pc"
-  },
-  {
     "id": "word_quiz",
     "title": "Word Quiz",
     "url": "/game/word_quiz/",

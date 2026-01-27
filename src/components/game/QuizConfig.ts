@@ -13,7 +13,7 @@ export const QUIZ_LANGS: LangConfig[] = [
         name: 'Svenska',
         subName: 'スウェーデン語',
         flag: '🇸🇪',
-        path: '/game/word_quiz/data/swedish.json',
+        path: '/data/quiz/swedish.json',
         storageKey: 'quiz_highscore_swedish'
     },
     {
@@ -21,7 +21,7 @@ export const QUIZ_LANGS: LangConfig[] = [
         name: 'Aynu itak',
         subName: 'アイヌ語',
         flag: '🐻',
-        path: '/game/word_quiz/data/ainu.json',
+        path: '/data/quiz/ainu.json',
         storageKey: 'quiz_highscore_ainu'
     }
 ];

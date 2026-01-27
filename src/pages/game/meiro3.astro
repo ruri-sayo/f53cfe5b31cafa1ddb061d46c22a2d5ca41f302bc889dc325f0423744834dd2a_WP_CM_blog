@@ -1,0 +1,47 @@
+---
+/**
+ * Meiro3 - 3D迷路ゲーム
+ * public/game/meiro3/ の静的ファイルをAstroレイアウトでラップ
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getFullPath } from '../../consts';
+---
+
+<BaseLayout title="Meiro 3 - 3D迷路" description="ブラウザで遊べる3D迷路です。赤色のタイルのゴール目指して突き進もう！">
+  <style>
+    #meiro-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    #meiro-frame {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1rem;
+      color: #3b82f6;
+      text-decoration: none;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+  
+  <a href={getFullPath('/game/')} class="back-link">← ゲーム一覧に戻る</a>
+  
+  <div id="meiro-container">
+    <h1 class="text-2xl font-bold mb-4">Meiro 3 - 3D迷路</h1>
+    <p class="text-gray-600 mb-4">矢印キーまたは画面下のボタンで操作。赤いゴールを目指そう！</p>
+    <iframe 
+      id="meiro-frame" 
+      src={getFullPath('/game/meiro3/index.html')}
+      title="Meiro 3 Game"
+      allow="fullscreen"
+    ></iframe>
+  </div>
+</BaseLayout>

@@ -1,0 +1,522 @@
+[
+    {
+        "name": "天海 春香",
+        "type": "Princess",
+        "age": 17,
+        "height": 158,
+        "weight": 46,
+        "bust": 83,
+        "waist": 56,
+        "hip": 82
+    },
+    {
+        "name": "エミリー スチュアート",
+        "type": "Princess",
+        "age": 13,
+        "height": 156,
+        "weight": 41,
+        "bust": 74,
+        "waist": 54,
+        "hip": 76
+    },
+    {
+        "name": "春日 未来",
+        "type": "Princess",
+        "age": 14,
+        "height": 156,
+        "weight": 42,
+        "bust": 78,
+        "waist": 54,
+        "hip": 77
+    },
+    {
+        "name": "我那覇 響",
+        "type": "Princess",
+        "age": 16,
+        "height": 152,
+        "weight": 41,
+        "bust": 83,
+        "waist": 56,
+        "hip": 80
+    },
+    {
+        "name": "菊地 真",
+        "type": "Princess",
+        "age": 17,
+        "height": 159,
+        "weight": 44,
+        "bust": 75,
+        "waist": 57,
+        "hip": 78
+    },
+    {
+        "name": "高坂 海美",
+        "type": "Princess",
+        "age": 16,
+        "height": 155,
+        "weight": 45,
+        "bust": 82,
+        "waist": 57,
+        "hip": 84
+    },
+    {
+        "name": "佐竹 美奈子",
+        "type": "Princess",
+        "age": 18,
+        "height": 158,
+        "weight": 45,
+        "bust": 86,
+        "waist": 54,
+        "hip": 82
+    },
+    {
+        "name": "高山 紗代子",
+        "type": "Princess",
+        "age": 17,
+        "height": 156,
+        "weight": 42,
+        "bust": 82,
+        "waist": 55,
+        "hip": 80
+    },
+    {
+        "name": "田中 琴葉",
+        "type": "Princess",
+        "age": 18,
+        "height": 157,
+        "weight": 44,
+        "bust": 79,
+        "waist": 55,
+        "hip": 78
+    },
+    {
+        "name": "徳川 まつり",
+        "type": "Princess",
+        "age": 19,
+        "height": 163,
+        "weight": 44,
+        "bust": 85,
+        "waist": 59,
+        "hip": 85
+    },
+    {
+        "name": "中谷 育",
+        "type": "Princess",
+        "age": 10,
+        "height": 142,
+        "weight": 37,
+        "bust": 72,
+        "waist": 52,
+        "hip": 73
+    },
+    {
+        "name": "七尾 百合子",
+        "type": "Princess",
+        "age": 15,
+        "height": 154,
+        "weight": 41,
+        "bust": 78,
+        "waist": 56,
+        "hip": 80
+    },
+    {
+        "name": "萩原 雪歩",
+        "type": "Princess",
+        "age": 17,
+        "height": 155,
+        "weight": 42,
+        "bust": 81,
+        "waist": 56,
+        "hip": 81
+    },
+    {
+        "name": "福田 のり子",
+        "type": "Princess",
+        "age": 18,
+        "height": 164,
+        "weight": 48,
+        "bust": 87,
+        "waist": 58,
+        "hip": 87
+    },
+    {
+        "name": "松田 亜利沙",
+        "type": "Princess",
+        "age": 16,
+        "height": 154,
+        "weight": 40,
+        "bust": 81,
+        "waist": 54,
+        "hip": 80
+    },
+    {
+        "name": "矢吹 可奈",
+        "type": "Princess",
+        "age": 14,
+        "height": 155,
+        "weight": 43,
+        "bust": 77,
+        "waist": 54,
+        "hip": 76
+    },
+    {
+        "name": "横山 奈緒",
+        "type": "Princess",
+        "age": 17,
+        "height": 159,
+        "weight": 46,
+        "bust": 84,
+        "waist": 57,
+        "hip": 83
+    },
+    {
+        "name": "秋月 律子",
+        "type": "Fairy",
+        "age": 19,
+        "height": 156,
+        "weight": 43,
+        "bust": 85,
+        "waist": 57,
+        "hip": 85
+    },
+    {
+        "name": "如月 千早",
+        "type": "Fairy",
+        "age": 16,
+        "height": 162,
+        "weight": 41,
+        "bust": 72,
+        "waist": 55,
+        "hip": 78
+    },
+    {
+        "name": "北沢 志保",
+        "type": "Fairy",
+        "age": 14,
+        "height": 161,
+        "weight": 46,
+        "bust": 83,
+        "waist": 56,
+        "hip": 84
+    },
+    {
+        "name": "四条 貴音",
+        "type": "Fairy",
+        "age": 18,
+        "height": 169,
+        "weight": 49,
+        "bust": 90,
+        "waist": 62,
+        "hip": 92
+    },
+    {
+        "name": "ジュリア",
+        "type": "Fairy",
+        "age": 16,
+        "height": 157,
+        "weight": 43,
+        "bust": 79,
+        "waist": 54,
+        "hip": 80
+    },
+    {
+        "name": "白石 紬",
+        "type": "Fairy",
+        "age": 17,
+        "height": 160,
+        "weight": 45,
+        "bust": 82,
+        "waist": 56,
+        "hip": 83
+    },
+    {
+        "name": "周防 桃子",
+        "type": "Fairy",
+        "age": 11,
+        "height": 140,
+        "weight": 35,
+        "bust": 73,
+        "waist": 53,
+        "hip": 74
+    },
+    {
+        "name": "天空橋 朋花",
+        "type": "Fairy",
+        "age": 15,
+        "height": 156,
+        "weight": 41,
+        "bust": 80,
+        "waist": 56,
+        "hip": 79
+    },
+    {
+        "name": "所 恵美",
+        "type": "Fairy",
+        "age": 16,
+        "height": 159,
+        "weight": 47,
+        "bust": 88,
+        "waist": 56,
+        "hip": 85
+    },
+    {
+        "name": "永吉 昴",
+        "type": "Fairy",
+        "age": 15,
+        "height": 154,
+        "weight": 41,
+        "bust": 79,
+        "waist": 59,
+        "hip": 78
+    },
+    {
+        "name": "二階堂 千鶴",
+        "type": "Fairy",
+        "age": 21,
+        "height": 165,
+        "weight": 50,
+        "bust": 85,
+        "waist": 58,
+        "hip": 86
+    },
+    {
+        "name": "ロコ",
+        "type": "Fairy",
+        "age": 15,
+        "height": 154,
+        "weight": 42,
+        "bust": 78,
+        "waist": 57,
+        "hip": 77
+    },
+    {
+        "name": "舞浜 歩",
+        "type": "Fairy",
+        "age": 19,
+        "height": 158,
+        "weight": 49.9,
+        "bust": 86,
+        "waist": 60,
+        "hip": 88
+    },
+    {
+        "name": "真壁 瑞希",
+        "type": "Fairy",
+        "age": 17,
+        "height": 160,
+        "weight": 43,
+        "bust": 73,
+        "waist": 54,
+        "hip": 77
+    },
+    {
+        "name": "水瀬 伊織",
+        "type": "Fairy",
+        "age": 15,
+        "height": 153,
+        "weight": 40,
+        "bust": 77,
+        "waist": 54,
+        "hip": 79
+    },
+    {
+        "name": "最上 静香",
+        "type": "Fairy",
+        "age": 14,
+        "height": 162,
+        "weight": 44,
+        "bust": 76,
+        "waist": 53,
+        "hip": 77
+    },
+    {
+        "name": "百瀬 莉緒",
+        "type": "Fairy",
+        "age": 23,
+        "height": 168,
+        "weight": 46,
+        "bust": 84,
+        "waist": 57,
+        "hip": 84
+    },
+    {
+        "name": "伊吹 翼",
+        "type": "Angel",
+        "age": 14,
+        "height": 158,
+        "weight": 43,
+        "bust": 85,
+        "waist": 52,
+        "hip": 82
+    },
+    {
+        "name": "大神 環",
+        "type": "Angel",
+        "age": 12,
+        "height": 147,
+        "weight": 39,
+        "bust": 76,
+        "waist": 51,
+        "hip": 77
+    },
+    {
+        "name": "北上 麗花",
+        "type": "Angel",
+        "age": 20,
+        "height": 164,
+        "weight": 47,
+        "bust": 84,
+        "waist": 58,
+        "hip": 84
+    },
+    {
+        "name": "木下 ひなた",
+        "type": "Angel",
+        "age": 14,
+        "height": 146,
+        "weight": 39.5,
+        "bust": 74,
+        "waist": 55,
+        "hip": 78
+    },
+    {
+        "name": "桜守 歌織",
+        "type": "Angel",
+        "age": 23,
+        "height": 165,
+        "weight": 47,
+        "bust": 88,
+        "waist": 58,
+        "hip": 85
+    },
+    {
+        "name": "篠宮 可憐",
+        "type": "Angel",
+        "age": 16,
+        "height": 159,
+        "weight": 48,
+        "bust": 90,
+        "waist": 59,
+        "hip": 90
+    },
+    {
+        "name": "島原 エレナ",
+        "type": "Angel",
+        "age": 17,
+        "height": 160,
+        "weight": 47,
+        "bust": 85,
+        "waist": 58,
+        "hip": 86
+    },
+    {
+        "name": "高槻 やよい",
+        "type": "Angel",
+        "age": 14,
+        "height": 145,
+        "weight": 37,
+        "bust": 74,
+        "waist": 54,
+        "hip": 78
+    },
+    {
+        "name": "豊川 風花",
+        "type": "Angel",
+        "age": 22,
+        "height": 162,
+        "weight": 51,
+        "bust": 93,
+        "waist": 63,
+        "hip": 91
+    },
+    {
+        "name": "野々原 茜",
+        "type": "Angel",
+        "age": 16,
+        "height": 150,
+        "weight": 42,
+        "bust": 80,
+        "waist": 58,
+        "hip": 79
+    },
+    {
+        "name": "箱崎 星梨花",
+        "type": "Angel",
+        "age": 13,
+        "height": 146,
+        "weight": 37,
+        "bust": 74,
+        "waist": 54,
+        "hip": 76
+    },
+    {
+        "name": "馬場 このみ",
+        "type": "Angel",
+        "age": 24,
+        "height": 143,
+        "weight": 37,
+        "bust": 75,
+        "waist": 55,
+        "hip": 79
+    },
+    {
+        "name": "双海 亜美",
+        "type": "Angel",
+        "age": 13,
+        "height": 158,
+        "weight": 42,
+        "bust": 78,
+        "waist": 55,
+        "hip": 77
+    },
+    {
+        "name": "双海 真美",
+        "type": "Angel",
+        "age": 13,
+        "height": 158,
+        "weight": 42,
+        "bust": 78,
+        "waist": 55,
+        "hip": 77
+    },
+    {
+        "name": "星井 美希",
+        "type": "Angel",
+        "age": 15,
+        "height": 161,
+        "weight": 45,
+        "bust": 86,
+        "waist": 55,
+        "hip": 83
+    },
+    {
+        "name": "三浦 あずさ",
+        "type": "Angel",
+        "age": 21,
+        "height": 168,
+        "weight": 48,
+        "bust": 91,
+        "waist": 59,
+        "hip": 86
+    },
+    {
+        "name": "宮尾 美也",
+        "type": "Angel",
+        "age": 17,
+        "height": 156,
+        "weight": 46,
+        "bust": 84,
+        "waist": 58,
+        "hip": 83
+    },
+    {
+        "name": "望月 杏奈",
+        "type": "Angel",
+        "age": 14,
+        "height": 152,
+        "weight": 41,
+        "bust": 78,
+        "waist": 53,
+        "hip": 79
+    }
+]

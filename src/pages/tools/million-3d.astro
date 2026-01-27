@@ -1,0 +1,35 @@
+---
+/**
+ * ミリオンライブ！アイドル3D散布図
+ * Astroアイランドとして実装
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Idol3DChart from '../../components/tools/Idol3DChart';
+---
+
+<BaseLayout title="ミリオンライブ！アイドル3D分布" description="身長、体重、年齢の3次元的な分布を3Dグラフで体験。">
+  <div class="py-12 bg-gray-900 min-h-screen text-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-extrabold text-white mb-4 tracking-tight">
+          Idol <span class="text-purple-500">3D</span> Distribution
+        </h1>
+        <p class="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          「身長 × 体重 × 年齢」の3軸でアイドルの分布を可視化しました。
+          ドラッグで自由に視点を変えながら、アイドルの身体的データ。重なり合いを体験してください。
+        </p>
+      </div>
+      
+      <Idol3DChart client:only="react" />
+      
+      <div class="mt-12 text-center text-gray-500 text-sm">
+        <p>※ 3D描画にはWebGLを使用しています。動作が重い場合はブラウザを再起動するか、より高性能なデバイスでご覧ください。</p>
+        <div class="mt-4 flex justify-center gap-4">
+            <span class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-blue-500"></div> 低年齢</span>
+            <span class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-green-500"></div> 中年齢</span>
+            <span class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-yellow-500"></div> 高年齢</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

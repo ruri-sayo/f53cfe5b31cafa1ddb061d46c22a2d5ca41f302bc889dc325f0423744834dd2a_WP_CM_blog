@@ -1,6 +1,7 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION, getFullPath } from '../consts';
 import eventsData from '../data/events.json';
+import '../styles/global.css';
 
 interface Props {
 	title?: string;
@@ -30,10 +31,6 @@ const eventsJson = JSON.stringify(eventsData.events);
 <link rel="icon" type="image/png" sizes="32x32" href={getFullPath("/favicon-32x32.png")} />
 <link rel="icon" type="image/png" sizes="16x16" href={getFullPath("/favicon-16x16.png")} />
 <link rel="apple-touch-icon" sizes="180x180" href={getFullPath("/apple-touch-icon.png")} />
-
-<!-- Tailwind CSS CDN -->
-<!-- scriptタグの直打ちは推奨されませんが、移行のためそのまま利用 -->
-<script src="https://cdn.tailwindcss.com?plugins=typography" is:inline></script>
 
 <!-- カスタム CSS -->
 <link rel="stylesheet" href={getFullPath("/assets/css/custom.css")} />

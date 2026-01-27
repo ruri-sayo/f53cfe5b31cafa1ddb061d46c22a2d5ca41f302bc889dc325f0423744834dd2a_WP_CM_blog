@@ -1,10 +1,10 @@
 {
-  "enabled": true,
+  "enabled": false,
   "title": "城上コードメモ更新停止のお知らせ",
   "message": "城上コードメモの一時的な更新停止のお知らせです。",
   "bg_class": "bg-gradient-to-r from-red-500 to-red-600",
   "button": {
-    "enabled": true,
+    "enabled": false,
     "text": "詳しく見る",
     "url": "/posts/2026/01/08/oshirase/"
   }

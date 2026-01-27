@@ -1,0 +1,41 @@
+---
+/**
+ * ミリオンライブ！アイドル相関分析
+ * Astroアイランドとして実装
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import IdolCorrelationChart from '../../components/tools/IdolCorrelationChart';
+---
+
+<BaseLayout title="ミリオンライブ！アイドル相関分析" description="ミリオンライブ！全アイドルの身体的データの相関関係を可視化。">
+  <div class="py-12 bg-gradient-to-b from-gray-50 to-white min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">
+          Idol <span class="text-pink-600">Correlation</span> Data
+        </h1>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          ミリオンライブ！のアイドルたちの身長、体重、年齢、そしてスリーサイズ。
+          それぞれのデータにどのような相関があるのか、近似曲線と共に探ってみましょう。
+        </p>
+      </div>
+      
+      <IdolCorrelationChart client:load />
+      
+      <div class="mt-16 grid md:grid-cols-3 gap-8 text-sm text-gray-500">
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-gray-800 mb-2">📈 相関の見方</h3>
+            <p>点が右肩上がりに並んでいれば正の相関、右肩下がりなら負の相関があります。赤い線が全体の傾向を示す近似曲線です。</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-gray-800 mb-2">🎀 タイプ別色分け</h3>
+            <p>Princess（赤）、Fairy（青）、Angel（黄）のタイプごとに点が色分けされており、タイプごとの傾向もひと目でわかります。</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-gray-800 mb-2">⚖️ 特異点の除外</h3>
+            <p>「馬場このみさんを含める」のトグルを切り替えることで、全体の統計傾向に大きな影響を与える特定のデータを除外して観察できます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

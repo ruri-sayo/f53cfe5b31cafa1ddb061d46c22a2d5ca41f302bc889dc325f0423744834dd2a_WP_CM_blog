@@ -1,0 +1,72 @@
+---
+/**
+ * アニメーションスクリーンセーバー
+ * Astroアイランドとして実装
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ScreenSaver from '../../components/tools/ScreenSaver';
+import { getFullPath } from '../../consts';
+---
+
+<BaseLayout title="スクリーンセーバー" description="懐かしのアニメーションスクリーンセーバー。">
+  <div class="py-12 relative z-10">
+    <div class="text-center mb-12">
+      <h1 class="text-3xl font-bold text-gray-800 mb-2">スクリーンセーバー</h1>
+      <p class="text-gray-600">ふわふわと動く円を眺めてリラックス。開始ボタンで全画面になります。</p>
+    </div>
+    
+    <div class="max-w-xl mx-auto bg-white p-8 rounded-2xl shadow-lg text-center border border-gray-100">
+      <div class="mb-8 p-4 bg-gray-900 rounded-xl overflow-hidden aspect-video relative group">
+        <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
+            <span class="text-white font-bold">Preview</span>
+        </div>
+        <img src={getFullPath("/assets/icon/screen_saver.avif")} alt="Preview" class="w-full h-full object-cover" />
+      </div>
+
+      <button 
+        id="start-ss"
+        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all"
+      >
+        スクリーンセーバーを開始
+      </button>
+
+      <div class="mt-8 text-sm text-gray-500">
+        <p>※開始後は画面クリックまたは、Escキー/任意のキーで終了します。</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="ss-container" class="hidden">
+    <ScreenSaver client:only="react" />
+  </div>
+
+  <script is:inline>
+    (function() {
+      const startBtn = document.getElementById('start-ss');
+      const container = document.getElementById('ss-container');
+
+      if (!startBtn || !container) return;
+
+      function start() {
+        container.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        
+        // 終了イベントの登録
+        const stop = () => {
+          container.classList.add('hidden');
+          document.body.style.overflow = '';
+          window.removeEventListener('keydown', stop);
+          window.removeEventListener('mousedown', stop);
+        };
+
+        // 少し遅らせてからイベント登録（開始時のクリックで即終了するのを防ぐ）
+        setTimeout(() => {
+          window.addEventListener('keydown', stop);
+          window.addEventListener('mousedown', stop);
+        }, 100);
+      }
+
+      startBtn.addEventListener('click', start);
+    })();
+  </script>
+</BaseLayout>

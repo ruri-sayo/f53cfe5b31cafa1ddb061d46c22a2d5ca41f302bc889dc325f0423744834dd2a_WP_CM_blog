@@ -1,0 +1,40 @@
+---
+/**
+ * 迷路ゲーム（高難易度）
+ * Astroアイランドとして実装
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MazeGame from '../../components/tools/MazeGame';
+---
+
+<BaseLayout title="迷路ゲーム（難しい）" description="視界が制限された迷路。手探りでゴールを探そう！">
+  <div class="py-12 bg-slate-900 min-h-screen text-slate-100">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-extrabold text-white mb-4 tracking-tight">
+          Maze <span class="text-red-500">Fog of War</span>
+        </h1>
+        <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+          自分の周囲数マスしか見えない過酷なモード。ゴールの位置もランダムに配置されます。
+          記憶を頼りに迷路を攻略しましょう。
+        </p>
+      </div>
+      
+      <MazeGame client:load difficulty="hard" />
+      
+      <div class="mt-16 bg-slate-800 p-8 rounded-2xl border border-slate-700 shadow-2xl text-sm text-slate-400">
+        <h3 class="font-bold text-slate-200 mb-4">攻略のヒント</h3>
+        <ul class="space-y-4">
+            <li class="flex items-start">
+                <span class="text-red-500 mr-2">●</span>
+                <span><strong>視界:</strong> プレイヤーの周囲2マス以上離れると、何があるか見えなくなります。</span>
+            </li>
+            <li class="flex items-start">
+                <span class="text-red-500 mr-2">●</span>
+                <span><strong>マッピング:</strong> 行き止まりを覚えつつ、くまなく探索することがクリアの近道です。</span>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

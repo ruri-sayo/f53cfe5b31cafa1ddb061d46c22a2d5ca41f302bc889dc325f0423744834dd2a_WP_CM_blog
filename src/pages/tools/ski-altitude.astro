@@ -1,0 +1,44 @@
+---
+/**
+ * 日本のスキー場 標高比較
+ * Astroアイランドとして実装
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SkiAltitudeChart from '../../components/tools/SkiAltitudeChart';
+import { getFullPath } from '../../consts';
+
+const dataUrl = getFullPath('/data/tools/sky_high.yml');
+---
+
+<BaseLayout title="日本のスキー場 標高比較" description="豊富なデータから日本のスキー場の標高範囲をグラフで比較。">
+  <div class="py-12 bg-gray-50/50 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">
+          Ski Resort <span class="text-blue-600">Altitude Comparison</span>
+        </h1>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          日本各地のスキー場の標高（トップ・ボトム）をインタラクティブなグラフで可視化。
+          地域や標高で並び替えて、気になるスキー場のプロフィールをチェックしましょう。
+        </p>
+      </div>
+      
+      <SkiAltitudeChart client:only="react" dataUrl={dataUrl} />
+      
+      <div class="mt-16 grid md:grid-cols-3 gap-8 text-sm text-gray-500">
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-gray-800 mb-2">📊 標高バーの見方</h3>
+            <p>バーの上端が最高標高（山頂）、下端が最低標高（ベース）を表します。バーが長いほど標高差（ダウンヒル）が大きいスキー場です。</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-gray-800 mb-2">🔍 フィルタ・ソート</h3>
+            <p>右上のドロップダウンで「地域別」「都道府県別」「標高順」に瞬時に並び替えることができます。</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-gray-800 mb-2">💡 詳細表示</h3>
+            <p>バーにマウスを合わせる（またはタップする）と、コース数や正確な標高データがツールチップで表示されます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

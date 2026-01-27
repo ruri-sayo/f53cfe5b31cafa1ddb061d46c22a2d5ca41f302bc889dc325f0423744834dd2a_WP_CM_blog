@@ -8,17 +8,9 @@
     "icon": "/assets/icon/R_path.avif"
   },
   {
-    "id": "tex_renderer",
-    "title": "TeXレンダラー",
-    "url": "/tools/math_changer.html",
-    "icon": "/assets/icon/tex_render.avif",
-    "description": "TeXをリアルタイムで確認できます。",
-    "tag": "学習支援"
-  },
-  {
     "id": "sky_high",
     "title": "スキー場標高比較",
-    "url": "/tools/sky_high_ver2.html",
+    "url": "/tools/ski-altitude/",
     "description": "日本の代表的なスキー場の標高を比較できます。",
     "tag": "データ可視化",
     "icon": "/assets/icon/ski_high.avif"
@@ -26,49 +18,49 @@
   {
     "id": "asset_simulator",
     "title": "資産シミュレーター",
-    "url": "/tools/kane_simyu.html",
-    "description": "株式等、福利資産の増額をシミュレーション。",
-    "tag": "シミュレーション",
+    "url": "/tools/asset-simulator/",
+    "description": "複利やインフレを考慮した資産推移を確認できます。",
+    "tag": "計算",
     "icon": "/assets/icon/kane.avif"
   },
   {
     "id": "maze_easy",
-    "title": "迷路ゲーム（簡単）",
-    "url": "/tools/MEIRO.html",
-    "description": "迷路ゲーム（簡単）。",
+    "title": "迷路ゲーム（やさしい）",
+    "url": "/tools/maze-standard/",
+    "description": "自動生成される迷路。全体が見えるので簡単です。",
     "tag": "ゲーム",
     "icon": "/assets/icon/auto_meiro_v1.avif"
   },
   {
     "id": "maze_hard",
-    "title": "迷路ゲーム（難しい）",
-    "url": "/tools/MEIRO_kai.html",
-    "description": "迷路ゲーム（難しい）。",
+    "title": "迷路ゲーム（むずかしい）",
+    "url": "/tools/maze-hard/",
+    "description": "自動生成される迷路。視界制限があるので難しいです。",
     "tag": "ゲーム",
     "icon": "/assets/icon/automeiro_v2.avif"
   },
   {
     "id": "screen_saver",
-    "title": "スクリーンセイバー",
-    "url": "/tools/screen_saiverrrrr.html",
-    "description": "どこかでみたことがある（かもしれない）なつかしのスクリーンセイバー。",
+    "title": "スクリーンセーバー",
+    "url": "/tools/screen-saver/",
+    "description": "どこかでみたことがある（かもしれない）なつかしのスクリーンセーバー。",
     "tag": "ツール",
     "icon": "/assets/icon/screen_saver.avif"
   },
   {
-    "id": "million_graph_corr",
-    "title": "ミリオンライブ!アイドルデータ相関分析グラフ",
-    "url": "/tools/million_graph_1.html",
-    "description": "アイドルの身体的特徴に関する相関関係を可視化。",
-    "tag": "データ可視化",
+    "id": "million_graph_1",
+    "title": "ミリオンライブ！相関分析",
+    "url": "/tools/million-correlation/",
+    "description": "身体的データの相関関係をグラフで分析できます。",
+    "tag": "データ分析",
     "icon": "/assets/icon/million_graph1.avif"
   },
   {
-    "id": "million_graph_3d",
-    "title": "ミリオンライブ!身長年齢体重3D分布",
-    "url": "/tools/million_graph_3D.html",
-    "description": "アイドルの身体的特徴に関する相関関係を3Dで可視化。",
-    "tag": "データ可視化",
+    "id": "million_graph_3D",
+    "title": "ミリオンライブ！3D分布",
+    "url": "/tools/million-3d/",
+    "description": "身長・年齢・体重の3D分布を可視化します。",
+    "tag": "データ分析",
     "icon": "/assets/icon/million_graph_3D.avif"
   },
   {

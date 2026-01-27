@@ -1,0 +1,34 @@
+---
+/**
+ * 迷路ゲーム（低難易度）
+ * Astroアイランドとして実装
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MazeGame from '../../components/tools/MazeGame';
+---
+
+<BaseLayout title="迷路ゲーム（やさしい）" description="自動生成される迷路を攻略しよう！全体が見えるので簡単です。">
+  <div class="py-12 bg-gray-50/50 min-h-screen">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">
+          Maze <span class="text-blue-600">Standard</span>
+        </h1>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          迷路の全体が見渡せる標準モード。ゴール（★）を目指して最短ルートを探しましょう。
+          ステージが進むごとに迷路が少しずつ大きくなります。
+        </p>
+      </div>
+      
+      <MazeGame client:load difficulty="easy" />
+      
+      <div class="mt-16 bg-white p-8 rounded-2xl border border-gray-100 shadow-sm text-sm text-gray-500">
+        <h3 class="font-bold text-gray-800 mb-4">操作方法</h3>
+        <ul class="space-y-2">
+            <li><strong>移動:</strong> キーボードの <code>W / A / S / D</code> または <code>矢印キー</code></li>
+            <li><strong>リセット:</strong> ページを再読み込みするとステージ1から再開します</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
