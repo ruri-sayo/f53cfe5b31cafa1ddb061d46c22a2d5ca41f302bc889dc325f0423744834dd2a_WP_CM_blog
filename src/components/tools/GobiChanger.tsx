@@ -49,7 +49,8 @@ export const GobiChanger: React.FC = () => {
             }
 
             try {
-                const response = await fetch('/tools/config.yaml');
+                const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+                const response = await fetch(`${baseUrl}/data/tools/config.yaml`);
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const text = await response.text();
 

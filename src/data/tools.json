@@ -82,7 +82,7 @@
   {
     "id": "henkan",
     "title": "語尾変換ツール",
-    "url": "/tools/GOBI_changer.html",
+    "url": "/tools/gobi_changer/",
     "description": "入力した文章の語尾を指定した語尾に変換します。",
     "tag": "遊び",
     "icon": null
